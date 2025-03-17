@@ -2,7 +2,7 @@
 
 A responsive open source admin dashboard and control panel built with Bootstrap 5 and Astro.
 
-![AsteroAdmin Dashboard](https://github.com/asterodigital/bootstrap-admin-template/raw/main/src/assets/images/feature-image.png)
+![AsteroAdmin Dashboard](https://raw.githubusercontent.com/asterodigital/bootstrap-admin-template/main/.github/images/feature-image.png)
 
 ## Overview
 
@@ -41,17 +41,20 @@ Check out the live demo: [AsteroAdmin Demo](https://asterodigital.com/bootstrap-
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/asterodigital/bootstrap-admin-template.git
 cd bootstrap-admin-template
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -205,6 +208,7 @@ Installation is simple and comes with detailed instructions in the docs.
 ## Change Log
 
 **Version 1.0.0** - March 13, 2025
+
 - Initial release
 
 ## Contributing
