@@ -35,7 +35,7 @@ Check out the live demo: [AsteroAdmin Demo](https://astero-admin.asterodigital.c
 
 ### Prerequisites
 
-- Node.js (v16 or later recommended)
+- Node.js (v18 or later recommended)
 - npm or yarn package manager
 
 ### Installation
