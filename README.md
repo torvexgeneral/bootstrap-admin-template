@@ -2,7 +2,7 @@
 
 A responsive open source admin dashboard and control panel built with Bootstrap 5 and Astro.
 
-![AsteroAdmin Dashboard](https://raw.githubusercontent.com/asterodigital/bootstrap-admin-template/main/.github/images/feature-image.png)
+[![AsteroAdmin Dashboard](https://raw.githubusercontent.com/asterodigital/bootstrap-admin-template/main/.github/images/feature-image.png)](https://astero-admin.asterodigital.com/pages/dashboard)
 
 ## Overview
 
@@ -29,7 +29,7 @@ AsteroAdmin is a modern, responsive admin template designed to provide a solid f
 
 ## Demo
 
-Check out the live demo: [AsteroAdmin Demo](https://asterodigital.com/bootstrap-admin-template/demo)
+Check out the live demo: [AsteroAdmin Demo](https://astero-admin.asterodigital.com/pages/dashboard)
 
 ## Getting Started
 
