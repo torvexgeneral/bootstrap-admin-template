@@ -178,7 +178,7 @@ const customStyleValidationJs = `<script>
 </script>`;
 
 // CSS styles for validation feedback
-const customStyleValidationCss = `.valid-feedback {
+const customStyleValidationCss = `<style>.valid-feedback {
   color: #28a745;
   display: flex;
   align-items: center;
@@ -188,7 +188,7 @@ const customStyleValidationCss = `.valid-feedback {
   color: #dc3545;
   display: flex;
   align-items: center;
-}`;
+}</style>`;
 
 // Server-side validation example with pre-validated states
 const serverSideValidation = `<form class="row g-3 needs-validation" novalidate>

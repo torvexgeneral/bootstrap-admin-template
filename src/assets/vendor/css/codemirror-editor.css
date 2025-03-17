@@ -9,12 +9,15 @@
     height: auto !important;
     min-height: 150px;
     max-height: 400px;
-    border-radius: 4px;
     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
     font-size: 14px;
     line-height: 1.5;
-    overflow: auto !important;
     background-color: var(--bs-body-bg);
+  }
+
+  .CodeMirror-vscrollbar,.CodeMirror-hscrollbar{
+    scrollbar-width: thin;
+    scrollbar-color: #F1F1F4 transparent;
   }
 
   .CodeMirror-scroll {
