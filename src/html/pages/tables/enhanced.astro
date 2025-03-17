@@ -32,156 +32,158 @@ const employeeTableTemplate = `<div class="astero-table">
         </div>
     </div>
     <!-- Table Container -->
-    <div class="table-container border-0">
-        <table class="table table-hover mb-0" aria-label="Employee data table">
-            <thead>
-                <tr>
-                    <th class="checkbox-column" scope="col">
-                        <div class="form-check">
-                            <input class="form-check-input select-all-checkbox" type="checkbox" id="selectAll" aria-label="Select all employees">
-                        </div>
-                    </th>
-                    <th scope="col"><i class="ri-user-id-line me-1"></i>EMPLOYEE ID</th>
-                    <th scope="col"><i class="ri-user-line me-1"></i>NAME</th>
-                    <th scope="col"><i class="ri-building-line me-1"></i>DEPARTMENT</th>
-                    <th scope="col"><i class="ri-briefcase-line me-1"></i>POSITION</th>
-                    <th scope="col"><i class="ri-calendar-line me-1"></i>JOINING DATE</th>
-                    <th scope="col"><i class="ri-money-dollar-circle-line me-1"></i>SALARY</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" aria-label="Select employee">
-                        </div>
-                    </td>
-                    <td><a href="#" class="fw-medium text-primary">#EMP001</a></td>
-                    <td>John Smith</td>
-                    <td><span class="badge bg-primary-subtle text-primary">Engineering</span></td>
-                    <td>Senior Developer</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Jan 15, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$85,000</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" aria-label="Select employee">
-                        </div>
-                    </td>
-                    <td><a href="#" class="fw-medium text-primary">#EMP002</a></td>
-                    <td>Emma Davis</td>
-                    <td><span class="badge bg-secondary-subtle text-secondary">Marketing</span></td>
-                    <td>Marketing Manager</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 01, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$75,000</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" aria-label="Select employee">
-                        </div>
-                    </td>
-                    <td><a href="#" class="fw-medium text-primary">#EMP003</a></td>
-                    <td>Michael Brown</td>
-                    <td><span class="badge bg-success-subtle text-success">Sales</span></td>
-                    <td>Sales Executive</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 10, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$65,000</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" aria-label="Select employee">
-                        </div>
-                    </td>
-                    <td><a href="#" class="fw-medium text-primary">#EMP004</a></td>
-                    <td>Sarah Wilson</td>
-                    <td><span class="badge bg-info-subtle text-info">HR</span></td>
-                    <td>HR Manager</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Apr 05, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$70,000</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" aria-label="Select employee">
-                        </div>
-                    </td>
-                    <td><a href="#" class="fw-medium text-primary">#EMP005</a></td>
-                    <td>David Lee</td>
-                    <td><span class="badge bg-warning-subtle text-warning">Engineering</span></td>
-                    <td>Frontend Developer</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>May 20, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$72,000</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" aria-label="Select employee">
-                        </div>
-                    </td>
-                    <td><a href="#" class="fw-medium text-primary">#EMP006</a></td>
-                    <td>Lisa Anderson</td>
-                    <td><span class="badge bg-danger-subtle text-danger">Design</span></td>
-                    <td>UI/UX Designer</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Jun 15, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$68,000</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" aria-label="Select employee">
-                        </div>
-                    </td>
-                    <td><a href="#" class="fw-medium text-primary">#EMP007</a></td>
-                    <td>Robert Johnson</td>
-                    <td><span class="badge bg-success-subtle text-success">Engineering</span></td>
-                    <td>Backend Developer</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Jul 01, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$78,000</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" aria-label="Select employee">
-                        </div>
-                    </td>
-                    <td><a href="#" class="fw-medium text-primary">#EMP008</a></td>
-                    <td>Emily Taylor</td>
-                    <td><span class="badge bg-warning-subtle text-warning">Marketing</span></td>
-                    <td>Content Writer</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Aug 12, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$60,000</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" aria-label="Select employee">
-                        </div>
-                    </td>
-                    <td><a href="#" class="fw-medium text-primary">#EMP009</a></td>
-                    <td>James Wilson</td>
-                    <td><span class="badge bg-success-subtle text-success">Sales</span></td>
-                    <td>Sales Manager</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Sep 05, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$82,000</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" aria-label="Select employee">
-                        </div>
-                    </td>
-                    <td><a href="#" class="fw-medium text-primary">#EMP010</a></td>
-                    <td>Jennifer Martinez</td>
-                    <td><span class="badge bg-danger-subtle text-danger">Design</span></td>
-                    <td>Graphic Designer</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Oct 15, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$65,000</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="table-responsive">
+        <div class="table-container border-0">
+            <table class="table table-hover mb-0" aria-label="Employee data table">
+                <thead>
+                    <tr>
+                        <th class="checkbox-column" scope="col">
+                            <div class="form-check">
+                                <input class="form-check-input select-all-checkbox" type="checkbox" id="selectAll" aria-label="Select all employees">
+                            </div>
+                        </th>
+                        <th scope="col"><i class="ri-user-id-line me-1"></i>EMPLOYEE ID</th>
+                        <th scope="col"><i class="ri-user-line me-1"></i>NAME</th>
+                        <th scope="col"><i class="ri-building-line me-1"></i>DEPARTMENT</th>
+                        <th scope="col"><i class="ri-briefcase-line me-1"></i>POSITION</th>
+                        <th scope="col"><i class="ri-calendar-line me-1"></i>JOINING DATE</th>
+                        <th scope="col"><i class="ri-money-dollar-circle-line me-1"></i>SALARY</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" aria-label="Select employee">
+                            </div>
+                        </td>
+                        <td><a href="#" class="fw-medium text-primary">#EMP001</a></td>
+                        <td>John Smith</td>
+                        <td><span class="badge bg-primary-subtle text-primary">Engineering</span></td>
+                        <td>Senior Developer</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Jan 15, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$85,000</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" aria-label="Select employee">
+                            </div>
+                        </td>
+                        <td><a href="#" class="fw-medium text-primary">#EMP002</a></td>
+                        <td>Emma Davis</td>
+                        <td><span class="badge bg-secondary-subtle text-secondary">Marketing</span></td>
+                        <td>Marketing Manager</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 01, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$75,000</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" aria-label="Select employee">
+                            </div>
+                        </td>
+                        <td><a href="#" class="fw-medium text-primary">#EMP003</a></td>
+                        <td>Michael Brown</td>
+                        <td><span class="badge bg-success-subtle text-success">Sales</span></td>
+                        <td>Sales Executive</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 10, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$65,000</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" aria-label="Select employee">
+                            </div>
+                        </td>
+                        <td><a href="#" class="fw-medium text-primary">#EMP004</a></td>
+                        <td>Sarah Wilson</td>
+                        <td><span class="badge bg-info-subtle text-info">HR</span></td>
+                        <td>HR Manager</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Apr 05, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$70,000</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" aria-label="Select employee">
+                            </div>
+                        </td>
+                        <td><a href="#" class="fw-medium text-primary">#EMP005</a></td>
+                        <td>David Lee</td>
+                        <td><span class="badge bg-warning-subtle text-warning">Engineering</span></td>
+                        <td>Frontend Developer</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>May 20, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$72,000</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" aria-label="Select employee">
+                            </div>
+                        </td>
+                        <td><a href="#" class="fw-medium text-primary">#EMP006</a></td>
+                        <td>Lisa Anderson</td>
+                        <td><span class="badge bg-danger-subtle text-danger">Design</span></td>
+                        <td>UI/UX Designer</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Jun 15, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$68,000</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" aria-label="Select employee">
+                            </div>
+                        </td>
+                        <td><a href="#" class="fw-medium text-primary">#EMP007</a></td>
+                        <td>Robert Johnson</td>
+                        <td><span class="badge bg-success-subtle text-success">Engineering</span></td>
+                        <td>Backend Developer</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Jul 01, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$78,000</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" aria-label="Select employee">
+                            </div>
+                        </td>
+                        <td><a href="#" class="fw-medium text-primary">#EMP008</a></td>
+                        <td>Emily Taylor</td>
+                        <td><span class="badge bg-warning-subtle text-warning">Marketing</span></td>
+                        <td>Content Writer</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Aug 12, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$60,000</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" aria-label="Select employee">
+                            </div>
+                        </td>
+                        <td><a href="#" class="fw-medium text-primary">#EMP009</a></td>
+                        <td>James Wilson</td>
+                        <td><span class="badge bg-success-subtle text-success">Sales</span></td>
+                        <td>Sales Manager</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Sep 05, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$82,000</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" aria-label="Select employee">
+                            </div>
+                        </td>
+                        <td><a href="#" class="fw-medium text-primary">#EMP010</a></td>
+                        <td>Jennifer Martinez</td>
+                        <td><span class="badge bg-danger-subtle text-danger">Design</span></td>
+                        <td>Graphic Designer</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Oct 15, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$65,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <!-- Pagination Controls -->
     <div class="d-flex align-items-center justify-content-end mt-4 pagination-section">
@@ -219,621 +221,623 @@ const employeeTableTemplate = `<div class="astero-table">
 
 // Orders table template with enhanced pagination
 const ordersTableTemplate = `<div class="astero-table">
-    <div class="table-container border-0">
-        <table class="table table-hover mb-0" aria-label="Orders data table">
-            <thead>
-                <tr>
-                    <th scope="col"><i class="ri-file-list-line me-1"></i>ORDER ID</th>
-                    <th scope="col"><i class="ri-user-line me-1"></i>CUSTOMER</th>
-                    <th scope="col"><i class="ri-shopping-bag-line me-1"></i>PRODUCT</th>
-                    <th scope="col"><i class="ri-calendar-line me-1"></i>DATE</th>
-                    <th scope="col"><i class="ri-money-dollar-circle-line me-1"></i>AMOUNT</th>
-                    <th scope="col"><i class="ri-flag-line me-1"></i>STATUS</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD001</a></td>
-                    <td>John Smith</td>
-                    <td><i class="ri-smartphone-line me-1"></i>iPhone 14 Pro</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Jan 15, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$999</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD002</a></td>
-                    <td>Emma Davis</td>
-                    <td><i class="ri-laptop-line me-1"></i>MacBook Air</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Jan 16, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$1,299</td>
-                    <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD003</a></td>
-                    <td>Michael Brown</td>
-                    <td><i class="ri-headphone-line me-1"></i>AirPods Pro</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Jan 17, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$249</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD004</a></td>
-                    <td>Sarah Wilson</td>
-                    <td><i class="ri-tablet-line me-1"></i>iPad Pro</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Jan 18, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$799</td>
-                    <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD005</a></td>
-                    <td>David Lee</td>
-                    <td><i class="ri-watch-line me-1"></i>Apple Watch</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Jan 19, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$399</td>
-                    <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD006</a></td>
-                    <td>Alice Johnson</td>
-                    <td><i class="ri-laptop-line me-1"></i>MacBook Pro</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Jan 20, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$1,999</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD007</a></td>
-                    <td>Robert Wilson</td>
-                    <td><i class="ri-tablet-line me-1"></i>iPad Mini</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Jan 21, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$499</td>
-                    <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD008</a></td>
-                    <td>Emily Clark</td>
-                    <td><i class="ri-headphone-line me-1"></i>AirPods Max</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Jan 22, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$549</td>
-                    <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD009</a></td>
-                    <td>Thomas Brown</td>
-                    <td><i class="ri-desktop-line me-1"></i>iMac</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Jan 23, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$1,499</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD010</a></td>
-                    <td>Sophie Turner</td>
-                    <td><i class="ri-smartphone-line me-1"></i>iPhone 13</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Jan 24, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$799</td>
-                    <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD011</a></td>
-                    <td>William Harris</td>
-                    <td><i class="ri-laptop-line me-1"></i>MacBook Air</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Jan 25, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$1,299</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD012</a></td>
-                    <td>Olivia Martin</td>
-                    <td><i class="ri-tablet-line me-1"></i>iPad Pro</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Jan 26, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$899</td>
-                    <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD013</a></td>
-                    <td>James Wilson</td>
-                    <td><i class="ri-watch-line me-1"></i>Apple Watch</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Jan 27, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$399</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD014</a></td>
-                    <td>Ava Thompson</td>
-                    <td><i class="ri-headphone-line me-1"></i>AirPods Pro</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Jan 28, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$249</td>
-                    <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD015</a></td>
-                    <td>Lucas Anderson</td>
-                    <td><i class="ri-laptop-line me-1"></i>MacBook Pro</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Jan 29, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$1,999</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD016</a></td>
-                    <td>Isabella White</td>
-                    <td><i class="ri-smartphone-line me-1"></i>iPhone 14</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Jan 30, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$899</td>
-                    <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD017</a></td>
-                    <td>Mason Brown</td>
-                    <td><i class="ri-laptop-line me-1"></i>MacBook Pro</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 01, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$2,499</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD018</a></td>
-                    <td>Sophia Davis</td>
-                    <td><i class="ri-tablet-line me-1"></i>iPad Air</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 02, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$599</td>
-                    <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD019</a></td>
-                    <td>Ethan Wilson</td>
-                    <td><i class="ri-headphone-line me-1"></i>AirPods</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 03, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$159</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD020</a></td>
-                    <td>Mia Johnson</td>
-                    <td><i class="ri-watch-line me-1"></i>Apple Watch SE</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 04, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$279</td>
-                    <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD021</a></td>
-                    <td>Alexander Lee</td>
-                    <td><i class="ri-laptop-line me-1"></i>MacBook Air</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 05, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$1,199</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD022</a></td>
-                    <td>Charlotte Taylor</td>
-                    <td><i class="ri-smartphone-line me-1"></i>iPhone 13 Pro</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 06, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$999</td>
-                    <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD023</a></td>
-                    <td>Daniel Anderson</td>
-                    <td><i class="ri-tablet-line me-1"></i>iPad Pro</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 07, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$799</td>
-                    <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD024</a></td>
-                    <td>Amelia Clark</td>
-                    <td><i class="ri-headphone-line me-1"></i>AirPods Pro</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 08, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$249</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD025</a></td>
-                    <td>Henry White</td>
-                    <td><i class="ri-laptop-line me-1"></i>MacBook Pro</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 09, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$2,999</td>
-                    <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD026</a></td>
-                    <td>Emma Thompson</td>
-                    <td><i class="ri-smartphone-line me-1"></i>iPhone 14 Pro Max</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 10, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$1,299</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD027</a></td>
-                    <td>Oliver Martinez</td>
-                    <td><i class="ri-tablet-line me-1"></i>iPad Mini</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 11, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$499</td>
-                    <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD028</a></td>
-                    <td>Sophie Anderson</td>
-                    <td><i class="ri-headphone-line me-1"></i>AirPods Max</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 12, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$549</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD029</a></td>
-                    <td>Liam Wilson</td>
-                    <td><i class="ri-laptop-line me-1"></i>MacBook Air M2</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 13, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$1,199</td>
-                    <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD030</a></td>
-                    <td>Isabella Clark</td>
-                    <td><i class="ri-watch-line me-1"></i>Apple Watch Ultra</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 14, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$799</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD031</a></td>
-                    <td>Ethan Brown</td>
-                    <td><i class="ri-laptop-line me-1"></i>iPad Pro 12.9</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 15, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$1,099</td>
-                    <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD032</a></td>
-                    <td>Mia Davis</td>
-                    <td><i class="ri-smartphone-line me-1"></i>iPhone 13 Mini</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 16, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$699</td>
-                    <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD033</a></td>
-                    <td>Alexander Taylor</td>
-                    <td><i class="ri-laptop-line me-1"></i>MacBook Pro 16</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 17, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$2,499</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD034</a></td>
-                    <td>Charlotte Lee</td>
-                    <td><i class="ri-headphone-line me-1"></i>AirPods Pro 2</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 18, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$249</td>
-                    <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD035</a></td>
-                    <td>Daniel White</td>
-                    <td><i class="ri-tablet-line me-1"></i>iPad Air</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 19, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$599</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD036</a></td>
-                    <td>Amelia Johnson</td>
-                    <td><i class="ri-watch-line me-1"></i>Apple Watch Series 8</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 20, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$399</td>
-                    <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD037</a></td>
-                    <td>Henry Anderson</td>
-                    <td><i class="ri-laptop-line me-1"></i>MacBook Air</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 21, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$999</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD038</a></td>
-                    <td>Sophia Wilson</td>
-                    <td><i class="ri-smartphone-line me-1"></i>iPhone 14 Plus</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 22, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$899</td>
-                    <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD039</a></td>
-                    <td>Mason Clark</td>
-                    <td><i class="ri-tablet-line me-1"></i>iPad Pro 11</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 23, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$799</td>
-                    <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD040</a></td>
-                    <td>Emma Davis</td>
-                    <td><i class="ri-headphone-line me-1"></i>AirPods</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 24, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$159</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD041</a></td>
-                    <td>Oliver Brown</td>
-                    <td><i class="ri-laptop-line me-1"></i>MacBook Pro 14</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 25, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$1,999</td>
-                    <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD042</a></td>
-                    <td>Sophie Taylor</td>
-                    <td><i class="ri-watch-line me-1"></i>Apple Watch SE</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 26, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$279</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD043</a></td>
-                    <td>Liam Johnson</td>
-                    <td><i class="ri-smartphone-line me-1"></i>iPhone 13 Pro Max</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 27, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$1,099</td>
-                    <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD044</a></td>
-                    <td>Isabella Martinez</td>
-                    <td><i class="ri-laptop-line me-1"></i>iPad Mini 6</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Feb 28, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$499</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD045</a></td>
-                    <td>Ethan Wilson</td>
-                    <td><i class="ri-headphone-line me-1"></i>AirPods Max</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 01, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$549</td>
-                    <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD046</a></td>
-                    <td>Mia Anderson</td>
-                    <td><i class="ri-laptop-line me-1"></i>MacBook Air M1</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 02, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$999</td>
-                    <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD047</a></td>
-                    <td>Alexander Clark</td>
-                    <td><i class="ri-watch-line me-1"></i>Apple Watch Series 7</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 03, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$379</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD048</a></td>
-                    <td>Charlotte Brown</td>
-                    <td><i class="ri-smartphone-line me-1"></i>iPhone 12 Pro</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 04, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$899</td>
-                    <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD049</a></td>
-                    <td>Daniel Davis</td>
-                    <td><i class="ri-laptop-line me-1"></i>iPad Pro 12.9</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 05, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$1,099</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD050</a></td>
-                    <td>Amelia Wilson</td>
-                    <td><i class="ri-headphone-line me-1"></i>AirPods Pro</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 06, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$249</td>
-                    <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD051</a></td>
-                    <td>Henry Johnson</td>
-                    <td><i class="ri-laptop-line me-1"></i>MacBook Pro 16</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 07, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$2,499</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD052</a></td>
-                    <td>Sophia Taylor</td>
-                    <td><i class="ri-watch-line me-1"></i>Apple Watch Ultra</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 08, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$799</td>
-                    <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD053</a></td>
-                    <td>Mason Anderson</td>
-                    <td><i class="ri-smartphone-line me-1"></i>iPhone 14 Pro</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 09, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$999</td>
-                    <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD054</a></td>
-                    <td>Emma Clark</td>
-                    <td><i class="ri-laptop-line me-1"></i>iPad Air</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 10, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$599</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD055</a></td>
-                    <td>Oliver Wilson</td>
-                    <td><i class="ri-watch-line me-1"></i>AirPods Max</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 11, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$549</td>
-                    <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD056</a></td>
-                    <td>Sophie Brown</td>
-                    <td><i class="ri-laptop-line me-1"></i>MacBook Air M2</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 12, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$1,199</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD057</a></td>
-                    <td>Liam Davis</td>
-                    <td><i class="ri-watch-line me-1"></i>Apple Watch Series 8</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 13, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$399</td>
-                    <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD058</a></td>
-                    <td>Isabella Johnson</td>
-                    <td><i class="ri-smartphone-line me-1"></i>iPhone 13</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 14, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$799</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD059</a></td>
-                    <td>Ethan Wilson</td>
-                    <td><i class="ri-laptop-line me-1"></i>iPad Pro 11</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 15, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$799</td>
-                    <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD060</a></td>
-                    <td>Mia Anderson</td>
-                    <td><i class="ri-watch-line me-1"></i>AirPods Pro 2</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 16, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$249</td>
-                    <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD061</a></td>
-                    <td>Alexander Clark</td>
-                    <td><i class="ri-laptop-line me-1"></i>MacBook Pro 14</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 17, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$1,999</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD062</a></td>
-                    <td>Charlotte Brown</td>
-                    <td><i class="ri-watch-line me-1"></i>Apple Watch SE</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 18, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$279</td>
-                    <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD063</a></td>
-                    <td>Daniel Davis</td>
-                    <td><i class="ri-laptop-line me-1"></i>iPhone 14 Plus</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 19, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$899</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD064</a></td>
-                    <td>Amelia Wilson</td>
-                    <td><i class="ri-laptop-line me-1"></i>iPad Mini 6</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 20, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$499</td>
-                    <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD065</a></td>
-                    <td>Henry Johnson</td>
-                    <td><i class="ri-watch-line me-1"></i>AirPods Max</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 21, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$549</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD066</a></td>
-                    <td>Sophia Taylor</td>
-                    <td><i class="ri-laptop-line me-1"></i>MacBook Air M1</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 22, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$999</td>
-                    <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD067</a></td>
-                    <td>Mason Anderson</td>
-                    <td><i class="ri-watch-line me-1"></i>Apple Watch Series 7</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 23, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$379</td>
-                    <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD068</a></td>
-                    <td>Emma Clark</td>
-                    <td><i class="ri-smartphone-line me-1"></i>iPhone 12 Pro</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 24, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$899</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD069</a></td>
-                    <td>Oliver Wilson</td>
-                    <td><i class="ri-laptop-line me-1"></i>iPad Pro 12.9</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 25, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$1,099</td>
-                    <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD070</a></td>
-                    <td>Sophie Brown</td>
-                    <td><i class="ri-watch-line me-1"></i>AirPods Pro</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 26, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$249</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD071</a></td>
-                    <td>Liam Davis</td>
-                    <td><i class="ri-laptop-line me-1"></i>MacBook Pro 16</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 27, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$2,499</td>
-                    <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD072</a></td>
-                    <td>Isabella Johnson</td>
-                    <td><i class="ri-watch-line me-1"></i>Apple Watch Ultra</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 28, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$799</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD073</a></td>
-                    <td>Ethan Wilson</td>
-                    <td><i class="ri-smartphone-line me-1"></i>iPhone 14 Pro</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 29, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$999</td>
-                    <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD074</a></td>
-                    <td>Mia Anderson</td>
-                    <td><i class="ri-laptop-line me-1"></i>iPad Air</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 30, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$599</td>
-                    <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
-                </tr>
-                <tr>
-                    <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD075</a></td>
-                    <td>Alexander Clark</td>
-                    <td><i class="ri-watch-line me-1"></i>AirPods Max</td>
-                    <td><i class="ri-calendar-check-line me-1"></i>Mar 31, 2023</td>
-                    <td><i class="ri-money-dollar-circle-line me-1"></i>$549</td>
-                    <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="table-responsive">
+        <div class="table-container border-0">
+            <table class="table table-hover mb-0" aria-label="Orders data table">
+                <thead>
+                    <tr>
+                        <th scope="col"><i class="ri-file-list-line me-1"></i>ORDER ID</th>
+                        <th scope="col"><i class="ri-user-line me-1"></i>CUSTOMER</th>
+                        <th scope="col"><i class="ri-shopping-bag-line me-1"></i>PRODUCT</th>
+                        <th scope="col"><i class="ri-calendar-line me-1"></i>DATE</th>
+                        <th scope="col"><i class="ri-money-dollar-circle-line me-1"></i>AMOUNT</th>
+                        <th scope="col"><i class="ri-flag-line me-1"></i>STATUS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD001</a></td>
+                        <td>John Smith</td>
+                        <td><i class="ri-smartphone-line me-1"></i>iPhone 14 Pro</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Jan 15, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$999</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD002</a></td>
+                        <td>Emma Davis</td>
+                        <td><i class="ri-laptop-line me-1"></i>MacBook Air</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Jan 16, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$1,299</td>
+                        <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD003</a></td>
+                        <td>Michael Brown</td>
+                        <td><i class="ri-headphone-line me-1"></i>AirPods Pro</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Jan 17, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$249</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD004</a></td>
+                        <td>Sarah Wilson</td>
+                        <td><i class="ri-tablet-line me-1"></i>iPad Pro</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Jan 18, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$799</td>
+                        <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD005</a></td>
+                        <td>David Lee</td>
+                        <td><i class="ri-watch-line me-1"></i>Apple Watch</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Jan 19, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$399</td>
+                        <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD006</a></td>
+                        <td>Alice Johnson</td>
+                        <td><i class="ri-laptop-line me-1"></i>MacBook Pro</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Jan 20, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$1,999</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD007</a></td>
+                        <td>Robert Wilson</td>
+                        <td><i class="ri-tablet-line me-1"></i>iPad Mini</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Jan 21, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$499</td>
+                        <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD008</a></td>
+                        <td>Emily Clark</td>
+                        <td><i class="ri-headphone-line me-1"></i>AirPods Max</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Jan 22, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$549</td>
+                        <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD009</a></td>
+                        <td>Thomas Brown</td>
+                        <td><i class="ri-desktop-line me-1"></i>iMac</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Jan 23, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$1,499</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD010</a></td>
+                        <td>Sophie Turner</td>
+                        <td><i class="ri-smartphone-line me-1"></i>iPhone 13</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Jan 24, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$799</td>
+                        <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD011</a></td>
+                        <td>William Harris</td>
+                        <td><i class="ri-laptop-line me-1"></i>MacBook Air</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Jan 25, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$1,299</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD012</a></td>
+                        <td>Olivia Martin</td>
+                        <td><i class="ri-tablet-line me-1"></i>iPad Pro</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Jan 26, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$899</td>
+                        <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD013</a></td>
+                        <td>James Wilson</td>
+                        <td><i class="ri-watch-line me-1"></i>Apple Watch</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Jan 27, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$399</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD014</a></td>
+                        <td>Ava Thompson</td>
+                        <td><i class="ri-headphone-line me-1"></i>AirPods Pro</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Jan 28, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$249</td>
+                        <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD015</a></td>
+                        <td>Lucas Anderson</td>
+                        <td><i class="ri-laptop-line me-1"></i>MacBook Pro</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Jan 29, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$1,999</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD016</a></td>
+                        <td>Isabella White</td>
+                        <td><i class="ri-smartphone-line me-1"></i>iPhone 14</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Jan 30, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$899</td>
+                        <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD017</a></td>
+                        <td>Mason Brown</td>
+                        <td><i class="ri-laptop-line me-1"></i>MacBook Pro</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 01, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$2,499</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD018</a></td>
+                        <td>Sophia Davis</td>
+                        <td><i class="ri-tablet-line me-1"></i>iPad Air</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 02, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$599</td>
+                        <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD019</a></td>
+                        <td>Ethan Wilson</td>
+                        <td><i class="ri-headphone-line me-1"></i>AirPods</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 03, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$159</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD020</a></td>
+                        <td>Mia Johnson</td>
+                        <td><i class="ri-watch-line me-1"></i>Apple Watch SE</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 04, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$279</td>
+                        <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD021</a></td>
+                        <td>Alexander Lee</td>
+                        <td><i class="ri-laptop-line me-1"></i>MacBook Air</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 05, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$1,199</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD022</a></td>
+                        <td>Charlotte Taylor</td>
+                        <td><i class="ri-smartphone-line me-1"></i>iPhone 13 Pro</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 06, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$999</td>
+                        <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD023</a></td>
+                        <td>Daniel Anderson</td>
+                        <td><i class="ri-tablet-line me-1"></i>iPad Pro</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 07, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$799</td>
+                        <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD024</a></td>
+                        <td>Amelia Clark</td>
+                        <td><i class="ri-headphone-line me-1"></i>AirPods Pro</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 08, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$249</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD025</a></td>
+                        <td>Henry White</td>
+                        <td><i class="ri-laptop-line me-1"></i>MacBook Pro</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 09, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$2,999</td>
+                        <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD026</a></td>
+                        <td>Emma Thompson</td>
+                        <td><i class="ri-smartphone-line me-1"></i>iPhone 14 Pro Max</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 10, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$1,299</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD027</a></td>
+                        <td>Oliver Martinez</td>
+                        <td><i class="ri-tablet-line me-1"></i>iPad Mini</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 11, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$499</td>
+                        <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD028</a></td>
+                        <td>Sophie Anderson</td>
+                        <td><i class="ri-headphone-line me-1"></i>AirPods Max</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 12, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$549</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD029</a></td>
+                        <td>Liam Wilson</td>
+                        <td><i class="ri-laptop-line me-1"></i>MacBook Air M2</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 13, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$1,199</td>
+                        <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD030</a></td>
+                        <td>Isabella Clark</td>
+                        <td><i class="ri-watch-line me-1"></i>Apple Watch Ultra</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 14, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$799</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD031</a></td>
+                        <td>Ethan Brown</td>
+                        <td><i class="ri-laptop-line me-1"></i>iPad Pro 12.9</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 15, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$1,099</td>
+                        <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD032</a></td>
+                        <td>Mia Davis</td>
+                        <td><i class="ri-smartphone-line me-1"></i>iPhone 13 Mini</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 16, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$699</td>
+                        <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD033</a></td>
+                        <td>Alexander Taylor</td>
+                        <td><i class="ri-laptop-line me-1"></i>MacBook Pro 16</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 17, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$2,499</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD034</a></td>
+                        <td>Charlotte Lee</td>
+                        <td><i class="ri-headphone-line me-1"></i>AirPods Pro 2</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 18, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$249</td>
+                        <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD035</a></td>
+                        <td>Daniel White</td>
+                        <td><i class="ri-tablet-line me-1"></i>iPad Air</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 19, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$599</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD036</a></td>
+                        <td>Amelia Johnson</td>
+                        <td><i class="ri-watch-line me-1"></i>Apple Watch Series 8</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 20, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$399</td>
+                        <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD037</a></td>
+                        <td>Henry Anderson</td>
+                        <td><i class="ri-laptop-line me-1"></i>MacBook Air</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 21, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$999</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD038</a></td>
+                        <td>Sophia Wilson</td>
+                        <td><i class="ri-smartphone-line me-1"></i>iPhone 14 Plus</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 22, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$899</td>
+                        <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD039</a></td>
+                        <td>Mason Clark</td>
+                        <td><i class="ri-tablet-line me-1"></i>iPad Pro 11</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 23, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$799</td>
+                        <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD040</a></td>
+                        <td>Emma Davis</td>
+                        <td><i class="ri-headphone-line me-1"></i>AirPods</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 24, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$159</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD041</a></td>
+                        <td>Oliver Brown</td>
+                        <td><i class="ri-laptop-line me-1"></i>MacBook Pro 14</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 25, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$1,999</td>
+                        <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD042</a></td>
+                        <td>Sophie Taylor</td>
+                        <td><i class="ri-watch-line me-1"></i>Apple Watch SE</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 26, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$279</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD043</a></td>
+                        <td>Liam Johnson</td>
+                        <td><i class="ri-smartphone-line me-1"></i>iPhone 13 Pro Max</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 27, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$1,099</td>
+                        <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD044</a></td>
+                        <td>Isabella Martinez</td>
+                        <td><i class="ri-laptop-line me-1"></i>iPad Mini 6</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Feb 28, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$499</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD045</a></td>
+                        <td>Ethan Wilson</td>
+                        <td><i class="ri-headphone-line me-1"></i>AirPods Max</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 01, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$549</td>
+                        <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD046</a></td>
+                        <td>Mia Anderson</td>
+                        <td><i class="ri-laptop-line me-1"></i>MacBook Air M1</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 02, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$999</td>
+                        <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD047</a></td>
+                        <td>Alexander Clark</td>
+                        <td><i class="ri-watch-line me-1"></i>Apple Watch Series 7</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 03, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$379</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD048</a></td>
+                        <td>Charlotte Brown</td>
+                        <td><i class="ri-smartphone-line me-1"></i>iPhone 12 Pro</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 04, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$899</td>
+                        <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD049</a></td>
+                        <td>Daniel Davis</td>
+                        <td><i class="ri-laptop-line me-1"></i>iPad Pro 12.9</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 05, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$1,099</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD050</a></td>
+                        <td>Amelia Wilson</td>
+                        <td><i class="ri-headphone-line me-1"></i>AirPods Pro</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 06, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$249</td>
+                        <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD051</a></td>
+                        <td>Henry Johnson</td>
+                        <td><i class="ri-laptop-line me-1"></i>MacBook Pro 16</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 07, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$2,499</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD052</a></td>
+                        <td>Sophia Taylor</td>
+                        <td><i class="ri-watch-line me-1"></i>Apple Watch Ultra</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 08, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$799</td>
+                        <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD053</a></td>
+                        <td>Mason Anderson</td>
+                        <td><i class="ri-smartphone-line me-1"></i>iPhone 14 Pro</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 09, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$999</td>
+                        <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD054</a></td>
+                        <td>Emma Clark</td>
+                        <td><i class="ri-laptop-line me-1"></i>iPad Air</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 10, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$599</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD055</a></td>
+                        <td>Oliver Wilson</td>
+                        <td><i class="ri-watch-line me-1"></i>AirPods Max</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 11, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$549</td>
+                        <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD056</a></td>
+                        <td>Sophie Brown</td>
+                        <td><i class="ri-laptop-line me-1"></i>MacBook Air M2</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 12, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$1,199</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD057</a></td>
+                        <td>Liam Davis</td>
+                        <td><i class="ri-watch-line me-1"></i>Apple Watch Series 8</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 13, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$399</td>
+                        <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD058</a></td>
+                        <td>Isabella Johnson</td>
+                        <td><i class="ri-smartphone-line me-1"></i>iPhone 13</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 14, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$799</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD059</a></td>
+                        <td>Ethan Wilson</td>
+                        <td><i class="ri-laptop-line me-1"></i>iPad Pro 11</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 15, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$799</td>
+                        <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD060</a></td>
+                        <td>Mia Anderson</td>
+                        <td><i class="ri-watch-line me-1"></i>AirPods Pro 2</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 16, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$249</td>
+                        <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD061</a></td>
+                        <td>Alexander Clark</td>
+                        <td><i class="ri-laptop-line me-1"></i>MacBook Pro 14</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 17, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$1,999</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD062</a></td>
+                        <td>Charlotte Brown</td>
+                        <td><i class="ri-watch-line me-1"></i>Apple Watch SE</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 18, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$279</td>
+                        <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD063</a></td>
+                        <td>Daniel Davis</td>
+                        <td><i class="ri-laptop-line me-1"></i>iPhone 14 Plus</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 19, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$899</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD064</a></td>
+                        <td>Amelia Wilson</td>
+                        <td><i class="ri-laptop-line me-1"></i>iPad Mini 6</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 20, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$499</td>
+                        <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD065</a></td>
+                        <td>Henry Johnson</td>
+                        <td><i class="ri-watch-line me-1"></i>AirPods Max</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 21, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$549</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD066</a></td>
+                        <td>Sophia Taylor</td>
+                        <td><i class="ri-laptop-line me-1"></i>MacBook Air M1</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 22, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$999</td>
+                        <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD067</a></td>
+                        <td>Mason Anderson</td>
+                        <td><i class="ri-watch-line me-1"></i>Apple Watch Series 7</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 23, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$379</td>
+                        <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD068</a></td>
+                        <td>Emma Clark</td>
+                        <td><i class="ri-smartphone-line me-1"></i>iPhone 12 Pro</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 24, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$899</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD069</a></td>
+                        <td>Oliver Wilson</td>
+                        <td><i class="ri-laptop-line me-1"></i>iPad Pro 12.9</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 25, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$1,099</td>
+                        <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD070</a></td>
+                        <td>Sophie Brown</td>
+                        <td><i class="ri-watch-line me-1"></i>AirPods Pro</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 26, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$249</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD071</a></td>
+                        <td>Liam Davis</td>
+                        <td><i class="ri-laptop-line me-1"></i>MacBook Pro 16</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 27, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$2,499</td>
+                        <td><span class="badge bg-warning-subtle text-warning"><i class="ri-time-line me-1"></i>Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD072</a></td>
+                        <td>Isabella Johnson</td>
+                        <td><i class="ri-watch-line me-1"></i>Apple Watch Ultra</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 28, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$799</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD073</a></td>
+                        <td>Ethan Wilson</td>
+                        <td><i class="ri-smartphone-line me-1"></i>iPhone 14 Pro</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 29, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$999</td>
+                        <td><span class="badge bg-danger-subtle text-danger"><i class="ri-close-circle-line me-1"></i>Cancelled</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD074</a></td>
+                        <td>Mia Anderson</td>
+                        <td><i class="ri-laptop-line me-1"></i>iPad Air</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 30, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$599</td>
+                        <td><span class="badge bg-info-subtle text-info"><i class="ri-time-line me-1"></i>Processing</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="fw-medium text-primary"><i class="ri-file-list-line me-1"></i>#ORD075</a></td>
+                        <td>Alexander Clark</td>
+                        <td><i class="ri-watch-line me-1"></i>AirPods Max</td>
+                        <td><i class="ri-calendar-check-line me-1"></i>Mar 31, 2023</td>
+                        <td><i class="ri-money-dollar-circle-line me-1"></i>$549</td>
+                        <td><span class="badge bg-success-subtle text-success"><i class="ri-checkbox-circle-line me-1"></i>Completed</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <!-- Enhanced Pagination Section -->
     <div class="d-flex align-items-center justify-content-between mt-4 pagination-section flex-wrap gap-3">
