@@ -2,6 +2,12 @@
      Utility Classes & Animations
      ========================================================================== */
 
+/* Cursor Utilities */
+.cursor-auto { cursor: auto; }
+.cursor-default { cursor: default; }
+.cursor-pointer { cursor: pointer; }
+.cursor-none { cursor: none; }
+
 /* Animation Utilities */
 @keyframes dropdownFade {
   from {

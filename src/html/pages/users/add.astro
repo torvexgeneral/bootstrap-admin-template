@@ -50,6 +50,14 @@ const permissionModules = [
           { id: "manage_categories", name: "Manage Content Categories" },
           { id: "manage_tags", name: "Manage Content Tags" }
         ]
+      },
+      {
+        id: "configuration_management",
+        name: "Configuration Management",
+        permissions: [
+          { id: "manage_templates", name: "Manage Content Templates" },
+          { id: "manage_workflows", name: "Manage Content Workflows" }
+        ]
       }
     ]
   },
@@ -63,6 +71,14 @@ const permissionModules = [
         permissions: [
           { id: "manage_seo", name: "Manage SEO Settings" },
           { id: "manage_meta", name: "Manage Meta Information" }
+        ]
+      },
+      {
+        id: "performance_optimization",
+        name: "Performance Optimization",
+        permissions: [
+          { id: "manage_caching", name: "Manage Page Caching" },
+          { id: "manage_minification", name: "Manage Asset Minification" }
         ]
       },
       {
@@ -106,11 +122,6 @@ const permissionModules = [
         id: "system_monitoring",
         name: "System Monitoring",
         permissions: [{ id: "view_logs", name: "View System Logs" }]
-      },
-      {
-        id: "api_management",
-        name: "API Configuration",
-        permissions: [{ id: "manage_api", name: "Manage API Settings" }]
       }
     ]
   }
@@ -418,54 +429,56 @@ const userFormStyles = `
                         <div class="permission-groups d-flex flex-column flex-md-row flex-wrap">
                           {module.groups.map((group) => (
                             <div
-                              class="col-12 col-md-6 col-lg-4 permission-group px-2 mb-3"
+                              class="col-12 col-md-6 permission-group px-2 mb-3"
                               id={`group_${group.id}`}
                             >
-                              <div class="d-flex align-items-top mb-2 gap-1">
-                                <button
-                                  type="button"
-                                  class="btn btn-outline-primary toggle-permissions mt-1"
-                                  data-group-id={group.id}
-                                  title="Toggle Group Permissions"
-                                >
-                                  <i class="ri-checkbox-multiple-line" />
-                                </button>
-                                <div class="form-check">
-                                  <input
-                                    class="form-check-input toggle-group"
-                                    type="checkbox"
-                                    id={`group_toggle_${group.id}`}
-                                    data-group-id={group.id}
-                                  />
-                                  <label
-                                    class="form-check-label fw-medium"
-                                    for={`group_toggle_${group.id}`}
-                                  >
-                                    {group.name}
-                                  </label>
-                                </div>
-                              </div>
-                              <div
-                                class="permission-items ms-4 collapse show"
-                                id={`permissions_${group.id}`}
-                              >
-                                {group.permissions.map((permission) => (
-                                  <div class="permission-item form-check">
+                              <div class="card ">
+                                <div class="card-header d-flex flex-row py-1 justify-content-between align-items-center border-0">
+                                  <div class="form-check">
                                     <input
-                                      class="form-check-input permission-checkbox"
+                                      class="form-check-input toggle-group"
                                       type="checkbox"
-                                      id={`permission_${permission.id}`}
-                                      name={`permissions[]`}
-                                      value={permission.id}
+                                      id={`group_toggle_${group.id}`}
+                                      data-group-id={group.id}
                                     />
                                     <label
-                                      class="form-check-label"
-                                      for={`permission_${permission.id}`}
+                                      class="form-check-label fw-medium"
+                                      for={`group_toggle_${group.id}`}
                                     >
-                                      {permission.name}
+                                      {group.name}
                                     </label>
                                   </div>
-                                ))}
+                                  <button
+                                    type="button"
+                                    class="btn btn-outline-primary toggle-permissions mb-0"
+                                    data-group-id={group.id}
+                                    title="Toggle Group Permissions"
+                                  >
+                                    <i class="ri-subtract-line" />
+                                  </button>
+                                </div>
+                                <div
+                                  class="permission-items border-top pb-3 ps-4 collapse show"
+                                  id={`permissions_${group.id}`}
+                                >
+                                  {group.permissions.map((permission) => (
+                                    <div class="permission-item form-check">
+                                      <input
+                                        class="form-check-input permission-checkbox"
+                                        type="checkbox"
+                                        id={`permission_${permission.id}`}
+                                        name={`permissions[]`}
+                                        value={permission.id}
+                                      />
+                                      <label
+                                        class="form-check-label"
+                                        for={`permission_${permission.id}`}
+                                      >
+                                        {permission.name}
+                                      </label>
+                                    </div>
+                                  ))}
+                                </div>
                               </div>
                             </div>
                           ))}

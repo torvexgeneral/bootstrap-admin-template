@@ -140,10 +140,10 @@ const pageScript = `
 >
   <PageHeader {...pageHeaderProps} />
 
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card shadow-sm">
-        <form id="permissionForm" novalidate>
+  <form id="permissionForm" novalidate>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card shadow-sm">
           <div class="card-body">
             <!-- Permission Title -->
             <div class="row mb-3">
@@ -163,7 +163,6 @@ const pageScript = `
                 </div>
               </div>
             </div>
-
             <!-- Display Name -->
             <div class="row mb-3">
               <div class="col-12">
@@ -182,7 +181,6 @@ const pageScript = `
                 </div>
               </div>
             </div>
-
             <!-- Module -->
             <div class="row mb-3">
               <div class="col-12">
@@ -199,7 +197,6 @@ const pageScript = `
                 </div>
               </div>
             </div>
-
             <!-- Permission Group -->
             <div class="row mb-3">
               <div class="col-12">
@@ -229,6 +226,26 @@ const pageScript = `
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <!-- Status -->
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="status" class="form-label"
+                    >Status <span class="text-danger">*</span></label
+                  >
+                  <select class="form-select" id="status" name="status" required>
+                    <option value="Active" selected>Active</option>
+                    <option value="Inactive">Inactive</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="card-footer">
             <!-- Form Actions -->
             <div class="d-flex justify-content-end gap-2">
@@ -238,8 +255,8 @@ const pageScript = `
               <button type="submit" class="btn btn-primary">Create Permission</button>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
-  </div>
+  </form>
 </AdminLayout>

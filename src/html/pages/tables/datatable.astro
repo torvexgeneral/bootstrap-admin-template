@@ -67,7 +67,7 @@ const productsTableTemplate = `<div class="astero-table">
         <!-- Table Actions -->
         <div class="d-flex gap-2 flex-wrap">
             <!-- Filter Button -->
-            <button class="btn btn-light-primary gap-1" data-bs-toggle="offcanvas" data-bs-target="#filterDrawer" data-table-toolbar="filter" aria-label="Open filters">
+            <button class="btn btn-outline-primary gap-1" data-bs-toggle="offcanvas" data-bs-target="#filterDrawer" data-table-toolbar="filter" aria-label="Open filters">
                 <i class="ri-filter-3-line me-1" aria-hidden="true"></i> Filters
             </button>
 
@@ -175,8 +175,8 @@ const productsTableTemplate = `<div class="astero-table">
         <!-- Active Filters Display -->
         <div class="d-none flex-column flex-lg-row justify-content-start filter-datas mb-3" data-filters aria-live="polite">
             <strong class="fs-6 me-2 text-primary">Active Filters:</strong>
-            <div class="d-flex flex-column flex-lg-row align-items-center" data-filters-data></div>
-        </div>
+            <div class="d-flex flex-row flex-wrap align-items-center" data-filters-data></div>
+        </div> 
 
         <!-- Products Table -->
         <div class="table-responsive border-0">

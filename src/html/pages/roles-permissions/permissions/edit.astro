@@ -140,10 +140,10 @@ const pageScript = `
 >
   <PageHeader {...pageHeaderProps} />
 
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card shadow-sm">
-        <form id="permissionForm" novalidate>
+  <form id="permissionForm" novalidate>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-sm">
           <div class="card-body">
             <!-- Permission Title -->
             <div class="row mb-3">
@@ -248,17 +248,37 @@ const pageScript = `
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <!-- Status -->
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="status" class="form-label"
+                    >Status <span class="text-danger">*</span></label
+                  >
+                  <select class="form-select" id="status" name="status" required>
+                    <option value="Active" selected>Active</option>
+                    <option value="Inactive">Inactive</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="card-footer">
             <!-- Form Actions -->
             <div class="d-flex justify-content-end gap-2">
-              <a href={getPathPrefix("/roles-permissions/permissions/list")} class="btn btn-light"
+              <a href={getPathPrefix("/roles-permissions/permissions/list")} class="btn btn-outline-secondary"
                 >Cancel</a
               >
               <button type="submit" class="btn btn-primary">Update Permission</button>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
-  </div>
+  </form>
 </AdminLayout>
