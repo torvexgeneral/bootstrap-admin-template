@@ -1,4 +1,4 @@
-name: CSS (sass-embedded)
+name: Build, Lint, and CSS
 
 on:
   push:
@@ -15,7 +15,7 @@ permissions:
   contents: read
 
 jobs:
-  css:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,15 +28,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '${{ env.NODE }}'
-          cache: npm
+          cache: pnpm
 
       - name: Install npm dependencies
-        run: npm ci
+        run: pnpm install
+
+      - name: Run lint
+        run: pnpm run lint
 
       - name: Build CSS with sass-embedded
         run: |
           npx sass-embedded --version
-          npm run css
+          pnpm run css
           ls -Al dist/css/
 
       # Check that there are no Sass variables (`$`)
@@ -52,3 +55,6 @@ jobs:
             echo "$SASS_VARS_FOUND"
             exit 1
           fi
+
+      - name: Build distribution files
+        run: pnpm run build

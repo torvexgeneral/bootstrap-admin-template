@@ -31,13 +31,13 @@ jobs:
           cache: npm
 
       - name: Install npm dependencies
-        run: npm ci
+        run: pnpm install
 
       - name: Run build
-        run: npm run build
+        run: pnpm run build
 
       - name: Run bundlewatch
-        run: npm run bundlewatch
+        run: pnpm run bundlewatch
         env:
           BUNDLEWATCH_GITHUB_TOKEN: '${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}'
           CI_BRANCH_BASE: main
