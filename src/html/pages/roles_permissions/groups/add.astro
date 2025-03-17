@@ -145,10 +145,10 @@ const pageScript = `
 >
   <PageHeader {...pageHeaderProps} />
 
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card shadow-sm">
-        <form id="groupForm" novalidate>
+  <form id="groupForm" novalidate>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card shadow-sm">
           <div class="card-body">
             <!-- Group Title -->
             <div class="row mb-3">
@@ -189,7 +189,12 @@ const pageScript = `
                 </div>
               </div>
             </div>
-
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
             <!-- Status -->
             <div class="row mb-3">
               <div class="col-12">
@@ -205,18 +210,18 @@ const pageScript = `
               </div>
             </div>
           </div>
-
           <div class="card-footer">
             <!-- Form Actions -->
             <div class="d-flex justify-content-end gap-2">
-              <a href={getPathPrefix("/roles_permissions/groups/list")} class="btn btn-light"
-                >Cancel</a
+              <a
+                href={getPathPrefix("/roles_permissions/groups/list")}
+                class="btn btn-outline-secondary">Cancel</a
               >
               <button type="submit" class="btn btn-primary">Create Group</button>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
-  </div>
+  </form>
 </AdminLayout>

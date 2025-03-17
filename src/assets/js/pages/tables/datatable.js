@@ -146,6 +146,8 @@ var ProductsDatatable = (function () {
   // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
   var handleSearchDatatable = function () {
     const filterSearch = document.querySelector('[data-table-filter="search"]')
+    if (!filterSearch) return // Exit if element doesn't exist
+
     filterSearch.addEventListener("keyup", function () {
       if (this.value != "") {
         $(".search-clear").show()
@@ -156,6 +158,7 @@ var ProductsDatatable = (function () {
     })
 
     const filterSearchClear = document.querySelector(".search-clear")
+    if (!filterSearchClear) return // Exit if element doesn't exist
     filterSearchClear.addEventListener("click", function () {
       $(this).hide()
       $(this).closest("div").find('[data-table-filter="search"]').val("")
@@ -166,6 +169,7 @@ var ProductsDatatable = (function () {
   // Filter Datatable
   var handleFilterDatatable = () => {
     const filterButton = document.querySelector('[data-table-filter-btn="filter"]')
+    if (!filterButton) return // Exit if element doesn't exist
 
     // Filter datatable on submit
     filterButton.addEventListener("click", function () {
@@ -238,6 +242,7 @@ var ProductsDatatable = (function () {
   var handleResetForm = () => {
     // Select reset button
     const resetButton = document.querySelector('[data-table-filter-btn="reset"]')
+    if (!resetButton) return // Exit if element doesn't exist
 
     // Reset datatable
     resetButton.addEventListener("click", function () {
@@ -249,8 +254,8 @@ var ProductsDatatable = (function () {
       if ($(".form-check-input:checked").length > 0) {
         $(".form-check-input").prop("checked", false)
       }
-      if ($(".form-select").length > 0) {
-        $(".form-select").val("")
+      if ($("#filterDrawer .form-select").length > 0) {
+        $("#filterDrawer .form-select").val("")
       }
 
       $('[data-table-filter="search"]').val("")
@@ -296,7 +301,7 @@ var ProductsDatatable = (function () {
               var val = $(this).val()
 
               search_html +=
-                '<span class="badge text-bg-primary d-flex justify-content-between fs-7 me-2 fw-bold align-items-center">' +
+                '<span class="badge text-bg-primary d-flex justify-content-between fs-7 mb-1 me-2 fw-bold align-items-center">' +
                 label +
                 ": " +
                 tmp_value +
@@ -314,7 +319,7 @@ var ProductsDatatable = (function () {
               var val = r.value
 
               search_html +=
-                '<span class="badge text-bg-primary d-flex justify-content-between fs-7 me-2 fw-bold align-items-center">' +
+                '<span class="badge text-bg-primary d-flex justify-content-between fs-7 mb-1 me-2 fw-bold align-items-center">' +
                 label +
                 ": " +
                 search_value +
@@ -331,7 +336,7 @@ var ProductsDatatable = (function () {
               search_value = r.options[r.selectedIndex].getAttribute("data-title")
             }
             search_html +=
-              '<span class="badge text-bg-primary d-flex justify-content-between fs-7 me-2 fw-bold align-items-center">' +
+              '<span class="badge text-bg-primary d-flex justify-content-between fs-7 mb-1 me-2 fw-bold align-items-center">' +
               label +
               ": " +
               search_value +
@@ -346,7 +351,7 @@ var ProductsDatatable = (function () {
     })
     if (search_html != "") {
       search_html +=
-        '<span class="badge text-bg-danger fs-7 me-2 d-flex align-items-center fw-semibold cursor-pointer clear-filter" data-filter="all">Clear All</span>'
+        '<span class="badge text-bg-danger fs-7 mb-1 me-2 d-flex align-items-center fw-semibold cursor-pointer clear-filter" data-filter="all">Clear All</span>'
 
       filterData.innerHTML = search_html
       filterDataView.classList.remove("d-none")
