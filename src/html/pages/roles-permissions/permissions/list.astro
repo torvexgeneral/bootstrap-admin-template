@@ -19,20 +19,20 @@ const pageScript = `<!-- Add this scripts before body close -->
 <script src="https://cdn.jsdelivr.net/npm/datatables.net@1.13.7/js/jquery.dataTables.min.js"></script>
 
 <script src="${getAssetPrefix("/assets/vendor/datatables/datatables.init.js")}"></script>
-<script type="module" src="${getAssetPrefix("/assets/js/pages/roles_and_permissions/permissions/table.js")}"></script>
+<script type="module" src="${getAssetPrefix("/assets/js/pages/roles-permissions/permissions/table.js")}"></script>
 `;
 
 const pageHeaderProps = {
   title: "Permissions",
   breadcrumbs: [
     { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Roles & Permissions", href: getPathPrefix("/roles_permissions") },
+    { label: "Roles & Permissions", href: getPathPrefix("/roles-permissions") },
     { label: "Permissions", class: "active" }
   ],
   actions: [
     {
       label: "Add Permission",
-      href: getPathPrefix("/roles_permissions/permissions/add"),
+      href: getPathPrefix("/roles-permissions/permissions/add"),
       variant: "btn-primary",
       icon: "ri-add-line"
     }
@@ -226,7 +226,7 @@ const permissions = [
 <AdminLayout
   title="Permissions"
   description="Permissions Management"
-  currentPath="roles_permissions/permissions/list"
+  currentPath="roles-permissions/permissions/list"
   pageScript={pageScript}
   pageCss={pageStyles}
 >
@@ -427,7 +427,7 @@ const permissions = [
                 <table id="table_permissions" class="table align-middle">
                   <thead>
                     <tr>
-                      <th>
+                      <th class="fs-6">
                         <div class="form-check">
                           <input
                             class="form-check-input"
@@ -470,7 +470,7 @@ const permissions = [
                                 <li>
                                   <a
                                     class="dropdown-item d-flex align-items-center gap-2"
-                                    href={getPathPrefix("/roles_permissions/permissions/edit")}
+                                    href={getPathPrefix("/roles-permissions/permissions/edit")}
                                   >
                                     <i class="ri-pencil-line" /> Edit
                                   </a>

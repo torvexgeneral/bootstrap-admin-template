@@ -7,19 +7,19 @@ const pageHeaderProps = {
   title: "View Role",
   breadcrumbs: [
     { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Roles & Permissions", href: getPathPrefix("/roles_permissions") },
-    { label: "Roles", href: getPathPrefix("/roles_permissions/roles/list") }
+    { label: "Roles & Permissions", href: getPathPrefix("/roles-permissions") },
+    { label: "Roles", href: getPathPrefix("/roles-permissions/roles/list") }
   ],
   actions: [
     {
       label: "Back",
-      href: getPathPrefix("/roles_permissions/roles/list"),
+      href: getPathPrefix("/roles-permissions/roles/list"),
       variant: "btn-outline-primary",
       icon: "ri-arrow-left-s-line"
     },
     {
       label: "Edit Role",
-      href: getPathPrefix("/roles_permissions/roles/edit"),
+      href: getPathPrefix("/roles-permissions/roles/edit"),
       variant: "btn-primary",
       icon: "ri-edit-2-line"
     }
@@ -135,7 +135,7 @@ const selectedPermissions = [
 ];
 ---
 
-<AdminLayout title="View Role" description="View Role" currentPath="roles_permissions/roles/view">
+<AdminLayout title="View Role" description="View Role" currentPath="roles-permissions/roles/view">
   <PageHeader {...pageHeaderProps} />
   <div class="row">
     <div class="col-12 col-md-3 mb-3">
@@ -164,7 +164,7 @@ const selectedPermissions = [
         </div>
         <div class="card-footer d-flex justify-content-end">
           <a
-            href={getPathPrefix("/roles_permissions/roles/edit")}
+            href={getPathPrefix("/roles-permissions/roles/edit")}
             class="btn btn-sm btn-primary px-3 py-1">Edit Role</a
           >
         </div>

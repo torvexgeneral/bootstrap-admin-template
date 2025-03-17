@@ -5,19 +5,19 @@ import { getAssetPrefix, getPathPrefix } from "../../../../utils/path.js";
 
 const pageHeaderProps = {
   title: "Add Role",
-  backLink: getPathPrefix("/roles_permissions/roles/list"),
+  backLink: getPathPrefix("/roles-permissions/roles/list"),
   breadcrumbs: [
     { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Roles & Permissions", href: getPathPrefix("/roles_permissions") },
-    { label: "Roles", href: getPathPrefix("/roles_permissions/roles/list") },
+    { label: "Roles & Permissions", href: getPathPrefix("/roles-permissions") },
+    { label: "Roles", href: getPathPrefix("/roles-permissions/roles/list") },
     { label: "Add Role", class: "active" }
   ]
 };
 
 // Add custom validation script
 const pageScript = `
-  <script src="${getAssetPrefix("/assets/js/pages/roles_and_permissions/roles/toggle-permissions.js")}"></script>
-  <script src="${getAssetPrefix("/assets/js/pages/roles_and_permissions/roles/submitform.js")}"></script>
+  <script src="${getAssetPrefix("/assets/js/pages/roles-permissions/roles/toggle-permissions.js")}"></script>
+  <script src="${getAssetPrefix("/assets/js/pages/roles-permissions/roles/submitform.js")}"></script>
 `;
 
 // Define permissions data structure
@@ -119,7 +119,7 @@ const modules = [
 <AdminLayout
   title="Add Role"
   description="Create New Role"
-  currentPath="roles_permissions/roles/add"
+  currentPath="roles-permissions/roles/add"
   pageScript={pageScript}
 >
   <PageHeader {...pageHeaderProps} />
@@ -275,7 +275,7 @@ const modules = [
           <div class="card-footer">
             <!-- Form Actions -->
             <div class="d-flex justify-content-end gap-2">
-              <a href={getPathPrefix("/roles_permissions/roles/list")} class="btn btn-light"
+              <a href={getPathPrefix("/roles-permissions/roles/list")} class="btn btn-light"
                 >Cancel</a
               >
               <button type="submit" class="btn btn-primary">Create Role</button>

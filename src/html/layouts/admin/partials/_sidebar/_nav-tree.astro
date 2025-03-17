@@ -296,7 +296,7 @@ const isActiveParent = (path: string) => currentPath.startsWith(path);
 
     <!-- Role & Permissions Section -->
     <li
-      class={`nav-item has-submenu parent ${isActiveParent("roles_permissions") ? "active open" : ""}`}
+      class={`nav-item has-submenu parent ${isActiveParent("roles-permissions") ? "active open" : ""}`}
     >
       <a class="nav-link" href="#">
         <i class="ri-shield-user-line"></i>
@@ -305,27 +305,27 @@ const isActiveParent = (path: string) => currentPath.startsWith(path);
       </a>
       <ul class="submenu">
         <li
-          class={`nav-item has-submenu ${isActiveParent("roles_permissions/roles") ? "active open" : ""}`}
+          class={`nav-item has-submenu ${isActiveParent("roles-permissions/roles") ? "active open" : ""}`}
         >
           <a class="nav-link" href="#">
             <span>Roles</span>
             <i class="ri-arrow-right-s-line"></i>
           </a>
           <ul class="submenu">
-            <li class={`nav-item ${isActive("roles_permissions/roles/list") ? "active" : ""}`}>
-              <a class="nav-link" href={getPathPrefix("/roles_permissions/roles/list")}>
+            <li class={`nav-item ${isActive("roles-permissions/roles/list") ? "active" : ""}`}>
+              <a class="nav-link" href={getPathPrefix("/roles-permissions/roles/list")}>
                 <span>List</span>
               </a>
             </li>
-            <li class={`nav-item ${isActive("roles_permissions/roles/add") ? "active" : ""}`}>
-              <a class="nav-link" href={getPathPrefix("/roles_permissions/roles/add")}>
+            <li class={`nav-item ${isActive("roles-permissions/roles/add") ? "active" : ""}`}>
+              <a class="nav-link" href={getPathPrefix("/roles-permissions/roles/add")}>
                 <span>Add</span>
               </a>
             </li>
           </ul>
         </li>
         <li
-          class={`nav-item has-submenu ${isActiveParent("roles_permissions/permissions") ? "active open" : ""}`}
+          class={`nav-item has-submenu ${isActiveParent("roles-permissions/permissions") ? "active open" : ""}`}
         >
           <a class="nav-link" href="#">
             <span>Permissions</span>
@@ -333,34 +333,34 @@ const isActiveParent = (path: string) => currentPath.startsWith(path);
           </a>
           <ul class="submenu">
             <li
-              class={`nav-item ${isActive("roles_permissions/permissions/list") ? "active" : ""}`}
+              class={`nav-item ${isActive("roles-permissions/permissions/list") ? "active" : ""}`}
             >
-              <a class="nav-link" href={getPathPrefix("/roles_permissions/permissions/list")}>
+              <a class="nav-link" href={getPathPrefix("/roles-permissions/permissions/list")}>
                 <span>List</span>
               </a>
             </li>
-            <li class={`nav-item ${isActive("roles_permissions/permissions/add") ? "active" : ""}`}>
-              <a class="nav-link" href={getPathPrefix("/roles_permissions/permissions/add")}>
+            <li class={`nav-item ${isActive("roles-permissions/permissions/add") ? "active" : ""}`}>
+              <a class="nav-link" href={getPathPrefix("/roles-permissions/permissions/add")}>
                 <span>Add</span>
               </a>
             </li>
           </ul>
         </li>
         <li
-          class={`nav-item has-submenu ${isActiveParent("roles_permissions/groups") ? "active open" : ""}`}
+          class={`nav-item has-submenu ${isActiveParent("roles-permissions/groups") ? "active open" : ""}`}
         >
           <a class="nav-link" href="#">
             <span>Groups</span>
             <i class="ri-arrow-right-s-line"></i>
           </a>
           <ul class="submenu">
-            <li class={`nav-item ${isActive("roles_permissions/groups/list") ? "active" : ""}`}>
-              <a class="nav-link" href={getPathPrefix("/roles_permissions/groups/list")}>
+            <li class={`nav-item ${isActive("roles-permissions/groups/list") ? "active" : ""}`}>
+              <a class="nav-link" href={getPathPrefix("/roles-permissions/groups/list")}>
                 <span>List</span>
               </a>
             </li>
-            <li class={`nav-item ${isActive("roles_permissions/groups/add") ? "active" : ""}`}>
-              <a class="nav-link" href={getPathPrefix("/roles_permissions/groups/add")}>
+            <li class={`nav-item ${isActive("roles-permissions/groups/add") ? "active" : ""}`}>
+              <a class="nav-link" href={getPathPrefix("/roles-permissions/groups/add")}>
                 <span>Add</span>
               </a>
             </li>

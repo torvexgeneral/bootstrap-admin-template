@@ -1,4 +1,4 @@
-import { getPathPrefix } from "../../../../js/path-utils.js";
+import { getPathPrefix } from "../../../path-utils.js";
 ("use strict")
 
 // Class definition
@@ -93,7 +93,7 @@ var PermissionsDatatable = (function () {
                 </button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item d-flex align-items-center gap-2" href="` +
-              getPathPrefix("/roles_permissions/permissions/edit") +
+              getPathPrefix("/roles-permissions/permissions/edit") +
               `"><i class="ri-pencil-line"></i> Edit</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item d-flex align-items-center gap-2 text-danger delete-button" href="#"><i class="ri-delete-bin-line"></i> Delete</a></li>
@@ -140,6 +140,7 @@ var PermissionsDatatable = (function () {
 
     // Filter datatable on submit
     filterButton.addEventListener("click", function () {
+      $(".dataTables_wrapper").addClass('processing')
       $(".dataTables_processing").css("display", "block")
       $.fn.dataTable.ext.search = []
       handleFilterDataRows()
@@ -184,6 +185,7 @@ var PermissionsDatatable = (function () {
     // Simulate loading delay
     setTimeout(function () {
       dt.draw()
+      $(".dataTables_wrapper").removeClass('processing')
       $(".dataTables_processing").css("display", "none")
     }, 500)
   }
@@ -195,6 +197,7 @@ var PermissionsDatatable = (function () {
 
     // Reset datatable
     resetButton.addEventListener("click", function () {
+      $(".dataTables_wrapper").addClass('processing')
       $(".dataTables_processing").css("display", "block")
 
       if ($(".form-check-input:checked").length > 0) {
@@ -211,6 +214,7 @@ var PermissionsDatatable = (function () {
       // Simulate loading delay
       setTimeout(function () {
         dt.draw()
+        $(".dataTables_wrapper").removeClass('processing')
         $(".dataTables_processing").css("display", "none")
       }, 500)
 
@@ -313,6 +317,7 @@ var PermissionsDatatable = (function () {
           }
         }
 
+        $(".dataTables_wrapper").addClass('processing')
         $(".dataTables_processing").css("display", "block")
         $.fn.dataTable.ext.search = []
         setTimeout(function () {

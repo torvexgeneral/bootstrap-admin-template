@@ -4,13 +4,13 @@ import PageHeader from "../../../components/common/page-header.astro";
 import { getAssetPrefix, getPathPrefix } from "../../../../utils/path.js";
 
 const pageHeaderProps = {
-  title: "Add Group",
-  backLink: getPathPrefix("/roles_permissions/groups/list"),
+  title: "Edit Group",
+  backLink: getPathPrefix("/roles-permissions/groups/list"),
   breadcrumbs: [
     { label: "Dashboard", href: getPathPrefix("/dashboard") },
     { label: "Roles & Permissions" },
-    { label: "Groups", href: getPathPrefix("/roles_permissions/groups/list") },
-    { label: "Add Group", class: "active" }
+    { label: "Groups", href: getPathPrefix("/roles-permissions/groups/list") },
+    { label: "Edit Group", class: "active" }
   ]
 };
 
@@ -64,9 +64,10 @@ const pageScript = `
         let isValid = true;
         const groupTitle = form.querySelector('#groupTitle');
         const groupSlug = form.querySelector('#groupSlug');
+        const status = form.querySelector('#status');
 
         // Clear previous errors
-        [groupTitle, groupSlug].forEach(input => clearError(input));
+        [groupTitle, groupSlug, status].forEach(input => clearError(input));
 
         // Validate Group Title
         if (!groupTitle.value.trim()) {
@@ -80,6 +81,12 @@ const pageScript = `
           isValid = false;
         } else if (!/^[a-z0-9_]+$/.test(groupSlug.value)) {
           showError(groupSlug, 'Group slug should contain only lowercase letters, numbers and underscores');
+          isValid = false;
+        }
+
+        // Validate Status
+        if (!status.value) {
+          showError(status, 'Please select a status');
           isValid = false;
         }
 
@@ -101,24 +108,24 @@ const pageScript = `
 
         // Show loading state
         submitBtn.disabled = true;
-        submitBtn.innerHTML = spinner + 'Creating...';
+        submitBtn.innerHTML = spinner + 'Updating...';
 
         try {
           // Simulate API call (replace with your actual API endpoint)
           await new Promise(resolve => setTimeout(resolve, 2000));
 
           // On success
-          window.location.href = '${getPathPrefix("/roles_permissions/groups/list")}';
+          window.location.href = '${getPathPrefix("/roles-permissions/groups/list")}';
         } catch (error) {
           // On error
           console.error('Error:', error);
           submitBtn.disabled = false;
-          submitBtn.innerHTML = 'Create Group';
+          submitBtn.innerHTML = 'Update Group';
 
           // Show error alert
           const alert = document.createElement('div');
           alert.className = 'alert alert-danger mt-3';
-          alert.textContent = 'An error occurred while creating the group. Please try again.';
+          alert.textContent = 'An error occurred while updating the group. Please try again.';
           form.insertBefore(alert, form.firstChild);
 
           // Remove alert after 5 seconds
@@ -127,7 +134,7 @@ const pageScript = `
       });
 
       // Real-time validation on input
-      form.querySelectorAll('input').forEach(input => {
+      form.querySelectorAll('input, select').forEach(input => {
         input.addEventListener('input', function() {
           clearError(this);
         });
@@ -138,9 +145,9 @@ const pageScript = `
 ---
 
 <AdminLayout
-  title="Add Group"
-  description="Create New Group"
-  currentPath="roles_permissions/groups/add"
+  title="Edit Group"
+  description="Edit Group"
+  currentPath="roles-permissions/groups/edit"
   pageScript={pageScript}
 >
   <PageHeader {...pageHeaderProps} />
@@ -163,6 +170,7 @@ const pageScript = `
                     id="groupTitle"
                     name="groupTitle"
                     placeholder="Enter group title"
+                    value="Content Management"
                   />
                   <div class="form-text">Example: Content Management, User Management, etc.</div>
                 </div>
@@ -182,6 +190,7 @@ const pageScript = `
                     id="groupSlug"
                     name="groupSlug"
                     placeholder="Enter group slug"
+                    value="content_management"
                   />
                   <div class="form-text">
                     Auto-generated from title. Example: content_management, user_management
@@ -198,8 +207,10 @@ const pageScript = `
                     >Status <span class="text-danger">*</span></label
                   >
                   <select class="form-select" id="status" name="status" required>
+                    <option value="">Select Status</option>
                     <option value="Active" selected>Active</option>
                     <option value="Inactive">Inactive</option>
+                    <option value="Trashed">Trashed</option>
                   </select>
                 </div>
               </div>
@@ -209,10 +220,10 @@ const pageScript = `
           <div class="card-footer">
             <!-- Form Actions -->
             <div class="d-flex justify-content-end gap-2">
-              <a href={getPathPrefix("/roles_permissions/groups/list")} class="btn btn-light"
+              <a href={getPathPrefix("/roles-permissions/groups/list")} class="btn btn-light"
                 >Cancel</a
               >
-              <button type="submit" class="btn btn-primary">Create Group</button>
+              <button type="submit" class="btn btn-primary">Update Group</button>
             </div>
           </div>
         </form>

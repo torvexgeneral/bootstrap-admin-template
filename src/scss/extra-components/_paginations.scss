@@ -117,6 +117,12 @@
   /* rtl:end:ignore */
 }
 
+.pagination-section{
+  .rowsPerPage {
+    min-width: 60px;
+  }
+}
+
 // Tablet & mobile modes
 @include media-breakpoint-down(lg) {
   .page-item {

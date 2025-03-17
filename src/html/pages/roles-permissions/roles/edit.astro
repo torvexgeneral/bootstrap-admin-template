@@ -5,17 +5,17 @@ import { getAssetPrefix, getPathPrefix } from "../../../../utils/path.js";
 
 const pageHeaderProps = {
   title: "Edit Role",
-  backLink: getPathPrefix("/roles_permissions/roles/list"),
+  backLink: getPathPrefix("/roles-permissions/roles/list"),
   breadcrumbs: [
     { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Roles & Permissions", href: getPathPrefix("/roles_permissions") },
-    { label: "Roles", href: getPathPrefix("/roles_permissions/roles/list") },
+    { label: "Roles & Permissions", href: getPathPrefix("/roles-permissions") },
+    { label: "Roles", href: getPathPrefix("/roles-permissions/roles/list") },
     { label: "Edit Role", class: "active" }
   ],
   actions: [
     {
       label: "Back",
-      href: getPathPrefix("/roles_permissions/roles/list"),
+      href: getPathPrefix("/roles-permissions/roles/list"),
       variant: "btn-outline-primary",
       icon: "ri-arrow-left-s-line"
     }
@@ -24,8 +24,8 @@ const pageHeaderProps = {
 
 // Add custom validation script
 const pageScript = `
-  <script src="${getAssetPrefix("/assets/js/pages/roles_and_permissions/roles/toggle-permissions.js")}"></script>
-  <script src="${getAssetPrefix("/assets/js/pages/roles_and_permissions/roles/submitform.js")}"></script>
+  <script src="${getAssetPrefix("/assets/js/pages/roles-permissions/roles/toggle-permissions.js")}"></script>
+  <script src="${getAssetPrefix("/assets/js/pages/roles-permissions/roles/submitform.js")}"></script>
 `;
 
 // Define permissions data structure
@@ -149,7 +149,7 @@ const selectedPermissions = [
 <AdminLayout
   title="Edit Role"
   description="Edit Role"
-  currentPath="roles_permissions/roles/edit"
+  currentPath="roles-permissions/roles/edit"
   pageScript={pageScript}
 >
   <PageHeader {...pageHeaderProps} />
@@ -308,7 +308,7 @@ const selectedPermissions = [
           <div class="card-footer">
             <!-- Form Actions -->
             <div class="d-flex justify-content-end gap-2">
-              <a href={getPathPrefix("/roles_permissions/roles/list")} class="btn btn-light"
+              <a href={getPathPrefix("/roles-permissions/roles/list")} class="btn btn-light"
                 >Cancel</a
               >
               <button type="submit" class="btn btn-primary">Update Role</button>

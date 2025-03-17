@@ -70,13 +70,12 @@
 
   // Grey colors
   @each $name, $value in $grays {
-    --#{$prefix}gray-#{$name}: #{$value};
     --#{$prefix}gray-#{$name}-rgb: #{to-rgb($value)};
     --#{$prefix}text-gray-#{$name}: #{$value};
   }
   // Table
-  --#{$prefix}table-striped-bg: #{$table-striped-bg};
-  --#{$prefix}table-loading-message-box-shadow: #{$table-loading-message-box-shadow};
+  --table-striped-bg: #f3f3f4;
+  --table-hover-bg: #f3f3f4;
 }
 
 // Dark Theme Variables
@@ -110,14 +109,7 @@
 
   // Bootstrap muted color
   --#{$prefix}text-muted: #{$text-muted-dark};
-
-  // Grey colors
-  @each $name, $value in $grays-dark {
-    --#{$prefix}gray-#{$name}: #{$value};
-    --#{$prefix}gray-#{$name}-rgb: #{to-rgb($value)};
-    --#{$prefix}text-gray-#{$name}: #{$value};
-  }
   // Table
-  --#{$prefix}table-striped-bg: #{$table-striped-bg-dark};
-  --#{$prefix}table-loading-message-box-shadow: #{$table-loading-message-box-shadow-dark};
+  --table-hover-bg: #343a40;
+  --table-striped-bg: #343a40;
 }

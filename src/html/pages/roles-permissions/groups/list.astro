@@ -19,7 +19,7 @@ const pageScript = `<!-- Add this scripts before body close -->
 <script src="https://cdn.jsdelivr.net/npm/datatables.net@1.13.7/js/jquery.dataTables.min.js"></script>
 
 <script src="${getAssetPrefix("/assets/vendor/datatables/datatables.init.js")}"></script>
-<script type="module" src="${getAssetPrefix("/assets/js/pages/roles_and_permissions/groups/table.js")}"></script>
+<script type="module" src="${getAssetPrefix("/assets/js/pages/roles-permissions/groups/table.js")}"></script>
 `;
 
 const groups = [
@@ -119,13 +119,13 @@ const pageHeaderProps = {
   title: "Groups",
   breadcrumbs: [
     { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Roles & Permissions", href: getPathPrefix("/roles_permissions") },
+    { label: "Roles & Permissions", href: getPathPrefix("/roles-permissions") },
     { label: "Groups", class: "active" }
   ],
   actions: [
     {
       label: "Add Group",
-      href: getPathPrefix("/roles_permissions/groups/add"),
+      href: getPathPrefix("/roles-permissions/groups/add"),
       variant: "btn-primary",
       icon: "ri-add-line"
     }
@@ -136,7 +136,7 @@ const pageHeaderProps = {
 <AdminLayout
   title="Groups"
   description="Groups Management"
-  currentPath="roles_permissions/groups/list"
+  currentPath="roles-permissions/groups/list"
   pageScript={pageScript}
   pageCss={pageStyles}
 >
@@ -296,7 +296,7 @@ const pageHeaderProps = {
                 <table id="table_groups" class="table align-middle">
                   <thead>
                     <tr>
-                      <th>
+                      <th class="fs-6">
                         <div class="form-check">
                           <input
                             class="form-check-input"
@@ -349,7 +349,7 @@ const pageHeaderProps = {
                                 <li>
                                   <a
                                     class="dropdown-item d-flex align-items-center gap-2"
-                                    href={getPathPrefix("/roles_permissions/groups/edit")}
+                                    href={getPathPrefix("/roles-permissions/groups/edit")}
                                   >
                                     <i class="ri-pencil-line" /> Edit
                                   </a>
