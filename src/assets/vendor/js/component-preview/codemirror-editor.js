@@ -70,6 +70,11 @@ window.CodeMirrorManager = class CodeMirrorEditorSystem {
         container.defaultCode = defaultCode
         this.editors.set(container, editor)
 
+        // Force immediate refresh to ensure proper rendering
+        setTimeout(() => {
+          editor.refresh()
+        }, 0)
+
         // Add change event listener for basic functionality
         editor.on('change', () => {
           if (typeof window.PreviewManager !== 'undefined') {
@@ -199,6 +204,17 @@ window.CodeMirrorManager = class CodeMirrorEditorSystem {
       return
     }
     window.codeMirrorInitialized = true
+
+    // Handle tab changes to ensure editors are properly refreshed
+    document.addEventListener('shown.bs.tab', (event) => {
+      const tabPane = document.querySelector(event.target.getAttribute('data-bs-target'))
+      if (tabPane) {
+        const editor = tabPane.querySelector('.codemirror-editor-container')?.editor
+        if (editor) {
+          editor.refresh()
+        }
+      }
+    }, { passive: true })
 
     // Add basic styles
     const style = document.createElement('style')

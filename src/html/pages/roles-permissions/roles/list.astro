@@ -7,13 +7,13 @@ const pageHeaderProps = {
   title: "Roles",
   breadcrumbs: [
     { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Roles & Permissions", href: getPathPrefix("/roles_permissions") },
+    { label: "Roles & Permissions", href: getPathPrefix("/roles-permissions") },
     { label: "Roles", class: "active" }
   ],
   actions: [
     {
       label: "Add Role",
-      href: getPathPrefix("/roles_permissions/roles/add"),
+      href: getPathPrefix("/roles-permissions/roles/add"),
       variant: "btn-primary",
       icon: "ri-add-line"
     }
@@ -65,7 +65,7 @@ const roles = [
 <AdminLayout
   title="Roles"
   description="Roles Management"
-  currentPath="roles_permissions/roles/list"
+  currentPath="roles-permissions/roles/list"
 >
   <PageHeader {...pageHeaderProps} />
   <!-- Roles Cards -->
@@ -95,13 +95,13 @@ const roles = [
             </div>
             <div class="card-footer d-flex justify-content-between gap-2">
               <a
-                href={getPathPrefix("/roles_permissions/roles/view")}
+                href={getPathPrefix("/roles-permissions/roles/view")}
                 class="btn btn-sm btn-outline-primary px-3 py-1"
               >
                 View Role
               </a>
               <a
-                href={getPathPrefix("/roles_permissions/roles/edit")}
+                href={getPathPrefix("/roles-permissions/roles/edit")}
                 class="btn btn-sm btn-outline-secondary px-3 py-1"
               >
                 Edit Role

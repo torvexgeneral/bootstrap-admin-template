@@ -129,7 +129,7 @@ const permissionModules = [
 
 // External Dependencies: Required JavaScript
 const userFormScripts = `
-  <script src="${getAssetPrefix("/assets/js/pages/roles_and_permissions/roles/toggle-permissions.js")}"></script>
+  <script src="${getAssetPrefix("/assets/js/pages/roles-permissions/roles/toggle-permissions.js")}"></script>
   <script type="module" src="${getAssetPrefix("/assets/js/pages/users/form.js")}"></script>
 `;
 
@@ -404,8 +404,8 @@ const userFormStyles = `
                             data-bs-placement="top"
                             title="Toggle All Permissions"
                           >
-                            <i class="ri-list-check-2 me-md-1" />{" "}
-                            <span class="d-none d-md-inline">Toggle All</span>
+                            <i class="ri-subtract-line me-md-1" />
+                            <span class="d-none d-md-inline">Collapse All</span>
                           </button>
                         </div>
                       </div>

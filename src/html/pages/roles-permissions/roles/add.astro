@@ -4,28 +4,20 @@ import PageHeader from "../../../components/common/page-header.astro";
 import { getAssetPrefix, getPathPrefix } from "../../../../utils/path.js";
 
 const pageHeaderProps = {
-  title: "Edit Role",
-  backLink: getPathPrefix("/roles_permissions/roles/list"),
+  title: "Add Role",
+  backLink: getPathPrefix("/roles-permissions/roles/list"),
   breadcrumbs: [
     { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Roles & Permissions", href: getPathPrefix("/roles_permissions") },
-    { label: "Roles", href: getPathPrefix("/roles_permissions/roles/list") },
-    { label: "Edit Role", class: "active" }
-  ],
-  actions: [
-    {
-      label: "Back",
-      href: getPathPrefix("/roles_permissions/roles/list"),
-      variant: "btn-outline-primary",
-      icon: "ri-arrow-left-s-line"
-    }
+    { label: "Roles & Permissions", href: getPathPrefix("/roles-permissions") },
+    { label: "Roles", href: getPathPrefix("/roles-permissions/roles/list") },
+    { label: "Add Role", class: "active" }
   ]
 };
 
 // Add custom validation script
 const pageScript = `
-  <script src="${getAssetPrefix("/assets/js/pages/roles_and_permissions/roles/toggle-permissions.js")}"></script>
-  <script src="${getAssetPrefix("/assets/js/pages/roles_and_permissions/roles/submitform.js")}"></script>
+  <script src="${getAssetPrefix("/assets/js/pages/roles-permissions/roles/toggle-permissions.js")}"></script>
+  <script src="${getAssetPrefix("/assets/js/pages/roles-permissions/roles/submitform.js")}"></script>
 `;
 
 // Define permissions data structure
@@ -122,41 +114,19 @@ const modules = [
     ]
   }
 ];
-
-// Selected permissions for this role
-const selectedPermissions = [
-  "view_cms",
-  "edit_cms",
-  "manage_pages",
-  "manage_posts",
-  "manage_media",
-  "manage_categories",
-  "manage_tags",
-  "manage_seo",
-  "manage_meta",
-  "view_analytics",
-  "manage_redirects",
-  "manage_users",
-  "manage_roles",
-  "manage_settings",
-  "manage_backups",
-  "manage_cache",
-  "view_logs",
-  "manage_api"
-];
 ---
 
 <AdminLayout
-  title="Edit Role"
-  description="Edit Role"
-  currentPath="roles_permissions/roles/edit"
+  title="Add Role"
+  description="Create New Role"
+  currentPath="roles-permissions/roles/add"
   pageScript={pageScript}
 >
   <PageHeader {...pageHeaderProps} />
 
   <form id="roleForm" novalidate>
     <div class="row justify-content-center">
-      <div class="col-md-8">
+      <div class="col-md-8 mb-3">
         <div class="card shadow-sm">
           <div class="card-body">
             <!-- Role Name -->
@@ -172,7 +142,6 @@ const selectedPermissions = [
                     id="roleName"
                     name="roleName"
                     placeholder="Enter role name"
-                    value="Administrator"
                   />
                   <div class="form-text">Example: Admin, Editor, Author, etc.</div>
                 </div>
@@ -192,7 +161,6 @@ const selectedPermissions = [
                     id="roleSlug"
                     name="roleSlug"
                     placeholder="Enter role slug"
-                    value="administrator"
                   />
                   <div class="form-text">
                     Auto-generated from name. Example: admin, editor, author
@@ -282,7 +250,6 @@ const selectedPermissions = [
                                             id={`permission_${permission.id}`}
                                             name={`permissions[]`}
                                             value={permission.id}
-                                            checked={selectedPermissions.includes(permission.id)}
                                           />
                                           <label
                                             class="form-check-label"
@@ -308,7 +275,7 @@ const selectedPermissions = [
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 mb-3">
         <div class="card shadow-sm">
           <div class="card-body">
             <!-- Status -->
@@ -328,11 +295,12 @@ const selectedPermissions = [
           </div>
           <div class="card-footer">
             <!-- Form Actions -->
-            <div class="d-flex justify-content-end gap-2">
-              <a href={getPathPrefix("/roles_permissions/roles/list")} class="btn btn-light"
-                >Cancel</a
+            <div class="d-flex flex-column flex-lg-row justify-content-end gap-2">
+              <a
+                href={getPathPrefix("/roles-permissions/roles/list")}
+                class="btn btn-outline-secondary">Cancel</a
               >
-              <button type="submit" class="btn btn-primary">Update Role</button>
+              <button type="submit" class="btn btn-primary">Create Role</button>
             </div>
           </div>
         </div>

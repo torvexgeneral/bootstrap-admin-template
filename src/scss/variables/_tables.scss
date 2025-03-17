@@ -18,7 +18,7 @@ $table-th-font-weight:        null !default;
 
 $table-striped-color:         $table-color !default;
 $table-striped-bg-factor:     0.75 !default;
-$table-striped-bg:            rgba(var(--#{$prefix}gray-100-rgb), $table-striped-bg-factor) !default;
+$table-striped-bg:            var(--table-striped-bg) !default;
 
 $table-active-color:          $table-color !default;
 $table-active-bg-factor:      0.1 !default;
@@ -26,7 +26,7 @@ $table-active-bg:             var(--#{$prefix}gray-100) !default;
 
 $table-hover-color:           $table-color !default;
 $table-hover-bg-factor:       0.075 !default;
-$table-hover-bg:              var(--#{$prefix}gray-100) !default;
+$table-hover-bg:              var(--table-hover-bg) !default;
 
 $table-border-factor:         0.2 !default;
 $table-border-width:          var(--#{$prefix}border-width) !default;

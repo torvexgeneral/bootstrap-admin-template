@@ -5,11 +5,11 @@ import { getAssetPrefix, getPathPrefix } from "../../../../utils/path.js";
 
 const pageHeaderProps = {
   title: "Edit Group",
-  backLink: getPathPrefix("/roles_permissions/groups/list"),
+  backLink: getPathPrefix("/roles-permissions/groups/list"),
   breadcrumbs: [
     { label: "Dashboard", href: getPathPrefix("/dashboard") },
     { label: "Roles & Permissions" },
-    { label: "Groups", href: getPathPrefix("/roles_permissions/groups/list") },
+    { label: "Groups", href: getPathPrefix("/roles-permissions/groups/list") },
     { label: "Edit Group", class: "active" }
   ]
 };
@@ -115,7 +115,7 @@ const pageScript = `
           await new Promise(resolve => setTimeout(resolve, 2000));
 
           // On success
-          window.location.href = '${getPathPrefix("/roles_permissions/groups/list")}';
+          window.location.href = '${getPathPrefix("/roles-permissions/groups/list")}';
         } catch (error) {
           // On error
           console.error('Error:', error);
@@ -147,14 +147,14 @@ const pageScript = `
 <AdminLayout
   title="Edit Group"
   description="Edit Group"
-  currentPath="roles_permissions/groups/edit"
+  currentPath="roles-permissions/groups/edit"
   pageScript={pageScript}
 >
   <PageHeader {...pageHeaderProps} />
 
   <form id="groupForm" novalidate>
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8 mb-3">
         <div class="card shadow-sm">
           <div class="card-body">
             <!-- Group Title -->
@@ -200,7 +200,7 @@ const pageScript = `
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 mb-3">
         <div class="card shadow-sm">
           <div class="card-body">
             <!-- Status -->
@@ -222,9 +222,9 @@ const pageScript = `
           </div>
           <div class="card-footer">
             <!-- Form Actions -->
-            <div class="d-flex justify-content-end gap-2">
+            <div class="d-flex flex-column flex-lg-row justify-content-end gap-2">
               <a
-                href={getPathPrefix("/roles_permissions/groups/list")}
+                href={getPathPrefix("/roles-permissions/groups/list")}
                 class="btn btn-outline-secondary">Cancel</a
               >
               <button type="submit" class="btn btn-primary">Update Group</button>

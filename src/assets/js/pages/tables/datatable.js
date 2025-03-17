@@ -174,6 +174,7 @@ var ProductsDatatable = (function () {
     // Filter datatable on submit
     filterButton.addEventListener("click", function () {
       $(".dataTables_processing").css("display", "block")
+      $(".dataTables_wrapper").addClass('processing')
       // Trigger the dismiss click on the close button
       document.querySelector('#filterDrawer [data-bs-dismiss="offcanvas"]').click()
       $.fn.dataTable.ext.search = []
@@ -234,6 +235,7 @@ var ProductsDatatable = (function () {
     // Simulate loading delay
     setTimeout(function () {
       dt.draw()
+      $(".dataTables_wrapper").removeClass('processing')
       $(".dataTables_processing").css("display", "none")
     }, 500)
   }
@@ -247,6 +249,7 @@ var ProductsDatatable = (function () {
     // Reset datatable
     resetButton.addEventListener("click", function () {
       // Reset datatable --- official docs reference: https://datatables.net/reference/api/search()
+      $(".dataTables_wrapper").addClass('processing')
       $(".dataTables_processing").css("display", "block")
       // Trigger the dismiss click on the close button
       document.querySelector('#filterDrawer [data-bs-dismiss="offcanvas"]').click()
@@ -267,6 +270,7 @@ var ProductsDatatable = (function () {
       // Simulate loading delay
       setTimeout(function () {
         dt.draw()
+        $(".dataTables_wrapper").removeClass('processing')
         $(".dataTables_processing").css("display", "none")
       }, 500)
     })
@@ -558,6 +562,7 @@ var ProductsDatatable = (function () {
           }
         }
         // dt.draw();
+        $(".dataTables_wrapper").addClass('processing')
         $(".dataTables_processing").css("display", "block")
         $.fn.dataTable.ext.search = []
         setTimeout(function () {
@@ -573,6 +578,7 @@ var ProductsDatatable = (function () {
     if ($('[data-type="navbar"]').length > 0) {
       $('[data-type="navbar"]').on("click", function (e) {
         e.preventDefault()
+        $(".dataTables_wrapper").addClass('processing')
         $(".dataTables_processing").css("display", "block")
         $('[data-type="navbar"]').removeClass("active border-bottom border-2 border-dark")
         $(this).addClass("active border-bottom border-2 border-dark")

@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
       await new Promise((resolve) => setTimeout(resolve, 2000))
 
       // On success
-      window.location.href = "/pages/roles_permissions/roles/list"
+      window.location.href = "/pages/roles-permissions/roles/list"
     } catch (error) {
       // On error
       console.error("Error:", error)

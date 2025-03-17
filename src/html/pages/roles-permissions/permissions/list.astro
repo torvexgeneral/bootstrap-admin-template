@@ -7,7 +7,7 @@ import ConfirmationModal from "../../../components/common/confirmation-modal.ast
 // Register DataTables styles
 const pageStyles = `
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-bs5@1.13.7/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-responsive-bs5@2.5.0/css/responsive.bootstrap5.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-responsive-bs5@2.5.0/css/responsive.bootstrap5.min.css">
 `;
 
 // Register DataTables scripts
@@ -19,130 +19,220 @@ const pageScript = `<!-- Add this scripts before body close -->
 <script src="https://cdn.jsdelivr.net/npm/datatables.net@1.13.7/js/jquery.dataTables.min.js"></script>
 
 <script src="${getAssetPrefix("/assets/vendor/datatables/datatables.init.js")}"></script>
-<script type="module" src="${getAssetPrefix("/assets/js/pages/roles_and_permissions/groups/table.js")}"></script>
+<script type="module" src="${getAssetPrefix("/assets/js/pages/roles-permissions/permissions/table.js")}"></script>
 `;
 
-const groups = [
-  {
-    id: 1,
-    title: "Content Management",
-    slug: "content_management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
-  },
-  {
-    id: 2,
-    title: "Media Management",
-    slug: "media_management",
-    status: "Active",
-    added_at: "2024-03-15T11:00:00"
-  },
-  {
-    id: 3,
-    title: "User Management",
-    slug: "user_management",
-    status: "Active",
-    added_at: "2024-03-15T11:30:00"
-  },
-  {
-    id: 4,
-    title: "System Settings",
-    slug: "system_settings",
-    status: "Active",
-    added_at: "2024-03-15T12:00:00"
-  },
-  {
-    id: 5,
-    title: "System Maintenance",
-    slug: "system_maintenance",
-    status: "Inactive",
-    added_at: "2024-03-15T12:30:00"
-  },
-  {
-    id: 6,
-    title: "System Monitoring",
-    slug: "system_monitoring",
-    status: "Active",
-    added_at: "2024-03-15T13:00:00"
-  },
-  {
-    id: 7,
-    title: "SEO Management",
-    slug: "seo_management",
-    status: "Active",
-    added_at: "2024-03-15T13:30:00"
-  },
-  {
-    id: 8,
-    title: "Analytics",
-    slug: "analytics",
-    status: "Active",
-    added_at: "2024-03-15T14:00:00"
-  },
-  {
-    id: 9,
-    title: "Content Organization",
-    slug: "content_organization",
-    status: "Active",
-    added_at: "2024-03-15T14:30:00"
-  },
-  {
-    id: 10,
-    title: "Navigation",
-    slug: "navigation",
-    status: "Trashed",
-    added_at: "2024-03-15T15:00:00"
-  },
-  {
-    id: 11,
-    title: "URL Management",
-    slug: "url_management",
-    status: "Active",
-    added_at: "2024-03-15T15:30:00"
-  },
-  {
-    id: 12,
-    title: "API Management",
-    slug: "api_management",
-    status: "Active",
-    added_at: "2024-03-15T16:00:00"
-  }
-];
-
-const statusClasses = {
-  Active: "success",
-  Inactive: "warning",
-  Trashed: "danger"
-};
-
 const pageHeaderProps = {
-  title: "Groups",
+  title: "Permissions",
   breadcrumbs: [
     { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Roles & Permissions", href: getPathPrefix("/roles_permissions") },
-    { label: "Groups", class: "active" }
+    { label: "Roles & Permissions", href: getPathPrefix("/roles-permissions") },
+    { label: "Permissions", class: "active" }
   ],
   actions: [
     {
-      label: "Add Group",
-      href: getPathPrefix("/roles_permissions/groups/add"),
+      label: "Add Permission",
+      href: getPathPrefix("/roles-permissions/permissions/add"),
       variant: "btn-primary",
       icon: "ri-add-line"
     }
   ]
 };
+
+const permissions = [
+  {
+    id: 1,
+    title: "view_cms",
+    display_name: "View CMS",
+    module: "CMS",
+    group: "Content Management",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 2,
+    title: "edit_cms",
+    display_name: "Edit CMS",
+    module: "CMS",
+    group: "Content Management",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 3,
+    title: "manage_seo",
+    display_name: "Manage SEO",
+    module: "SEO",
+    group: "SEO Management",
+    status: "Active",
+    added_at: "2024-03-15T11:00:00"
+  },
+  {
+    id: 4,
+    title: "view_analytics",
+    display_name: "View Analytics",
+    module: "SEO",
+    group: "Analytics",
+    status: "Inactive",
+    added_at: "2024-03-15T11:30:00"
+  },
+  {
+    id: 5,
+    title: "manage_users",
+    display_name: "Manage Users",
+    module: "System",
+    group: "User Management",
+    status: "Active",
+    added_at: "2024-03-15T12:00:00"
+  },
+  {
+    id: 6,
+    title: "manage_roles",
+    display_name: "Manage Roles",
+    module: "System",
+    group: "User Management",
+    status: "Active",
+    added_at: "2024-03-15T12:30:00"
+  },
+  {
+    id: 7,
+    title: "manage_settings",
+    display_name: "Manage Settings",
+    module: "System",
+    group: "System Settings",
+    status: "Active",
+    added_at: "2024-03-15T13:00:00"
+  },
+  {
+    id: 8,
+    title: "view_logs",
+    display_name: "View Logs",
+    module: "System",
+    group: "System Monitoring",
+    status: "Inactive",
+    added_at: "2024-03-15T13:30:00"
+  },
+  {
+    id: 9,
+    title: "manage_media",
+    display_name: "Manage Media",
+    module: "CMS",
+    group: "Media Management",
+    status: "Active",
+    added_at: "2024-03-15T14:00:00"
+  },
+  {
+    id: 10,
+    title: "manage_pages",
+    display_name: "Manage Pages",
+    module: "CMS",
+    group: "Content Management",
+    status: "Trashed",
+    added_at: "2024-03-15T14:30:00"
+  },
+  {
+    id: 11,
+    title: "manage_posts",
+    display_name: "Manage Posts",
+    module: "CMS",
+    group: "Content Management",
+    status: "Active",
+    added_at: "2024-03-15T15:00:00"
+  },
+  {
+    id: 12,
+    title: "manage_comments",
+    display_name: "Manage Comments",
+    module: "CMS",
+    group: "Content Management",
+    status: "Active",
+    added_at: "2024-03-15T15:30:00"
+  },
+  {
+    id: 13,
+    title: "manage_categories",
+    display_name: "Manage Categories",
+    module: "CMS",
+    group: "Content Organization",
+    status: "Active",
+    added_at: "2024-03-15T16:00:00"
+  },
+  {
+    id: 14,
+    title: "manage_tags",
+    display_name: "Manage Tags",
+    module: "CMS",
+    group: "Content Organization",
+    status: "Inactive",
+    added_at: "2024-03-15T16:30:00"
+  },
+  {
+    id: 15,
+    title: "manage_menus",
+    display_name: "Manage Menus",
+    module: "CMS",
+    group: "Navigation",
+    status: "Active",
+    added_at: "2024-03-15T17:00:00"
+  },
+  {
+    id: 16,
+    title: "manage_redirects",
+    display_name: "Manage Redirects",
+    module: "SEO",
+    group: "URL Management",
+    status: "Active",
+    added_at: "2024-03-15T17:30:00"
+  },
+  {
+    id: 17,
+    title: "manage_meta",
+    display_name: "Manage Meta Tags",
+    module: "SEO",
+    group: "SEO Management",
+    status: "Active",
+    added_at: "2024-03-15T18:00:00"
+  },
+  {
+    id: 18,
+    title: "manage_backups",
+    display_name: "Manage Backups",
+    module: "System",
+    group: "System Maintenance",
+    status: "Active",
+    added_at: "2024-03-15T18:30:00"
+  },
+  {
+    id: 19,
+    title: "manage_cache",
+    display_name: "Manage Cache",
+    module: "System",
+    group: "System Maintenance",
+    status: "Trashed",
+    added_at: "2024-03-15T19:00:00"
+  },
+  {
+    id: 20,
+    title: "manage_api",
+    display_name: "Manage API",
+    module: "System",
+    group: "API Management",
+    status: "Active",
+    added_at: "2024-03-15T19:30:00"
+  }
+];
 ---
 
 <AdminLayout
-  title="Groups"
-  description="Groups Management"
-  currentPath="roles_permissions/groups/list"
+  title="Permissions"
+  description="Permissions Management"
+  currentPath="roles-permissions/permissions/list"
   pageScript={pageScript}
   pageCss={pageStyles}
 >
   <PageHeader {...pageHeaderProps} />
 
-  <!-- Groups Table -->
+  <!-- Permissions Table -->
   <div class="row">
     <div class="col-12">
       <div class="card shadow-sm">
@@ -156,7 +246,7 @@ const pageHeaderProps = {
                   type="text"
                   class="form-control search-input"
                   data-table-filter="search"
-                  placeholder="Search groups..."
+                  placeholder="Search permissions..."
                 />
                 <button type="button" class="btn-clear search-clear" style="display: none;">
                   <i class="ri-close-line"></i>
@@ -245,6 +335,47 @@ const pageHeaderProps = {
                             </label>
                           </div>
                         </div>
+
+                        <!-- Module -->
+                        <div class="mb-4">
+                          <label class="form-label fw-medium">Module</label>
+                          <select
+                            class="form-select"
+                            id="module"
+                            name="module"
+                            data-table-filter="module"
+                          >
+                            <option value="">All Modules</option>
+                            <option value="CMS">CMS</option>
+                            <option value="SEO">SEO</option>
+                            <option value="System">System</option>
+                          </select>
+                        </div>
+
+                        <!-- Group -->
+                        <div class="mb-4">
+                          <label class="form-label fw-medium">Permission Group</label>
+                          <select
+                            class="form-select"
+                            id="group"
+                            name="group"
+                            data-table-filter="group"
+                          >
+                            <option value="">All Groups</option>
+                            <option value="Content Management">Content Management</option>
+                            <option value="Media Management">Media Management</option>
+                            <option value="User Management">User Management</option>
+                            <option value="System Settings">System Settings</option>
+                            <option value="System Maintenance">System Maintenance</option>
+                            <option value="System Monitoring">System Monitoring</option>
+                            <option value="SEO Management">SEO Management</option>
+                            <option value="Analytics">Analytics</option>
+                            <option value="Content Organization">Content Organization</option>
+                            <option value="Navigation">Navigation</option>
+                            <option value="URL Management">URL Management</option>
+                            <option value="API Management">API Management</option>
+                          </select>
+                        </div>
                       </div>
 
                       <!-- Filter Actions -->
@@ -292,10 +423,10 @@ const pageHeaderProps = {
               </div>
 
               <div class="table-responsive border-0">
-                <table id="table_groups" class="table align-middle">
+                <table id="table_permissions" class="table align-middle">
                   <thead>
                     <tr>
-                      <th>
+                      <th class="fs-6">
                         <div class="form-check">
                           <input
                             class="form-check-input"
@@ -304,8 +435,10 @@ const pageHeaderProps = {
                           />
                         </div>
                       </th>
-                      <th>GROUP TITLE</th>
-                      <th>SLUG</th>
+                      <th>PERMISSION</th>
+                      <th>DISPLAY NAME</th>
+                      <th>MODULE</th>
+                      <th>GROUP</th>
                       <th>STATUS</th>
                       <th>ADDED AT</th>
                       <th class="text-end pe-3">ACTIONS</th>
@@ -313,27 +446,15 @@ const pageHeaderProps = {
                   </thead>
                   <tbody>
                     {
-                      groups.map((group) => (
+                      permissions.map((permission) => (
                         <tr>
                           <td />
-                          <td>
-                            <span class="text-primary">{group.title}</span>
-                          </td>
-                          <td>
-                            <span class="text-muted">{group.slug}</span>
-                          </td>
-                          <td>
-                            {group.status == "Active" ? (
-                              <span class="badge bg-success">{group.status}</span>
-                            ) : group.status == "Inactive" ? (
-                              <span class="badge bg-warning">{group.status}</span>
-                            ) : (
-                              <span class="badge bg-danger">{group.status}</span>
-                            )}
-                          </td>
-                          <td>
-                            <span class="text-muted">{group.added_at}</span>
-                          </td>
+                          <td>{permission.title}</td>
+                          <td>{permission.display_name}</td>
+                          <td>{permission.module}</td>
+                          <td>{permission.group}</td>
+                          <td>{permission.status}</td>
+                          <td>{permission.added_at}</td>
                           <td class="text-end">
                             <div class="dropdown text-end">
                               <button
@@ -348,7 +469,7 @@ const pageHeaderProps = {
                                 <li>
                                   <a
                                     class="dropdown-item d-flex align-items-center gap-2"
-                                    href={getPathPrefix("/roles_permissions/groups/edit")}
+                                    href={getPathPrefix("/roles-permissions/permissions/edit")}
                                   >
                                     <i class="ri-pencil-line" /> Edit
                                   </a>

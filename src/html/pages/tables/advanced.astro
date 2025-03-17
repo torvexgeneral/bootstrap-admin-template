@@ -35,7 +35,7 @@ const advancedTableTemplate = `<div class="astero-table">
         </div>
         <!-- Action Buttons -->
         <div class="d-flex gap-2 flex-wrap">
-            <button class="btn btn-outline-primary gap-1" data-bs-toggle="offcanvas" data-bs-target="#filterDrawer" aria-label="Open filters">
+            <button class="btn btn-outline-primary gap-1 filter-btn" data-bs-toggle="offcanvas" data-bs-target="#filterDrawer" aria-label="Open filters">
                 <i class="ri-filter-3-line me-1" aria-hidden="true"></i> Filters
             </button>
 
@@ -48,185 +48,183 @@ const advancedTableTemplate = `<div class="astero-table">
         </div>
     </div>
     <!-- Table Container -->
-    <div class="table-responsive">
-        <div class="table-container border-0">
-            <table class="table table-hover mb-0" id="ordersTable" aria-label="Orders management table">
-                <thead>
-                    <tr>
-                        <th class="checkbox-column" scope="col">
-                            <div class="form-check">
-                                <input class="form-check-input select-all-checkbox" type="checkbox" id="selectAll" aria-label="Select all orders">
-                            </div>
-                        </th>
-                        <th scope="col"><i class="ri-file-list-3-line me-1" aria-hidden="true"></i>ORDER ID</th>
-                        <th scope="col"><i class="ri-store-2-line me-1" aria-hidden="true"></i>SHOP</th>
-                        <th scope="col"><i class="ri-user-3-line me-1" aria-hidden="true"></i>CUSTOMER</th>
-                        <th scope="col"><i class="ri-money-dollar-circle-line me-1" aria-hidden="true"></i>PRICE</th>
-                        <th scope="col"><i class="ri-calendar-2-line me-1" aria-hidden="true"></i>DATE</th>
-                        <th scope="col"><i class="ri-flag-2-line me-1" aria-hidden="true"></i>STATUS</th>
-                        <th class="text-end" scope="col"><i class="ri-settings-3-line me-1" aria-hidden="true"></i>ACTIONS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
-                            </div>
-                        </td>
-                        <td><a href="#" class="fw-medium">#ORD001</a></td>
-                        <td>Electronics Hub</td>
-                        <td>John Smith</td>
-                        <td>$1,299</td>
-                        <td>Nov 15, 2023</td>
-                        <td><span class="badge bg-success-subtle text-success">Delivered</span></td>
-                        <td>
-                            <div class="dropdown text-end">
-                                <button class="btn btn-light btn-active-light-primary dropdown-toggle shadow-none action-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Actions
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-eye-line"></i> View</a></li>
-                                    <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-pencil-line"></i> Edit</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="#"><i class="ri-delete-bin-line"></i> Delete</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
-                            </div>
-                        </td>
-                        <td><a href="#" class="fw-medium">#ORD002</a></td>
-                        <td>Fashion Store</td>
-                        <td>Emma Davis</td>
-                        <td>$459</td>
-                        <td>Nov 16, 2023</td>
-                        <td><span class="badge bg-warning-subtle text-warning">Processing</span></td>
-                        <td>
-                            <div class="dropdown text-end">
-                                <button class="btn btn-light btn-active-light-primary dropdown-toggle shadow-none action-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Actions
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-eye-line"></i> View</a></li>
-                                    <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-pencil-line"></i> Edit</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="#"><i class="ri-delete-bin-line"></i> Delete</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
-                            </div>
-                        </td>
-                        <td><a href="#" class="fw-medium">#ORD003</a></td>
-                        <td>Sports World</td>
-                        <td>Michael Brown</td>
-                        <td>$799</td>
-                        <td>Nov 16, 2023</td>
-                        <td><span class="badge bg-info-subtle text-info">Shipped</span></td>
-                        <td>
-                            <div class="dropdown text-end">
-                                <button class="btn btn-light btn-active-light-primary dropdown-toggle shadow-none action-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Actions
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-eye-line"></i> View</a></li>
-                                    <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-pencil-line"></i> Edit</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="#"><i class="ri-delete-bin-line"></i> Delete</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
-                            </div>
-                        </td>
-                        <td><a href="#" class="fw-medium">#ORD004</a></td>
-                        <td>Home Decor</td>
-                        <td>Sarah Wilson</td>
-                        <td>$2,499</td>
-                        <td>Nov 17, 2023</td>
-                        <td><span class="badge bg-danger-subtle text-danger">Cancelled</span></td>
-                        <td>
-                            <div class="dropdown text-end">
-                                <button class="btn btn-light btn-active-light-primary dropdown-toggle shadow-none action-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Actions
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-eye-line"></i> View</a></li>
-                                    <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-pencil-line"></i> Edit</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="#"><i class="ri-delete-bin-line"></i> Delete</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
-                            </div>
-                        </td>
-                        <td><a href="#" class="fw-medium">#ORD005</a></td>
-                        <td>Book Haven</td>
-                        <td>David Lee</td>
-                        <td>$159</td>
-                        <td>Nov 17, 2023</td>
-                        <td><span class="badge bg-success-subtle text-success">Delivered</span></td>
-                        <td>
-                            <div class="dropdown text-end">
-                                <button class="btn btn-light btn-active-light-primary dropdown-toggle shadow-none action-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Actions
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-eye-line"></i> View</a></li>
-                                    <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-pencil-line"></i> Edit</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="#"><i class="ri-delete-bin-line"></i> Delete</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
-                            </div>
-                        </td>
-                        <td><a href="#" class="fw-medium">#ORD006</a></td>
-                        <td>Tech Galaxy</td>
-                        <td>Lisa Anderson</td>
-                        <td>$3,299</td>
-                        <td>Nov 18, 2023</td>
-                        <td><span class="badge bg-warning-subtle text-warning">Processing</span></td>
-                        <td>
-                            <div class="dropdown text-end">
-                                <button class="btn btn-light btn-active-light-primary dropdown-toggle shadow-none action-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Actions
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-eye-line"></i> View</a></li>
-                                    <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-pencil-line"></i> Edit</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="#"><i class="ri-delete-bin-line"></i> Delete</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="table-container border-0">
+        <table class="table table-hover mb-0" id="ordersTable" aria-label="Orders management table">
+            <thead>
+                <tr>
+                    <th class="checkbox-column" scope="col">
+                        <div class="form-check">
+                            <input class="form-check-input select-all-checkbox" type="checkbox" id="selectAll" aria-label="Select all orders">
+                        </div>
+                    </th>
+                    <th scope="col">ORDER ID</th>
+                    <th scope="col">SHOP</th>
+                    <th scope="col">CUSTOMER</th>
+                    <th scope="col">PRICE</th>
+                    <th scope="col">DATE</th>
+                    <th scope="col">STATUS</th>
+                    <th class="pe-3 text-end" scope="col">ACTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox">
+                        </div>
+                    </td>
+                    <td><a href="#" class="fw-medium">#ORD001</a></td>
+                    <td>Electronics Hub</td>
+                    <td>John Smith</td>
+                    <td>$1,299</td>
+                    <td>Nov 15, 2023</td>
+                    <td><span class="badge bg-success-subtle text-success">Delivered</span></td>
+                    <td>
+                        <div class="dropdown text-end">
+                            <button class="btn btn-light btn-active-light-primary dropdown-toggle shadow-none action-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Actions
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-eye-line"></i> View</a></li>
+                                <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-pencil-line"></i> Edit</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="#"><i class="ri-delete-bin-line"></i> Delete</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox">
+                        </div>
+                    </td>
+                    <td><a href="#" class="fw-medium">#ORD002</a></td>
+                    <td>Fashion Store</td>
+                    <td>Emma Davis</td>
+                    <td>$459</td>
+                    <td>Nov 16, 2023</td>
+                    <td><span class="badge bg-warning-subtle text-warning">Processing</span></td>
+                    <td>
+                        <div class="dropdown text-end">
+                            <button class="btn btn-light btn-active-light-primary dropdown-toggle shadow-none action-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Actions
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-eye-line"></i> View</a></li>
+                                <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-pencil-line"></i> Edit</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="#"><i class="ri-delete-bin-line"></i> Delete</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox">
+                        </div>
+                    </td>
+                    <td><a href="#" class="fw-medium">#ORD003</a></td>
+                    <td>Sports World</td>
+                    <td>Michael Brown</td>
+                    <td>$799</td>
+                    <td>Nov 16, 2023</td>
+                    <td><span class="badge bg-info-subtle text-info">Shipped</span></td>
+                    <td>
+                        <div class="dropdown text-end">
+                            <button class="btn btn-light btn-active-light-primary dropdown-toggle shadow-none action-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Actions
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-eye-line"></i> View</a></li>
+                                <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-pencil-line"></i> Edit</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="#"><i class="ri-delete-bin-line"></i> Delete</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox">
+                        </div>
+                    </td>
+                    <td><a href="#" class="fw-medium">#ORD004</a></td>
+                    <td>Home Decor</td>
+                    <td>Sarah Wilson</td>
+                    <td>$2,499</td>
+                    <td>Nov 17, 2023</td>
+                    <td><span class="badge bg-danger-subtle text-danger">Cancelled</span></td>
+                    <td>
+                        <div class="dropdown text-end">
+                            <button class="btn btn-light btn-active-light-primary dropdown-toggle shadow-none action-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Actions
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-eye-line"></i> View</a></li>
+                                <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-pencil-line"></i> Edit</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="#"><i class="ri-delete-bin-line"></i> Delete</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox">
+                        </div>
+                    </td>
+                    <td><a href="#" class="fw-medium">#ORD005</a></td>
+                    <td>Book Haven</td>
+                    <td>David Lee</td>
+                    <td>$159</td>
+                    <td>Nov 17, 2023</td>
+                    <td><span class="badge bg-success-subtle text-success">Delivered</span></td>
+                    <td>
+                        <div class="dropdown text-end">
+                            <button class="btn btn-light btn-active-light-primary dropdown-toggle shadow-none action-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Actions
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-eye-line"></i> View</a></li>
+                                <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-pencil-line"></i> Edit</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="#"><i class="ri-delete-bin-line"></i> Delete</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox">
+                        </div>
+                    </td>
+                    <td><a href="#" class="fw-medium">#ORD006</a></td>
+                    <td>Tech Galaxy</td>
+                    <td>Lisa Anderson</td>
+                    <td>$3,299</td>
+                    <td>Nov 18, 2023</td>
+                    <td><span class="badge bg-warning-subtle text-warning">Processing</span></td>
+                    <td>
+                        <div class="dropdown text-end">
+                            <button class="btn btn-light btn-active-light-primary dropdown-toggle shadow-none action-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Actions
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-eye-line"></i> View</a></li>
+                                <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="ri-pencil-line"></i> Edit</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="#"><i class="ri-delete-bin-line"></i> Delete</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
