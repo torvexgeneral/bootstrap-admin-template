@@ -1,0 +1,37 @@
+// ==========================================================================
+//   Form Select Variables
+// ==========================================================================
+
+$form-select-padding: 0.275rem 0.5rem !default;
+
+// ==========================================================================
+//   Form Select Base
+// ==========================================================================
+
+.form-select {
+  padding: $form-select-padding;
+
+  &:focus {
+    border-color: var(--bs-primary);
+  }
+}
+
+// ==========================================================================
+//   Form Select Sizes
+// ==========================================================================
+
+.form-select-xs {
+  @include form-control-size($input-btn-minheight-xs, $input-btn-padding-xs, $font-size-xs);
+}
+
+.form-select-sm {
+  @include form-control-size($input-btn-minheight-sm, $input-btn-padding-sm, $font-size-sm);
+}
+
+.form-select-lg {
+  @include form-control-size($input-btn-minheight-lg, $input-btn-padding-lg, $font-size-lg);
+}
+
+.form-select-xl {
+  @include form-control-size($input-btn-minheight-xl, $input-btn-padding-xl, $font-size-xl);
+}

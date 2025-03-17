@@ -1,0 +1,26 @@
+// Custom input group sizes and overrides
+// Extends Bootstrap's input groups
+
+// Input group size mixin
+@mixin input-group-size($size, $minheight, $padding, $font-size) {
+  .input-group-#{$size} {
+    > .form-control,
+    > .form-select,
+    > .input-group-text,
+    > .btn {
+      min-height: $minheight;
+      padding: $padding;
+      font-size: $font-size;
+    }
+
+    > .form-select {
+      padding-right: $form-select-padding-x + $form-select-indicator-padding;
+    }
+  }
+}
+
+// Apply sizes using the mixin
+@include input-group-size('xs', $input-btn-minheight-xs, $input-btn-padding-xs, $font-size-xs);
+@include input-group-size('sm', $input-btn-minheight-sm, $input-btn-padding-sm, $font-size-sm);
+@include input-group-size('lg', $input-btn-minheight-lg, $input-btn-padding-lg, $font-size-lg);
+@include input-group-size('xl', $input-btn-minheight-xl, $input-btn-padding-xl, $font-size-xl);

@@ -1,0 +1,84 @@
+---
+import ComponentPreviewScripts from "../../../components/component-preview/_scripts_component_preview.astro";
+import TocScript from "../../../components/toc/_script_toc.astro";
+
+interface Props {
+  enableComponentPreview?: boolean;
+  enableToc?: boolean;
+  pageScript?: string;
+}
+
+const { enableComponentPreview = false, enableToc = false, pageScript } = Astro.props;
+
+function getJS(filename) {
+  const isDev = import.meta.env.DEV;
+  return isDev ? `/dist/js/${filename}.js` : `/js/${filename}.min.js`;
+}
+---
+
+<script is:inline>
+  // Handle sidebar collapsed state - removed localStorage loading
+  const sidebarElement = document.querySelector(".sidebar");
+  const mainContentElement = document.querySelector(".main-content");
+
+  // Handle sidebar-mini state
+  const sidebarMini = localStorage.getItem("sidebar-mini");
+  if (sidebarMini == "true") {
+    sidebarElement.classList.add("sidebar-mini");
+    mainContentElement.classList.add("expanded-mini");
+
+    // Change the toggle-mini button icon
+    const toggleMiniButton = document.getElementById("toggle-mini-button");
+    toggleMiniButton.innerHTML = '<i class="ri-arrow-right-double-line opacity-75"></i>';
+
+    const navItems = document.querySelectorAll(".nav-tree .has-submenu.open");
+    navItems.forEach((item) => {
+      item.classList.remove("open");
+      // Find .ri-arrow-right-s-line and remove its inline transform style
+      const chevron = item.querySelector(".ri-arrow-right-s-line");
+      if (chevron) {
+        chevron.style.transform = ""; // Reset the 'transform' style
+      }
+    });
+  }
+</script>
+
+<!-- Bootstrap Bundle JS -->
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+  crossorigin="anonymous"
+  is:inline></script>
+
+<!-- SimpleBar -->
+<script src="https://cdn.jsdelivr.net/npm/simplebar@6.3.0/dist/simplebar.min.js" is:inline></script>
+
+<!-- Initialize Popovers -->
+<script is:inline>
+  var popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+  var popoverList = [...popoverTriggerList].map(
+    (popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl)
+  );
+</script>
+
+<!-- Initialize Theme Js -->
+<script src={getJS("main")} is:inline></script>
+
+<!-- Page Script -->{pageScript && <Fragment set:html={pageScript} />}
+
+<!-- Component JS -->
+{
+  enableComponentPreview && (
+    <>
+      <ComponentPreviewScripts />
+    </>
+  )
+}
+
+{
+  enableToc && (
+    <>
+      <TocScript />
+    </>
+  )
+}

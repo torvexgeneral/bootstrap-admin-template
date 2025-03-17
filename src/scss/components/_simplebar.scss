@@ -1,0 +1,36 @@
+/* ==========================================================================
+     SimpleBar Customization
+     ========================================================================== */
+
+// SimpleBar Variables
+$simplebar-scrollbar-bg: #bcbcbc !default;
+$simplebar-scrollbar-opacity: 0.4 !default;
+$simplebar-track-width: 10px !default;
+$simplebar-scrollbar-width: 8px !default;
+$simplebar-scrollbar-offset: 3px !default;
+
+// Base container style
+[data-simplebar] {
+  height: 100%;
+}
+
+// Scrollbar customization
+.simplebar-scrollbar {
+  &::before {
+    background-color: $simplebar-scrollbar-bg !important;
+    opacity: $simplebar-scrollbar-opacity;
+  }
+}
+
+// Track customization
+.simplebar-track {
+  &.simplebar-vertical {
+    width: $simplebar-track-width !important;
+
+    .simplebar-scrollbar {
+      right: $simplebar-scrollbar-offset !important;
+      left: $simplebar-scrollbar-offset !important;
+      width: $simplebar-scrollbar-width !important;
+    }
+  }
+}

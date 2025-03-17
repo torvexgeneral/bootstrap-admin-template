@@ -1,0 +1,22 @@
+/* ==========================================================================
+   Dropdown Sizes
+   ========================================================================== */
+
+.dropdown-item-xs {
+  padding: $dropdown-item-padding-y * 0.5 $dropdown-item-padding-x * 0.5;
+  font-size: $font-size-xs;
+}
+
+.dropdown-item-sm {
+  padding: $dropdown-item-padding-y * 0.75 $dropdown-item-padding-x * 0.75;
+  font-size: $font-size-sm;
+}
+
+.dropdown-item-lg {
+  padding: $dropdown-item-padding-y * 1.25 $dropdown-item-padding-x * 1.25;
+  font-size: $font-size-lg;
+}
+.dropdown-item-xl {
+  padding: $dropdown-item-padding-y * 1.5 $dropdown-item-padding-x * 1.5;
+  font-size: $font-size-xl;
+}

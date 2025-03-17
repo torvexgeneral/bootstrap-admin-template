@@ -1,0 +1,123 @@
+/* ==========================================================================
+   Theme Configuration & Variables
+   ========================================================================== */
+// Theme Configuration
+:root {
+  --sidebar-width: 260px;
+  --sidebar-mini-width: 65px;
+  --topbar-height: 60px;
+  --footer-height: 55px;
+
+  /* Typography */
+  --font-family-sans-serif:
+    'Source Sans 3',
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    roboto,
+    'Helvetica Neue',
+    'Noto Sans',
+    'Liberation Sans',
+    arial,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji';
+  --font-family-monospace:
+    sfmono-regular,
+    menlo,
+    monaco,
+    consolas,
+    'Liberation Mono',
+    'Courier New',
+    monospace;
+}
+
+// Light Theme Variables
+:root,
+[data-bs-theme='light'] {
+  // Sidebar Theme
+  --sidebar-color: #5a5a5a;
+  --sidebar-bg: #fff;
+  --nav-section-text-color: #a5a5a5;
+  --nav-link-color: #5a5a5a;
+  --nav-link-bg: #fff;
+  --nav-link-hover-bg: #f3f3f4;
+  --nav-link-active-color: var(--bs-primary);
+  --nav-link-active-bg: var(--bs-primary-bg-subtle);
+  --has-submenu-open-color: #252525;
+  --has-submenu-open-bg: #f3f3f4;
+  --has-submenu-active-color: #252525;
+  --has-submenu-active-bg: #f3f3f4;
+  --submenu-active-color: #252525;
+  --submenu-active-bg: #f3f3f4;
+  --submenu-hover-color: #252525;
+  --submenu-hover-bg: #f3f3f4;
+  // Topbar Theme
+  --topbar-color: #5a5a5a;
+  --topbar-bg: #f2f4f7;
+  // Content Wrapper Theme
+  --content-wrapper-color: #252525;
+  --content-wrapper-bg: #f2f4f7;
+  // Footer Theme
+  --footer-color: #5a5a5a;
+  --footer-bg: #f2f4f7;
+
+
+  // Bootstrap muted color
+  --#{$prefix}text-muted: #{$text-muted};
+
+  // Grey colors
+  @each $name, $value in $grays {
+    --#{$prefix}gray-#{$name}: #{$value};
+    --#{$prefix}gray-#{$name}-rgb: #{to-rgb($value)};
+    --#{$prefix}text-gray-#{$name}: #{$value};
+  }
+  // Table
+  --#{$prefix}table-striped-bg: #{$table-striped-bg};
+  --#{$prefix}table-loading-message-box-shadow: #{$table-loading-message-box-shadow};
+}
+
+// Dark Theme Variables
+[data-bs-theme='dark'] {
+  // Sidebar Theme
+  --sidebar-color: #bfbfbf;
+  --sidebar-bg: #212529;
+  --nav-section-text-color: #a5a5a5;
+  --nav-link-color: #bfbfbf;
+  --nav-link-bg: #212529;
+  --nav-link-hover-bg: #343a40;
+  --nav-link-active-color: var(--bs-primary-text-emphasis);
+  --nav-link-active-bg: var(--bs-primary-bg-subtle);
+  --has-submenu-open-color: #f2f4f7;
+  --has-submenu-open-bg: #343a40;
+  --has-submenu-active-color: #f2f4f7;
+  --has-submenu-active-bg: #343a40;
+  --submenu-active-color: #f2f4f7;
+  --submenu-active-bg: #343a40;
+  --submenu-hover-color: #f2f4f7;
+  --submenu-hover-bg: #343a40;
+  // Topbar Theme
+  --topbar-color: #f2f4f7;
+  --topbar-bg: #282c34;
+  // Content Wrapper Theme
+  --content-wrapper-color: #f2f4f7;
+  --content-wrapper-bg: #282c34;
+  // Footer Theme
+  --footer-color: #f2f4f7;
+  --footer-bg: #282c34;
+
+  // Bootstrap muted color
+  --#{$prefix}text-muted: #{$text-muted-dark};
+
+  // Grey colors
+  @each $name, $value in $grays-dark {
+    --#{$prefix}gray-#{$name}: #{$value};
+    --#{$prefix}gray-#{$name}-rgb: #{to-rgb($value)};
+    --#{$prefix}text-gray-#{$name}: #{$value};
+  }
+  // Table
+  --#{$prefix}table-striped-bg: #{$table-striped-bg-dark};
+  --#{$prefix}table-loading-message-box-shadow: #{$table-loading-message-box-shadow-dark};
+}

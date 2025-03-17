@@ -1,0 +1,36 @@
+---
+import Logo from "./_sidebar/_logo.astro";
+import NavTree from "./_sidebar/_nav-tree.astro";
+import Footer from "./_sidebar/_footer.astro";
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+// Helper function to check if a path is active
+const isActive = (path: string) => currentPath === path;
+const isActiveParent = (path: string) => currentPath.startsWith(path);
+---
+
+<!-- Sidebar -->
+<aside class="sidebar border-end shadow-sm">
+  <!-- Sticky Header -->
+  <div class="sidebar-header">
+    <Logo />
+    <!-- Sidebar Toggle Button -->
+    <div class="toggle-mini ms-auto">
+      <button id="toggle-mini-button" class="btn btn-icon bg-body border-0" title="Toggle Minibar">
+        <i class="ri-arrow-left-double-line opacity-75 fs-4"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Scrollable Navigation -->
+  <div class="sidebar-content">
+    <div data-simplebar>
+      <NavTree currentPath={currentPath} />
+    </div>
+  </div>
+  <Footer />
+</aside>

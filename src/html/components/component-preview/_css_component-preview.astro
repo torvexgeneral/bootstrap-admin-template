@@ -1,0 +1,17 @@
+---
+import { getAssetPrefix } from "../../../utils/path.js";
+---
+
+<!-- CodeMirror Core and Theme CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/base16-dark.min.css"
+/>
+
+<!-- Component Preview CSS -->
+<link rel="stylesheet" href={getAssetPrefix("/assets/vendor/css/component-preview.css")} />
+<link rel="stylesheet" href={getAssetPrefix("/assets/vendor/css/codemirror-editor.css")} />

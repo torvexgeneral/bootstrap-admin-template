@@ -1,0 +1,128 @@
+/* ==========================================================================
+     TOC Styles (Table of Contents)
+     ========================================================================== */
+
+.toc {
+  font-size: 0.95rem;
+  padding: 0.35rem 0.5rem;
+  position: sticky;
+  top: 20px;
+
+  /* When topbar is sticky, adjust position to account for topbar height */
+  &.with-sticky-topbar {
+    top: calc(var(--topbar-height) + 20px);
+  }
+
+  .toc-list {
+    padding-left: 1.1rem;
+    list-style: disc; /* Default bullet style */
+  }
+
+  .toc-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.15s ease-in-out;
+
+    &:hover {
+      color: var(--bs-primary);
+      text-decoration: underline;
+    }
+
+    &.active {
+      color: var(--bs-link-color);
+      text-decoration: underline;
+    }
+  }
+
+  /* Hierarchical structure */
+  .toc-list {
+    .toc-list {
+      padding-left: 1rem; /* Indent nested lists */
+    }
+  }
+
+  /* Collapsible sections */
+  .toc-section {
+    &.collapsed {
+      > .toc-list {
+        display: none; /* Hide list on collapse */
+      }
+
+      > .toc-link::before {
+        transform: rotate(-90deg); /* Rotate arrow */
+      }
+    }
+  }
+
+  /* Toggle indicator for collapsible sections */
+  .toc-collapsible {
+    .has-children {
+      > .toc-link {
+        position: relative;
+        padding-right: 1.5rem; /* Space for the toggle icon */
+
+        &::before {
+          content: "▼";
+          position: absolute;
+          right: 0.5rem;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 0.625rem;
+          transition: transform 0.2s ease-in-out;
+        }
+      }
+    }
+
+    .toc-section {
+      &.collapsed {
+        > .toc-list {
+          display: none;
+        }
+
+        > .toc-link::before {
+          transform: rotate(-90deg);
+        }
+      }
+    }
+  }
+
+  /* Remove padding-right when not collapsible */
+  .has-children > .toc-link {
+    padding-right: 0.5rem;
+  }
+
+  /* Clean hierarchical indentation */
+  .toc-level-2 .toc-link {
+    font-weight: 500;
+  }
+
+  .toc-level-3 {
+    padding-left: 1rem; /* Indent level 3 */
+  }
+
+  .toc-level-3 .toc-link {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: -1rem; /* Position the line */
+      width: 0.5rem;
+      height: 1px;
+      content: "";
+      background: var(--bs-border-color);
+      opacity: 0; /* Initially hidden */
+    }
+
+    &:hover::before,
+    &.active::before {
+      opacity: 1; /* Show on hover/active */
+    }
+  }
+
+  .toc-level-4 {
+    padding-left: 1.5rem;
+    font-size: 0.8125rem;
+  }
+}

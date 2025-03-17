@@ -1,0 +1,321 @@
+---
+import AdminLayout from "../../../layouts/admin/admin-layout.astro";
+import PageHeader from "../../../components/common/page-header.astro";
+import { getAssetPrefix, getPathPrefix } from "../../../../utils/path.js";
+
+const pageHeaderProps = {
+  title: "Edit Role",
+  backLink: getPathPrefix("/roles_permissions/roles/list"),
+  breadcrumbs: [
+    { label: "Dashboard", href: getPathPrefix("/dashboard") },
+    { label: "Roles & Permissions", href: getPathPrefix("/roles_permissions") },
+    { label: "Roles", href: getPathPrefix("/roles_permissions/roles/list") },
+    { label: "Edit Role", class: "active" }
+  ],
+  actions: [
+    {
+      label: "Back",
+      href: getPathPrefix("/roles_permissions/roles/list"),
+      variant: "btn-outline-primary",
+      icon: "ri-arrow-left-s-line"
+    }
+  ]
+};
+
+// Add custom validation script
+const pageScript = `
+  <script src="${getAssetPrefix("/assets/js/pages/roles_and_permissions/roles/toggle-permissions.js")}"></script>
+  <script src="${getAssetPrefix("/assets/js/pages/roles_and_permissions/roles/submitform.js")}"></script>
+`;
+
+// Define permissions data structure
+const modules = [
+  {
+    id: "cms",
+    name: "CMS",
+    groups: [
+      {
+        id: "content_management",
+        name: "Content Management",
+        permissions: [
+          { id: "view_cms", name: "View CMS" },
+          { id: "edit_cms", name: "Edit CMS" },
+          { id: "manage_pages", name: "Manage Pages" },
+          { id: "manage_posts", name: "Manage Posts" },
+          { id: "manage_comments", name: "Manage Comments" }
+        ]
+      },
+      {
+        id: "media_management",
+        name: "Media Management",
+        permissions: [{ id: "manage_media", name: "Manage Media" }]
+      },
+      {
+        id: "content_organization",
+        name: "Content Organization",
+        permissions: [
+          { id: "manage_categories", name: "Manage Categories" },
+          { id: "manage_tags", name: "Manage Tags" }
+        ]
+      }
+    ]
+  },
+  {
+    id: "seo",
+    name: "SEO",
+    groups: [
+      {
+        id: "seo_management",
+        name: "SEO Management",
+        permissions: [
+          { id: "manage_seo", name: "Manage SEO" },
+          { id: "manage_meta", name: "Manage Meta Tags" }
+        ]
+      },
+      {
+        id: "analytics",
+        name: "Analytics",
+        permissions: [{ id: "view_analytics", name: "View Analytics" }]
+      },
+      {
+        id: "url_management",
+        name: "URL Management",
+        permissions: [{ id: "manage_redirects", name: "Manage Redirects" }]
+      }
+    ]
+  },
+  {
+    id: "system",
+    name: "System",
+    groups: [
+      {
+        id: "user_management",
+        name: "User Management",
+        permissions: [
+          { id: "manage_users", name: "Manage Users" },
+          { id: "manage_roles", name: "Manage Roles" }
+        ]
+      },
+      {
+        id: "system_settings",
+        name: "System Settings",
+        permissions: [{ id: "manage_settings", name: "Manage Settings" }]
+      },
+      {
+        id: "system_maintenance",
+        name: "System Maintenance",
+        permissions: [
+          { id: "manage_backups", name: "Manage Backups" },
+          { id: "manage_cache", name: "Manage Cache" }
+        ]
+      },
+      {
+        id: "system_monitoring",
+        name: "System Monitoring",
+        permissions: [{ id: "view_logs", name: "View Logs" }]
+      },
+      {
+        id: "api_management",
+        name: "API Management",
+        permissions: [{ id: "manage_api", name: "Manage API" }]
+      }
+    ]
+  }
+];
+
+// Selected permissions for this role
+const selectedPermissions = [
+  "view_cms",
+  "edit_cms",
+  "manage_pages",
+  "manage_posts",
+  "manage_media",
+  "manage_categories",
+  "manage_tags",
+  "manage_seo",
+  "manage_meta",
+  "view_analytics",
+  "manage_redirects",
+  "manage_users",
+  "manage_roles",
+  "manage_settings",
+  "manage_backups",
+  "manage_cache",
+  "view_logs",
+  "manage_api"
+];
+---
+
+<AdminLayout
+  title="Edit Role"
+  description="Edit Role"
+  currentPath="roles_permissions/roles/edit"
+  pageScript={pageScript}
+>
+  <PageHeader {...pageHeaderProps} />
+
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-sm">
+        <form id="roleForm" novalidate>
+          <div class="card-body">
+            <!-- Role Name -->
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="roleName" class="form-label"
+                    >Role Name <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="roleName"
+                    name="roleName"
+                    placeholder="Enter role name"
+                    value="Administrator"
+                  />
+                  <div class="form-text">Example: Admin, Editor, Author, etc.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Role Slug -->
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="roleSlug" class="form-label"
+                    >Role Slug <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="roleSlug"
+                    name="roleSlug"
+                    placeholder="Enter role slug"
+                    value="administrator"
+                  />
+                  <div class="form-text">
+                    Auto-generated from name. Example: admin, editor, author
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Permissions Section -->
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <label class="form-label mb-0">Permissions</label>
+                </div>
+                <div class="permissions-container">
+                  {
+                    modules.map((module, moduleIndex) => (
+                      <div class="module-section mb-3" id={`module_${module.id}`}>
+                        <div class="card">
+                          <div class="card-header bg-transparent py-2">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="form-check">
+                                <input
+                                  class="form-check-input toggle-module"
+                                  type="checkbox"
+                                  id={`module_toggle_${module.id}`}
+                                  data-module-id={module.id}
+                                />
+                                <label
+                                  class="form-check-label fw-medium"
+                                  for={`module_toggle_${module.id}`}
+                                >
+                                  {module.name}
+                                </label>
+                              </div>
+                              <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary toggle-module"
+                                data-module-id={module.id}
+                                data-expanded="false"
+                              >
+                                <i class="ri-add-line me-md-1" />{" "}
+                                <span class="d-none d-md-inline">Expand All</span>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="card-body py-2">
+                            <div class="permission-groups d-flex flex-column flex-md-row flex-wrap">
+                              {module.groups.map((group, groupIndex) => (
+                                <div
+                                  class="col-12 col-md-6 col-lg-4 permission-group px-2 mb-3"
+                                  id={`group_${group.id}`}
+                                >
+                                  <div class="d-flex align-items-top  mb-2 gap-1">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-primary toggle-permissions mt-1"
+                                      data-group-id={group.id}
+                                    >
+                                      <i class="ri-add-line" />
+                                    </button>
+                                    <div class="form-check">
+                                      <input
+                                        class="form-check-input toggle-group"
+                                        type="checkbox"
+                                        id={`group_toggle_${group.id}`}
+                                        data-group-id={group.id}
+                                      />
+                                      <label
+                                        class="form-check-label fw-medium"
+                                        for={`group_toggle_${group.id}`}
+                                      >
+                                        {group.name}
+                                      </label>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="permission-items ms-4 collapse"
+                                    id={`permissions_${group.id}`}
+                                  >
+                                    {group.permissions.map((permission) => (
+                                      <div class="permission-item form-check">
+                                        <input
+                                          class="form-check-input permission-checkbox"
+                                          type="checkbox"
+                                          id={`permission_${permission.id}`}
+                                          name={`permissions[]`}
+                                          value={permission.id}
+                                          checked={selectedPermissions.includes(permission.id)}
+                                        />
+                                        <label
+                                          class="form-check-label"
+                                          for={`permission_${permission.id}`}
+                                        >
+                                          {permission.name}
+                                        </label>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <!-- Form Actions -->
+            <div class="d-flex justify-content-end gap-2">
+              <a href={getPathPrefix("/roles_permissions/roles/list")} class="btn btn-light"
+                >Cancel</a
+              >
+              <button type="submit" class="btn btn-primary">Update Role</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</AdminLayout>

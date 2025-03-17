@@ -1,0 +1,24 @@
+/* ==========================================================================
+     Utility Classes & Animations
+     ========================================================================== */
+
+/* Animation Utilities */
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 576px) {
+  .search-toggle {
+    max-width: 100%;
+    .search-shortcut {
+      display: none;
+    }
+  }
+}

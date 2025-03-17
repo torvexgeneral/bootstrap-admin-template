@@ -1,0 +1,47 @@
+// ==========================================================================
+//   Form Check Size Mixins
+// ==========================================================================
+
+@mixin form-check-size($input-size, $label-font-size) {
+  .form-check-input {
+    width: $input-size;
+    height: $input-size;
+  }
+
+  .form-check-label {
+    font-size: $label-font-size;
+  }
+}
+
+.form-check{
+  display: flex;
+  align-items: center;
+  .form-check-label {
+    margin-top: 0.25rem;
+    margin-left: 0.25rem;
+  }
+  .form-check-input{
+    &:focus{
+      box-shadow: none;
+    }
+  }
+}
+// ==========================================================================
+//   Form Check Sizes
+// ==========================================================================
+
+.form-check-xs {
+  @include form-check-size(0.875rem, $font-size-xs);
+}
+
+.form-check-sm {
+  @include form-check-size(1rem, $font-size-sm);
+}
+
+.form-check-lg {
+  @include form-check-size(1.25rem, $font-size-lg);
+}
+
+.form-check-xl {
+  @include form-check-size(1.5rem, $font-size-xl);
+}

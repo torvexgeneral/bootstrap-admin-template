@@ -1,0 +1,406 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "avatar": "/img/avatars/avatar1.jpg",
+      "role": "Admin",
+      "last_login": "2 hours ago",
+      "status": "Active",
+      "created_date": "Mar 10, 2024"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "avatar": "/img/avatars/avatar2.jpg",
+      "role": "Manager",
+      "last_login": "5 hours ago",
+      "status": "Active",
+      "created_date": "Mar 9, 2024"
+    },
+    {
+      "id": 3,
+      "name": "Michael Johnson",
+      "email": "michael.j@example.com",
+      "avatar": "/img/avatars/avatar3.jpg",
+      "role": "Editor",
+      "last_login": "1 day ago",
+      "status": "Inactive",
+      "created_date": "Mar 8, 2024"
+    },
+    {
+      "id": 4,
+      "name": "Emily Brown",
+      "email": "emily.b@example.com",
+      "avatar": "/img/avatars/avatar4.jpg",
+      "role": "User",
+      "last_login": "3 days ago",
+      "status": "Active",
+      "created_date": "Mar 7, 2024"
+    },
+    {
+      "id": 5,
+      "name": "David Wilson",
+      "email": "david.w@example.com",
+      "avatar": "/img/avatars/avatar5.jpg",
+      "role": "Manager",
+      "last_login": "1 week ago",
+      "status": "Blocked",
+      "created_date": "Mar 6, 2024"
+    },
+    {
+      "id": 6,
+      "name": "Sarah Davis",
+      "email": "sarah.d@example.com",
+      "avatar": "/img/avatars/avatar6.jpg",
+      "role": "Editor",
+      "last_login": "2 weeks ago",
+      "status": "Active",
+      "created_date": "Mar 5, 2024"
+    },
+    {
+      "id": 7,
+      "name": "James Miller",
+      "email": "james.m@example.com",
+      "avatar": "/img/avatars/avatar7.jpg",
+      "role": "User",
+      "last_login": "1 month ago",
+      "status": "Inactive",
+      "created_date": "Mar 4, 2024"
+    },
+    {
+      "id": 8,
+      "name": "Lisa Anderson",
+      "email": "lisa.a@example.com",
+      "avatar": "/img/avatars/avatar8.jpg",
+      "role": "Editor",
+      "last_login": "2 months ago",
+      "status": "Active",
+      "created_date": "Mar 3, 2024"
+    },
+    {
+      "id": 9,
+      "name": "Robert Taylor",
+      "email": "robert.t@example.com",
+      "avatar": "/img/avatars/avatar9.jpg",
+      "role": "User",
+      "last_login": "3 months ago",
+      "status": "Active",
+      "created_date": "Mar 2, 2024"
+    },
+    {
+      "id": 10,
+      "name": "Patricia Moore",
+      "email": "patricia.m@example.com",
+      "avatar": "/img/avatars/avatar10.jpg",
+      "role": "Manager",
+      "last_login": "4 months ago",
+      "status": "Active",
+      "created_date": "Mar 1, 2024"
+    },
+    {
+      "id": 11,
+      "name": "Thomas Wright",
+      "email": "thomas.w@example.com",
+      "avatar": "/img/avatars/avatar1.jpg",
+      "role": "Editor",
+      "last_login": "1 hour ago",
+      "status": "Active",
+      "created_date": "Feb 28, 2024"
+    },
+    {
+      "id": 12,
+      "name": "Jennifer Lee",
+      "email": "jennifer.l@example.com",
+      "avatar": "/img/avatars/avatar2.jpg",
+      "role": "User",
+      "last_login": "4 hours ago",
+      "status": "Inactive",
+      "created_date": "Feb 27, 2024"
+    },
+    {
+      "id": 13,
+      "name": "William Turner",
+      "email": "william.t@example.com",
+      "avatar": "/img/avatars/avatar3.jpg",
+      "role": "Manager",
+      "last_login": "6 hours ago",
+      "status": "Active",
+      "created_date": "Feb 26, 2024"
+    },
+    {
+      "id": 14,
+      "name": "Elizabeth Clark",
+      "email": "elizabeth.c@example.com",
+      "avatar": "/img/avatars/avatar4.jpg",
+      "role": "Editor",
+      "last_login": "8 hours ago",
+      "status": "Active",
+      "created_date": "Feb 25, 2024"
+    },
+    {
+      "id": 15,
+      "name": "Daniel Martinez",
+      "email": "daniel.m@example.com",
+      "avatar": "/img/avatars/avatar5.jpg",
+      "role": "User",
+      "last_login": "10 hours ago",
+      "status": "Blocked",
+      "created_date": "Feb 24, 2024"
+    },
+    {
+      "id": 16,
+      "name": "Maria Rodriguez",
+      "email": "maria.r@example.com",
+      "avatar": "/img/avatars/avatar6.jpg",
+      "role": "Manager",
+      "last_login": "12 hours ago",
+      "status": "Active",
+      "created_date": "Feb 23, 2024"
+    },
+    {
+      "id": 17,
+      "name": "Joseph White",
+      "email": "joseph.w@example.com",
+      "avatar": "/img/avatars/avatar7.jpg",
+      "role": "Editor",
+      "last_login": "14 hours ago",
+      "status": "Active",
+      "created_date": "Feb 22, 2024"
+    },
+    {
+      "id": 18,
+      "name": "Susan Thompson",
+      "email": "susan.t@example.com",
+      "avatar": "/img/avatars/avatar8.jpg",
+      "role": "User",
+      "last_login": "16 hours ago",
+      "status": "Inactive",
+      "created_date": "Feb 21, 2024"
+    },
+    {
+      "id": 19,
+      "name": "Charles Garcia",
+      "email": "charles.g@example.com",
+      "avatar": "/img/avatars/avatar9.jpg",
+      "role": "Manager",
+      "last_login": "18 hours ago",
+      "status": "Active",
+      "created_date": "Feb 20, 2024"
+    },
+    {
+      "id": 20,
+      "name": "Margaret Martinez",
+      "email": "margaret.m@example.com",
+      "avatar": "/img/avatars/avatar10.jpg",
+      "role": "Editor",
+      "last_login": "20 hours ago",
+      "status": "Active",
+      "created_date": "Feb 19, 2024"
+    },
+    {
+      "id": 21,
+      "name": "Christopher Lee",
+      "email": "chris.l@example.com",
+      "avatar": "/img/avatars/avatar1.jpg",
+      "role": "User",
+      "last_login": "22 hours ago",
+      "status": "Active",
+      "created_date": "Feb 18, 2024"
+    },
+    {
+      "id": 22,
+      "name": "Amanda Wilson",
+      "email": "amanda.w@example.com",
+      "avatar": "/img/avatars/avatar2.jpg",
+      "role": "Manager",
+      "last_login": "1 day ago",
+      "status": "Inactive",
+      "created_date": "Feb 17, 2024"
+    },
+    {
+      "id": 23,
+      "name": "Kevin Anderson",
+      "email": "kevin.a@example.com",
+      "avatar": "/img/avatars/avatar3.jpg",
+      "role": "Editor",
+      "last_login": "2 days ago",
+      "status": "Active",
+      "created_date": "Feb 16, 2024"
+    },
+    {
+      "id": 24,
+      "name": "Melissa Brown",
+      "email": "melissa.b@example.com",
+      "avatar": "/img/avatars/avatar4.jpg",
+      "role": "User",
+      "last_login": "3 days ago",
+      "status": "Blocked",
+      "created_date": "Feb 15, 2024"
+    },
+    {
+      "id": 25,
+      "name": "Steven Taylor",
+      "email": "steven.t@example.com",
+      "avatar": "/img/avatars/avatar5.jpg",
+      "role": "Manager",
+      "last_login": "4 days ago",
+      "status": "Active",
+      "created_date": "Feb 14, 2024"
+    },
+    {
+      "id": 26,
+      "name": "Laura Martin",
+      "email": "laura.m@example.com",
+      "avatar": "/img/avatars/avatar6.jpg",
+      "role": "Editor",
+      "last_login": "5 days ago",
+      "status": "Active",
+      "created_date": "Feb 13, 2024"
+    },
+    {
+      "id": 27,
+      "name": "Ryan Thompson",
+      "email": "ryan.t@example.com",
+      "avatar": "/img/avatars/avatar7.jpg",
+      "role": "User",
+      "last_login": "6 days ago",
+      "status": "Inactive",
+      "created_date": "Feb 12, 2024"
+    },
+    {
+      "id": 28,
+      "name": "Michelle Davis",
+      "email": "michelle.d@example.com",
+      "avatar": "/img/avatars/avatar8.jpg",
+      "role": "Manager",
+      "last_login": "1 week ago",
+      "status": "Active",
+      "created_date": "Feb 11, 2024"
+    },
+    {
+      "id": 29,
+      "name": "Jason Miller",
+      "email": "jason.m@example.com",
+      "avatar": "/img/avatars/avatar9.jpg",
+      "role": "Editor",
+      "last_login": "2 weeks ago",
+      "status": "Active",
+      "created_date": "Feb 10, 2024"
+    },
+    {
+      "id": 30,
+      "name": "Nicole Wilson",
+      "email": "nicole.w@example.com",
+      "avatar": "/img/avatars/avatar10.jpg",
+      "role": "User",
+      "last_login": "3 weeks ago",
+      "status": "Active",
+      "created_date": "Feb 9, 2024"
+    },
+    {
+      "id": 31,
+      "name": "Brandon Clark",
+      "email": "brandon.c@example.com",
+      "avatar": "/img/avatars/avatar1.jpg",
+      "role": "Manager",
+      "last_login": "1 month ago",
+      "status": "Inactive",
+      "created_date": "Feb 8, 2024"
+    },
+    {
+      "id": 32,
+      "name": "Rachel Green",
+      "email": "rachel.g@example.com",
+      "avatar": "/img/avatars/avatar2.jpg",
+      "role": "Editor",
+      "last_login": "2 months ago",
+      "status": "Active",
+      "created_date": "Feb 7, 2024"
+    },
+    {
+      "id": 33,
+      "name": "Justin Moore",
+      "email": "justin.m@example.com",
+      "avatar": "/img/avatars/avatar3.jpg",
+      "role": "User",
+      "last_login": "3 months ago",
+      "status": "Blocked",
+      "created_date": "Feb 6, 2024"
+    },
+    {
+      "id": 34,
+      "name": "Stephanie Lee",
+      "email": "stephanie.l@example.com",
+      "avatar": "/img/avatars/avatar4.jpg",
+      "role": "Manager",
+      "last_login": "4 months ago",
+      "status": "Active",
+      "created_date": "Feb 5, 2024"
+    },
+    {
+      "id": 35,
+      "name": "Eric Johnson",
+      "email": "eric.j@example.com",
+      "avatar": "/img/avatars/avatar5.jpg",
+      "role": "Editor",
+      "last_login": "5 months ago",
+      "status": "Active",
+      "created_date": "Feb 4, 2024"
+    },
+    {
+      "id": 36,
+      "name": "Rebecca White",
+      "email": "rebecca.w@example.com",
+      "avatar": "/img/avatars/avatar6.jpg",
+      "role": "User",
+      "last_login": "6 months ago",
+      "status": "Inactive",
+      "created_date": "Feb 3, 2024"
+    },
+    {
+      "id": 37,
+      "name": "Timothy Brown",
+      "email": "timothy.b@example.com",
+      "avatar": "/img/avatars/avatar7.jpg",
+      "role": "Manager",
+      "last_login": "7 months ago",
+      "status": "Active",
+      "created_date": "Feb 2, 2024"
+    },
+    {
+      "id": 38,
+      "name": "Angela Martinez",
+      "email": "angela.m@example.com",
+      "avatar": "/img/avatars/avatar8.jpg",
+      "role": "Editor",
+      "last_login": "8 months ago",
+      "status": "Active",
+      "created_date": "Feb 1, 2024"
+    },
+    {
+      "id": 39,
+      "name": "Scott Anderson",
+      "email": "scott.a@example.com",
+      "avatar": "/img/avatars/avatar9.jpg",
+      "role": "User",
+      "last_login": "9 months ago",
+      "status": "Active",
+      "created_date": "Jan 31, 2024"
+    },
+    {
+      "id": 40,
+      "name": "Christine Taylor",
+      "email": "christine.t@example.com",
+      "avatar": "/img/avatars/avatar10.jpg",
+      "role": "Manager",
+      "last_login": "10 months ago",
+      "status": "Active",
+      "created_date": "Jan 30, 2024"
+    }
+  ],
+  "recordsTotal": 40,
+  "recordsFiltered": 40
+}
