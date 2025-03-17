@@ -142,7 +142,7 @@ const pageScript = `
 
   <form id="permissionForm" novalidate>
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8 mb-3">
         <div class="card shadow-sm">
           <div class="card-body">
             <!-- Permission Title -->
@@ -228,7 +228,7 @@ const pageScript = `
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 mb-3">
         <div class="card shadow-sm">
           <div class="card-body">
             <!-- Status -->
@@ -248,8 +248,8 @@ const pageScript = `
           </div>
           <div class="card-footer">
             <!-- Form Actions -->
-            <div class="d-flex justify-content-end gap-2">
-              <a href={getPathPrefix("/roles-permissions/permissions/list")} class="btn btn-light"
+            <div class="d-flex flex-column flex-lg-row justify-content-end gap-2">
+              <a href={getPathPrefix("/roles-permissions/permissions/list")} class="btn btn-outline-secondary"
                 >Cancel</a
               >
               <button type="submit" class="btn btn-primary">Create Permission</button>
