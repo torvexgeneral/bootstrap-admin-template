@@ -66,15 +66,15 @@ Add the following CDN links to your HTML file:
 
 ```html
 <!-- CSS -->
-<link href="https://cdn.jsdelivr.net/npm/asteroadmin@latest/dist/css/style.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/asteroadmin@latest@latest/dist/css/style.min.css" rel="stylesheet">
 
 <!-- JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/asteroadmin@latest/dist/js/main.min.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/asteroadmin@latest@latest/dist/js/main.min.js" type="module"></script>
 ```
 
 You can also include specific files or versions:
-- CSS: `https://cdn.jsdelivr.net/npm/asteroadmin@1.0.1/dist/css/style.min.css`
-- JavaScript: `https://cdn.jsdelivr.net/npm/asteroadmin@1.0.1/dist/js/main.min.js`
+- CSS: `https://cdn.jsdelivr.net/npm/asteroadmin@latest@1.0.1/dist/css/style.min.css`
+- JavaScript: `https://cdn.jsdelivr.net/npm/asteroadmin@latest@1.0.1/dist/js/main.min.js`
 
 #### 3. Clone the repository:
 

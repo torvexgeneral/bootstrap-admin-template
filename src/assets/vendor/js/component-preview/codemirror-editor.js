@@ -157,14 +157,14 @@ window.CodeMirrorManager = class CodeMirrorEditorSystem {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Component</title>
-  <link href="https://cdn.jsdelivr.net/npm/asteroadmin/dist/css/style.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/asteroadmin@latest/dist/css/style.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
   ${cssContent ? '<style>\n' + cssContent + '\n</style>' : ''}
 </head>
 <body>
   ${htmlContent}
   ${jsContent ? '<script>\n' + jsContent + '\n</script>' : ''}
-  <script src="https://cdn.jsdelivr.net/npm/asteroadmin/dist/js/main.min.js" type="module"></script>
+  <script src="https://cdn.jsdelivr.net/npm/asteroadmin@latest/dist/js/main.min.js" type="module"></script>
 </body>
 </html>`
 

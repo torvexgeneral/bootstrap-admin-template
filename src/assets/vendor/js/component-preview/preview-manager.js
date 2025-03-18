@@ -28,7 +28,7 @@ window.PreviewManager = class PreviewManager {
 
     const iframe = previewBox.querySelector('.preview-iframe')
     if (!iframe) return
-    
+
     // Debounce updates by preview box
     const previewBoxId = previewBox.id || 'default'
     this.debounceByPreviewBox(previewBoxId, () => {
@@ -444,7 +444,7 @@ window.PreviewManager = class PreviewManager {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Component Preview</title>
-  <link href="https://cdn.jsdelivr.net/npm/asteroadmin/dist/css/style.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/asteroadmin@latest/dist/css/style.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
   <style>
     body {
@@ -455,7 +455,7 @@ window.PreviewManager = class PreviewManager {
 </head>
 <body>
   ${htmlContent}
-  <script src="https://cdn.jsdelivr.net/npm/asteroadmin/dist/js/main.min.js" type="module"></script>
+  <script src="https://cdn.jsdelivr.net/npm/asteroadmin@latest/dist/js/main.min.js" type="module"></script>
   <script>
     ${jsContent}
   </script>
