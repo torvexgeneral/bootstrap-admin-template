@@ -1,7 +1,7 @@
 {
   "name": "asteroadmin",
   "description": "Responsive open source admin dashboard and control panel.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "author": "AsteroDigital <https://asterodigital.com>",
   "type": "module",
@@ -30,7 +30,7 @@
     "control-panel",
     "dashboard"
   ],
-  "homepage": "https://asterodigital.com/bootstrap-admin-template",
+  "homepage": "https://asterodigital.com/astero-admin/",
   "style": "dist/css/style.css",
   "sass": "src/scss/style.scss",
   "repository": {
