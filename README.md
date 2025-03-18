@@ -4,6 +4,8 @@ A responsive open source admin dashboard and control panel built with Bootstrap 
 
 [![AsteroAdmin Dashboard](https://raw.githubusercontent.com/asterodigital/bootstrap-admin-template/main/.github/images/feature-image.png)](https://astero-admin.asterodigital.com/pages/dashboard)
 
+<a href="https://www.producthunt.com/posts/astero-admin?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-astero&#0045;admin" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=941743&theme=light&t=1742294352921" alt="Astero&#0032;Admin - Free&#0032;Bootstrap&#0032;5&#0032;Admin&#0032;Template | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+
 ## Overview
 
 AsteroAdmin is a modern, responsive admin template designed to provide a solid foundation for your administrative interface needs. Built with the latest web technologies and best practices, it offers a clean, intuitive, and highly customizable user experience for building powerful dashboards, admin panels, and back-office applications.
@@ -40,7 +42,41 @@ Check out the live demo: [AsteroAdmin Demo](https://astero-admin.asterodigital.c
 
 ### Installation
 
-1. Clone the repository:
+You can install AsteroAdmin in three ways:
+
+#### 1. Using npm
+
+```bash
+npm install asteroadmin
+```
+
+After installation, you can import the CSS and JavaScript files in your project:
+
+```javascript
+// Import CSS
+import 'asteroadmin/dist/css/style.css'
+
+// Import JavaScript (if needed)
+import 'asteroadmin/dist/js/main.js'
+```
+
+#### 2. Using CDN
+
+Add the following CDN links to your HTML file:
+
+```html
+<!-- CSS -->
+<link href="https://cdn.jsdelivr.net/npm/asteroadmin@1.0.0/dist/css/style.css" rel="stylesheet">
+
+<!-- JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/asteroadmin@1.0.0/dist/js/main.js"></script>
+```
+
+You can also include specific files or versions:
+- CSS: `https://cdn.jsdelivr.net/npm/asteroadmin@1.0.0/dist/css/style.min.css`
+- JavaScript: `https://cdn.jsdelivr.net/npm/asteroadmin@1.0.0/dist/js/main.min.js`
+
+#### 3. Clone the repository:
 
 ```bash
 git clone https://github.com/asterodigital/bootstrap-admin-template.git
@@ -93,7 +129,6 @@ AsteroAdmin uses a custom-built, optimized build system that handles:
 ├── dist/               # Compiled files (generated)
 ├── src/                # Source files
 │   ├── assets/         # Static assets (images, fonts, etc.)
-│   ├── html/           # HTML templates and components
 │   │   ├── components/ # Reusable UI components
 │   │   ├── layouts/    # Page layouts
 │   │   ├── pages/      # Astro page templates
