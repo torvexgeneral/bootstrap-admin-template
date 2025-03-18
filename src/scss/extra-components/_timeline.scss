@@ -91,7 +91,7 @@
       line-height: 30px;
       text-align: center;
       background-color: var(--#{$prefix}secondary-bg);
-      border-radius: 50%; // stylelint-disable-line property-disallowed-list
+      border-radius: 50%;
     }
   }
   // Time label
@@ -117,5 +117,42 @@
         border-bottom-color: var(--#{$prefix}border-color);
       }
     }
+  }
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 3rem;
+
+  &:not(:last-child) {
+    padding-bottom: 3rem;
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 16px;
+    height: 16px;
+    content: '';
+    background-color: var(--bs-primary);
+    border: 3px solid var(--bs-body-bg);
+    border-radius: 50%;
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    bottom: -0.75rem;
+    left: 7px;
+    z-index: 0;
+    width: 2px;
+    content: '';
+    background-color: var(--bs-border-color);
+  }
+
+  &:last-child::after {
+    bottom: 0;
   }
 }
