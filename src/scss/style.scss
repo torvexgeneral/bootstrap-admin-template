@@ -54,7 +54,10 @@
 
 // Interactive Components
 @import 'components/tooltips';
-@import 'components/simplebar';
+
+// Simple Scrollbar
+@import '../../node_modules/simplebar/dist/simplebar.css';
+@import 'components/simplebar'; // Custom SimpleBar styles
 
 // ==========================================================================
 //   Extra Components & Features
