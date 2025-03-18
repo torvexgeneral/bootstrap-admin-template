@@ -31,7 +31,7 @@ $input-disabled-border-color:           null !default;
 
 $input-color:                           var(--#{$prefix}body-color) !default;
 $input-border-color:                    var(--#{$prefix}border-color) !default;
-$input-border-width:                    2px !default; // 2px for inputs only
+$input-border-width:                    1px !default;
 $input-box-shadow:                      var(--#{$prefix}box-shadow-inset) !default;
 
 $input-border-radius:                   var(--#{$prefix}border-radius) !default;
@@ -41,7 +41,7 @@ $input-border-radius-lg:                var(--#{$prefix}border-radius-lg) !defau
 $input-focus-bg:                        $input-bg !default;
 $input-focus-border-color:              tint-color($component-active-bg, 50%) !default;
 $input-focus-color:                     $input-color !default;
-$input-focus-width:                     $input-btn-focus-width !default;
+$input-focus-width:                     2px !default;
 $input-focus-box-shadow:                transparent !default;
 
 $input-placeholder-color:               var(--#{$prefix}secondary-color) !default;

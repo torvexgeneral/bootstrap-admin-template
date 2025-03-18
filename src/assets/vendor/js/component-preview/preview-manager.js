@@ -428,10 +428,7 @@ window.PreviewManager = class PreviewManager {
             ${htmlContent}
           </div>
         </div>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="${this.getJSPath('main')}"></script>
-
+        <script src="${this.getJSPath('main')}" type="module"></script>
         <script id="custom-js">
           ${jsContent}
         </script>
@@ -447,7 +444,7 @@ window.PreviewManager = class PreviewManager {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Component Preview</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/asteroadmin/dist/css/style.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
   <style>
     body {
@@ -458,8 +455,7 @@ window.PreviewManager = class PreviewManager {
 </head>
 <body>
   ${htmlContent}
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/asteroadmin/dist/js/main.min.js" type="module"></script>
   <script>
     ${jsContent}
   </script>
@@ -654,7 +650,7 @@ window.PreviewManager = class PreviewManager {
   // Initialize the Preview Manager
   static init() {
     try {
-      console.log('Initializing Preview Manager')
+      // console.log('Initializing Preview Manager')
 
       // Set up event listeners for code toggles
       this.setupCodeToggles()

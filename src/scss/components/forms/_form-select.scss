@@ -9,7 +9,20 @@ $form-select-padding: 0.275rem 0.5rem !default;
 // ==========================================================================
 
 .form-select {
+  box-sizing: border-box;
   padding: $form-select-padding;
+  border: 1px solid var(--bs-border-color);
+  transition: border-color 0.15s ease-in-out;
+
+  &:not(:disabled):not(:focus):hover {
+    border-color: var(--bs-gray-500);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: var(--bs-secondary-bg);
+    opacity: 0.65;
+  }
 
   &:focus {
     border-color: var(--bs-primary);

@@ -27,10 +27,8 @@ const isActiveParent = (path: string) => currentPath.startsWith(path);
   </div>
 
   <!-- Scrollable Navigation -->
-  <div class="sidebar-content">
-    <div data-simplebar>
-      <NavTree currentPath={currentPath} />
-    </div>
+  <div class="sidebar-content" data-simplebar>
+    <NavTree currentPath={currentPath} />
   </div>
   <Footer />
 </aside>

@@ -21,7 +21,14 @@
     margin-left: 0.25rem;
   }
   .form-check-input{
+    transition: border-color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+
+    &:not(:disabled):hover {
+      border-color: var(--bs-gray-500);
+    }
+
     &:focus{
+      border-color: var(--bs-primary);
       box-shadow: none;
     }
   }

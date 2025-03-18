@@ -41,11 +41,17 @@ $switch-colors: (
   cursor: pointer;
   @include transition(background-color $switch-transition, border-color $switch-transition);
 
-  &:hover {
+  &:not(:disabled):hover {
+    border-color: var(--bs-gray-500);
     opacity: 0.85;
   }
 
+  &:disabled {
+    cursor: not-allowed;
+  }
+
   &:focus {
+    border-color: var(--bs-primary);
     box-shadow: none;
   }
 

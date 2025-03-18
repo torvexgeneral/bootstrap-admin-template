@@ -48,14 +48,6 @@ export default {
           'darken'
         ],
         'keyframes-name-pattern': null,
-        'property-disallowed-list': [
-          'border-radius',
-          'border-top-left-radius',
-          'border-top-right-radius',
-          'border-bottom-right-radius',
-          'border-bottom-left-radius',
-          'transition'
-        ],
         'scss/dollar-variable-default': [
           true,
           {

@@ -68,6 +68,7 @@ export async function buildJs(options = {}) {
         outfile: path.join(distJsDir, 'main.min.js'),
         sourcemap: true,
         target: ["es2015"],
+        format: 'esm',
         minify: true,
         logLevel: opts.verbose ? "info" : "error"
       })
