@@ -615,7 +615,7 @@ window.PreviewManager = class PreviewManager {
   // Initialize the Preview Manager
   static init() {
     try {
-      console.log('Initializing Preview Manager')
+      // console.log('Initializing Preview Manager')
 
       // Set up event listeners for code toggles
       this.setupCodeToggles()

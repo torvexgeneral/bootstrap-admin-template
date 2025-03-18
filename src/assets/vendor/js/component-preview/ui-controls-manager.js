@@ -11,7 +11,7 @@ window.UIControlsManager = class UIControlsManager {
 
   static setupUIControls() {
     try {
-      console.log('Setting up UI Controls')
+      // console.log('Setting up UI Controls')
 
       this.setupEditButtons()
       this.setupResetButtons()
