@@ -33,6 +33,8 @@ const pageHeaderProps = {
   ]
 };
 
+const iframesrc = getPathPrefix("/tables/datatable/products");
+
 // Products table template with enhanced features
 const productsTableTemplate = `<div class="astero-table">
     <!-- Status Navigation Filter -->
@@ -227,10 +229,12 @@ const productsTableTemplate = `<div class="astero-table">
       <ComponentPreview
         title="Products DataTable"
         height="720px"
+        iframeSrc={iframesrc}
         component={productsTableTemplate}
         htmlCode={productsTableTemplate}
         cssCode={pageStyles}
         jsCode={pageScript}
+        disableEditMode="true"
       />
     </div>
   </div>

@@ -2,6 +2,7 @@
 import AdminLayout from "../../layouts/admin/admin-layout.astro";
 import PageHeader from "../../components/common/page-header.astro";
 import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import permissionsData from "../../../assets/data/permissions.json";
 
 // Page Header Configuration
 const userFormHeaderConfig = {
@@ -21,111 +22,8 @@ const userFormHeaderConfig = {
   ]
 };
 
-// Permission Module Configuration
-const permissionModules = [
-  {
-    id: "cms",
-    name: "Content Management",
-    groups: [
-      {
-        id: "content_management",
-        name: "Page & Post Management",
-        permissions: [
-          { id: "view_cms", name: "View Content Dashboard" },
-          { id: "edit_cms", name: "Edit Content Settings" },
-          { id: "manage_pages", name: "Manage Static Pages" },
-          { id: "manage_posts", name: "Manage Blog Posts" },
-          { id: "manage_comments", name: "Moderate Comments" }
-        ]
-      },
-      {
-        id: "media_management",
-        name: "Media Library",
-        permissions: [{ id: "manage_media", name: "Manage Media Files" }]
-      },
-      {
-        id: "content_organization",
-        name: "Content Organization",
-        permissions: [
-          { id: "manage_categories", name: "Manage Content Categories" },
-          { id: "manage_tags", name: "Manage Content Tags" }
-        ]
-      },
-      {
-        id: "configuration_management",
-        name: "Configuration Management",
-        permissions: [
-          { id: "manage_templates", name: "Manage Content Templates" },
-          { id: "manage_workflows", name: "Manage Content Workflows" }
-        ]
-      }
-    ]
-  },
-  {
-    id: "seo",
-    name: "Search Engine Optimization",
-    groups: [
-      {
-        id: "seo_management",
-        name: "SEO Tools",
-        permissions: [
-          { id: "manage_seo", name: "Manage SEO Settings" },
-          { id: "manage_meta", name: "Manage Meta Information" }
-        ]
-      },
-      {
-        id: "performance_optimization",
-        name: "Performance Optimization",
-        permissions: [
-          { id: "manage_caching", name: "Manage Page Caching" },
-          { id: "manage_minification", name: "Manage Asset Minification" }
-        ]
-      },
-      {
-        id: "analytics",
-        name: "Analytics Tools",
-        permissions: [{ id: "view_analytics", name: "Access Analytics Data" }]
-      },
-      {
-        id: "url_management",
-        name: "URL Management",
-        permissions: [{ id: "manage_redirects", name: "Manage URL Redirects" }]
-      }
-    ]
-  },
-  {
-    id: "system",
-    name: "System Administration",
-    groups: [
-      {
-        id: "user_management",
-        name: "User Administration",
-        permissions: [
-          { id: "manage_users", name: "Manage User Accounts" },
-          { id: "manage_roles", name: "Manage User Roles" }
-        ]
-      },
-      {
-        id: "system_settings",
-        name: "System Configuration",
-        permissions: [{ id: "manage_settings", name: "Manage System Settings" }]
-      },
-      {
-        id: "system_maintenance",
-        name: "System Maintenance",
-        permissions: [
-          { id: "manage_backups", name: "Manage System Backups" },
-          { id: "manage_cache", name: "Manage System Cache" }
-        ]
-      },
-      {
-        id: "system_monitoring",
-        name: "System Monitoring",
-        permissions: [{ id: "view_logs", name: "View System Logs" }]
-      }
-    ]
-  }
-];
+// Load Permission Modules from JSON file
+const { modules: permissionModules } = permissionsData;
 
 // External Dependencies: Required JavaScript
 const userFormScripts = `
@@ -415,13 +313,13 @@ const userFormStyles = `
                             type="button"
                             class="btn btn-sm btn-outline-primary toggle-module"
                             data-module-id={module.id}
-                            data-expanded="true"
+                            data-expanded="false"
                             data-bs-toggle="tooltip"
                             data-bs-placement="top"
-                            title="Collapse All Permissions"
+                            title="Expand All Permissions"
                           >
-                            <i class="ri-subtract-line me-md-1" />
-                            <span class="d-none d-md-inline">Collapse All</span>
+                            <i class="ri-add-line me-md-1" />
+                            <span class="d-none d-md-inline">Expand All</span>
                           </button>
                         </div>
                       </div>
@@ -454,11 +352,11 @@ const userFormStyles = `
                                     data-group-id={group.id}
                                     title="Toggle Group Permissions"
                                   >
-                                    <i class="ri-subtract-line" />
+                                    <i class="ri-add-line" />
                                   </button>
                                 </div>
                                 <div
-                                  class="permission-items border-top pb-3 ps-4 collapse show"
+                                  class="permission-items border-top pb-3 ps-4 collapse"
                                   id={`permissions_${group.id}`}
                                 >
                                   {group.permissions.map((permission) => (

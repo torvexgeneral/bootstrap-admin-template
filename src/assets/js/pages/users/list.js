@@ -231,8 +231,8 @@ var UsersDatatable = (function () {
       if ($(".form-check-input:checked").length > 0) {
         $(".form-check-input").prop("checked", false)
       }
-      if ($(".form-select").length > 0) {
-        $(".form-select").val("")
+      if ($("#filterDrawer .form-select").length > 0) {
+        $("#filterDrawer .form-select").val("")
       }
 
       $('[data-table-filter="search"]').val("")
