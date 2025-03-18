@@ -5,7 +5,6 @@
 
 import { fileURLToPath } from "url"
 import { runCommand, log } from "./utils.mjs"
-import esbuild from "esbuild"
 import fs from "fs/promises"
 import path from "path"
 
@@ -41,41 +40,34 @@ export async function buildJs(options = {}) {
       throw new Error(`Rollup config file not found: ${configPath}`)
     }
 
+    // Ensure the output directory exists
+    const distJsDir = path.join(projectRoot, 'dist/js')
+    await fs.mkdir(distJsDir, { recursive: true })
+
     // Bundle with Rollup
-    log("Bundling JavaScript with Rollup...", "info", "JS")
-    await runCommand("rollup", ["--config", configPath, "--sourcemap"])
-    log("JavaScript bundling completed", "success", "JS")
+    log("Bundling JavaScript...", "info", "JS")
 
-    // Skip minification in dev mode or if explicitly skipped
-    if (!opts.isDev && !opts.skipMinification) {
-      log("Minifying JavaScript...", "info", "JS")
-
-      // Ensure the output directory exists
-      const distJsDir = path.join(projectRoot, 'dist/js')
-      await fs.mkdir(distJsDir, { recursive: true })
-
-      // Check if the main.js file exists
-      const mainJsPath = path.join(distJsDir, 'main.js')
+    // In development, only build non-minified version
+    if (opts.isDev || opts.skipMinification) {
+      await runCommand("rollup", [
+        "--config", configPath,
+        "--sourcemap",
+        "--environment", "BUILD:development"
+      ])
+      // Remove the minified version if it exists
       try {
-        await fs.access(mainJsPath)
+        await fs.unlink(path.join(distJsDir, 'main.min.js'))
+        await fs.unlink(path.join(distJsDir, 'main.min.js.map'))
       } catch {
-        throw new Error(`Main JS file not found: ${mainJsPath}`)
+        // Ignore errors if files don't exist
       }
-
-      // Minify with esbuild
-      await esbuild.build({
-        entryPoints: [mainJsPath],
-        outfile: path.join(distJsDir, 'main.min.js'),
-        sourcemap: true,
-        target: ["es2015"],
-        format: 'esm',
-        minify: true,
-        logLevel: opts.verbose ? "info" : "error"
-      })
-
-      log("JavaScript minification completed", "success", "JS")
-    } else if (opts.verbose) {
-      log("Skipping JavaScript minification", "info", "JS")
+    } else {
+      // In production, build both versions
+      await runCommand("rollup", [
+        "--config", configPath,
+        "--sourcemap",
+        "--environment", "BUILD:production"
+      ])
     }
 
     log(`JS ${opts.isDev ? 'development' : 'production'} build completed`, "success", "JS")
