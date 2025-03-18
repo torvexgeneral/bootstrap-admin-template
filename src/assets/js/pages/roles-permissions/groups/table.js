@@ -180,6 +180,9 @@ var GroupsDatatable = (function () {
       if ($(".form-check-input:checked").length > 0) {
         $(".form-check-input").prop("checked", false)
       }
+      if ($("#filterDrawer .form-select").length > 0) {
+        $("#filterDrawer .form-select").val("")
+      }
 
       $('[data-table-filter="search"]').val("")
       $(".search-clear").hide()

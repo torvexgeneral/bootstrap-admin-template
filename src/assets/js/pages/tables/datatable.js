@@ -2,7 +2,7 @@ import { getAssetPrefix } from "../../../js/path-utils.js";
 ("use strict")
 
 let data_url = getAssetPrefix("/assets/data/products.json")
-let assetpath = getAssetPrefix("/assets/")
+let assetpath = getAssetPrefix("/assets")
 
 let pageindex = 0 // Default to first page if not specified
 

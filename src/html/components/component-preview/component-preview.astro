@@ -13,6 +13,7 @@ export interface Props {
   disableModal?: boolean;
   disableEditMode?: boolean;
   disableDownload?: boolean;
+  iframeSrc?: string;
 }
 
 const {
@@ -24,18 +25,19 @@ const {
   height = 'auto',
   disableModal = false,
   disableEditMode = false,
-  disableDownload = false
+  disableDownload = false,
+  iframeSrc = ''
 } = Astro.props;
 
 const previewId = generatePreviewId();
 const isDev = import.meta.env.DEV;
 
-const iframeContent = createIframeContent({
+const iframeContent = !iframeSrc ? createIframeContent({
   component,
   cssCode,
   jsCode,
   isDev
-});
+}) : '';
 
 // Define tabs configuration
 const tabs = [
@@ -56,7 +58,7 @@ type TabButtonAttributes = astroHTML.JSX.ButtonHTMLAttributes & {
 };
 ---
 
-<div class="card mb-4 preview-box" data-toc-skip>
+<div class="card mb-4 preview-box" data-toc-skip {...(iframeSrc && { "data-external-src": iframeSrc })}>
   <div class="card-header d-flex justify-content-between align-items-center preview-header" style="min-height: 48px;">
     <span class="card-title fs-6 mb-0">{title}</span>
 
@@ -87,7 +89,7 @@ type TabButtonAttributes = astroHTML.JSX.ButtonHTMLAttributes & {
         id={`iframe-${previewId}`}
         class="preview-iframe"
         style="width: 100%; height: 100%; border: none;"
-        srcdoc={iframeContent}
+        {...(iframeSrc ? { src: iframeSrc } : { srcdoc: iframeContent })}
         title={title}
       />
     </div>
@@ -209,7 +211,7 @@ type TabButtonAttributes = astroHTML.JSX.ButtonHTMLAttributes & {
 </div>
 
 {!disableModal && (
-  <div class="modal fade preview-modal" data-toc-skip id={previewId} tabindex="-1" aria-labelledby={`${previewId}-label`} aria-hidden="true">
+  <div class="modal fade preview-modal" data-toc-skip id={previewId} tabindex="-1" aria-labelledby={`${previewId}-label`} aria-hidden="true" {...(iframeSrc && { "data-external-src": iframeSrc })}>
     <div class="modal-dialog modal-fullscreen-xl-down" style="max-width: 95vw; height: 95vh; margin: 1rem auto;">
       <div class="modal-content border-0 h-100">
         <div class="modal-header py-2 d-flex justify-content-between align-items-center bg-body-secondary border-bottom">
@@ -221,8 +223,11 @@ type TabButtonAttributes = astroHTML.JSX.ButtonHTMLAttributes & {
             <PreviewButton
               icon="ri-sun-line"
               title="Toggle Theme"
-              className="theme-toggle me-2"
-              extraAttributes={{"data-current-theme": "light"}}
+              className='theme-toggle me-2'
+              extraAttributes={{
+                "data-current-theme": "light",
+                ...(iframeSrc && {"data-iframe-id": `iframe-modal-${previewId}`})
+              }}
             />
             <PreviewButton
               icon="ri-close-line"
@@ -237,7 +242,7 @@ type TabButtonAttributes = astroHTML.JSX.ButtonHTMLAttributes & {
               id={`iframe-modal-${previewId}`}
               class="preview-iframe"
               style="width: 100%; height: 100%; border: none;"
-              srcdoc={iframeContent}
+              {...(iframeSrc ? { src: iframeSrc } : { srcdoc: iframeContent })}
               title={`${title} (Modal View)`}
             />
           </div>
@@ -247,7 +252,7 @@ type TabButtonAttributes = astroHTML.JSX.ButtonHTMLAttributes & {
   </div>
 )}
 
-<script is:inline define:vars={{ previewId }}>
+<script is:inline define:vars={{ previewId, iframeSrc }}>
   document.addEventListener('DOMContentLoaded', () => {
     // Add keyboard shortcut hints to tooltips
     const editButton = document.querySelector(`#${previewId} .edit-button, .preview-box[data-modal="${previewId}"] .edit-button`);

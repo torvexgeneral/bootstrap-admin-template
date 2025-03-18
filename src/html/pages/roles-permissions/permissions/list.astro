@@ -33,192 +33,472 @@ const pageHeaderProps = {
     {
       label: "Add Permission",
       href: getPathPrefix("/roles-permissions/permissions/add"),
-      variant: "btn-primary",
+      variant: "primary",
       icon: "ri-add-line"
     }
   ]
 };
 
+// Fetch permissions data from JSON file
 const permissions = [
   {
     id: 1,
-    title: "view_cms",
-    display_name: "View CMS",
+    title: "view_pages",
+    display_name: "View Pages",
     module: "CMS",
-    group: "Content Management",
+    group: "Pages Management",
     status: "Active",
     added_at: "2024-03-15T10:30:00"
   },
   {
     id: 2,
-    title: "edit_cms",
-    display_name: "Edit CMS",
+    title: "add_pages",
+    display_name: "Create New Pages",
     module: "CMS",
-    group: "Content Management",
+    group: "Pages Management",
     status: "Active",
     added_at: "2024-03-15T10:30:00"
   },
   {
     id: 3,
-    title: "manage_seo",
-    display_name: "Manage SEO",
-    module: "SEO",
-    group: "SEO Management",
+    title: "edit_pages",
+    display_name: "Edit Pages",
+    module: "CMS",
+    group: "Pages Management",
     status: "Active",
-    added_at: "2024-03-15T11:00:00"
+    added_at: "2024-03-15T10:30:00"
   },
   {
     id: 4,
-    title: "view_analytics",
-    display_name: "View Analytics",
-    module: "SEO",
-    group: "Analytics",
-    status: "Inactive",
-    added_at: "2024-03-15T11:30:00"
+    title: "delete_pages",
+    display_name: "Delete Pages",
+    module: "CMS",
+    group: "Pages Management",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
   },
   {
     id: 5,
-    title: "manage_users",
-    display_name: "Manage Users",
-    module: "System",
-    group: "User Management",
+    title: "restore_pages",
+    display_name: "Restore Deleted Pages",
+    module: "CMS",
+    group: "Pages Management",
     status: "Active",
-    added_at: "2024-03-15T12:00:00"
+    added_at: "2024-03-15T10:30:00"
   },
   {
     id: 6,
-    title: "manage_roles",
-    display_name: "Manage Roles",
-    module: "System",
-    group: "User Management",
+    title: "publish_pages",
+    display_name: "Publish/Unpublish Pages",
+    module: "CMS",
+    group: "Pages Management",
     status: "Active",
-    added_at: "2024-03-15T12:30:00"
+    added_at: "2024-03-15T10:30:00"
   },
   {
     id: 7,
-    title: "manage_settings",
-    display_name: "Manage Settings",
-    module: "System",
-    group: "System Settings",
+    title: "view_posts",
+    display_name: "View Posts",
+    module: "CMS",
+    group: "Posts Management",
     status: "Active",
-    added_at: "2024-03-15T13:00:00"
+    added_at: "2024-03-15T10:30:00"
   },
   {
     id: 8,
-    title: "view_logs",
-    display_name: "View Logs",
-    module: "System",
-    group: "System Monitoring",
-    status: "Inactive",
-    added_at: "2024-03-15T13:30:00"
+    title: "add_posts",
+    display_name: "Create New Posts",
+    module: "CMS",
+    group: "Posts Management",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
   },
   {
     id: 9,
-    title: "manage_media",
-    display_name: "Manage Media",
+    title: "edit_posts",
+    display_name: "Edit Posts",
     module: "CMS",
-    group: "Media Management",
+    group: "Posts Management",
     status: "Active",
-    added_at: "2024-03-15T14:00:00"
+    added_at: "2024-03-15T10:30:00"
   },
   {
     id: 10,
-    title: "manage_pages",
-    display_name: "Manage Pages",
+    title: "delete_posts",
+    display_name: "Delete Posts",
     module: "CMS",
-    group: "Content Management",
-    status: "Trashed",
-    added_at: "2024-03-15T14:30:00"
+    group: "Posts Management",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
   },
   {
     id: 11,
-    title: "manage_posts",
-    display_name: "Manage Posts",
+    title: "restore_posts",
+    display_name: "Restore Deleted Posts",
     module: "CMS",
-    group: "Content Management",
+    group: "Posts Management",
     status: "Active",
-    added_at: "2024-03-15T15:00:00"
+    added_at: "2024-03-15T10:30:00"
   },
   {
     id: 12,
-    title: "manage_comments",
-    display_name: "Manage Comments",
+    title: "publish_posts",
+    display_name: "Publish/Unpublish Posts",
     module: "CMS",
-    group: "Content Management",
+    group: "Posts Management",
     status: "Active",
-    added_at: "2024-03-15T15:30:00"
+    added_at: "2024-03-15T10:30:00"
   },
   {
     id: 13,
-    title: "manage_categories",
-    display_name: "Manage Categories",
+    title: "view_media",
+    display_name: "View Media Files",
     module: "CMS",
-    group: "Content Organization",
+    group: "Media Library",
     status: "Active",
-    added_at: "2024-03-15T16:00:00"
+    added_at: "2024-03-15T10:30:00"
   },
   {
     id: 14,
-    title: "manage_tags",
-    display_name: "Manage Tags",
+    title: "upload_media",
+    display_name: "Upload Media Files",
     module: "CMS",
-    group: "Content Organization",
-    status: "Inactive",
-    added_at: "2024-03-15T16:30:00"
+    group: "Media Library",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
   },
   {
     id: 15,
-    title: "manage_menus",
-    display_name: "Manage Menus",
+    title: "edit_media",
+    display_name: "Edit Media Details",
     module: "CMS",
-    group: "Navigation",
+    group: "Media Library",
     status: "Active",
-    added_at: "2024-03-15T17:00:00"
+    added_at: "2024-03-15T10:30:00"
   },
   {
     id: 16,
-    title: "manage_redirects",
-    display_name: "Manage Redirects",
-    module: "SEO",
-    group: "URL Management",
+    title: "delete_media",
+    display_name: "Delete Media Files",
+    module: "CMS",
+    group: "Media Library",
     status: "Active",
-    added_at: "2024-03-15T17:30:00"
+    added_at: "2024-03-15T10:30:00"
   },
   {
     id: 17,
-    title: "manage_meta",
-    display_name: "Manage Meta Tags",
-    module: "SEO",
-    group: "SEO Management",
+    title: "restore_media",
+    display_name: "Restore Deleted Media",
+    module: "CMS",
+    group: "Media Library",
     status: "Active",
-    added_at: "2024-03-15T18:00:00"
+    added_at: "2024-03-15T10:30:00"
   },
   {
     id: 18,
-    title: "manage_backups",
-    display_name: "Manage Backups",
-    module: "System",
-    group: "System Maintenance",
+    title: "view_categories",
+    display_name: "View Categories",
+    module: "CMS",
+    group: "Categories Management",
     status: "Active",
-    added_at: "2024-03-15T18:30:00"
+    added_at: "2024-03-15T10:30:00"
   },
   {
     id: 19,
-    title: "manage_cache",
-    display_name: "Manage Cache",
-    module: "System",
-    group: "System Maintenance",
-    status: "Trashed",
-    added_at: "2024-03-15T19:00:00"
+    title: "add_categories",
+    display_name: "Create Categories",
+    module: "CMS",
+    group: "Categories Management",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
   },
   {
     id: 20,
-    title: "manage_api",
-    display_name: "Manage API",
-    module: "System",
-    group: "API Management",
+    title: "edit_categories",
+    display_name: "Edit Categories",
+    module: "CMS",
+    group: "Categories Management",
     status: "Active",
-    added_at: "2024-03-15T19:30:00"
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 21,
+    title: "delete_categories",
+    display_name: "Delete Categories",
+    module: "CMS",
+    group: "Categories Management",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 22,
+    title: "restore_categories",
+    display_name: "Restore Categories",
+    module: "CMS",
+    group: "Categories Management",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 23,
+    title: "view_seo_settings",
+    display_name: "View SEO Settings",
+    module: "SEO",
+    group: "SEO Settings",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 24,
+    title: "edit_seo_settings",
+    display_name: "Edit SEO Settings",
+    module: "SEO",
+    group: "SEO Settings",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 25,
+    title: "manage_meta_tags",
+    display_name: "Manage Meta Tags",
+    module: "SEO",
+    group: "SEO Settings",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 26,
+    title: "manage_sitemaps",
+    display_name: "Manage Sitemaps",
+    module: "SEO",
+    group: "SEO Settings",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 27,
+    title: "view_redirects",
+    display_name: "View Redirects",
+    module: "SEO",
+    group: "URL Redirects",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 28,
+    title: "add_redirects",
+    display_name: "Add Redirects",
+    module: "SEO",
+    group: "URL Redirects",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 29,
+    title: "edit_redirects",
+    display_name: "Edit Redirects",
+    module: "SEO",
+    group: "URL Redirects",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 30,
+    title: "delete_redirects",
+    display_name: "Delete Redirects",
+    module: "SEO",
+    group: "URL Redirects",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 31,
+    title: "view_analytics",
+    display_name: "View Analytics Dashboard",
+    module: "SEO",
+    group: "Analytics",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 32,
+    title: "export_analytics",
+    display_name: "Export Analytics Data",
+    module: "SEO",
+    group: "Analytics",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 33,
+    title: "manage_analytics_settings",
+    display_name: "Manage Analytics Settings",
+    module: "SEO",
+    group: "Analytics",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 34,
+    title: "view_users",
+    display_name: "View Users",
+    module: "System",
+    group: "User Management",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 35,
+    title: "add_users",
+    display_name: "Create Users",
+    module: "System",
+    group: "User Management",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 36,
+    title: "edit_users",
+    display_name: "Edit Users",
+    module: "System",
+    group: "User Management",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 37,
+    title: "delete_users",
+    display_name: "Delete Users",
+    module: "System",
+    group: "User Management",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 38,
+    title: "restore_users",
+    display_name: "Restore Users",
+    module: "System",
+    group: "User Management",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 39,
+    title: "block_users",
+    display_name: "Block/Unblock Users",
+    module: "System",
+    group: "User Management",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 40,
+    title: "view_roles",
+    display_name: "View Roles",
+    module: "System",
+    group: "Role Management",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 41,
+    title: "add_roles",
+    display_name: "Create Roles",
+    module: "System",
+    group: "Role Management",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 42,
+    title: "edit_roles",
+    display_name: "Edit Roles",
+    module: "System",
+    group: "Role Management",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 43,
+    title: "delete_roles",
+    display_name: "Delete Roles",
+    module: "System",
+    group: "Role Management",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 44,
+    title: "assign_permissions",
+    display_name: "Assign Role Permissions",
+    module: "System",
+    group: "Role Management",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 45,
+    title: "view_settings",
+    display_name: "View System Settings",
+    module: "System",
+    group: "System Settings",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 46,
+    title: "edit_settings",
+    display_name: "Edit System Settings",
+    module: "System",
+    group: "System Settings",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 47,
+    title: "manage_backups",
+    display_name: "Manage System Backups",
+    module: "System",
+    group: "System Settings",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 48,
+    title: "manage_cache",
+    display_name: "Manage System Cache",
+    module: "System",
+    group: "System Settings",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 49,
+    title: "view_logs",
+    display_name: "View System Logs",
+    module: "System",
+    group: "System Logs",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 50,
+    title: "delete_logs",
+    display_name: "Delete System Logs",
+    module: "System",
+    group: "System Logs",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
+  },
+  {
+    id: 51,
+    title: "export_logs",
+    display_name: "Export System Logs",
+    module: "System",
+    group: "System Logs",
+    status: "Active",
+    added_at: "2024-03-15T10:30:00"
   }
 ];
 ---
@@ -362,18 +642,17 @@ const permissions = [
                             data-table-filter="group"
                           >
                             <option value="">All Groups</option>
-                            <option value="Content Management">Content Management</option>
-                            <option value="Media Management">Media Management</option>
-                            <option value="User Management">User Management</option>
-                            <option value="System Settings">System Settings</option>
-                            <option value="System Maintenance">System Maintenance</option>
-                            <option value="System Monitoring">System Monitoring</option>
-                            <option value="SEO Management">SEO Management</option>
+                            <option value="Pages Management">Pages Management</option>
+                            <option value="Posts Management">Posts Management</option>
+                            <option value="Media Library">Media Library</option>
+                            <option value="Categories Management">Categories Management</option>
+                            <option value="SEO Settings">SEO Settings</option>
+                            <option value="URL Redirects">URL Redirects</option>
                             <option value="Analytics">Analytics</option>
-                            <option value="Content Organization">Content Organization</option>
-                            <option value="Navigation">Navigation</option>
-                            <option value="URL Management">URL Management</option>
-                            <option value="API Management">API Management</option>
+                            <option value="User Management">User Management</option>
+                            <option value="Role Management">Role Management</option>
+                            <option value="System Settings">System Settings</option>
+                            <option value="System Logs">System Logs</option>
                           </select>
                         </div>
                       </div>

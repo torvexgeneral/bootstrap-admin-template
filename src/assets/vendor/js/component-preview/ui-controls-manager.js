@@ -411,36 +411,48 @@ window.UIControlsManager = class UIControlsManager {
       }
     }
 
-    const htmlEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, "html")
-    const cssEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, "css")
-    const jsEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, "javascript")
+    if(!previewBox.dataset.externalSrc) {
+      const htmlEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, "html")
+      const cssEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, "css")
+      const jsEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, "javascript")
 
-    const htmlContent = htmlEditor ? htmlEditor.getValue() : ''
-    const cssContent = cssEditor ? cssEditor.getValue() : ''
-    const jsContent = jsEditor ? jsEditor.getValue() : ''
+      const htmlContent = htmlEditor ? htmlEditor.getValue() : ''
+      const cssContent = cssEditor ? cssEditor.getValue() : ''
+      const jsContent = jsEditor ? jsEditor.getValue() : ''
 
-    // Update iframe content with new theme
-    if (iframe.contentWindow) {
-      try {
-        iframe.contentWindow.postMessage({
-          type: 'setTheme',
-          theme: theme,
-          version: ++this.themeVersion
-        }, '*')
-      } catch (e) {
-        console.error('Error updating iframe theme:', e)
+      // Update iframe content with new theme
+      if (iframe.contentWindow) {
+        try {
+          iframe.contentWindow.postMessage({
+            type: 'setTheme',
+            theme: theme,
+            version: ++this.themeVersion
+          }, '*')
+        } catch (e) {
+          console.error('Error updating iframe theme:', e)
 
-        // If direct update fails, recreate the iframe content
+          // If direct update fails, recreate the iframe content
+          if (typeof window.PreviewManager !== 'undefined') {
+            const iframeContent = window.PreviewManager.createIframeContent(htmlContent, cssContent, jsContent, theme)
+            iframe.srcdoc = iframeContent
+          }
+        }
+      } else {
+        // If contentWindow is not available, recreate the iframe content
         if (typeof window.PreviewManager !== 'undefined') {
           const iframeContent = window.PreviewManager.createIframeContent(htmlContent, cssContent, jsContent, theme)
           iframe.srcdoc = iframeContent
         }
       }
-    } else {
-      // If contentWindow is not available, recreate the iframe content
-      if (typeof window.PreviewManager !== 'undefined') {
-        const iframeContent = window.PreviewManager.createIframeContent(htmlContent, cssContent, jsContent, theme)
-        iframe.srcdoc = iframeContent
+    }else{
+      // iframe.src = previewBox.dataset.externalSrc
+
+      if (iframe.contentWindow) {
+        try {
+          iframe.contentWindow.postMessage({ type: 'setTheme', theme: theme }, '*')
+        } catch (e) {
+          console.error('Error updating iframe theme:', e)
+        }
       }
     }
 
@@ -664,22 +676,29 @@ window.UIControlsManager = class UIControlsManager {
     const showModalContent = () => {
       if (!previewBox || !modalIframe) return
 
-      const htmlEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, "html")
-      const cssEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, "css")
-      const jsEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, "javascript")
+      // Check if using external source
+      const externalSrc = previewBox.dataset.externalSrc
+      if (!externalSrc) {
+        // For non-external sources, proceed with full content sync
+        const htmlEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, "html")
+        const cssEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, "css")
+        const jsEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, "javascript")
 
-      const htmlContent = htmlEditor ? htmlEditor.getValue() : ''
-      const cssContent = cssEditor ? cssEditor.getValue() : ''
-      const jsContent = jsEditor ? jsEditor.getValue() : ''
+        const htmlContent = htmlEditor ? htmlEditor.getValue() : ''
+        const cssContent = cssEditor ? cssEditor.getValue() : ''
+        const jsContent = jsEditor ? jsEditor.getValue() : ''
 
-      // Get component-specific theme
-      const themeToggle = previewBox.querySelector('.theme-toggle')
-      const theme = themeToggle?.dataset.currentTheme || 'light'
-
-      // Create iframe content
-      if (typeof window.PreviewManager !== 'undefined') {
-        const iframeContent = window.PreviewManager.createIframeContent(htmlContent, cssContent, jsContent, theme)
-        modalIframe.srcdoc = iframeContent
+        // Get component-specific theme
+        const themeToggle = previewBox.querySelector('.theme-toggle')
+        const theme = themeToggle?.dataset.currentTheme || 'light'
+  
+        // Create iframe content
+        if (typeof window.PreviewManager !== 'undefined') {
+          const iframeContent = window.PreviewManager.createIframeContent(htmlContent, cssContent, jsContent, theme)
+          modalIframe.srcdoc = iframeContent
+        }
+      } else {
+        //modalIframe.src = externalSrc
       }
 
       let modalInstance = bootstrap.Modal.getInstance(modal)
@@ -716,38 +735,34 @@ window.UIControlsManager = class UIControlsManager {
   static syncModalContent(previewBox, modal) {
     if (!previewBox || !modal) return
 
-    // Sync HTML content
-    const htmlEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'html')
-    const modalHtmlEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(modal, 'html')
+    // Check if using external source
+    const externalSrc = previewBox.dataset.externalSrc
+    if (!externalSrc) {
+      // For non-external sources, proceed with full content sync
+      // Sync HTML content
+      const htmlEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'html')
+      const modalHtmlEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(modal, 'html')
 
-    if (htmlEditor && modalHtmlEditor) {
-      modalHtmlEditor.setValue(htmlEditor.getValue())
+      if (htmlEditor && modalHtmlEditor) {
+        modalHtmlEditor.setValue(htmlEditor.getValue())
+      }
+
+      // Sync CSS content
+      const cssEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'css')
+      const modalCssEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(modal, 'css')
+
+      if (cssEditor && modalCssEditor) {
+        modalCssEditor.setValue(cssEditor.getValue())
+      }
+
+      // Sync JS content
+      const jsEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'javascript')
+      const modalJsEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(modal, 'javascript')
+
+      if (jsEditor && modalJsEditor) {
+        modalJsEditor.setValue(jsEditor.getValue())
+      }
     }
-
-    // Sync CSS content
-    const cssEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'css')
-    const modalCssEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(modal, 'css')
-
-    if (cssEditor && modalCssEditor) {
-      modalCssEditor.setValue(cssEditor.getValue())
-    }
-
-    // Sync JS content
-    const jsEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'javascript')
-    const modalJsEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(modal, 'javascript')
-
-    if (jsEditor && modalJsEditor) {
-      modalJsEditor.setValue(jsEditor.getValue())
-    }
-
-    // Sync iframe content
-    const iframe = previewBox.querySelector('.preview-iframe')
-    const modalIframe = modal.querySelector('.preview-iframe')
-
-    if (iframe && modalIframe && iframe.src) {
-      modalIframe.src = iframe.src
-    }
-
     // Sync theme
     const themeToggle = previewBox.querySelector('.theme-toggle')
     const modalThemeToggle = modal.querySelector('.theme-toggle')
@@ -758,7 +773,7 @@ window.UIControlsManager = class UIControlsManager {
 
       const icon = modalThemeToggle.querySelector('i')
       if (icon) {
-        UIControlsManager.updateThemeIcon(icon, theme)
+        this.updateThemeIcon(icon, theme)
       }
     }
   }

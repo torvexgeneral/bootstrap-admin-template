@@ -25,32 +25,38 @@ const roles = [
     title: "administrator",
     totalUsers: 2,
     permissions: [
-      "View Backend",
+      "View System Settings",
       "View Admin Bar",
-      "Edit Settings",
-      "Manage Subscribers",
+      "Edit System Settings",
       "View Users",
-      "Add Users"
+      "Create Users",
+      "Manage System Backups"
     ],
-    totalPermissions: 69
+    totalPermissions: 48
   },
   {
     title: "editor",
     totalUsers: 1,
     permissions: [
-      "View Backend",
-      "View Admin Bar",
       "View Posts",
-      "Add Posts",
+      "Create New Posts",
       "Edit Posts",
-      "Delete Posts"
+      "Delete Posts",
+      "Publish/Unpublish Posts",
+      "View Media Files"
     ],
-    totalPermissions: 47
+    totalPermissions: 39
   },
   {
     title: "author",
     totalUsers: 0,
-    permissions: ["View Posts", "Add Posts", "Edit Posts", "Delete Posts", "Restore Posts"],
+    permissions: [
+      "View Posts",
+      "Create New Posts",
+      "Edit Posts",
+      "Delete Posts",
+      "Restore Deleted Posts"
+    ],
     totalPermissions: 5
   },
   {
