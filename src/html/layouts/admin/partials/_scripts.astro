@@ -44,8 +44,7 @@ function getJS(filename) {
 <!-- Initialize Theme Js -->
 <script src={getJS("main")} type="module"></script>
 
-<!-- Page Script -->
-{pageScript && <Fragment set:html={pageScript} />}
+<!-- Page Script -->{pageScript && <Fragment set:html={pageScript} />}
 
 <!-- Component JS -->
 {
