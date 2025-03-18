@@ -56,7 +56,7 @@ type TabButtonAttributes = astroHTML.JSX.ButtonHTMLAttributes & {
 };
 ---
 
-<div class="card mb-4 preview-box js-toc-ignore-div" data-toc-skip>
+<div class="card mb-4 preview-box" data-toc-skip>
   <div class="card-header d-flex justify-content-between align-items-center preview-header" style="min-height: 48px;">
     <span class="card-title fs-6 mb-0">{title}</span>
 
@@ -209,7 +209,7 @@ type TabButtonAttributes = astroHTML.JSX.ButtonHTMLAttributes & {
 </div>
 
 {!disableModal && (
-  <div class="modal fade preview-modal js-toc-ignore-div" id={previewId} tabindex="-1" aria-labelledby={`${previewId}-label`} aria-hidden="true">
+  <div class="modal fade preview-modal" data-toc-skip id={previewId} tabindex="-1" aria-labelledby={`${previewId}-label`} aria-hidden="true">
     <div class="modal-dialog modal-fullscreen-xl-down" style="max-width: 95vw; height: 95vh; margin: 1rem auto;">
       <div class="modal-content border-0 h-100">
         <div class="modal-header py-2 d-flex justify-content-between align-items-center bg-body-secondary border-bottom">
