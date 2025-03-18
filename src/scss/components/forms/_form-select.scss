@@ -25,9 +25,7 @@ $form-select-padding: 0.275rem 0.5rem !default;
   }
 
   &:focus {
-    margin: -1px; // Compensate for the increased border width
     border-color: var(--bs-primary);
-    border-width: 2px;
   }
 }
 
