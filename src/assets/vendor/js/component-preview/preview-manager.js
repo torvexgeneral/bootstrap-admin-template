@@ -393,10 +393,7 @@ window.PreviewManager = class PreviewManager {
             ${htmlContent}
           </div>
         </div>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="${this.getJSPath('main')}"></script>
-
+        <script src="${this.getJSPath('main')}" type="module"></script>
         <script id="custom-js">
           ${jsContent}
         </script>

@@ -15,12 +15,12 @@ export default {
   input: 'src/js/main.js',
   output: {
     file: 'dist/js/main.js',
-    format: 'umd',
-    name: 'AsteroTheme',
+    format: 'esm',
+    name: 'AsteroAdmin',
     banner,
     sourcemap: true,
     amd: {
-      id: 'astero-theme'
+      id: 'astero-admin'
     }
   }
 }

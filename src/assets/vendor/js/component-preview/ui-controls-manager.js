@@ -758,7 +758,7 @@ window.UIControlsManager = class UIControlsManager {
 
       const icon = modalThemeToggle.querySelector('i')
       if (icon) {
-        window.CodeMirrorManager?.updateThemeIcon(icon, theme)
+        UIControlsManager.updateThemeIcon(icon, theme)
       }
     }
   }
