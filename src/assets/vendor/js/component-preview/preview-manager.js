@@ -28,62 +28,72 @@ window.PreviewManager = class PreviewManager {
 
     const iframe = previewBox.querySelector('.preview-iframe')
     if (!iframe) return
-
+    
     // Debounce updates by preview box
     const previewBoxId = previewBox.id || 'default'
     this.debounceByPreviewBox(previewBoxId, () => {
       try {
-        // Get all editors
-        const htmlEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'html')
-        const cssEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'css')
-        const jsEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'javascript')
-
-        // Validate editors and content
-        const validateEditor = (editor, type) => {
-          if (!editor) return ''
-          try {
-            const value = editor.getValue()
-            return typeof value === 'string' ? value : ''
-          } catch (err) {
-            console.error(`Error getting ${type} content:`, err)
-            return ''
+        // Check if using external source
+        const externalSrc = previewBox.dataset.externalSrc
+        if (externalSrc) {
+          // For external sources, only update if src has changed
+          if (iframe.src !== externalSrc) {
+            //iframe.src = externalSrc
           }
-        }
+        }else{
+          // Get all editors
+          const htmlEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'html')
+          const cssEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'css')
+          const jsEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'javascript')
 
-        const htmlContent = validateEditor(htmlEditor, 'HTML')
-        const cssContent = validateEditor(cssEditor, 'CSS')
-        const jsContent = validateEditor(jsEditor, 'JavaScript')
-
-        // Get theme
-        const themeToggle = previewBox.querySelector('.theme-toggle')
-        const theme = themeToggle?.dataset.currentTheme || 'light'
-
-        // Update iframe content with error handling
-        if (iframe.contentWindow) {
-          try {
-            iframe.contentWindow.postMessage({
-              type: 'updateContent',
-              html: htmlContent,
-              css: cssContent,
-              js: jsContent
-            }, '*')
-
-            iframe.contentWindow.postMessage({ type: 'setTheme', theme: theme }, '*')
-
-            // Clear any previous error messages
-            const errorContainer = previewBox.querySelector('.preview-update-container')
-            if (errorContainer) {
-              errorContainer.classList.add('d-none')
+          // Validate editors and content
+          const validateEditor = (editor, type) => {
+            if (!editor) return ''
+            try {
+              const value = editor.getValue()
+              return typeof value === 'string' ? value : ''
+            } catch (err) {
+              console.error(`Error getting ${type} content:`, err)
+              return ''
             }
-          } catch (err) {
-            console.error('Error updating iframe content:', err)
-            this.showError(previewBox, 'Failed to update preview: ' + err.message)
           }
-        } else {
-          // Fallback to full refresh if contentWindow is not available
-          const iframeContent = this.createIframeContent(htmlContent, cssContent, jsContent, theme)
-          iframe.srcdoc = iframeContent
+
+          const htmlContent = validateEditor(htmlEditor, 'HTML')
+          const cssContent = validateEditor(cssEditor, 'CSS')
+          const jsContent = validateEditor(jsEditor, 'JavaScript')
+
+          // Get theme
+          const themeToggle = previewBox.querySelector('.theme-toggle')
+          const theme = themeToggle?.dataset.currentTheme || 'light'
+
+          // Update iframe content with error handling
+          if (iframe.contentWindow) {
+            try {
+              iframe.contentWindow.postMessage({
+                type: 'updateContent',
+                html: htmlContent,
+                css: cssContent,
+                js: jsContent
+              }, '*')
+
+              iframe.contentWindow.postMessage({ type: 'setTheme', theme: theme }, '*')
+
+              // Clear any previous error messages
+              const errorContainer = previewBox.querySelector('.preview-update-container')
+              if (errorContainer) {
+                errorContainer.classList.add('d-none')
+              }
+            } catch (err) {
+              console.error('Error updating iframe content:', err)
+              this.showError(previewBox, 'Failed to update preview: ' + err.message)
+            }
+          } else {
+            // Fallback to full refresh if contentWindow is not available
+            const iframeContent = this.createIframeContent(htmlContent, cssContent, jsContent, theme)
+            iframe.srcdoc = iframeContent
+          }
         }
+
 
         // Sync with other previews
         this.syncPreviewContent(previewBox)
@@ -122,6 +132,17 @@ window.PreviewManager = class PreviewManager {
     const iframe = previewBox.querySelector('.preview-iframe')
     if (!iframe) return
 
+    // Check if using external source
+    const externalSrc = previewBox.dataset.externalSrc
+    if (externalSrc) {
+      // For external sources, only update if src has changed
+      if (iframe.src !== externalSrc) {
+        //iframe.src = externalSrc
+      }
+      return
+    }
+
+    // For non-external sources, proceed with full content update
     // Get all editors
     const htmlEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'html')
     const cssEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'css')
@@ -189,6 +210,20 @@ window.PreviewManager = class PreviewManager {
   }
 
   static syncPreviewContent(previewBox) {
+    // Check if using external source
+    const externalSrc = previewBox.dataset.externalSrc
+    if (externalSrc) {
+      // For external sources, only sync theme
+      const themeToggle = previewBox.querySelector('.theme-toggle')
+      const currentTheme = themeToggle?.dataset.currentTheme || 'light'
+
+      if (typeof window.UIControlsManager !== 'undefined') {
+        window.UIControlsManager.updateComponentTheme(previewBox, currentTheme)
+      }
+      return
+    }
+
+    // For non-external sources, proceed with full content sync
     if (previewBox.classList.contains('preview-box')) {
       const modalId = previewBox.dataset.modal ||
                      previewBox.querySelector(".preview-expand")?.getAttribute("data-bs-target")?.replace('#', '')
