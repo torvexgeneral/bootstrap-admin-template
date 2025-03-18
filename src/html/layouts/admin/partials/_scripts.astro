@@ -1,14 +1,12 @@
 ---
 import ComponentPreviewScripts from "../../../components/component-preview/_scripts_component_preview.astro";
-import TocScript from "../../../components/toc/_script_toc.astro";
 
 interface Props {
   enableComponentPreview?: boolean;
-  enableToc?: boolean;
   pageScript?: string;
 }
 
-const { enableComponentPreview = false, enableToc = false, pageScript } = Astro.props;
+const { enableComponentPreview = false, pageScript } = Astro.props;
 
 function getJS(filename) {
   const isDev = import.meta.env.DEV;
@@ -53,14 +51,6 @@ function getJS(filename) {
   enableComponentPreview && (
     <>
       <ComponentPreviewScripts />
-    </>
-  )
-}
-
-{
-  enableToc && (
-    <>
-      <TocScript />
     </>
   )
 }

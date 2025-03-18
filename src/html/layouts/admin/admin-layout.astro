@@ -10,7 +10,6 @@ interface Props {
   description?: string;
   currentPath?: string;
   enableComponentPreview?: boolean;
-  enableToc?: boolean;
   pageScript?: string;
   pageCss?: string;
   isRtl?: boolean;
@@ -21,7 +20,6 @@ const {
   description,
   currentPath,
   enableComponentPreview = false,
-  enableToc = false,
   pageScript,
   pageCss,
   isRtl = false
@@ -33,8 +31,7 @@ const pageSeo = {
 };
 
 const componentStatus = {
-  enableComponentPreview,
-  enableToc
+  enableComponentPreview
 };
 ---
 
