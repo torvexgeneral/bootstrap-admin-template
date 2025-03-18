@@ -40,7 +40,7 @@ const iframeContent = !iframeSrc ? createIframeContent({
 }) : '';
 
 // Define tabs configuration
-const tabs = !iframeSrc ? [
+const tabs = [
   {
     id: "html",
     label: "HTML",
@@ -48,7 +48,7 @@ const tabs = !iframeSrc ? [
   },
   ...(cssCode ? [{ id: "css", label: "CSS", active: false }] : []),
   ...(jsCode ? [{ id: "js", label: "JavaScript", active: false }] : [])
-] : [];
+];
 
 // Define button attributes type
 type TabButtonAttributes = astroHTML.JSX.ButtonHTMLAttributes & {
@@ -96,120 +96,118 @@ type TabButtonAttributes = astroHTML.JSX.ButtonHTMLAttributes & {
     <div class="preview-update-container d-none" role="alert" aria-live="polite"></div>
   </div>
 
-  {!iframeSrc && (
-    <div class="card-footer p-0">
-      <div class="code-preview-box">
-        <div class="d-flex align-items-center justify-content-between bg-body-tertiary">
-          <nav class="code-preview-nav d-flex" role="tablist">
-            {
-              tabs.map((tab) => {
-                const attributes: TabButtonAttributes = {
-                  class: `nav-link py-2 px-2 ${tab.active ? "active" : ""}`,
-                  id: `${tab.id}-tab`,
-                  "data-lang": tab.id,
-                  "data-bs-toggle": "tab",
-                  "data-bs-target": `#${previewId}-${tab.id}`,
-                  type: "button",
-                  role: "tab",
-                  "aria-selected": tab.active ? "true" : "false"
-                };
+  <div class="card-footer p-0">
+    <div class="code-preview-box">
+      <div class="d-flex align-items-center justify-content-between bg-body-tertiary">
+        <nav class="code-preview-nav d-flex" role="tablist">
+          {
+            tabs.map((tab) => {
+              const attributes: TabButtonAttributes = {
+                class: `nav-link py-2 px-2 ${tab.active ? "active" : ""}`,
+                id: `${tab.id}-tab`,
+                "data-lang": tab.id,
+                "data-bs-toggle": "tab",
+                "data-bs-target": `#${previewId}-${tab.id}`,
+                type: "button",
+                role: "tab",
+                "aria-selected": tab.active ? "true" : "false"
+              };
 
-                return <button {...attributes}>{tab.label}</button>;
-              })
-            }
-          </nav>
+              return <button {...attributes}>{tab.label}</button>;
+            })
+          }
+        </nav>
 
-          <div class="d-flex gap-2 me-3">
-            {!disableEditMode && (
-              <>
-                <PreviewButton
-                  icon="ri-restart-line"
-                  title="Reset all changes"
-                  className="reset-all-button p-3 lh-0"
-                  ariaLabel="Reset all changes"
-                  extraAttributes={{"data-bs-toggle": "tooltip", "data-bs-placement": "top"}}
-                />
-                <PreviewButton
-                  icon="ri-edit-line"
-                  title="Edit code"
-                  className="edit-button p-3 lh-0"
-                  ariaLabel="Edit code"
-                  extraAttributes={{"data-bs-toggle": "tooltip", "data-bs-placement": "top"}}
-                />
-              </>
-            )}
-            <PreviewButton
-              icon="ri-clipboard-line"
-              title="Copy current code"
-              className="copy-button p-3 lh-0"
-              ariaLabel="Copy code to clipboard"
-              extraAttributes={{"data-bs-toggle": "tooltip", "data-bs-placement": "top"}}
-            />
-            {!disableDownload && (
-              <div class="dropdown">
-                <PreviewButton
-                  icon="ri-download-line"
-                  title="Download code"
-                  className="download-dropdown-button p-3 lh-0"
-                  ariaLabel="Download code"
-                  extraAttributes={{
-                    "data-bs-toggle": "dropdown",
-                    "aria-expanded": "false"
-                  }}
-                />
-                <ul class="dropdown-menu dropdown-menu-end">
-                  <li>
-                    <button class="dropdown-item download-button" data-format="html" type="button">
-                      <i class="ri-html5-line me-2"></i>Download as HTML
-                    </button>
-                  </li>
-                  <li>
-                    <button class="dropdown-item download-button" data-format="zip" type="button">
-                      <i class="ri-file-zip-line me-2"></i>Download as ZIP
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            )}
-          </div>
-        </div>
-
-        <div class="visually-hidden">
-          <div class="copy-html" data-code={htmlCode} />
-          {cssCode && <div class="copy-css" data-code={cssCode} />}
-          {jsCode && <div class="copy-js" data-code={jsCode} />}
-        </div>
-
-        <div class="code-preview-content tab-content">
-          <div class="tab-pane fade show active" id={`${previewId}-html`} role="tabpanel" aria-labelledby="html-tab">
-            <div class="codemirror-editor-container" data-language="html" data-code={htmlCode} style="min-height: 150px; max-height: 450px;">
-            </div>
-          </div>
-
-          {cssCode && (
-            <div class="tab-pane fade" id={`${previewId}-css`} role="tabpanel" aria-labelledby="css-tab">
-              <div class="codemirror-editor-container" data-language="css" data-code={cssCode} style="min-height: 150px; max-height: 450px;">
-              </div>
-            </div>
+        <div class="d-flex gap-2 me-3">
+          {!disableEditMode && (
+            <>
+              <PreviewButton
+                icon="ri-restart-line"
+                title="Reset all changes"
+                className="reset-all-button p-3 lh-0"
+                ariaLabel="Reset all changes"
+                extraAttributes={{"data-bs-toggle": "tooltip", "data-bs-placement": "top"}}
+              />
+              <PreviewButton
+                icon="ri-edit-line"
+                title="Edit code"
+                className="edit-button p-3 lh-0"
+                ariaLabel="Edit code"
+                extraAttributes={{"data-bs-toggle": "tooltip", "data-bs-placement": "top"}}
+              />
+            </>
           )}
-
-          {jsCode && (
-            <div class="tab-pane fade" id={`${previewId}-js`} role="tabpanel" aria-labelledby="js-tab">
-              <div class="codemirror-editor-container" data-language="javascript" data-code={jsCode} style="min-height: 150px; max-height: 450px;">
-              </div>
+          <PreviewButton
+            icon="ri-clipboard-line"
+            title="Copy current code"
+            className="copy-button p-3 lh-0"
+            ariaLabel="Copy code to clipboard"
+            extraAttributes={{"data-bs-toggle": "tooltip", "data-bs-placement": "top"}}
+          />
+          {!disableDownload && (
+            <div class="dropdown">
+              <PreviewButton
+                icon="ri-download-line"
+                title="Download code"
+                className="download-dropdown-button p-3 lh-0"
+                ariaLabel="Download code"
+                extraAttributes={{
+                  "data-bs-toggle": "dropdown",
+                  "aria-expanded": "false"
+                }}
+              />
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <button class="dropdown-item download-button" data-format="html" type="button">
+                    <i class="ri-html5-line me-2"></i>Download as HTML
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item download-button" data-format="zip" type="button">
+                    <i class="ri-file-zip-line me-2"></i>Download as ZIP
+                  </button>
+                </li>
+              </ul>
             </div>
           )}
         </div>
       </div>
 
-      <div class="d-flex align-items-center justify-content-center border-top code-preview-header py-2">
-        <button type="button" class="btn btn-outline-secondary code-toggle-link py-1 w-50" aria-label="Toggle Code" aria-expanded="false">
-          <i class="ri-code-s-slash-line px-1"></i>
-          <span>Show Code</span>
-        </button>
+      <div class="visually-hidden">
+        <div class="copy-html" data-code={htmlCode} />
+        {cssCode && <div class="copy-css" data-code={cssCode} />}
+        {jsCode && <div class="copy-js" data-code={jsCode} />}
+      </div>
+
+      <div class="code-preview-content tab-content">
+        <div class="tab-pane fade show active" id={`${previewId}-html`} role="tabpanel" aria-labelledby="html-tab">
+          <div class="codemirror-editor-container" data-language="html" data-code={htmlCode} style="min-height: 150px; max-height: 450px;">
+          </div>
+        </div>
+
+        {cssCode && (
+          <div class="tab-pane fade" id={`${previewId}-css`} role="tabpanel" aria-labelledby="css-tab">
+            <div class="codemirror-editor-container" data-language="css" data-code={cssCode} style="min-height: 150px; max-height: 450px;">
+            </div>
+          </div>
+        )}
+
+        {jsCode && (
+          <div class="tab-pane fade" id={`${previewId}-js`} role="tabpanel" aria-labelledby="js-tab">
+            <div class="codemirror-editor-container" data-language="javascript" data-code={jsCode} style="min-height: 150px; max-height: 450px;">
+            </div>
+          </div>
+        )}
       </div>
     </div>
-  )}
+
+    <div class="d-flex align-items-center justify-content-center border-top code-preview-header py-2">
+      <button type="button" class="btn btn-outline-secondary code-toggle-link py-1 w-50" aria-label="Toggle Code" aria-expanded="false">
+        <i class="ri-code-s-slash-line px-1"></i>
+        <span>Show Code</span>
+      </button>
+    </div>
+  </div>
 </div>
 
 {!disableModal && (
