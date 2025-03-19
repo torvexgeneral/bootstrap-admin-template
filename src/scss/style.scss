@@ -48,22 +48,7 @@
 //   UI Components
 // ==========================================================================
 
-// Core Components
 @import 'components/index';
-@import 'components/buttons';
-@import 'components/toc';  // Table of Contents Component
-
-// Interactive Components
-@import 'components/tooltips';
-
-// Simple Scrollbar
-@import 'components/simplebar'; // Custom SimpleBar styles
-
-// ==========================================================================
-//   Extra Components & Features
-// ==========================================================================
-
-@import 'extra-components/index';
 
 // ==========================================================================
 //   Page-Specific Styles
