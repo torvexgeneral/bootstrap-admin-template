@@ -1,19 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 // Page header configuration with breadcrumb navigation
 const pageHeaderConfiguration = {
-  title: "List Group Components",
+  title: 'List Group Components',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Interface", href: getPathPrefix("/interface") },
-    { label: "List Group", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Interface', href: getPathPrefix('/interface') },
+    { label: 'List Group', class: 'active' }
   ]
-};
+}
 
 // Basic list group example showcasing simple items
 const basicListGroupExample = `<ul class="list-group">
@@ -22,7 +22,7 @@ const basicListGroupExample = `<ul class="list-group">
   <li class="list-group-item">Project Timeline</li>
   <li class="list-group-item">Resource Allocation</li>
   <li class="list-group-item">Project Deliverables</li>
-</ul>`;
+</ul>`
 
 // Active state example demonstrating selected item
 const activeListGroupExample = `<ul class="list-group">
@@ -31,7 +31,7 @@ const activeListGroupExample = `<ul class="list-group">
   <li class="list-group-item">Completed Tasks</li>
   <li class="list-group-item">Sprint Review</li>
   <li class="list-group-item">Sprint Planning</li>
-</ul>`;
+</ul>`
 
 // Disabled state example showing unavailable items
 const disabledListGroupExample = `<ul class="list-group">
@@ -40,7 +40,7 @@ const disabledListGroupExample = `<ul class="list-group">
   <li class="list-group-item">Project Proposals</li>
   <li class="list-group-item">Ongoing Initiatives</li>
   <li class="list-group-item">Future Planning</li>
-</ul>`;
+</ul>`
 
 // Interactive links example with active and disabled states
 const interactiveLinksExample = `<div class="list-group">
@@ -51,7 +51,7 @@ const interactiveLinksExample = `<div class="list-group">
   <a href="#" class="list-group-item list-group-item-action">Team Performance</a>
   <a href="#" class="list-group-item list-group-item-action">Resource Management</a>
   <a class="list-group-item list-group-item-action disabled" aria-disabled="true">System Maintenance</a>
-</div>`;
+</div>`
 
 // Interactive buttons example with active and disabled states
 const interactiveButtonsExample = `<div class="list-group">
@@ -62,7 +62,7 @@ const interactiveButtonsExample = `<div class="list-group">
   <button type="button" class="list-group-item list-group-item-action">User Permissions</button>
   <button type="button" class="list-group-item list-group-item-action">System Configuration</button>
   <button type="button" class="list-group-item list-group-item-action" disabled>Advanced Settings</button>
-</div>`;
+</div>`
 
 // Flush style list group without borders
 const flushListGroupExample = `<ul class="list-group list-group-flush">
@@ -71,14 +71,14 @@ const flushListGroupExample = `<ul class="list-group list-group-flush">
   <li class="list-group-item">Messages</li>
   <li class="list-group-item">Task Updates</li>
   <li class="list-group-item">System Alerts</li>
-</ul>`;
+</ul>`
 
 // Simple numbered list example
 const numberedListExample = `<ol class="list-group list-group-numbered">
   <li class="list-group-item">Project Requirements</li>
   <li class="list-group-item">Design Phase</li>
   <li class="list-group-item">Development Stage</li>
-</ol>`;
+</ol>`
 
 // Advanced numbered list with custom content
 const advancedNumberedListExample = `<ol class="list-group list-group-numbered">
@@ -103,7 +103,7 @@ const advancedNumberedListExample = `<ol class="list-group list-group-numbered">
     </div>
     <span class="badge text-bg-primary rounded-pill">6 Tasks</span>
   </li>
-</ol>`;
+</ol>`
 
 // Horizontal list group examples with responsive variants
 const horizontalListGroupExample = `<ul class="list-group list-group-horizontal mb-3">
@@ -120,7 +120,7 @@ const horizontalListGroupExample = `<ul class="list-group list-group-horizontal 
   <li class="list-group-item">Users</li>
   <li class="list-group-item">Teams</li>
   <li class="list-group-item">Roles</li>
-</ul>`;
+</ul>`
 
 // Contextual variants example
 const contextualVariantsExample = `<ul class="list-group">
@@ -133,7 +133,7 @@ const contextualVariantsExample = `<ul class="list-group">
   <li class="list-group-item list-group-item-info">Information Update</li>
   <li class="list-group-item list-group-item-light">Low Priority Note</li>
   <li class="list-group-item list-group-item-dark">Important Update</li>
-</ul>`;
+</ul>`
 
 // Interactive variants example
 const interactiveVariantsExample = `<div class="list-group">
@@ -146,7 +146,7 @@ const interactiveVariantsExample = `<div class="list-group">
   <a href="#" class="list-group-item list-group-item-action list-group-item-info">Recent Activities</a>
   <a href="#" class="list-group-item list-group-item-action list-group-item-light">Archive</a>
   <a href="#" class="list-group-item list-group-item-action list-group-item-dark">System Logs</a>
-</div>`;
+</div>`
 
 // List group with badges example
 const badgedListGroupExample = `<ul class="list-group">
@@ -162,7 +162,7 @@ const badgedListGroupExample = `<ul class="list-group">
     Completed Milestones
     <span class="badge text-bg-primary rounded-pill">9</span>
   </li>
-</ul>`;
+</ul>`
 
 // Custom content example with rich text
 const customContentExample = `<div class="list-group">
@@ -190,7 +190,7 @@ const customContentExample = `<div class="list-group">
     <p class="mb-1">Scheduled maintenance window for system updates and optimization.</p>
     <small class="text-body-secondary">Check maintenance schedule.</small>
   </a>
-</div>`;
+</div>`
 
 // Checkbox list group example
 const checkboxListGroupExample = `<ul class="list-group">
@@ -206,7 +206,7 @@ const checkboxListGroupExample = `<ul class="list-group">
     <input class="form-check-input me-1" type="checkbox" value="" id="taskCheckbox3">
     <label class="form-check-label" for="taskCheckbox3">Test New Features</label>
   </li>
-</ul>`;
+</ul>`
 
 // Radio button list group example
 const radioListGroupExample = `<ul class="list-group">
@@ -222,7 +222,7 @@ const radioListGroupExample = `<ul class="list-group">
     <input class="form-check-input me-1" type="radio" name="projectPriority" value="" id="priorityLow">
     <label class="form-check-label" for="priorityLow">Low Priority</label>
   </li>
-</ul>`;
+</ul>`
 
 // Stretched link checkbox list group example
 const stretchedLinkExample = `<ul class="list-group">
@@ -238,7 +238,7 @@ const stretchedLinkExample = `<ul class="list-group">
     <input class="form-check-input me-1" type="checkbox" value="" id="taskStretch3">
     <label class="form-check-label stretched-link" for="taskStretch3">Deploy to Production</label>
   </li>
-</ul>`;
+</ul>`
 ---
 
 <AdminLayout

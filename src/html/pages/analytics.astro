@@ -1,15 +1,15 @@
 ---
-import AdminLayout from "../layouts/admin/admin-layout.astro";
-import PageHeader from "../components/common/page-header.astro";
-import { getPathPrefix } from "../../utils/path.js";
+import AdminLayout from '../layouts/admin/admin-layout.astro'
+import PageHeader from '../components/common/page-header.astro'
+import { getPathPrefix } from '../../utils/path.js'
 
 const pageHeaderProps = {
-  title: "Analytics Dashboard",
+  title: 'Analytics Dashboard',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Analytics", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Analytics', class: 'active' }
   ]
-};
+}
 
 const pageScript = `<!-- Import Chart.js library from CDN -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -374,7 +374,7 @@ const pageScript = `<!-- Import Chart.js library from CDN -->
     });
   });
 </script>
-`;
+`
 ---
 
 <AdminLayout

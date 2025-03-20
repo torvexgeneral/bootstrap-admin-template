@@ -1,19 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 // Page header configuration with navigation breadcrumbs
 const pageHeaderConfig = {
-  title: "Alerts",
+  title: 'Alerts',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Interface", href: getPathPrefix("/interface") },
-    { label: "Alerts", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Interface', href: getPathPrefix('/interface') },
+    { label: 'Alerts', class: 'active' }
   ]
-};
+}
 
 // Basic contextual alert examples with different states
 const contextualAlertExamples = `<div class="alert alert-primary" role="alert">
@@ -39,7 +39,7 @@ const contextualAlertExamples = `<div class="alert alert-primary" role="alert">
 </div>
 <div class="alert alert-dark" role="alert">
   <i class="ri-flag-line me-2"></i><strong>Important:</strong> Dark alert for high-contrast messages.
-</div>`;
+</div>`
 
 // Alert examples with interactive links
 const alertWithLinkExamples = `<div class="alert alert-primary" role="alert">
@@ -65,7 +65,7 @@ const alertWithLinkExamples = `<div class="alert alert-primary" role="alert">
 </div>
 <div class="alert alert-dark" role="alert">
   <i class="ri-group-line me-2"></i>Join our <a href="#" class="alert-link">community forum</a> for discussions and support.
-</div>`;
+</div>`
 
 // Rich content alert example with structured information
 const richContentAlertExample = `<div class="alert alert-success" role="alert">
@@ -87,7 +87,7 @@ const richContentAlertExample = `<div class="alert alert-success" role="alert">
   <p class="mb-0">
     <i class="ri-calendar-todo-line me-1"></i> The next sprint planning meeting is scheduled for tomorrow at 10 AM.
   </p>
-</div>`;
+</div>`
 
 // Dismissible alert examples with enhanced content and icons
 const dismissibleAlertExamples = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -117,7 +117,7 @@ const dismissibleAlertExamples = `<div class="alert alert-warning alert-dismissi
     </div>
   </div>
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>`;
+</div>`
 
 // Alert with custom border and icon positioning
 const customStyledAlertExamples = `<div class="alert alert-primary border-start border-5 border-primary d-flex align-items-center ps-2" role="alert">
@@ -154,13 +154,13 @@ const customStyledAlertExamples = `<div class="alert alert-primary border-start 
   <div>
     <strong>Attention Required:</strong> Your subscription will expire in 3 days. Please renew now.
   </div>
-</div>`;
+</div>`
 
 // Shared preview configuration for consistent component display
 const previewConfig = {
-  cssCode: "",
-  jsCode: ""
-};
+  cssCode: '',
+  jsCode: ''
+}
 ---
 
 <AdminLayout

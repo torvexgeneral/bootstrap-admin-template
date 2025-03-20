@@ -1,17 +1,17 @@
 ---
-import { getAssetPrefix } from "../../../utils/path.js";
+import { getAssetPrefix } from '../../../utils/path.js'
 
 export interface Props {
-  brandName: boolean;
+  brandName: boolean
 }
 
-const { brandName = false } = Astro.props;
+const { brandName = false } = Astro.props
 ---
 
 <!-- Company Logo and Name -->
 <div class="mb-3 d-flex align-items-center justify-content-center">
   <img
-    src={getAssetPrefix("/assets/svg/astero-icon-color.svg")}
+    src={getAssetPrefix('/assets/svg/astero-icon-color.svg')}
     alt="AsteroAdmin Logo"
     class="me-2"
     style="width: 40px; height: 40px;"

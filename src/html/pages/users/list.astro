@@ -1,14 +1,14 @@
 ---
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import ConfirmationModal from "../../components/common/confirmation-modal.astro";
+import { getAssetPrefix, getPathPrefix } from '../../../utils/path.js'
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import ConfirmationModal from '../../components/common/confirmation-modal.astro'
 
 // External Dependencies: DataTables CSS
 const dataTableStyles = `
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-bs5@1.13.7/css/dataTables.bootstrap5.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-responsive-bs5@2.5.0/css/responsive.bootstrap5.min.css">
-`;
+`
 
 // External Dependencies: Required JavaScript libraries
 const dataTableScripts = `
@@ -19,27 +19,27 @@ const dataTableScripts = `
 <script src="https://cdn.jsdelivr.net/npm/datatables.net@1.13.7/js/jquery.dataTables.min.js"></script>
 
 <!-- Custom DataTables Configuration -->
-<script src="${getAssetPrefix("/assets/vendor/datatables/datatables.init.js")}"></script>
-<script type="module" src="${getAssetPrefix("/assets/js/pages/users/list.js")}"></script>
-`;
+<script src="${getAssetPrefix('/assets/vendor/datatables/datatables.init.js')}"></script>
+<script type="module" src="${getAssetPrefix('/assets/js/pages/users/list.js')}"></script>
+`
 
 // Page Header Configuration
 const userListHeaderConfig = {
-  title: "Users Management",
+  title: 'Users Management',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Users" },
-    { label: "User List", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Users' },
+    { label: 'User List', class: 'active' }
   ],
   actions: [
     {
-      label: "Add New User",
-      href: getPathPrefix("/users/add"),
-      icon: "ri-user-add-line",
-      class: "btn btn-primary"
+      label: 'Add User',
+      href: getPathPrefix('/users/add'),
+      icon: 'ri-user-add-line',
+      class: 'btn btn-primary'
     }
   ]
-};
+}
 ---
 
 <AdminLayout

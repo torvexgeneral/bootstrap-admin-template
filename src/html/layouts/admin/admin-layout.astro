@@ -1,18 +1,18 @@
 ---
-import Head from "./partials/_head.astro";
-import TopNav from "./partials/_topbar.astro";
-import Sidebar from "./partials/_sidebar.astro";
-import Footer from "./partials/_footer.astro";
-import Scripts from "./partials/_scripts.astro";
+import Head from './partials/_head.astro'
+import TopNav from './partials/_topbar.astro'
+import Sidebar from './partials/_sidebar.astro'
+import Footer from './partials/_footer.astro'
+import Scripts from './partials/_scripts.astro'
 
 interface Props {
-  title: string;
-  description?: string;
-  currentPath?: string;
-  enableComponentPreview?: boolean;
-  pageScript?: string;
-  pageCss?: string;
-  isRtl?: boolean;
+  title: string
+  description?: string
+  currentPath?: string
+  enableComponentPreview?: boolean
+  pageScript?: string
+  pageCss?: string
+  isRtl?: boolean
 }
 
 const {
@@ -23,20 +23,20 @@ const {
   pageScript,
   pageCss,
   isRtl = false
-} = Astro.props;
+} = Astro.props
 
 const pageSeo = {
   title,
   description: description || `${title} page of the admin dashboard`
-};
+}
 
 const componentStatus = {
   enableComponentPreview
-};
+}
 ---
 
 <!doctype html>
-<html lang="en" dir={isRtl ? "rtl" : "ltr"}>
+<html lang="en" dir={isRtl ? 'rtl' : 'ltr'}>
   <head>
     <Head {...pageSeo} {pageCss} {...componentStatus} isRtl={isRtl} />
   </head>

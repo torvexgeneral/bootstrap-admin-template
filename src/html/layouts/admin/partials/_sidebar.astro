@@ -1,16 +1,13 @@
 ---
-import Logo from "./_sidebar/_logo.astro";
-import NavTree from "./_sidebar/_nav-tree.astro";
-import Footer from "./_sidebar/_footer.astro";
+import Logo from './_sidebar/_logo.astro'
+import NavTree from './_sidebar/_nav-tree.astro'
+import Footer from './_sidebar/_footer.astro'
+
 interface Props {
-  currentPath: string;
+  currentPath: string
 }
 
-const { currentPath } = Astro.props;
-
-// Helper function to check if a path is active
-const isActive = (path: string) => currentPath === path;
-const isActiveParent = (path: string) => currentPath.startsWith(path);
+const { currentPath } = Astro.props
 ---
 
 <!-- Sidebar -->

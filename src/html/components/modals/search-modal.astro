@@ -1,5 +1,5 @@
 ---
-import { getPathPrefix } from "../../../utils/path.js";
+import { getPathPrefix } from '../../../utils/path.js'
 ---
 
 <!-- src/components/search-modal.astro -->
@@ -35,7 +35,7 @@ import { getPathPrefix } from "../../../utils/path.js";
           <h6 class="fw-semibold mb-3">Quick Links</h6>
           <div class="row g-3">
             <div class="col-sm-6">
-              <a href={getPathPrefix("/dashboard")} class="quick-link-card">
+              <a href={getPathPrefix('/dashboard')} class="quick-link-card">
                 <i class="ri-dashboard-line"></i>
                 <div>
                   <h6 class="mb-0">Dashboard</h6>
@@ -44,7 +44,7 @@ import { getPathPrefix } from "../../../utils/path.js";
               </a>
             </div>
             <div class="col-sm-6">
-              <a href={getPathPrefix("/users/profile")} class="quick-link-card">
+              <a href={getPathPrefix('/users/profile')} class="quick-link-card">
                 <i class="ri-user-line"></i>
                 <div>
                   <h6 class="mb-0">Profile</h6>
@@ -53,7 +53,7 @@ import { getPathPrefix } from "../../../utils/path.js";
               </a>
             </div>
             <div class="col-sm-6">
-              <a href={getPathPrefix("/settings")} class="quick-link-card">
+              <a href={getPathPrefix('/settings')} class="quick-link-card">
                 <i class="ri-settings-4-line"></i>
                 <div>
                   <h6 class="mb-0">Settings</h6>
@@ -62,7 +62,7 @@ import { getPathPrefix } from "../../../utils/path.js";
               </a>
             </div>
             <div class="col-sm-6">
-              <a href={getPathPrefix("/help")} class="quick-link-card">
+              <a href={getPathPrefix('/help')} class="quick-link-card">
                 <i class="ri-question-line"></i>
                 <div>
                   <h6 class="mb-0">Help Center</h6>
@@ -96,30 +96,30 @@ import { getPathPrefix } from "../../../utils/path.js";
 </div>
 <script is:inline>
   // Initialize search modal functionality after Bootstrap is loaded
-  window.addEventListener("load", () => {
+  window.addEventListener('load', () => {
     // Initialize Bootstrap modal
-    const searchModalEl = document.getElementById("searchModal");
-    const searchModal = new bootstrap.Modal(searchModalEl);
+    const searchModalEl = document.getElementById('searchModal')
+    const searchModal = new bootstrap.Modal(searchModalEl)
 
     // Handle keyboard shortcuts
-    document.addEventListener("keydown", (e) => {
+    document.addEventListener('keydown', (e) => {
       // Check for Ctrl+K or Cmd+K
-      if ((e.ctrlKey || e.metaKey) && e.key === "k") {
-        e.preventDefault();
-        searchModal.show();
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault()
+        searchModal.show()
       }
 
       // Close modal on ESC
-      if (e.key === "Escape") {
+      if (e.key === 'Escape') {
         if (searchModal) {
-          searchModal.hide();
+          searchModal.hide()
         }
       }
-    });
+    })
 
     // Focus input when modal opens
-    searchModalEl.addEventListener("shown.bs.modal", () => {
-      document.getElementById("searchInput").focus();
-    });
-  });
+    searchModalEl.addEventListener('shown.bs.modal', () => {
+      document.getElementById('searchInput').focus()
+    })
+  })
 </script>

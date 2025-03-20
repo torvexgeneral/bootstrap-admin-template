@@ -1,14 +1,15 @@
 ---
-import { getAssetPrefix, getPathPrefix } from "../../../../utils/path.js";
-import AdminLayout from "../../../layouts/admin/admin-layout.astro";
-import PageHeader from "../../../components/common/page-header.astro";
-import ConfirmationModal from "../../../components/common/confirmation-modal.astro";
+import { getAssetPrefix, getPathPrefix } from '../../../../utils/path.js'
+import AdminLayout from '../../../layouts/admin/admin-layout.astro'
+import PageHeader from '../../../components/common/page-header.astro'
+import type { Props as PageHeaderProps } from '../../../components/common/page-header.astro'
+import ConfirmationModal from '../../../components/common/confirmation-modal.astro'
 
 // Register DataTables styles
 const pageStyles = `
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-bs5@1.13.7/css/dataTables.bootstrap5.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-responsive-bs5@2.5.0/css/responsive.bootstrap5.min.css">
-`;
+`
 
 // Register DataTables scripts
 const pageScript = `<!-- Add this scripts before body close -->
@@ -18,489 +19,491 @@ const pageScript = `<!-- Add this scripts before body close -->
 <!-- DataTables JS -->
 <script src="https://cdn.jsdelivr.net/npm/datatables.net@1.13.7/js/jquery.dataTables.min.js"></script>
 
-<script src="${getAssetPrefix("/assets/vendor/datatables/datatables.init.js")}"></script>
-<script type="module" src="${getAssetPrefix("/assets/js/pages/roles-permissions/permissions/table.js")}"></script>
-`;
+<script src="${getAssetPrefix('/assets/vendor/datatables/datatables.init.js')}"></script>
+<script type="module" src="${getAssetPrefix('/assets/js/pages/roles-permissions/permissions/table.js')}"></script>
+`
 
-const pageHeaderProps = {
-  title: "Permissions",
+// Page header configuration with breadcrumb navigation
+const pageHeaderProps: PageHeaderProps = {
+  title: 'Permissions',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Roles & Permissions", href: getPathPrefix("/roles-permissions") },
-    { label: "Permissions", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard'), class: '' },
+    { label: 'Roles & Permissions', href: getPathPrefix('/roles-permissions'), class: '' },
+    { label: 'Permissions', class: 'active' }
   ],
   actions: [
     {
-      label: "Add Permission",
-      href: getPathPrefix("/roles-permissions/permissions/add"),
-      variant: "primary",
-      icon: "ri-add-line"
+      label: 'Add Permission',
+      href: getPathPrefix('/roles-permissions/permissions/add'),
+      type: 'link',
+      variant: 'btn-primary',
+      icon: 'ri-add-line'
     }
   ]
-};
+}
 
 // Fetch permissions data from JSON file
 const permissions = [
   {
     id: 1,
-    title: "view_pages",
-    display_name: "View Pages",
-    module: "CMS",
-    group: "Pages Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'view_pages',
+    display_name: 'View Pages',
+    module: 'CMS',
+    group: 'Pages Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 2,
-    title: "add_pages",
-    display_name: "Create New Pages",
-    module: "CMS",
-    group: "Pages Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'add_pages',
+    display_name: 'Create New Pages',
+    module: 'CMS',
+    group: 'Pages Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 3,
-    title: "edit_pages",
-    display_name: "Edit Pages",
-    module: "CMS",
-    group: "Pages Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'edit_pages',
+    display_name: 'Edit Pages',
+    module: 'CMS',
+    group: 'Pages Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 4,
-    title: "delete_pages",
-    display_name: "Delete Pages",
-    module: "CMS",
-    group: "Pages Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'delete_pages',
+    display_name: 'Delete Pages',
+    module: 'CMS',
+    group: 'Pages Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 5,
-    title: "restore_pages",
-    display_name: "Restore Deleted Pages",
-    module: "CMS",
-    group: "Pages Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'restore_pages',
+    display_name: 'Restore Deleted Pages',
+    module: 'CMS',
+    group: 'Pages Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 6,
-    title: "publish_pages",
-    display_name: "Publish/Unpublish Pages",
-    module: "CMS",
-    group: "Pages Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'publish_pages',
+    display_name: 'Publish/Unpublish Pages',
+    module: 'CMS',
+    group: 'Pages Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 7,
-    title: "view_posts",
-    display_name: "View Posts",
-    module: "CMS",
-    group: "Posts Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'view_posts',
+    display_name: 'View Posts',
+    module: 'CMS',
+    group: 'Posts Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 8,
-    title: "add_posts",
-    display_name: "Create New Posts",
-    module: "CMS",
-    group: "Posts Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'add_posts',
+    display_name: 'Create New Posts',
+    module: 'CMS',
+    group: 'Posts Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 9,
-    title: "edit_posts",
-    display_name: "Edit Posts",
-    module: "CMS",
-    group: "Posts Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'edit_posts',
+    display_name: 'Edit Posts',
+    module: 'CMS',
+    group: 'Posts Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 10,
-    title: "delete_posts",
-    display_name: "Delete Posts",
-    module: "CMS",
-    group: "Posts Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'delete_posts',
+    display_name: 'Delete Posts',
+    module: 'CMS',
+    group: 'Posts Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 11,
-    title: "restore_posts",
-    display_name: "Restore Deleted Posts",
-    module: "CMS",
-    group: "Posts Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'restore_posts',
+    display_name: 'Restore Deleted Posts',
+    module: 'CMS',
+    group: 'Posts Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 12,
-    title: "publish_posts",
-    display_name: "Publish/Unpublish Posts",
-    module: "CMS",
-    group: "Posts Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'publish_posts',
+    display_name: 'Publish/Unpublish Posts',
+    module: 'CMS',
+    group: 'Posts Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 13,
-    title: "view_media",
-    display_name: "View Media Files",
-    module: "CMS",
-    group: "Media Library",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'view_media',
+    display_name: 'View Media Files',
+    module: 'CMS',
+    group: 'Media Library',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 14,
-    title: "upload_media",
-    display_name: "Upload Media Files",
-    module: "CMS",
-    group: "Media Library",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'upload_media',
+    display_name: 'Upload Media Files',
+    module: 'CMS',
+    group: 'Media Library',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 15,
-    title: "edit_media",
-    display_name: "Edit Media Details",
-    module: "CMS",
-    group: "Media Library",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'edit_media',
+    display_name: 'Edit Media Details',
+    module: 'CMS',
+    group: 'Media Library',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 16,
-    title: "delete_media",
-    display_name: "Delete Media Files",
-    module: "CMS",
-    group: "Media Library",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'delete_media',
+    display_name: 'Delete Media Files',
+    module: 'CMS',
+    group: 'Media Library',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 17,
-    title: "restore_media",
-    display_name: "Restore Deleted Media",
-    module: "CMS",
-    group: "Media Library",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'restore_media',
+    display_name: 'Restore Deleted Media',
+    module: 'CMS',
+    group: 'Media Library',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 18,
-    title: "view_categories",
-    display_name: "View Categories",
-    module: "CMS",
-    group: "Categories Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'view_categories',
+    display_name: 'View Categories',
+    module: 'CMS',
+    group: 'Categories Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 19,
-    title: "add_categories",
-    display_name: "Create Categories",
-    module: "CMS",
-    group: "Categories Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'add_categories',
+    display_name: 'Create Categories',
+    module: 'CMS',
+    group: 'Categories Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 20,
-    title: "edit_categories",
-    display_name: "Edit Categories",
-    module: "CMS",
-    group: "Categories Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'edit_categories',
+    display_name: 'Edit Categories',
+    module: 'CMS',
+    group: 'Categories Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 21,
-    title: "delete_categories",
-    display_name: "Delete Categories",
-    module: "CMS",
-    group: "Categories Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'delete_categories',
+    display_name: 'Delete Categories',
+    module: 'CMS',
+    group: 'Categories Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 22,
-    title: "restore_categories",
-    display_name: "Restore Categories",
-    module: "CMS",
-    group: "Categories Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'restore_categories',
+    display_name: 'Restore Categories',
+    module: 'CMS',
+    group: 'Categories Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 23,
-    title: "view_seo_settings",
-    display_name: "View SEO Settings",
-    module: "SEO",
-    group: "SEO Settings",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'view_seo_settings',
+    display_name: 'View SEO Settings',
+    module: 'SEO',
+    group: 'SEO Settings',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 24,
-    title: "edit_seo_settings",
-    display_name: "Edit SEO Settings",
-    module: "SEO",
-    group: "SEO Settings",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'edit_seo_settings',
+    display_name: 'Edit SEO Settings',
+    module: 'SEO',
+    group: 'SEO Settings',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 25,
-    title: "manage_meta_tags",
-    display_name: "Manage Meta Tags",
-    module: "SEO",
-    group: "SEO Settings",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'manage_meta_tags',
+    display_name: 'Manage Meta Tags',
+    module: 'SEO',
+    group: 'SEO Settings',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 26,
-    title: "manage_sitemaps",
-    display_name: "Manage Sitemaps",
-    module: "SEO",
-    group: "SEO Settings",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'manage_sitemaps',
+    display_name: 'Manage Sitemaps',
+    module: 'SEO',
+    group: 'SEO Settings',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 27,
-    title: "view_redirects",
-    display_name: "View Redirects",
-    module: "SEO",
-    group: "URL Redirects",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'view_redirects',
+    display_name: 'View Redirects',
+    module: 'SEO',
+    group: 'URL Redirects',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 28,
-    title: "add_redirects",
-    display_name: "Add Redirects",
-    module: "SEO",
-    group: "URL Redirects",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'add_redirects',
+    display_name: 'Add Redirects',
+    module: 'SEO',
+    group: 'URL Redirects',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 29,
-    title: "edit_redirects",
-    display_name: "Edit Redirects",
-    module: "SEO",
-    group: "URL Redirects",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'edit_redirects',
+    display_name: 'Edit Redirects',
+    module: 'SEO',
+    group: 'URL Redirects',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 30,
-    title: "delete_redirects",
-    display_name: "Delete Redirects",
-    module: "SEO",
-    group: "URL Redirects",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'delete_redirects',
+    display_name: 'Delete Redirects',
+    module: 'SEO',
+    group: 'URL Redirects',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 31,
-    title: "view_analytics",
-    display_name: "View Analytics Dashboard",
-    module: "SEO",
-    group: "Analytics",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'view_analytics',
+    display_name: 'View Analytics Dashboard',
+    module: 'SEO',
+    group: 'Analytics',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 32,
-    title: "export_analytics",
-    display_name: "Export Analytics Data",
-    module: "SEO",
-    group: "Analytics",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'export_analytics',
+    display_name: 'Export Analytics Data',
+    module: 'SEO',
+    group: 'Analytics',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 33,
-    title: "manage_analytics_settings",
-    display_name: "Manage Analytics Settings",
-    module: "SEO",
-    group: "Analytics",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'manage_analytics_settings',
+    display_name: 'Manage Analytics Settings',
+    module: 'SEO',
+    group: 'Analytics',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 34,
-    title: "view_users",
-    display_name: "View Users",
-    module: "System",
-    group: "User Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'view_users',
+    display_name: 'View Users',
+    module: 'System',
+    group: 'User Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 35,
-    title: "add_users",
-    display_name: "Create Users",
-    module: "System",
-    group: "User Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'add_users',
+    display_name: 'Create Users',
+    module: 'System',
+    group: 'User Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 36,
-    title: "edit_users",
-    display_name: "Edit Users",
-    module: "System",
-    group: "User Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'edit_users',
+    display_name: 'Edit Users',
+    module: 'System',
+    group: 'User Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 37,
-    title: "delete_users",
-    display_name: "Delete Users",
-    module: "System",
-    group: "User Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'delete_users',
+    display_name: 'Delete Users',
+    module: 'System',
+    group: 'User Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 38,
-    title: "restore_users",
-    display_name: "Restore Users",
-    module: "System",
-    group: "User Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'restore_users',
+    display_name: 'Restore Users',
+    module: 'System',
+    group: 'User Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 39,
-    title: "block_users",
-    display_name: "Block/Unblock Users",
-    module: "System",
-    group: "User Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'block_users',
+    display_name: 'Block/Unblock Users',
+    module: 'System',
+    group: 'User Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 40,
-    title: "view_roles",
-    display_name: "View Roles",
-    module: "System",
-    group: "Role Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'view_roles',
+    display_name: 'View Roles',
+    module: 'System',
+    group: 'Role Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 41,
-    title: "add_roles",
-    display_name: "Create Roles",
-    module: "System",
-    group: "Role Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'add_roles',
+    display_name: 'Create Roles',
+    module: 'System',
+    group: 'Role Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 42,
-    title: "edit_roles",
-    display_name: "Edit Roles",
-    module: "System",
-    group: "Role Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'edit_roles',
+    display_name: 'Edit Roles',
+    module: 'System',
+    group: 'Role Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 43,
-    title: "delete_roles",
-    display_name: "Delete Roles",
-    module: "System",
-    group: "Role Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'delete_roles',
+    display_name: 'Delete Roles',
+    module: 'System',
+    group: 'Role Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 44,
-    title: "assign_permissions",
-    display_name: "Assign Role Permissions",
-    module: "System",
-    group: "Role Management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'assign_permissions',
+    display_name: 'Assign Role Permissions',
+    module: 'System',
+    group: 'Role Management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 45,
-    title: "view_settings",
-    display_name: "View System Settings",
-    module: "System",
-    group: "System Settings",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'view_settings',
+    display_name: 'View System Settings',
+    module: 'System',
+    group: 'System Settings',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 46,
-    title: "edit_settings",
-    display_name: "Edit System Settings",
-    module: "System",
-    group: "System Settings",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'edit_settings',
+    display_name: 'Edit System Settings',
+    module: 'System',
+    group: 'System Settings',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 47,
-    title: "manage_backups",
-    display_name: "Manage System Backups",
-    module: "System",
-    group: "System Settings",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'manage_backups',
+    display_name: 'Manage System Backups',
+    module: 'System',
+    group: 'System Settings',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 48,
-    title: "manage_cache",
-    display_name: "Manage System Cache",
-    module: "System",
-    group: "System Settings",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'manage_cache',
+    display_name: 'Manage System Cache',
+    module: 'System',
+    group: 'System Settings',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 49,
-    title: "view_logs",
-    display_name: "View System Logs",
-    module: "System",
-    group: "System Logs",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'view_logs',
+    display_name: 'View System Logs',
+    module: 'System',
+    group: 'System Logs',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 50,
-    title: "delete_logs",
-    display_name: "Delete System Logs",
-    module: "System",
-    group: "System Logs",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'delete_logs',
+    display_name: 'Delete System Logs',
+    module: 'System',
+    group: 'System Logs',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 51,
-    title: "export_logs",
-    display_name: "Export System Logs",
-    module: "System",
-    group: "System Logs",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'export_logs',
+    display_name: 'Export System Logs',
+    module: 'System',
+    group: 'System Logs',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   }
-];
+]
 ---
 
 <AdminLayout
@@ -748,7 +751,7 @@ const permissions = [
                                 <li>
                                   <a
                                     class="dropdown-item d-flex align-items-center gap-2"
-                                    href={getPathPrefix("/roles-permissions/permissions/edit")}
+                                    href={getPathPrefix('/roles-permissions/permissions/edit')}
                                   >
                                     <i class="ri-pencil-line" /> Edit
                                   </a>

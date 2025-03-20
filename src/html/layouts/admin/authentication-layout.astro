@@ -1,20 +1,20 @@
 ---
-import Head from "./partials/_head.astro";
-import Scripts from "./partials/_scripts.astro";
+import Head from './partials/_head.astro'
+import Scripts from './partials/_scripts.astro'
 
 interface Props {
-  title: string;
-  description?: string;
-  currentPath?: string;
-  pageScript?: string;
+  title: string
+  description?: string
+  currentPath?: string
+  pageScript?: string
 }
 
-const { title, description, pageScript } = Astro.props;
+const { title, description, pageScript } = Astro.props
 
 const pageSeo = {
   title,
   description: description || `${title} page of the admin dashboard`
-};
+}
 ---
 
 <!doctype html>

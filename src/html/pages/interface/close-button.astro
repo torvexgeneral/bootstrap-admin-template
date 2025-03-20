@@ -1,29 +1,29 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 // Page header configuration with breadcrumb navigation and icons
 const pageHeaderConfig = {
-  title: "Close Button",
+  title: 'Close Button',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard"), icon: "ri-dashboard-line" },
-    { label: "Interface", href: getPathPrefix("/interface"), icon: "ri-layout-line" },
-    { label: "Close Button", class: "active", icon: "ri-close-circle-line" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard'), icon: 'ri-dashboard-line' },
+    { label: 'Interface', href: getPathPrefix('/interface'), icon: 'ri-layout-line' },
+    { label: 'Close Button', class: 'active', icon: 'ri-close-circle-line' }
   ]
-};
+}
 
 // Basic close button example with accessibility attributes
 const basicCloseButtonExample = `<button type="button" class="btn-close" aria-label="Close">
   <span class="visually-hidden">Close content</span>
-</button>`;
+</button>`
 
 // Disabled close button example with accessibility support
 const disabledCloseButtonExample = `<button type="button" class="btn-close" disabled aria-label="Close" aria-disabled="true">
   <span class="visually-hidden">Close content (disabled)</span>
-</button>`;
+</button>`
 ---
 
 <AdminLayout

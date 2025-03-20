@@ -1,18 +1,18 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getPathPrefix } from "../../../utils/path.js";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
 
 const pageHeaderProps = {
-  title: "Small Box",
+  title: 'Small Box',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Interface", href: getPathPrefix("/interface") },
-    { label: "Small Box", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Interface', href: getPathPrefix('/interface') },
+    { label: 'Small Box', class: 'active' }
   ]
-};
+}
 
 // Basic small box examples with different contextual styles and metrics
 const metricSmallBoxExamples = `<div class="row">
@@ -104,7 +104,7 @@ const metricSmallBoxExamples = `<div class="row">
             </a>
         </div>
     </div>
-</div>`;
+</div>`
 
 // Loading state examples for small boxes with loading indicators
 const loadingStateSmallBoxExamples = `<div class="row">
@@ -212,7 +212,7 @@ const loadingStateSmallBoxExamples = `<div class="row">
             </a>
         </div>
     </div>
-</div>`;
+</div>`
 
 // Gradient small box examples with enhanced styling
 const gradientSmallBoxExamples = `<div class="row">
@@ -258,7 +258,7 @@ const gradientSmallBoxExamples = `<div class="row">
             </a>
         </div>
     </div>
-</div>`;
+</div>`
 ---
 
 <AdminLayout
@@ -338,7 +338,7 @@ const gradientSmallBoxExamples = `<div class="row">
             </p>
             <ComponentPreview
               title="Gradient Style Examples"
-              height="300px"
+              height="350px"
               component={gradientSmallBoxExamples}
               htmlCode={gradientSmallBoxExamples}
             />

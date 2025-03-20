@@ -1,15 +1,15 @@
 ---
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import ConfirmationModal from "../../components/common/confirmation-modal.astro";
+import { getAssetPrefix, getPathPrefix } from '../../../utils/path.js'
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import ConfirmationModal from '../../components/common/confirmation-modal.astro'
 
 // Register DataTables styles with versioning for better dependency management
 const pageStyles = `
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-bs5@1.13.7/css/dataTables.bootstrap5.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-responsive-bs5@2.5.0/css/responsive.bootstrap5.min.css">
-`;
+`
 
 // Register DataTables scripts with proper initialization sequence
 const pageScript = `<!-- DataTables Dependencies -->
@@ -18,22 +18,22 @@ const pageScript = `<!-- DataTables Dependencies -->
 <!-- DataTables Core -->
 <script src="https://cdn.jsdelivr.net/npm/datatables.net@1.13.7/js/jquery.dataTables.min.js"></script>
 <!-- Custom DataTables Initialization -->
-<script src="${getAssetPrefix("/assets/vendor/datatables/datatables.init.js")}"></script>
-<script type="module" src="${getAssetPrefix("/assets/js/pages/tables/datatable.js")}"></script>
-`;
+<script src="${getAssetPrefix('/assets/vendor/datatables/datatables.init.js')}"></script>
+<script type="module" src="${getAssetPrefix('/assets/js/pages/tables/datatable.js')}"></script>
+`
 
 // Configure page header with descriptive breadcrumb navigation
 const pageHeaderProps = {
-  title: "DataTables",
-  description: "Advanced data tables with dynamic filtering, sorting, and pagination",
+  title: 'DataTables',
+  description: 'Advanced data tables with dynamic filtering, sorting, and pagination',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Tables", href: getPathPrefix("/tables") },
-    { label: "DataTables", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Tables', href: getPathPrefix('/tables') },
+    { label: 'DataTables', class: 'active' }
   ]
-};
+}
 
-const iframesrc = getPathPrefix("/tables/datatable/products");
+const iframesrc = getPathPrefix('/tables/datatable/products')
 
 // Products table template with enhanced features
 const productsTableTemplate = `<div class="astero-table">
@@ -178,7 +178,7 @@ const productsTableTemplate = `<div class="astero-table">
         <div class="d-none flex-column flex-lg-row justify-content-start filter-datas mb-3" data-filters aria-live="polite">
             <strong class="fs-6 me-2 text-primary">Active Filters:</strong>
             <div class="d-flex flex-row flex-wrap align-items-center" data-filters-data></div>
-        </div> 
+        </div>
 
         <!-- Products Table -->
         <div class="table-responsive border-0">
@@ -205,7 +205,7 @@ const productsTableTemplate = `<div class="astero-table">
         </div>
     </div>
 </div>
-`;
+`
 ---
 
 <AdminLayout
@@ -234,7 +234,7 @@ const productsTableTemplate = `<div class="astero-table">
         htmlCode={productsTableTemplate}
         cssCode={pageStyles}
         jsCode={pageScript}
-        disableEditMode="true"
+        disableEditMode={true}
       />
     </div>
   </div>

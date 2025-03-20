@@ -1,18 +1,18 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 const pageHeaderProps = {
-  title: "Scrollspy",
+  title: 'Scrollspy',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Interface", href: getPathPrefix("/interface") },
-    { label: "Scrollspy", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Interface', href: getPathPrefix('/interface') },
+    { label: 'Scrollspy', class: 'active' }
   ]
-};
+}
 
 // Add CSS for scrollspy examples
 const scrollspyStyles = `/* Scrollspy styles */
@@ -79,7 +79,7 @@ const scrollspyStyles = `/* Scrollspy styles */
     margin: 0.25rem;
   }
 }
-`;
+`
 
 // Basic navbar scrollspy example with dropdown
 const navbarScrollspyExample = `<nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
@@ -132,7 +132,7 @@ const navbarScrollspyExample = `<nav id="navbar-example2" class="navbar bg-body-
   <h4 id="scrollspyHeading5"><i class="ri-book-read-line me-2"></i>Fifth heading</h4>
   <p>This final section completes our scrollspy example, showing how all elements work together cohesively.</p>
   <p>When implemented correctly, scrollspy creates an intuitive and responsive navigation system that enhances content discoverability and improves overall user experience on content-heavy pages.</p>
-</div>`;
+</div>`
 
 // Nested navigation scrollspy example
 const nestedNavScrollspyExample = `<div class="row">
@@ -207,7 +207,7 @@ const nestedNavScrollspyExample = `<div class="row">
       </div>
     </div>
   </div>
-</div>`;
+</div>`
 
 // List group scrollspy example
 const listGroupScrollspyExample = `<div class="row">
@@ -250,7 +250,7 @@ const listGroupScrollspyExample = `<div class="row">
       <p>This pattern is versatile enough to work in various contexts while providing consistent behavior that users can quickly understand and navigate.</p>
     </div>
   </div>
-</div>`;
+</div>`
 
 // Simple anchors scrollspy example
 const simpleAnchorsScrollspyExample = `<div class="row">
@@ -301,7 +301,7 @@ const simpleAnchorsScrollspyExample = `<div class="row">
       <p>Consider using descriptive, concise navigation labels that clearly communicate the content of each section, helping users quickly find the information they need.</p>
     </div>
   </div>
-</div>`;
+</div>`
 ---
 
 <AdminLayout

@@ -1,19 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 // Page header configuration with breadcrumb navigation
 const pageConfig = {
-  title: "Offcanvas",
+  title: 'Offcanvas',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard"), icon: "ri-dashboard-line" },
-    { label: "Interface", href: getPathPrefix("/interface"), icon: "ri-layout-line" },
-    { label: "Offcanvas", class: "active", icon: "ri-layout-right-line" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard'), icon: 'ri-dashboard-line' },
+    { label: 'Interface', href: getPathPrefix('/interface'), icon: 'ri-layout-line' },
+    { label: 'Offcanvas', class: 'active', icon: 'ri-layout-right-line' }
   ]
-};
+}
 
 // Basic offcanvas example with link and button triggers
 const basicOffcanvasExample = `<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
@@ -44,7 +44,7 @@ const basicOffcanvasExample = `<a class="btn btn-primary" data-bs-toggle="offcan
     </div>
   </div>
 </div>
-`;
+`
 
 // Scrollable body offcanvas example
 const scrollableOffcanvasExample = `<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
@@ -60,7 +60,7 @@ const scrollableOffcanvasExample = `<button class="btn btn-primary" type="button
     <p><i class="ri-mouse-line me-2"></i>Try scrolling the rest of the page to see this option in action.</p>
   </div>
 </div>
-`;
+`
 
 // Scrollable body with backdrop example
 const scrollableWithBackdropExample = `<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
@@ -76,7 +76,7 @@ const scrollableWithBackdropExample = `<button class="btn btn-primary" type="but
     <p><i class="ri-information-line me-2"></i>Try scrolling the rest of the page to see this option in action.</p>
   </div>
 </div>
-`;
+`
 
 // Static backdrop offcanvas example
 const staticBackdropExample = `<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
@@ -94,7 +94,7 @@ const staticBackdropExample = `<button class="btn btn-primary" type="button" dat
     </div>
   </div>
 </div>
-`;
+`
 
 // Responsive offcanvas example
 const responsiveOffcanvasExample = `<button class="btn btn-primary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">
@@ -114,7 +114,7 @@ const responsiveOffcanvasExample = `<button class="btn btn-primary d-lg-none" ty
     <p class="mb-0"><i class="ri-layout-right-line me-2"></i>This is content within an <code>.offcanvas-lg</code>.</p>
   </div>
 </div>
-`;
+`
 
 // Top placement offcanvas example
 const topOffcanvasExample = `<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
@@ -130,7 +130,7 @@ const topOffcanvasExample = `<button class="btn btn-primary" type="button" data-
     <p><i class="ri-information-line me-2"></i>This is a top-positioned offcanvas that slides down from the top of the viewport.</p>
   </div>
 </div>
-`;
+`
 
 // Right placement offcanvas example
 const rightOffcanvasExample = `<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
@@ -146,7 +146,7 @@ const rightOffcanvasExample = `<button class="btn btn-primary" type="button" dat
     <p><i class="ri-information-line me-2"></i>This is a right-positioned offcanvas that slides in from the right side.</p>
   </div>
 </div>
-`;
+`
 
 // Bottom placement offcanvas example
 const bottomOffcanvasExample = `<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
@@ -162,7 +162,7 @@ const bottomOffcanvasExample = `<button class="btn btn-primary" type="button" da
     <p><i class="ri-information-line me-2"></i>This is a bottom-positioned offcanvas that slides up from the bottom of the viewport.</p>
   </div>
 </div>
-`;
+`
 ---
 
 <AdminLayout
@@ -196,7 +196,7 @@ const bottomOffcanvasExample = `<button class="btn btn-primary" type="button" da
 
             <ComponentPreview
               title="Basic Offcanvas Example"
-              height="300px"
+              height="550px"
               component={basicOffcanvasExample}
               htmlCode={basicOffcanvasExample}
               cssCode={``}
@@ -214,7 +214,7 @@ const bottomOffcanvasExample = `<button class="btn btn-primary" type="button" da
 
             <ComponentPreview
               title="Scrollable Body Example"
-              height="300px"
+              height="550px"
               component={scrollableOffcanvasExample}
               htmlCode={scrollableOffcanvasExample}
               cssCode={``}
@@ -230,7 +230,7 @@ const bottomOffcanvasExample = `<button class="btn btn-primary" type="button" da
 
             <ComponentPreview
               title="Scrollable with Backdrop"
-              height="300px"
+              height="550px"
               component={scrollableWithBackdropExample}
               htmlCode={scrollableWithBackdropExample}
               cssCode={``}
@@ -247,7 +247,7 @@ const bottomOffcanvasExample = `<button class="btn btn-primary" type="button" da
 
             <ComponentPreview
               title="Static Backdrop Example"
-              height="300px"
+              height="550px"
               component={staticBackdropExample}
               htmlCode={staticBackdropExample}
               cssCode={``}
@@ -265,7 +265,7 @@ const bottomOffcanvasExample = `<button class="btn btn-primary" type="button" da
 
             <ComponentPreview
               title="Responsive Offcanvas Example"
-              height="300px"
+              height="550px"
               component={responsiveOffcanvasExample}
               htmlCode={responsiveOffcanvasExample}
               cssCode={``}
@@ -283,7 +283,7 @@ const bottomOffcanvasExample = `<button class="btn btn-primary" type="button" da
 
             <ComponentPreview
               title="Top Placement Example"
-              height="200px"
+              height="550px"
               component={topOffcanvasExample}
               htmlCode={topOffcanvasExample}
               cssCode={``}
@@ -292,7 +292,7 @@ const bottomOffcanvasExample = `<button class="btn btn-primary" type="button" da
 
             <ComponentPreview
               title="Right Placement Example"
-              height="200px"
+              height="550px"
               component={rightOffcanvasExample}
               htmlCode={rightOffcanvasExample}
               cssCode={``}
@@ -301,7 +301,7 @@ const bottomOffcanvasExample = `<button class="btn btn-primary" type="button" da
 
             <ComponentPreview
               title="Bottom Placement Example"
-              height="200px"
+              height="550px"
               component={bottomOffcanvasExample}
               htmlCode={bottomOffcanvasExample}
               cssCode={``}

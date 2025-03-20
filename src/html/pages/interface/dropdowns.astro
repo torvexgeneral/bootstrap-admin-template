@@ -1,19 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 // Page header configuration with breadcrumb navigation and icons
 const pageHeaderConfig = {
-  title: "Dropdowns",
+  title: 'Dropdowns',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard"), icon: "ri-dashboard-line" },
-    { label: "Interface", href: getPathPrefix("/interface"), icon: "ri-layout-line" },
-    { label: "Dropdowns", class: "active", icon: "ri-arrow-down-s-line" } // No href means it's the current page
+    { label: 'Dashboard', href: getPathPrefix('/dashboard'), icon: 'ri-dashboard-line' },
+    { label: 'Interface', href: getPathPrefix('/interface'), icon: 'ri-layout-line' },
+    { label: 'Dropdowns', class: 'active', icon: 'ri-arrow-down-s-line' } // No href means it's the current page
   ]
-};
+}
 
 // Basic dropdown example with default styling
 const dropdownBasicExample = `<div class="dropdown">
@@ -26,86 +26,7 @@ const dropdownBasicExample = `<div class="dropdown">
     <li><a class="dropdown-item" href="#"><i class="ri-settings-line me-2"></i>Settings</a></li>
   </ul>
 </div>
-`;
-const dropdownBasic = `<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown button
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-  </ul>
-</div>
-`;
-const dropdownLink = `<div class="dropdown">
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown link
-  </a>
-
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-  </ul>
-</div>
-`;
-const dropdownPrimary = `<!-- Example single primary button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-    Action
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
-  </ul>
-</div>
-`;
-const dropdownSplitButton = `<!-- Example split primary button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-primary">
-    <i class="ri-save-line me-1"></i>Save
-  </button>
-  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-    <span class="visually-hidden">Toggle Dropdown</span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#"><i class="ri-save-line me-2"></i>Save Draft</a></li>
-    <li><a class="dropdown-item" href="#"><i class="ri-time-line me-2"></i>Schedule</a></li>
-    <li><a class="dropdown-item" href="#"><i class="ri-share-line me-2"></i>Share</a></li>
-    <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" href="#"><i class="ri-close-line me-2"></i>Cancel</a></li>
-  </ul>
-</div>
-`;
-const dropdownLargeButtons = `<!-- Large button groups (default and split) -->
-<div class="btn-group pb-1">
-  <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    <i class="ri-settings-4-line me-1"></i>Large Menu
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#"><i class="ri-user-line me-2"></i>Profile</a></li>
-    <li><a class="dropdown-item" href="#"><i class="ri-settings-line me-2"></i>Settings</a></li>
-    <li><a class="dropdown-item" href="#"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
-  </ul>
-</div>
-<div class="btn-group pb-1">
-  <button class="btn btn-secondary btn-lg" type="button">
-    <i class="ri-menu-line me-1"></i>Large Split
-  </button>
-  <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-    <span class="visually-hidden">Toggle Dropdown</span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#"><i class="ri-user-line me-2"></i>Profile</a></li>
-    <li><a class="dropdown-item" href="#"><i class="ri-settings-line me-2"></i>Settings</a></li>
-    <li><a class="dropdown-item" href="#"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
-  </ul>
-</div>
-`;
+`
 const dropdownSmallButtons = `<div class="btn-group">
   <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     <i class="ri-settings-3-line me-1"></i>Small Menu
@@ -129,7 +50,7 @@ const dropdownSmallButtons = `<div class="btn-group">
     <li><a class="dropdown-item" href="#"><i class="ri-delete-bin-line me-2"></i>Delete</a></li>
   </ul>
 </div>
-`;
+`
 const dropdownItemSizingExample = `<div class="row g-3">
   <div class="col-auto">
     <div class="dropdown">
@@ -192,7 +113,7 @@ const dropdownItemSizingExample = `<div class="row g-3">
     </div>
   </div>
 </div>
-`;
+`
 const dropdownCenteredExample = `<div class="dropdown-center">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     <i class="ri-align-center me-1"></i>Centered Menu
@@ -203,7 +124,7 @@ const dropdownCenteredExample = `<div class="dropdown-center">
     <li><a class="dropdown-item" href="#"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
   </ul>
 </div>
-`;
+`
 const dropupDefault = `<!-- Default dropup button -->
 <div class="btn-group dropup" style="margin-top: 105px;">
     <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -230,7 +151,7 @@ const dropupDefault = `<!-- Default dropup button -->
         <li><a class="dropdown-item" href="#">Action three</a></li>
     </ul>
 </div>
-`;
+`
 const dropupCenteredExample = `<div class="dropup-center dropup" style="margin-top: 105px;">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Centered Dropup
@@ -241,7 +162,7 @@ const dropupCenteredExample = `<div class="dropup-center dropup" style="margin-t
     <li><a class="dropdown-item" href="#"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
   </ul>
 </div>
-`;
+`
 const dropendExample = `<!-- Default dropend button -->
 <div class="btn-group dropend">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -268,7 +189,7 @@ const dropendExample = `<!-- Default dropend button -->
     <li><a class="dropdown-item" href="#"><i class="ri-delete-bin-line me-2"></i>Delete</a></li>
   </ul>
 </div>
-`;
+`
 const dropstartExample = `<!-- Default dropstart button -->
 <div style="margin-left: 160px;">
 <div class="btn-group dropstart mb-1">
@@ -297,52 +218,7 @@ const dropstartExample = `<!-- Default dropstart button -->
   </button>
 </div>
 </div>
-`;
-const dropdownButtonItems = `<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown
-  </button>
-  <ul class="dropdown-menu">
-    <li><button class="dropdown-item" type="button">Action</button></li>
-    <li><button class="dropdown-item" type="button">Another action</button></li>
-    <li><button class="dropdown-item" type="button">Something else here</button></li>
-  </ul>
-</div>
-`;
-const dropdownNonInteractiveItems = `<div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Dropdown
-    </button>
-    <ul class="dropdown-menu">
-        <li><span class="dropdown-item-text">Dropdown item text</span></li>
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-    </ul>
-</div>
-`;
-const dropdownActiveItems = `<div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Dropdown
-    </button>
-    <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Regular link</a></li>
-        <li><a class="dropdown-item active" href="#" aria-current="true">Active link</a></li>
-        <li><a class="dropdown-item" href="#">Another link</a></li>
-    </ul>
-</div>
-`;
-const dropdownDisabledItems = `<div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Dropdown
-    </button>
-    <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Regular link</a></li>
-        <li><a class="dropdown-item disabled" aria-disabled="true">Disabled link</a></li>
-        <li><a class="dropdown-item" href="#">Another link</a></li>
-    </ul>
-</div>
-`;
+`
 const dropdownRightAlignedExample = `<div class="btn-group">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
     <i class="ri-align-right me-1"></i>Right-aligned Menu
@@ -353,7 +229,7 @@ const dropdownRightAlignedExample = `<div class="btn-group">
     <li><button class="dropdown-item" type="button"><i class="ri-logout-box-line me-2"></i>Logout</button></li>
   </ul>
 </div>
-`;
+`
 const dropdownResponsiveRightExample = `<div class="btn-group">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
     <i class="ri-align-left me-1"></i>Left on Mobile, Right on Desktop
@@ -364,7 +240,7 @@ const dropdownResponsiveRightExample = `<div class="btn-group">
     <li><button class="dropdown-item" type="button"><i class="ri-logout-box-line me-2"></i>Logout</button></li>
   </ul>
 </div>
-`;
+`
 const dropdownResponsiveLeftExample = `<div class="btn-group">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
     <i class="ri-align-right me-1"></i>Right on Mobile, Left on Desktop
@@ -375,7 +251,7 @@ const dropdownResponsiveLeftExample = `<div class="btn-group">
     <li><button class="dropdown-item" type="button"><i class="ri-logout-box-line me-2"></i>Logout</button></li>
   </ul>
 </div>
-`;
+`
 const dropdownAlignmentExamples = `<div class="btn-group pb-1">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Dropdown
@@ -452,110 +328,7 @@ const dropdownAlignmentExamples = `<div class="btn-group pb-1">
     <li><a class="dropdown-item" href="#">Menu item</a></li>
   </ul>
 </div>
-`;
-const dropdownWithHeader = `<div class="btn-group">
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        Menu
-    </button>
-    <ul class="dropdown-menu">
-        <li><h6 class="dropdown-header">Dropdown header</h6></li>
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-    </ul>
-</div>
-`;
-const dropdownWithDivider = `<div class="btn-group">
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        Menu
-    </button>
-    <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
-</div>
-`;
-const dropdownWithText = `<div class="btn-group">
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        Menu
-    </button>
-    <div class="dropdown-menu p-2 text-body-secondary" style="max-width: 200px;">
-        <p class="mb-0">
-            Some example text that's free-flowing within the dropdown menu.
-        </p>
-    </div>
-</div>`;
-const dropdownWithOffset = `<div class="d-flex">
-  <div class="dropdown me-1">
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
-      Offset
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-    </ul>
-  </div>
-  <div class="btn-group">
-    <button type="button" class="btn btn-secondary">Reference</button>
-    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
-      <span class="visually-hidden">Toggle Dropdown</span>
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
-  </div>
-</div>
-`;
-const dropdownAutoClose = `<div class="btn-group pb-1">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
-    Default dropdown
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Menu item</a></li>
-    <li><a class="dropdown-item" href="#">Menu item</a></li>
-    <li><a class="dropdown-item" href="#">Menu item</a></li>
-  </ul>
-</div>
-
-<div class="btn-group pb-1">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
-    Clickable inside
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Menu item</a></li>
-    <li><a class="dropdown-item" href="#">Menu item</a></li>
-    <li><a class="dropdown-item" href="#">Menu item</a></li>
-  </ul>
-</div>
-
-<div class="btn-group pb-1">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-    Clickable outside
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Menu item</a></li>
-    <li><a class="dropdown-item" href="#">Menu item</a></li>
-    <li><a class="dropdown-item" href="#">Menu item</a></li>
-  </ul>
-</div>
-
-<div class="btn-group pb-1">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
-    Manual close
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Menu item</a></li>
-    <li><a class="dropdown-item" href="#">Menu item</a></li>
-    <li><a class="dropdown-item" href="#">Menu item</a></li>
-  </ul>
-</div>
-`;
-
+`
 // Dropdown with link example
 const dropdownLinkExample = `<div class="dropdown">
   <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -567,7 +340,7 @@ const dropdownLinkExample = `<div class="dropdown">
     <li><a class="dropdown-item" href="#"><i class="ri-delete-bin-line me-2"></i>Remove</a></li>
   </ul>
 </div>
-`;
+`
 
 // Primary button dropdown with additional options
 const dropdownPrimaryExample = `<!-- Example single primary button -->
@@ -583,7 +356,7 @@ const dropdownPrimaryExample = `<!-- Example single primary button -->
     <li><a class="dropdown-item" href="#"><i class="ri-delete-bin-line me-2"></i>Delete</a></li>
   </ul>
 </div>
-`;
+`
 
 // Split button dropdown with primary styling
 const dropdownSplitButtonExample = `<!-- Example split primary button -->
@@ -602,7 +375,7 @@ const dropdownSplitButtonExample = `<!-- Example split primary button -->
     <li><a class="dropdown-item" href="#"><i class="ri-close-line me-2"></i>Cancel</a></li>
   </ul>
 </div>
-`;
+`
 
 // Large button dropdowns with enhanced styling
 const dropdownLargeButtonsExample = `<!-- Large button groups (default and split) -->
@@ -629,7 +402,7 @@ const dropdownLargeButtonsExample = `<!-- Large button groups (default and split
     <li><a class="dropdown-item" href="#"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
   </ul>
 </div>
-`;
+`
 
 // Button-style dropdown items with icons
 const dropdownButtonItemsExample = `<div class="dropdown">
@@ -642,7 +415,7 @@ const dropdownButtonItemsExample = `<div class="dropdown">
     <li><button class="dropdown-item" type="button"><i class="ri-close-circle-line me-2"></i>Cancel Action</button></li>
   </ul>
 </div>
-`;
+`
 
 // Non-interactive dropdown items with icons
 const dropdownNonInteractiveItemsExample = `<div class="dropdown">
@@ -656,7 +429,7 @@ const dropdownNonInteractiveItemsExample = `<div class="dropdown">
     <li><a class="dropdown-item" href="#"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
   </ul>
 </div>
-`;
+`
 
 // Active state dropdown items with icons
 const dropdownActiveItemsExample = `<div class="dropdown">
@@ -669,7 +442,7 @@ const dropdownActiveItemsExample = `<div class="dropdown">
     <li><a class="dropdown-item" href="#"><i class="ri-settings-line me-2"></i>Settings</a></li>
   </ul>
 </div>
-`;
+`
 
 // Disabled state dropdown items with icons
 const dropdownDisabledItemsExample = `<div class="dropdown">
@@ -682,7 +455,7 @@ const dropdownDisabledItemsExample = `<div class="dropdown">
     <li><a class="dropdown-item" href="#"><i class="ri-user-settings-line me-2"></i>User Settings</a></li>
   </ul>
 </div>
-`;
+`
 
 // Header example with icons
 const dropdownWithHeaderExample = `<div class="btn-group">
@@ -698,7 +471,7 @@ const dropdownWithHeaderExample = `<div class="btn-group">
     <li><a class="dropdown-item" href="#"><i class="ri-shield-keyhole-line me-2"></i>2FA Settings</a></li>
   </ul>
 </div>
-`;
+`
 
 // Divider example with icons
 const dropdownWithDividerExample = `<div class="btn-group">
@@ -712,7 +485,7 @@ const dropdownWithDividerExample = `<div class="btn-group">
     <li><a class="dropdown-item text-danger" href="#"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
   </ul>
 </div>
-`;
+`
 
 // Text content example with icons
 const dropdownWithTextExample = `<div class="btn-group">
@@ -733,7 +506,7 @@ const dropdownWithTextExample = `<div class="btn-group">
       2 minutes ago
     </p>
   </div>
-</div>`;
+</div>`
 
 // Dropdown with offset and reference examples
 const dropdownWithOptionsExample = `<div class="d-flex">
@@ -762,7 +535,7 @@ const dropdownWithOptionsExample = `<div class="d-flex">
     </ul>
   </div>
 </div>
-`;
+`
 
 // Auto-close behavior examples
 const dropdownAutoCloseExample = `<div class="btn-group pb-1">
@@ -808,7 +581,7 @@ const dropdownAutoCloseExample = `<div class="btn-group pb-1">
     <li><a class="dropdown-item" href="#"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
   </ul>
 </div>
-`;
+`
 ---
 
 <AdminLayout

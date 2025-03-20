@@ -1,23 +1,44 @@
-export function getCSS(isDev: boolean): string {
-  return isDev ? `/dist/css/style.css` : `/css/style.min.css`;
+/**
+ * Get the CSS file path based on development mode
+ * @param {boolean} isDev - Whether in development mode
+ * @returns {string} CSS file path
+ */
+export function getCSS(isDev) {
+  return isDev ? `/dist/css/style.css` : `/css/style.min.css`
 }
 
-export function getJS(filename: string, isDev: boolean): string {
-  return isDev ? `/dist/js/${filename}.js` : `/js/${filename}.min.js`;
+/**
+ * Get the JavaScript file path based on filename and development mode
+ * @param {string} filename - The JavaScript file name
+ * @param {boolean} isDev - Whether in development mode
+ * @returns {string} JavaScript file path
+ */
+export function getJS(filename, isDev) {
+  return isDev ? `/dist/js/${filename}.js` : `/js/${filename}.min.js`
 }
 
-export function generatePreviewId(): string {
-  return `preview-${Math.random().toString(36).substr(2, 9)}`;
+/**
+ * Generate a unique preview ID
+ * @returns {string} Generated preview ID
+ */
+export function generatePreviewId() {
+  return `preview-${Math.random().toString(36).substr(2, 9)}`
 }
 
-export interface IframeContentProps {
-  component: string;
-  cssCode?: string;
-  jsCode?: string;
-  isDev: boolean;
-}
+/**
+ * @typedef {Object} IframeContentProps
+ * @property {string} component - The component HTML
+ * @property {string} [cssCode] - Optional CSS code
+ * @property {string} [jsCode] - Optional JavaScript code
+ * @property {boolean} isDev - Whether in development mode
+ */
 
-export function createIframeContent({ component, cssCode, jsCode, isDev }: IframeContentProps): string {
+/**
+ * Create the iframe content
+ * @param {IframeContentProps} props - The iframe content properties
+ * @returns {string} Generated iframe HTML content
+ */
+export function createIframeContent({ component, cssCode, jsCode, isDev }) {
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -108,12 +129,12 @@ export function createIframeContent({ component, cssCode, jsCode, isDev }: Ifram
     </div>
   </div>
 
-  <script src="${getJS("main", isDev)}" type="module"></script>
+  <script src="${getJS('main', isDev)}" type="module"></script>
 
   <div id="custom-js">
     ${jsCode || ''}
   </div>
 </body>
 </html>
-`;
+`
 }

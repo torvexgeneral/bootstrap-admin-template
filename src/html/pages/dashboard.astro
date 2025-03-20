@@ -1,11 +1,10 @@
 ---
-import AdminLayout from "../layouts/admin/admin-layout.astro";
-import PageHeader from "../components/common/page-header.astro";
-import { getPathPrefix } from "../../utils/path.js";
+import AdminLayout from '../layouts/admin/admin-layout.astro'
+import PageHeader from '../components/common/page-header.astro'
 
 const dashboardHeaderProps = {
-  title: "Analytics Dashboard"
-};
+  title: 'Dashboard'
+}
 
 // Initialize Chart.js and define visualization configurations
 const dashboardChartScripts = `<!-- Chart.js CDN Integration -->
@@ -134,12 +133,12 @@ const dashboardChartScripts = `<!-- Chart.js CDN Integration -->
     });
   });
 </script>
-`;
+`
 ---
 
 <AdminLayout
   currentPath="dashboard"
-  title="Analytics Dashboard"
+  title="Dashboard"
   description="Comprehensive overview of business metrics, sales performance, and key indicators"
   pageScript={dashboardChartScripts}
 >

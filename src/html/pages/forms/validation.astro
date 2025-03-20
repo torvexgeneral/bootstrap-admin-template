@@ -1,19 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import { getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 // Page configuration with breadcrumb navigation
 const pageHeaderProps = {
-  title: "Form Validation",
+  title: 'Form Validation',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Forms" },
-    { label: "Form Validation", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Forms' },
+    { label: 'Form Validation', class: 'active' }
   ]
-};
+}
 
 // Browser default validation example with HTML5 constraints
 const browserDefaultValidation = `<form class="row g-3">
@@ -72,7 +72,7 @@ const browserDefaultValidation = `<form class="row g-3">
       <i class="ri-save-line me-2"></i>Submit form
     </button>
   </div>
-</form>`;
+</form>`
 
 // Custom validation styles with JavaScript validation
 const customStyleValidation = `<form class="row g-3 needs-validation" novalidate>
@@ -152,7 +152,7 @@ const customStyleValidation = `<form class="row g-3 needs-validation" novalidate
       <i class="ri-save-line me-2"></i>Submit form
     </button>
   </div>
-</form>`;
+</form>`
 
 // JavaScript code for custom validation
 const customStyleValidationJs = `<script>
@@ -175,7 +175,7 @@ const customStyleValidationJs = `<script>
     }, false)
   })
 })()
-</script>`;
+</script>`
 
 // CSS styles for validation feedback
 const customStyleValidationCss = `.valid-feedback {
@@ -188,7 +188,7 @@ const customStyleValidationCss = `.valid-feedback {
   color: #dc3545;
   display: flex;
   align-items: center;
-}`;
+}`
 
 // Server-side validation example with pre-validated states
 const serverSideValidation = `<form class="row g-3 needs-validation" novalidate>
@@ -268,7 +268,7 @@ const serverSideValidation = `<form class="row g-3 needs-validation" novalidate>
       <i class="ri-save-line me-2"></i>Submit form
     </button>
   </div>
-</form>`;
+</form>`
 
 // Tooltip validation example with floating feedback
 const tooltipValidation = `<form class="row g-3 needs-validation" novalidate>
@@ -337,7 +337,7 @@ const tooltipValidation = `<form class="row g-3 needs-validation" novalidate>
       <i class="ri-save-line me-2"></i>Submit form
     </button>
   </div>
-</form>`;
+</form>`
 ---
 
 <AdminLayout
@@ -374,9 +374,7 @@ const tooltipValidation = `<form class="row g-3 needs-validation" novalidate>
       <div class="row js-toc-content">
         <!-- Browser defaults -->
         <div class="col-12">
-          <h2 class="my-3" id="browser-defaults">
-            <i class="ri-browser-line me-2"></i>Browser Defaults
-          </h2>
+          <h2 class="my-3" id="browser-defaults">Browser Defaults</h2>
           <p>
             Browser default validation provides a lightweight, native approach using HTML5
             constraints. Key features include:
@@ -391,7 +389,7 @@ const tooltipValidation = `<form class="row g-3 needs-validation" novalidate>
             <div class="card-body">
               <ComponentPreview
                 title="Browser Default Validation"
-                height="420px"
+                height="550px"
                 component={browserDefaultValidation}
                 htmlCode={browserDefaultValidation}
               />
@@ -401,9 +399,7 @@ const tooltipValidation = `<form class="row g-3 needs-validation" novalidate>
 
         <!-- Custom styles -->
         <div class="col-12">
-          <h2 class="my-3" id="custom-styles">
-            <i class="ri-palette-line me-2"></i>Custom Styles
-          </h2>
+          <h2 class="my-3" id="custom-styles">Custom Styles</h2>
           <p>
             Custom validation styles offer enhanced visual feedback and more control over the
             validation experience:
@@ -423,7 +419,7 @@ const tooltipValidation = `<form class="row g-3 needs-validation" novalidate>
             <div class="card-body">
               <ComponentPreview
                 title="Custom Styles Validation"
-                height="420px"
+                height="550px"
                 component={customStyleValidation}
                 htmlCode={customStyleValidation}
                 jsCode={customStyleValidationJs}
@@ -435,9 +431,7 @@ const tooltipValidation = `<form class="row g-3 needs-validation" novalidate>
 
         <!-- Server side -->
         <div class="col-12">
-          <h2 class="my-3" id="server-side">
-            <i class="ri-server-line me-2"></i>Server Side
-          </h2>
+          <h2 class="my-3" id="server-side">Server Side</h2>
           <p>Server-side validation provides pre-validated states for form fields:</p>
           <ul class="mb-3">
             <li>Immediate feedback from backend validation</li>
@@ -454,7 +448,7 @@ const tooltipValidation = `<form class="row g-3 needs-validation" novalidate>
             <div class="card-body">
               <ComponentPreview
                 title="Server Side Validation"
-                height="420px"
+                height="550px"
                 component={serverSideValidation}
                 htmlCode={serverSideValidation}
               />
@@ -464,9 +458,7 @@ const tooltipValidation = `<form class="row g-3 needs-validation" novalidate>
 
         <!-- Tooltips -->
         <div class="col-12">
-          <h2 class="my-3" id="tooltips">
-            <i class="ri-chat-1-line me-2"></i>Tooltips
-          </h2>
+          <h2 class="my-3" id="tooltips">Tooltips</h2>
           <p>Tooltip validation provides space-efficient feedback using floating messages:</p>
           <ul class="mb-3">
             <li>Compact feedback display</li>
@@ -483,7 +475,7 @@ const tooltipValidation = `<form class="row g-3 needs-validation" novalidate>
             <div class="card-body">
               <ComponentPreview
                 title="Tooltip Validation"
-                height="420px"
+                height="550px"
                 component={tooltipValidation}
                 htmlCode={tooltipValidation}
               />

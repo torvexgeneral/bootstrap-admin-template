@@ -1,24 +1,24 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 const pageHeaderProps = {
-  title: "Spinners",
+  title: 'Spinners',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Interface", href: getPathPrefix("/interface") },
-    { label: "Spinners", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Interface', href: getPathPrefix('/interface') },
+    { label: 'Spinners', class: 'active' }
   ]
-};
+}
 
 // Basic border spinner example with accessibility support
 const basicBorderSpinnerExample = `<div class="spinner-border" role="status">
   <span class="visually-hidden">Loading content...</span>
 </div>
-`;
+`
 
 // Contextual color variations for border spinners
 const coloredBorderSpinnerExamples = `<div class="d-flex gap-2">
@@ -47,13 +47,13 @@ const coloredBorderSpinnerExamples = `<div class="d-flex gap-2">
     <span class="visually-hidden">Loading dark content...</span>
   </div>
 </div>
-`;
+`
 
 // Basic growing spinner example
 const basicGrowingSpinnerExample = `<div class="spinner-grow" role="status">
   <span class="visually-hidden">Loading content...</span>
 </div>
-`;
+`
 
 // Contextual color variations for growing spinners
 const coloredGrowingSpinnerExamples = `<div class="d-flex gap-2">
@@ -82,13 +82,13 @@ const coloredGrowingSpinnerExamples = `<div class="d-flex gap-2">
     <span class="visually-hidden">Loading dark content...</span>
   </div>
 </div>
-`;
+`
 
 // Example with margin spacing
 const marginSpacingExample = `<div class="spinner-border m-5" role="status">
   <span class="visually-hidden">Loading content with margin...</span>
 </div>
-`;
+`
 
 // Center-aligned spinner example
 const centeredSpinnerExample = `<div class="d-flex justify-content-center">
@@ -96,7 +96,7 @@ const centeredSpinnerExample = `<div class="d-flex justify-content-center">
     <span class="visually-hidden">Loading centered content...</span>
   </div>
 </div>
-`;
+`
 
 // Spinner with text alignment example
 const spinnerWithTextExample = `<div class="d-flex align-items-center gap-2">
@@ -105,7 +105,7 @@ const spinnerWithTextExample = `<div class="d-flex align-items-center gap-2">
   </strong>
   <div class="spinner-border ms-auto" aria-hidden="true"></div>
 </div>
-`;
+`
 
 // Float-aligned spinner example
 const floatAlignedSpinnerExample = `<div class="clearfix">
@@ -113,7 +113,7 @@ const floatAlignedSpinnerExample = `<div class="clearfix">
     <span class="visually-hidden">Loading float-aligned content...</span>
   </div>
 </div>
-`;
+`
 
 // Text-aligned spinner example
 const textAlignedSpinnerExample = `<div class="text-center">
@@ -121,7 +121,7 @@ const textAlignedSpinnerExample = `<div class="text-center">
     <span class="visually-hidden">Loading text-aligned content...</span>
   </div>
 </div>
-`;
+`
 
 // Small size spinner examples
 const smallSpinnerExamples = `<div class="d-flex gap-2 align-items-center">
@@ -133,7 +133,7 @@ const smallSpinnerExamples = `<div class="d-flex gap-2 align-items-center">
   </div>
   <i class="ri-loader-2-line"></i>
 </div>
-`;
+`
 
 // Custom size spinner examples
 const customSizeSpinnerExamples = `<div class="d-flex gap-3 align-items-center">
@@ -145,7 +145,7 @@ const customSizeSpinnerExamples = `<div class="d-flex gap-3 align-items-center">
   </div>
   <i class="ri-loader-4-line" style="font-size: 3rem;"></i>
 </div>
-`;
+`
 
 // Button spinner examples with border style
 const buttonBorderSpinnerExamples = `<div class="d-flex gap-2">
@@ -163,7 +163,7 @@ const buttonBorderSpinnerExamples = `<div class="d-flex gap-2">
     <span role="status">Saving...</span>
   </button>
 </div>
-`;
+`
 
 // Button spinner examples with grow style
 const buttonGrowSpinnerExamples = `<div class="d-flex gap-2">
@@ -181,7 +181,7 @@ const buttonGrowSpinnerExamples = `<div class="d-flex gap-2">
     <span role="status">Downloading...</span>
   </button>
 </div>
-`;
+`
 ---
 
 <AdminLayout
@@ -399,7 +399,7 @@ const buttonGrowSpinnerExamples = `<div class="d-flex gap-2">
 
             <ComponentPreview
               title="Buttons with Border Spinners"
-              height="100px"
+              height="200px"
               component={buttonBorderSpinnerExamples}
               htmlCode={buttonBorderSpinnerExamples}
               cssCode={``}
@@ -408,7 +408,7 @@ const buttonGrowSpinnerExamples = `<div class="d-flex gap-2">
 
             <ComponentPreview
               title="Buttons with Growing Spinners"
-              height="100px"
+              height="200px"
               component={buttonGrowSpinnerExamples}
               htmlCode={buttonGrowSpinnerExamples}
               cssCode={``}

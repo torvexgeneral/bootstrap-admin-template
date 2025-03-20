@@ -2,40 +2,40 @@
 // TODO:
 // - Add a favicon
 // - ogimage
-import { getAssetPrefix } from "../../../../utils/path.js";
-import ComponentPreviewCSS from "../../../components/component-preview/_css_component-preview.astro";
+import { getAssetPrefix } from '../../../../utils/path.js'
+import ComponentPreviewCSS from '../../../components/component-preview/_css_component-preview.astro'
 
-interface SeoProps {
-  title?: string;
-  description?: string;
-  author?: string;
-  ogImage?: string;
-  enableComponentPreview?: boolean;
-  pageCss?: string;
-  isRtl?: boolean;
+interface Props {
+  title?: string
+  description?: string
+  author?: string
+  ogImage?: string
+  enableComponentPreview?: boolean
+  pageCss?: string
+  isRtl?: boolean
 }
 
 const {
-  title = "Astero Admin", // Default title
-  description = "Admin dashboard for managing your application", // Default description
-  author = "Astero Digital",
-  ogImage = "/src/assets/img/og-image.png",
+  title = 'Astero Admin', // Default title
+  description = 'Admin dashboard for managing your application', // Default description
+  author = 'Astero Digital',
+  ogImage = '/src/assets/img/og-image.png',
   enableComponentPreview = false,
   pageCss,
   isRtl = false
-} = Astro.props;
+} = Astro.props
 
 // Construct full title
-const fullTitle = title ? `${title} | Astero Admin` : "Astero Admin";
+const fullTitle = title ? `${title} | Astero Admin` : 'Astero Admin'
 
 function getCSS() {
-  const isDev = import.meta.env.DEV;
-  return isDev ? `/dist/css/style.css` : `/css/style.min.css`;
+  const isDev = import.meta.env.DEV
+  return isDev ? `/dist/css/style.css` : `/css/style.min.css`
 }
 
 function getRtlCSS() {
-  const isDev = import.meta.env.DEV;
-  return isDev ? `/dist/css/style.rtl.css` : `/css/style.rtl.min.css`;
+  const isDev = import.meta.env.DEV
+  return isDev ? `/dist/css/style.rtl.css` : `/css/style.rtl.min.css`
 }
 ---
 
@@ -63,7 +63,7 @@ function getRtlCSS() {
 <meta property="og:type" content="website" />
 
 <!-- Favicon -->
-<link rel="icon" type="image/x-icon" href={getAssetPrefix("/assets/svg/astero-icon-color.svg")} />
+<link rel="icon" type="image/x-icon" href={getAssetPrefix('/assets/svg/astero-icon-color.svg')} />
 
 <!-- Astero Admin CSS -->
 {isRtl ? <link href={getRtlCSS()} rel="stylesheet" /> : <link href={getCSS()} rel="stylesheet" />}
@@ -72,8 +72,8 @@ function getRtlCSS() {
 <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" />
 
 <script is:inline>
-  const theme = localStorage.getItem("theme");
-  if (theme) document.documentElement.setAttribute("data-bs-theme", theme);
+  const theme = localStorage.getItem('theme')
+  if (theme) document.documentElement.setAttribute('data-bs-theme', theme)
 </script>
 
 <!-- Source Sans 3 from Google Fonts -->

@@ -1,8 +1,8 @@
 ---
-import AuthenticationLayout from "../../../layouts/admin/authentication-layout.astro";
-import Branding from "../../../components/common/branding.astro";
-import ThemeToggler from "../../../components/common/theme-toggler.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../../utils/path.js";
+import AuthenticationLayout from '../../../layouts/admin/authentication-layout.astro'
+import Branding from '../../../components/common/branding.astro'
+import ThemeToggler from '../../../components/common/theme-toggler.astro'
+import { getPathPrefix } from '../../../../utils/path.js'
 ---
 
 <AuthenticationLayout
@@ -54,7 +54,7 @@ import { getAssetPrefix, getPathPrefix } from "../../../../utils/path.js";
               <div class="d-flex justify-content-between align-items-center mb-1">
                 <label for="password" class="form-label mb-0">Password</label>
                 <a
-                  href={getPathPrefix("/authentication/social/forgot-password")}
+                  href={getPathPrefix('/authentication/social/forgot-password')}
                   class="text-decoration-none text-primary">Forgot your password?</a
                 >
               </div>
@@ -80,7 +80,7 @@ import { getAssetPrefix, getPathPrefix } from "../../../../utils/path.js";
 
           <div class="text-center">
             Don't have an account? <a
-              href={getPathPrefix("/authentication/social/register")}
+              href={getPathPrefix('/authentication/social/register')}
               class="text-decoration-none text-primary">Register</a
             >
           </div>

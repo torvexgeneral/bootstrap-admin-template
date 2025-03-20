@@ -18,20 +18,20 @@ const AsteroAdmin = (function () {
   function initBootstrap() {
     // Enable tooltips everywhere
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    Array.from(tooltipTriggerList).forEach(tooltipTriggerEl => {
+    Array.from(tooltipTriggerList).forEach((tooltipTriggerEl) => {
       new bootstrap.Tooltip(tooltipTriggerEl)
     })
 
     // Enable popovers everywhere
     const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-    Array.from(popoverTriggerList).forEach(popoverTriggerEl => {
+    Array.from(popoverTriggerList).forEach((popoverTriggerEl) => {
       new bootstrap.Popover(popoverTriggerEl)
     })
   }
 
   // Initialize SimpleBar on elements with data-simplebar attribute
   function initSimpleBar() {
-    document.querySelectorAll('[data-simplebar]').forEach(element => {
+    document.querySelectorAll('[data-simplebar]').forEach((element) => {
       new SimpleBar(element)
     })
   }
@@ -51,7 +51,7 @@ const AsteroAdmin = (function () {
       initSimpleBar()
       initialized = true
     } catch (error) {
-      console.error("Error during initialization:", error)
+      console.error('Error during initialization:', error)
     }
   }
 
@@ -63,9 +63,9 @@ const AsteroAdmin = (function () {
 })()
 
 // Auto-initialize when DOM is ready
-if (typeof document !== "undefined") {
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", AsteroAdmin.init)
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', AsteroAdmin.init)
   } else {
     AsteroAdmin.init()
   }

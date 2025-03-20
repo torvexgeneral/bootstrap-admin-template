@@ -1,19 +1,19 @@
 ---
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
+import { getAssetPrefix, getPathPrefix } from '../../../utils/path.js'
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
 
 // Page header configuration with breadcrumb navigation
 const pageHeaderProps = {
-  title: "Basic Tables",
+  title: 'Basic Tables',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Tables", href: getPathPrefix("/tables") },
-    { label: "Basic Tables", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Tables', href: getPathPrefix('/tables') },
+    { label: 'Basic Tables', class: 'active' }
   ]
-};
+}
 
 // Basic table example demonstrating fundamental table structure
 const basicTableTemplate = `<div class="table-responsive">
@@ -59,7 +59,7 @@ const basicTableTemplate = `<div class="table-responsive">
         </tbody>
     </table>
 </div>
-`;
+`
 
 // Table variants example showing different color schemes
 const tableVariantsTemplate = `<table class="table table-primary">
@@ -103,7 +103,7 @@ const tableVariantsTemplate = `<table class="table table-primary">
         </tr>
     </tbody>
 </table>
-`;
+`
 
 // Row variants example demonstrating different row styles
 const rowVariantsTemplate = `<table class="table">
@@ -172,7 +172,7 @@ const rowVariantsTemplate = `<table class="table">
         </tr>
     </tbody>
 </table>
-`;
+`
 
 // Cell variants example showing individual cell styling
 const cellVariantsTemplate = `<table class="table">
@@ -201,7 +201,7 @@ const cellVariantsTemplate = `<table class="table">
         </tr>
     </tbody>
 </table>
-`;
+`
 
 // Striped rows example for better readability
 const stripedRowsTemplate = `<table class="table table-striped">
@@ -245,7 +245,7 @@ const stripedRowsTemplate = `<table class="table table-striped">
         </tr>
     </tbody>
 </table>
-`;
+`
 
 // Striped columns example for vertical pattern
 const stripedColumnsTemplate = `<div class="table-responsive">
@@ -290,7 +290,7 @@ const stripedColumnsTemplate = `<div class="table-responsive">
         </tbody>
     </table>
 </div>
-`;
+`
 
 // Hoverable rows example for interactive tables
 const hoverableRowsTemplate = `<table class="table table-hover">
@@ -334,7 +334,7 @@ const hoverableRowsTemplate = `<table class="table table-hover">
         </tr>
     </tbody>
 </table>
-`;
+`
 
 // Active table example demonstrating row highlighting
 const activeTableTemplate = `<div class="table-responsive">
@@ -379,7 +379,7 @@ const activeTableTemplate = `<div class="table-responsive">
         </tbody>
     </table>
 </div>
-`;
+`
 
 // Table with borders example
 const borderedTableTemplate = `<table class="table table-bordered">
@@ -423,7 +423,7 @@ const borderedTableTemplate = `<table class="table table-bordered">
         </tr>
     </tbody>
 </table>
-`;
+`
 
 // Table without borders example
 const borderlessTableTemplate = `<table class="table table-borderless">
@@ -467,7 +467,7 @@ const borderlessTableTemplate = `<table class="table table-borderless">
         </tr>
     </tbody>
 </table>
-`;
+`
 
 // Compact table example with reduced padding
 const compactTableTemplate = `<table class="table table-sm">
@@ -524,7 +524,7 @@ const compactTableTemplate = `<table class="table table-sm">
         </tr>
     </tbody>
 </table>
-`;
+`
 
 // Table with group dividers for better section separation
 const groupDividerTemplate = `<div class="table-responsive">
@@ -590,7 +590,7 @@ const groupDividerTemplate = `<div class="table-responsive">
         </tfoot>
     </table>
 </div>
-`;
+`
 
 // Vertical alignment examples in tables
 const verticalAlignmentTemplate = `<div class="table-responsive">
@@ -625,7 +625,7 @@ const verticalAlignmentTemplate = `<div class="table-responsive">
         </tbody>
     </table>
 </div>
-`;
+`
 
 // Nested tables example showing table hierarchy
 const nestedTableTemplate = `<table class="table table-bordered">
@@ -696,7 +696,7 @@ const nestedTableTemplate = `<table class="table table-bordered">
         </tr>
     </tbody>
 </table>
-`;
+`
 
 // Table with dark header example
 const tableHeaderTemplate = `<div class="table-responsive">
@@ -755,7 +755,7 @@ const tableHeaderTemplate = `<div class="table-responsive">
         </tbody>
     </table>
 </div>
-`;
+`
 
 // Table with footer example showing summary data
 const tableFooterTemplate = `<div class="table-responsive">
@@ -821,7 +821,7 @@ const tableFooterTemplate = `<div class="table-responsive">
         </tfoot>
     </table>
 </div>
-`;
+`
 
 // Table with caption examples
 const tableCaptionTemplate = `<div class="table-responsive">
@@ -882,7 +882,7 @@ const tableCaptionTemplate = `<div class="table-responsive">
         </tbody>
     </table>
 </div>
-`;
+`
 
 // Responsive table example for better mobile display
 const responsiveTableTemplate = `<div class="table-responsive">
@@ -953,7 +953,7 @@ const responsiveTableTemplate = `<div class="table-responsive">
         </tbody>
     </table>
 </div>
-`;
+`
 
 // Responsive table with breakpoint example
 const responsiveBreakpointTemplate = `<div class="table-responsive-sm">
@@ -1024,7 +1024,7 @@ const responsiveBreakpointTemplate = `<div class="table-responsive-sm">
         </tbody>
     </table>
 </div>
-`;
+`
 
 // Modern products table example with images and badges
 const productsTableTemplate = `<div class="table-responsive">
@@ -1043,7 +1043,7 @@ const productsTableTemplate = `<div class="table-responsive">
                 <tr>
                     <td style="min-width: 250px;">
                         <div class="d-flex align-items-center">
-                            <img src="${getAssetPrefix("/assets/img/products/product-1.jpg")}" alt="Product 1" class="rounded" width="40" height="40" style="object-fit: cover;">
+                            <img src="${getAssetPrefix('/assets/img/products/product-1.jpg')}" alt="Product 1" class="rounded" width="40" height="40" style="object-fit: cover;">
                             <div class="ms-3">
                                 <h6 class="mb-0">Nike Air Max 270</h6>
                                 <small class="text-muted">Sports Shoes</small>
@@ -1058,7 +1058,7 @@ const productsTableTemplate = `<div class="table-responsive">
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                            <img src="${getAssetPrefix("/assets/img/products/product-2.jpg")}" alt="Product 2" class="rounded" width="40" height="40" style="object-fit: cover;">
+                            <img src="${getAssetPrefix('/assets/img/products/product-2.jpg')}" alt="Product 2" class="rounded" width="40" height="40" style="object-fit: cover;">
                             <div class="ms-3">
                                 <h6 class="mb-0">MacBook Pro M2</h6>
                                 <small class="text-muted">Laptops</small>
@@ -1073,7 +1073,7 @@ const productsTableTemplate = `<div class="table-responsive">
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                            <img src="${getAssetPrefix("/assets/img/products/product-3.jpg")}" alt="Product 3" class="rounded" width="40" height="40" style="object-fit: cover;">
+                            <img src="${getAssetPrefix('/assets/img/products/product-3.jpg')}" alt="Product 3" class="rounded" width="40" height="40" style="object-fit: cover;">
                             <div class="ms-3">
                                 <h6 class="mb-0">Sony WH-1000XM4</h6>
                                 <small class="text-muted">Headphones</small>
@@ -1088,7 +1088,7 @@ const productsTableTemplate = `<div class="table-responsive">
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                            <img src="${getAssetPrefix("/assets/img/products/product-4.jpg")}" alt="Product 4" class="rounded" width="40" height="40" style="object-fit: cover;">
+                            <img src="${getAssetPrefix('/assets/img/products/product-4.jpg')}" alt="Product 4" class="rounded" width="40" height="40" style="object-fit: cover;">
                             <div class="ms-3">
                                 <h6 class="mb-0">iPad Pro 12.9"</h6>
                                 <small class="text-muted">Tablets</small>
@@ -1103,7 +1103,7 @@ const productsTableTemplate = `<div class="table-responsive">
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                            <img src="${getAssetPrefix("/assets/img/products/product-5.jpg")}" alt="Product 5" class="rounded" width="40" height="40" style="object-fit: cover;">
+                            <img src="${getAssetPrefix('/assets/img/products/product-5.jpg')}" alt="Product 5" class="rounded" width="40" height="40" style="object-fit: cover;">
                             <div class="ms-3">
                                 <h6 class="mb-0">Samsung Galaxy S23</h6>
                                 <small class="text-muted">Smartphones</small>
@@ -1119,7 +1119,7 @@ const productsTableTemplate = `<div class="table-responsive">
         </table>
     </div>
 </div>
-`;
+`
 
 // Invoice table example with checkboxes and user info
 const invoiceTableTemplate = `<div class="table-responsive">
@@ -1143,7 +1143,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
                 <td><span class="badge text-bg-success"><i class="ri-checkbox-circle-line me-1"></i>Paid</span></td>
                 <td>
                     <div class="d-flex align-items-center">
-                        <img src="${getAssetPrefix("/assets/img/avatars/avatar1.jpg")}" width="40" height="40" style="object-fit: cover;" class="rounded-circle me-2" alt="Jordan">
+                        <img src="${getAssetPrefix('/assets/img/avatars/avatar1.jpg')}" width="40" height="40" style="object-fit: cover;" class="rounded-circle me-2" alt="Jordan">
                         <div class="ms-1 d-flex flex-column">
                             <span>Jordan Kennedy</span>
                             <span class="text-muted">john@example.com</span>
@@ -1160,7 +1160,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
                 <td><span class="badge text-bg-success"><i class="ri-checkbox-circle-line me-1"></i>Paid</span></td>
                 <td>
                     <div class="d-flex align-items-center">
-                        <img src="${getAssetPrefix("/assets/img/avatars/avatar2.jpg")}" width="40" height="40" style="object-fit: cover;" class="rounded-circle me-2" alt="Jackson">
+                        <img src="${getAssetPrefix('/assets/img/avatars/avatar2.jpg')}" width="40" height="40" style="object-fit: cover;" class="rounded-circle me-2" alt="Jackson">
                         <div class="ms-1 d-flex flex-column">
                             <span>Jackson Graham</span>
                             <span class="text-muted">jackson@example.com</span>
@@ -1177,7 +1177,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
                 <td><span class="badge text-bg-primary"><i class="ri-refresh-line me-1"></i>Refunded</span></td>
                 <td>
                     <div class="d-flex align-items-center">
-                        <img src="${getAssetPrefix("/assets/img/avatars/avatar3.jpg")}" width="40" height="40" style="object-fit: cover;" class="rounded-circle me-2" alt="Lauren">
+                        <img src="${getAssetPrefix('/assets/img/avatars/avatar3.jpg')}" width="40" height="40" style="object-fit: cover;" class="rounded-circle me-2" alt="Lauren">
                         <div class="ms-1 d-flex flex-column">
                             <span>Lauren Trujillo</span>
                             <span class="text-muted">lauren@example.com</span>
@@ -1194,7 +1194,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
                 <td><span class="badge text-bg-danger"><i class="ri-close-circle-line me-1"></i>Cancel</span></td>
                 <td>
                     <div class="d-flex align-items-center">
-                        <img src="${getAssetPrefix("/assets/img/avatars/avatar4.jpg")}" width="40" height="40" style="object-fit: cover;" class="rounded-circle me-2" alt="Curtis">
+                        <img src="${getAssetPrefix('/assets/img/avatars/avatar4.jpg')}" width="40" height="40" style="object-fit: cover;" class="rounded-circle me-2" alt="Curtis">
                         <div class="ms-1 d-flex flex-column">
                             <span>Curtis Weaver</span>
                             <span class="text-muted">curtis@example.com</span>
@@ -1211,7 +1211,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
                 <td><span class="badge text-bg-success"><i class="ri-checkbox-circle-line me-1"></i>Paid</span></td>
                 <td>
                     <div class="d-flex align-items-center">
-                        <img src="${getAssetPrefix("/assets/img/avatars/avatar5.jpg")}" width="40" height="40" style="object-fit: cover;" class="rounded-circle me-2" alt="Jason">
+                        <img src="${getAssetPrefix('/assets/img/avatars/avatar5.jpg')}" width="40" height="40" style="object-fit: cover;" class="rounded-circle me-2" alt="Jason">
                         <div class="ms-1 d-flex flex-column">
                             <span>Jason Schuller</span>
                             <span class="text-muted">jason@example.com</span>
@@ -1230,7 +1230,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
         </tfoot>
     </table>
 </div>
-`;
+`
 ---
 
 <AdminLayout
@@ -1266,7 +1266,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Basic Example"
-              height="260px"
+              height="550px"
               component={basicTableTemplate}
               htmlCode={basicTableTemplate}
               cssCode={``}
@@ -1294,7 +1294,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Table Variants"
-              height="260px"
+              height="550px"
               component={tableVariantsTemplate}
               htmlCode={tableVariantsTemplate}
               cssCode={``}
@@ -1313,7 +1313,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Rows Variants"
-              height="460px"
+              height="550px"
               component={rowVariantsTemplate}
               htmlCode={rowVariantsTemplate}
               cssCode={``}
@@ -1332,7 +1332,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Cells Variants"
-              height="200px"
+              height="550px"
               component={cellVariantsTemplate}
               htmlCode={cellVariantsTemplate}
               cssCode={``}
@@ -1354,7 +1354,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Striped Rows"
-              height="260px"
+              height="550px"
               component={stripedRowsTemplate}
               htmlCode={stripedRowsTemplate}
               cssCode={``}
@@ -1372,7 +1372,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Striped Columns"
-              height="260px"
+              height="550px"
               component={stripedColumnsTemplate}
               htmlCode={stripedColumnsTemplate}
               cssCode={``}
@@ -1391,7 +1391,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Hoverable Rows"
-              height="260px"
+              height="550px"
               component={hoverableRowsTemplate}
               htmlCode={hoverableRowsTemplate}
               cssCode={``}
@@ -1406,7 +1406,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Active Tables"
-              height="260px"
+              height="550px"
               component={activeTableTemplate}
               htmlCode={activeTableTemplate}
               cssCode={``}
@@ -1428,7 +1428,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Bordered Tables"
-              height="260px"
+              height="550px"
               component={borderedTableTemplate}
               htmlCode={borderedTableTemplate}
               cssCode={``}
@@ -1443,7 +1443,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Bordered Tables"
-              height="260px"
+              height="550px"
               component={borderlessTableTemplate}
               htmlCode={borderlessTableTemplate}
               cssCode={``}
@@ -1463,7 +1463,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Small Table"
-              height="260px"
+              height="550px"
               component={compactTableTemplate}
               htmlCode={compactTableTemplate}
               cssCode={``}
@@ -1486,7 +1486,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Table group dividers"
-              height="325px"
+              height="550px"
               component={groupDividerTemplate}
               htmlCode={groupDividerTemplate}
               cssCode={``}
@@ -1509,7 +1509,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Vertical Alignment"
-              height="330px"
+              height="550px"
               component={verticalAlignmentTemplate}
               htmlCode={verticalAlignmentTemplate}
               cssCode={``}
@@ -1528,7 +1528,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Nesting"
-              height="420px"
+              height="550px"
               component={nestedTableTemplate}
               htmlCode={nestedTableTemplate}
               cssCode={``}
@@ -1552,7 +1552,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Table Head"
-              height="280px"
+              height="550px"
               component={tableHeaderTemplate}
               htmlCode={tableHeaderTemplate}
               cssCode={``}
@@ -1570,7 +1570,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Table Foot"
-              height="320px"
+              height="550px"
               component={tableFooterTemplate}
               htmlCode={tableFooterTemplate}
               cssCode={``}
@@ -1594,7 +1594,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Table Captions"
-              height="360px"
+              height="550px"
               component={tableCaptionTemplate}
               htmlCode={tableCaptionTemplate}
               cssCode={``}
@@ -1626,7 +1626,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Always responsive"
-              height="280px"
+              height="550px"
               component={responsiveTableTemplate}
               htmlCode={responsiveTableTemplate}
               cssCode={``}
@@ -1649,7 +1649,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Breakpoint Specific"
-              height="280px"
+              height="550px"
               component={responsiveBreakpointTemplate}
               htmlCode={responsiveBreakpointTemplate}
               cssCode={``}
@@ -1670,7 +1670,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Products Table"
-              height="380px"
+              height="550px"
               component={productsTableTemplate}
               htmlCode={productsTableTemplate}
               cssCode={``}
@@ -1684,7 +1684,7 @@ const invoiceTableTemplate = `<div class="table-responsive">
 
             <ComponentPreview
               title="Invoice Table"
-              height="420px"
+              height="550px"
               component={invoiceTableTemplate}
               htmlCode={invoiceTableTemplate}
               cssCode={``}

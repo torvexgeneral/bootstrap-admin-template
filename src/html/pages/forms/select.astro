@@ -1,19 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getPathPrefix } from "../../../utils/path.js";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
 
 // Page configuration with breadcrumb navigation
 const pageHeaderProps = {
-  title: "Form Select Elements",
+  title: 'Form Select Elements',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Forms" },
-    { label: "Select Elements", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Forms' },
+    { label: 'Select Elements', class: 'active' }
   ]
-};
+}
 
 // Basic select controls with different states
 const basicSelectControls = `<div class="row g-3">
@@ -53,7 +53,7 @@ const basicSelectControls = `<div class="row g-3">
             </select>
         </div>
     </div>
-</div>`;
+</div>`
 
 // Size variations for select controls
 const sizeVariationControls = `<div class="row g-3">
@@ -112,7 +112,7 @@ const sizeVariationControls = `<div class="row g-3">
             </select>
         </div>
     </div>
-</div>`;
+</div>`
 
 // Multiple selection controls with different approaches
 const multiSelectionControls = `<div class="row g-3">
@@ -183,7 +183,7 @@ const multiSelectionControls = `<div class="row g-3">
             </div>
         </div>
     </div>
-</div>`;
+</div>`
 
 // Grouped options with categories
 const groupedSelectControls = `<div class="row g-3">
@@ -228,7 +228,7 @@ const groupedSelectControls = `<div class="row g-3">
             </select>
         </div>
     </div>
-</div>`;
+</div>`
 
 // Floating label select controls
 const floatingSelectControls = `<div class="row g-3">
@@ -282,7 +282,7 @@ const floatingSelectControls = `<div class="row g-3">
             </label>
         </div>
     </div>
-</div>`;
+</div>`
 
 // Styled select controls with visual enhancements
 const styledSelectControls = `<div class="row g-3">
@@ -319,7 +319,7 @@ const styledSelectControls = `<div class="row g-3">
             </select>
         </div>
     </div>
-</div>`;
+</div>`
 ---
 
 <AdminLayout
@@ -363,7 +363,7 @@ const styledSelectControls = `<div class="row g-3">
             </p>
             <ComponentPreview
               title="Basic Select Controls"
-              height="140px"
+              height="250px"
               component={basicSelectControls}
               htmlCode={basicSelectControls}
             />
@@ -408,7 +408,7 @@ const styledSelectControls = `<div class="row g-3">
             </p>
             <ComponentPreview
               title="Multiple Selection Controls"
-              height="250px"
+              height="500px"
               component={multiSelectionControls}
               htmlCode={multiSelectionControls}
             />
@@ -427,7 +427,7 @@ const styledSelectControls = `<div class="row g-3">
             </p>
             <ComponentPreview
               title="Grouped Option Controls"
-              height="140px"
+              height="200px"
               component={groupedSelectControls}
               htmlCode={groupedSelectControls}
             />
@@ -447,7 +447,7 @@ const styledSelectControls = `<div class="row g-3">
             </p>
             <ComponentPreview
               title="Floating Label Controls"
-              height="280px"
+              height="400px"
               component={floatingSelectControls}
               htmlCode={floatingSelectControls}
             />
@@ -467,7 +467,7 @@ const styledSelectControls = `<div class="row g-3">
             </p>
             <ComponentPreview
               title="Styled Select Controls"
-              height="140px"
+              height="250px"
               component={styledSelectControls}
               htmlCode={styledSelectControls}
             />

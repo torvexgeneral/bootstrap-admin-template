@@ -1,7 +1,6 @@
 ---
-import AuthenticationLayout from "../../../layouts/admin/authentication-layout.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../../utils/path.js";
-import ThemeToggler from "../../../components/common/theme-toggler.astro";
+import AuthenticationLayout from '../../../layouts/admin/authentication-layout.astro'
+import { getAssetPrefix, getPathPrefix } from '../../../../utils/path.js'
 ---
 
 <AuthenticationLayout
@@ -13,13 +12,13 @@ import ThemeToggler from "../../../components/common/theme-toggler.astro";
     class="d-flex justify-content-center align-items-center min-vh-100 pt-5 mt-2 pt-sm-0 mt-sm-0"
   >
     <a
-      href={getPathPrefix("/")}
+      href={getPathPrefix('/')}
       class="btn btn-outline-primary position-absolute top-0 start-0 m-3"
     >
       Back
     </a>
     <a
-      href={getPathPrefix("/authentication/modern/register")}
+      href={getPathPrefix('/authentication/modern/register')}
       class="btn btn-outline-primary position-absolute top-0 end-0 m-3"
     >
       Create Account
@@ -30,7 +29,7 @@ import ThemeToggler from "../../../components/common/theme-toggler.astro";
         <div class="card-body p-4">
           <!-- Company Logo -->
           <img
-            src={getAssetPrefix("/assets/svg/astero-icon-color.svg")}
+            src={getAssetPrefix('/assets/svg/astero-icon-color.svg')}
             alt="AsteroAdmin Logo"
             class="mb-4"
             style="width: 40px; height: 40px;"
@@ -41,7 +40,7 @@ import ThemeToggler from "../../../components/common/theme-toggler.astro";
           </p>
 
           <div class="text-center mb-3">
-            <a href={getPathPrefix("/authentication/modern/login")} class="btn btn-primary w-100">
+            <a href={getPathPrefix('/authentication/modern/login')} class="btn btn-primary w-100">
               Login Now
             </a>
           </div>

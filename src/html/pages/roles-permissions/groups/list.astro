@@ -1,14 +1,15 @@
 ---
-import { getAssetPrefix, getPathPrefix } from "../../../../utils/path.js";
-import AdminLayout from "../../../layouts/admin/admin-layout.astro";
-import PageHeader from "../../../components/common/page-header.astro";
-import ConfirmationModal from "../../../components/common/confirmation-modal.astro";
+import { getAssetPrefix, getPathPrefix } from '../../../../utils/path.js'
+import AdminLayout from '../../../layouts/admin/admin-layout.astro'
+import type { Props as PageHeaderProps } from '../../../components/common/page-header.astro'
+import PageHeader from '../../../components/common/page-header.astro'
+import ConfirmationModal from '../../../components/common/confirmation-modal.astro'
 
 // Register DataTables styles
 const pageStyles = `
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-bs5@1.13.7/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-responsive-bs5@2.5.0/css/responsive.bootstrap5.min.css">
-`;
+`
 
 // Register DataTables scripts
 const pageScript = `<!-- Add this scripts before body close -->
@@ -18,112 +19,113 @@ const pageScript = `<!-- Add this scripts before body close -->
 <!-- DataTables JS -->
 <script src="https://cdn.jsdelivr.net/npm/datatables.net@1.13.7/js/jquery.dataTables.min.js"></script>
 
-<script src="${getAssetPrefix("/assets/vendor/datatables/datatables.init.js")}"></script>
-<script type="module" src="${getAssetPrefix("/assets/js/pages/roles-permissions/groups/table.js")}"></script>
-`;
+<script src="${getAssetPrefix('/assets/vendor/datatables/datatables.init.js')}"></script>
+<script type="module" src="${getAssetPrefix('/assets/js/pages/roles-permissions/groups/table.js')}"></script>
+`
 
 const groups = [
   {
     id: 1,
-    title: "Pages Management",
-    slug: "pages_management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'Pages Management',
+    slug: 'pages_management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 2,
-    title: "Posts Management",
-    slug: "posts_management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'Posts Management',
+    slug: 'posts_management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 3,
-    title: "Media Library",
-    slug: "media_library",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'Media Library',
+    slug: 'media_library',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 4,
-    title: "Categories Management",
-    slug: "categories_management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'Categories Management',
+    slug: 'categories_management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 5,
-    title: "SEO Settings",
-    slug: "seo_settings",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'SEO Settings',
+    slug: 'seo_settings',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 6,
-    title: "URL Redirects",
-    slug: "url_redirects",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'URL Redirects',
+    slug: 'url_redirects',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 7,
-    title: "Analytics",
-    slug: "analytics",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'Analytics',
+    slug: 'analytics',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 8,
-    title: "User Management",
-    slug: "user_management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'User Management',
+    slug: 'user_management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 9,
-    title: "Role Management",
-    slug: "role_management",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'Role Management',
+    slug: 'role_management',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 10,
-    title: "System Settings",
-    slug: "system_settings",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'System Settings',
+    slug: 'system_settings',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   },
   {
     id: 11,
-    title: "System Logs",
-    slug: "system_logs",
-    status: "Active",
-    added_at: "2024-03-15T10:30:00"
+    title: 'System Logs',
+    slug: 'system_logs',
+    status: 'Active',
+    added_at: '2024-03-15T10:30:00'
   }
-];
+]
 
-const statusClasses = {
-  Active: "success",
-  Inactive: "warning",
-  Trashed: "danger"
-};
+// const statusClasses = {
+//   Active: 'success',
+//   Inactive: 'warning',
+//   Trashed: 'danger'
+// }
 
-const pageHeaderProps = {
-  title: "Groups",
+const pageHeaderProps: PageHeaderProps = {
+  title: 'Groups',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Roles & Permissions", href: getPathPrefix("/roles-permissions") },
-    { label: "Groups", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard'), class: '' },
+    { label: 'Roles & Permissions', href: getPathPrefix('/roles-permissions'), class: '' },
+    { label: 'Groups', class: 'active' }
   ],
   actions: [
     {
-      label: "Add Group",
-      href: getPathPrefix("/roles-permissions/groups/add"),
-      variant: "btn-primary",
-      icon: "ri-add-line"
+      label: 'Add Group',
+      href: getPathPrefix('/roles-permissions/groups/add'),
+      type: 'link',
+      variant: 'btn-primary',
+      icon: 'ri-add-line'
     }
   ]
-};
+}
 ---
 
 <AdminLayout
@@ -316,9 +318,9 @@ const pageHeaderProps = {
                             <span class="text-muted">{group.slug}</span>
                           </td>
                           <td>
-                            {group.status == "Active" ? (
+                            {group.status == 'Active' ? (
                               <span class="badge bg-success">{group.status}</span>
-                            ) : group.status == "Inactive" ? (
+                            ) : group.status == 'Inactive' ? (
                               <span class="badge bg-warning">{group.status}</span>
                             ) : (
                               <span class="badge bg-danger">{group.status}</span>
@@ -341,7 +343,7 @@ const pageHeaderProps = {
                                 <li>
                                   <a
                                     class="dropdown-item d-flex align-items-center gap-2"
-                                    href={getPathPrefix("/roles-permissions/groups/edit")}
+                                    href={getPathPrefix('/roles-permissions/groups/edit')}
                                   >
                                     <i class="ri-pencil-line" /> Edit
                                   </a>

@@ -1,8 +1,8 @@
 ---
-import AuthenticationLayout from "../../../layouts/admin/authentication-layout.astro";
-import Branding from "../../../components/common/branding.astro";
-import ThemeToggler from "../../../components/common/theme-toggler.astro";
-import { getPathPrefix } from "../../../../utils/path.js";
+import AuthenticationLayout from '../../../layouts/admin/authentication-layout.astro'
+import Branding from '../../../components/common/branding.astro'
+import ThemeToggler from '../../../components/common/theme-toggler.astro'
+import { getPathPrefix } from '../../../../utils/path.js'
 ---
 
 <AuthenticationLayout
@@ -44,7 +44,7 @@ import { getPathPrefix } from "../../../../utils/path.js";
           </form>
           <div class="text-center">
             Didn't receive the code? <a
-              href={getPathPrefix("/authentication/basic/verify-email")}
+              href={getPathPrefix('/authentication/basic/verify-email')}
               class="text-decoration-none text-primary">Resend</a
             >
           </div>

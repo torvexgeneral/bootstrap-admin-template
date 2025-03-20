@@ -1,5 +1,5 @@
 ---
-import { getAssetPrefix } from "../../../utils/path.js";
+import { getAssetPrefix } from '../../../utils/path.js'
 ---
 
 <!-- CodeMirror Core Scripts -->
@@ -19,11 +19,11 @@ import { getAssetPrefix } from "../../../utils/path.js";
   is:inline></script>
 
 <!-- Component Preview Scripts -->
-<script src={getAssetPrefix("/assets/vendor/js/component-preview/codemirror-editor.js")} is:inline
+<script src={getAssetPrefix('/assets/vendor/js/component-preview/codemirror-editor.js')} is:inline
 ></script>
-<script src={getAssetPrefix("/assets/vendor/js/component-preview/preview-manager.js")} is:inline
+<script src={getAssetPrefix('/assets/vendor/js/component-preview/preview-manager.js')} is:inline
 ></script>
-<script src={getAssetPrefix("/assets/vendor/js/component-preview/ui-controls-manager.js")} is:inline
+<script src={getAssetPrefix('/assets/vendor/js/component-preview/ui-controls-manager.js')} is:inline
 ></script>
 
 <!-- JSZip for download functionality -->
@@ -31,28 +31,28 @@ import { getAssetPrefix } from "../../../utils/path.js";
 
 <!-- Simple Initialization -->
 <script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener('DOMContentLoaded', () => {
     // Initialize CodeMirror
-    if (typeof window.CodeMirrorManager !== "undefined") {
-      window.CodeMirrorManager.init();
+    if (typeof window.CodeMirrorManager !== 'undefined') {
+      window.CodeMirrorManager.init()
     }
 
     // Initialize Preview Manager
-    if (typeof window.PreviewManager !== "undefined") {
-      window.PreviewManager.init();
+    if (typeof window.PreviewManager !== 'undefined') {
+      window.PreviewManager.init()
     }
 
     // Initialize UI Controls
-    if (typeof window.UIControlsManager !== "undefined") {
-      window.UIControlsManager.setupUIControls();
+    if (typeof window.UIControlsManager !== 'undefined') {
+      window.UIControlsManager.setupUIControls()
     }
 
     // Initialize tooltips if Bootstrap is available
-    if (typeof bootstrap !== "undefined") {
-      const tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    if (typeof bootstrap !== 'undefined') {
+      const tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]')
       tooltips.forEach((tooltip) => {
-        new bootstrap.Tooltip(tooltip);
-      });
+        new bootstrap.Tooltip(tooltip)
+      })
     }
-  });
+  })
 </script>

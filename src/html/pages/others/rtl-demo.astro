@@ -1,20 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
-import PageHeader from "../../components/common/page-header.astro";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import PageHeader from '../../components/common/page-header.astro'
 
 // No need for custom CSS or scripts to handle RTL mode anymore
 const pageCss = `
 <style>
   /* Additional RTL-specific styles can go here if needed */
 </style>
-`;
+`
 
 const pageScript = `
 <script>
   // Any additional RTL-specific scripts can go here if needed
 </script>
-`;
+`
 ---
 
 <AdminLayout

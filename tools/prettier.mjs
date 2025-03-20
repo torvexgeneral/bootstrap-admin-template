@@ -44,7 +44,7 @@ export async function formatCode(targetPath = null) {
     }
 
     // Import the Prettier config directly
-    const configPath = path.join(projectRoot, 'config', '.prettierrc.mjs')
+    const configPath = path.join(projectRoot, 'config', 'prettier.config.mjs')
     let prettierConfig
 
     try {
