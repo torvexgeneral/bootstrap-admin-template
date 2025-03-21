@@ -37,6 +37,7 @@ import { getAssetPrefix, getPathPrefix } from '../../../../utils/path.js'
                   class="form-control"
                   id="fullName"
                   placeholder="John Doe"
+                  autocomplete="name"
                   required
                 />
               </div>
@@ -49,6 +50,7 @@ import { getAssetPrefix, getPathPrefix } from '../../../../utils/path.js'
                   class="form-control"
                   id="email"
                   placeholder="m@example.com"
+                  autocomplete="username"
                   required
                 />
               </div>
@@ -61,10 +63,11 @@ import { getAssetPrefix, getPathPrefix } from '../../../../utils/path.js'
                     type="password"
                     class="form-control password-input"
                     id="password"
-                    placeholder="Enter password"
+                    placeholder="Password"
+                    autocomplete="new-password"
                     required
                   />
-                  <button class="password-toggle" type="button">
+                  <button class="password-toggle" type="button" aria-label="Show password">
                     <i class="ri-eye-off-line"></i>
                   </button>
                 </div>
@@ -78,10 +81,11 @@ import { getAssetPrefix, getPathPrefix } from '../../../../utils/path.js'
                     type="password"
                     class="form-control password-input"
                     id="confirmPassword"
-                    placeholder="Confirm your password"
+                    placeholder="Password"
+                    autocomplete="new-password"
                     required
                   />
-                  <button class="password-toggle" type="button">
+                  <button class="password-toggle" type="button" aria-label="Show password">
                     <i class="ri-eye-off-line"></i>
                   </button>
                 </div>
