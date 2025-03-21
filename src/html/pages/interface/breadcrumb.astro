@@ -1,19 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 // Page header configuration with navigation breadcrumbs
 const pageHeaderConfig = {
-  title: "Breadcrumb",
+  title: 'Breadcrumb',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Interface", href: getPathPrefix("/interface") },
-    { label: "Breadcrumb", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Interface', href: getPathPrefix('/interface') },
+    { label: 'Breadcrumb', class: 'active' }
   ]
-};
+}
 
 // Standard breadcrumb examples with different levels and icons
 const standardBreadcrumbExamples = `<!-- Basic Breadcrumb -->
@@ -50,7 +50,7 @@ const standardBreadcrumbExamples = `<!-- Basic Breadcrumb -->
     <li class="breadcrumb-item"><a href="#">Projects <span class="badge text-bg-primary ms-1">8</span></a></li>
     <li class="breadcrumb-item active" aria-current="page">Current Project</li>
   </ol>
-</nav>`;
+</nav>`
 
 // Custom styled breadcrumb examples with different visual treatments
 const customStyledBreadcrumbExamples = `<!-- Custom Styled Breadcrumb with Background -->
@@ -99,7 +99,7 @@ const customStyledBreadcrumbExamples = `<!-- Custom Styled Breadcrumb with Backg
     <li class="breadcrumb-item"><a href="#">Library</a></li>
     <li class="breadcrumb-item active" aria-current="page">Data</li>
   </ol>
-</nav>`;
+</nav>`
 
 // Responsive breadcrumb examples for different screen sizes
 const responsiveBreadcrumbExamples = `<!-- Responsive Breadcrumb with Truncation -->
@@ -139,7 +139,7 @@ const responsiveBreadcrumbExamples = `<!-- Responsive Breadcrumb with Truncation
       <span class="d-inline d-sm-none">Report</span>
     </li>
   </ol>
-</nav>`;
+</nav>`
 
 // Interactive breadcrumb examples with dropdown menus
 const interactiveBreadcrumbExamples = `<!-- Breadcrumb with Dropdown -->
@@ -173,13 +173,13 @@ const interactiveBreadcrumbExamples = `<!-- Breadcrumb with Dropdown -->
     <input type="text" class="form-control" placeholder="Search in category">
     <button class="btn btn-outline-secondary" type="button"><i class="ri-search-line"></i></button>
   </div>
-</nav>`;
+</nav>`
 
 // Shared preview configuration for consistent component display
 const previewConfig = {
-  cssCode: "",
-  jsCode: ""
-};
+  cssCode: '',
+  jsCode: ''
+}
 ---
 
 <AdminLayout

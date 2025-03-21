@@ -1,8 +1,8 @@
 ---
-import AuthenticationLayout from "../../../layouts/admin/authentication-layout.astro";
-import Branding from "../../../components/common/branding.astro";
-import ThemeToggler from "../../../components/common/theme-toggler.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../../utils/path.js";
+import AuthenticationLayout from '../../../layouts/admin/authentication-layout.astro'
+import Branding from '../../../components/common/branding.astro'
+import ThemeToggler from '../../../components/common/theme-toggler.astro'
+import { getPathPrefix } from '../../../../utils/path.js'
 ---
 
 <AuthenticationLayout
@@ -28,7 +28,7 @@ import { getAssetPrefix, getPathPrefix } from "../../../../utils/path.js";
           </p>
 
           <div class="text-center mb-3">
-            <a href={getPathPrefix("/authentication/social/login")} class="btn btn-primary w-100">
+            <a href={getPathPrefix('/authentication/social/login')} class="btn btn-primary w-100">
               Login Now
             </a>
           </div>

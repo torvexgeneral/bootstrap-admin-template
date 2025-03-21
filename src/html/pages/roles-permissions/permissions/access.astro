@@ -1,17 +1,17 @@
 ---
-import AdminLayout from "../../../layouts/admin/admin-layout.astro";
-import PageHeader from "../../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../../utils/path.js";
+import AdminLayout from '../../../layouts/admin/admin-layout.astro'
+import PageHeader from '../../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../../utils/path.js'
 
 const pageHeaderProps = {
-  title: "Access Control",
+  title: 'Access Control',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Users", href: getPathPrefix("/users") },
-    { label: "Permissions", href: getPathPrefix("/users/permissions") },
-    { label: "Access Control", class: "active" } // No href means it's the current page
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Users', href: getPathPrefix('/users') },
+    { label: 'Permissions', href: getPathPrefix('/users/permissions') },
+    { label: 'Access Control', class: 'active' } // No href means it's the current page
   ]
-};
+}
 ---
 
 <AdminLayout

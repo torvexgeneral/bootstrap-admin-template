@@ -1,19 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import { getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 // Page header configuration with breadcrumb navigation
 const pageHeaderConfig = {
-  title: "Vertical Form Layouts",
+  title: 'Vertical Form Layouts',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Forms" },
-    { label: "Vertical Forms", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Forms' },
+    { label: 'Vertical Forms', class: 'active' }
   ]
-};
+}
 
 // Example of a simple vertical form with essential fields
 const simpleFormExample = `<form class="simple-form" novalidate>
@@ -43,7 +43,7 @@ const simpleFormExample = `<form class="simple-form" novalidate>
       <i class="ri-send-plane-line me-1"></i>Submit
     </button>
   </div>
-</form>`;
+</form>`
 
 // Example of a form with Remix icons for enhanced visual cues
 const iconEnhancedFormExample = `<form class="icon-enhanced-form" novalidate>
@@ -77,7 +77,7 @@ const iconEnhancedFormExample = `<form class="icon-enhanced-form" novalidate>
       <i class="ri-send-plane-line me-1"></i>Submit
     </button>
   </div>
-</form>`;
+</form>`
 
 // Example of a form with disabled state for read-only scenarios
 const readOnlyFormExample = `<form class="read-only-form" novalidate>
@@ -116,7 +116,7 @@ const readOnlyFormExample = `<form class="read-only-form" novalidate>
       <i class="ri-lock-line me-1"></i>Submit Form
     </button>
   </div>
-</form>`;
+</form>`
 
 // Example of a sectioned form with logical grouping
 const sectionedFormExample = `<form class="sectioned-form" novalidate>
@@ -237,7 +237,7 @@ const sectionedFormExample = `<form class="sectioned-form" novalidate>
       </button>
     </div>
   </div>
-</form>`;
+</form>`
 
 // Example of a responsive multi-column form layout
 const responsiveFormExample = `<form class="responsive-form" novalidate>
@@ -354,7 +354,7 @@ const responsiveFormExample = `<form class="responsive-form" novalidate>
       </button>
     </div>
   </div>
-</form>`;
+</form>`
 
 // Example of a tabbed form with progressive disclosure
 const tabbedFormExample = `<!-- Form Tabs -->
@@ -491,7 +491,7 @@ const tabbedFormExample = `<!-- Form Tabs -->
       </div>
     </form>
   </div>
-</div>`;
+</div>`
 
 const pageScript = `
   <script>
@@ -521,7 +521,7 @@ const pageScript = `
       }
     });
   </script>
-`;
+`
 ---
 
 <AdminLayout

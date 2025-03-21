@@ -1,19 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getAssetPrefix, getPathPrefix } from '../../../utils/path.js'
 
 // Configuration for the page header with navigation breadcrumbs
 const pageHeaderConfig = {
-  title: "Navbar",
+  title: 'Navbar',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard"), icon: "ri-dashboard-line" },
-    { label: "Interface", href: getPathPrefix("/interface"), icon: "ri-layout-line" },
-    { label: "Navbar", class: "active", icon: "ri-navigation-line" } // Current page
+    { label: 'Dashboard', href: getPathPrefix('/dashboard'), icon: 'ri-dashboard-line' },
+    { label: 'Interface', href: getPathPrefix('/interface'), icon: 'ri-layout-line' },
+    { label: 'Navbar', class: 'active', icon: 'ri-navigation-line' } // Current page
   ]
-};
+}
 
 const defaultNavbarExample = `<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
@@ -51,7 +51,7 @@ const defaultNavbarExample = `<nav class="navbar navbar-expand-lg bg-body-tertia
     </div>
   </div>
 </nav>
-`;
+`
 
 const navLinkSizeVeriations = `<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
@@ -83,7 +83,7 @@ const navLinkSizeVeriations = `<nav class="navbar navbar-expand-lg bg-body-terti
     </div>
   </div>
 </nav>
-`;
+`
 
 const brandTextNavbarExample = `<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
@@ -121,11 +121,11 @@ const brandTextNavbarExample = `<nav class="navbar navbar-expand-lg bg-body-tert
     </div>
   </div>
 </nav>
-`;
+`
 const brandImageNavbarExample = `<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img src="${getAssetPrefix("/assets/svg/astero-icon-color.svg")}" alt="Bootstrap" width="30" height="24">
+      <img src="${getAssetPrefix('/assets/svg/astero-icon-color.svg')}" alt="Bootstrap" width="30" height="24">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -160,11 +160,11 @@ const brandImageNavbarExample = `<nav class="navbar navbar-expand-lg bg-body-ter
     </div>
   </div>
 </nav>
-`;
+`
 const brandImageTextNavbarExample = `<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img src="${getAssetPrefix("/assets/svg/astero-icon-color.svg")}" alt="Bootstrap" width="30" height="24" class="d-inline-block align-text-top">
+      <img src="${getAssetPrefix('/assets/svg/astero-icon-color.svg')}" alt="Bootstrap" width="30" height="24" class="d-inline-block align-text-top">
       Astero Admin
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -200,7 +200,7 @@ const brandImageTextNavbarExample = `<nav class="navbar navbar-expand-lg bg-body
     </div>
   </div>
 </nav>
-`;
+`
 const searchFormNavbarExample = `<nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
     <form class="d-flex" role="search">
@@ -209,7 +209,7 @@ const searchFormNavbarExample = `<nav class="navbar bg-body-tertiary">
     </form>
   </div>
 </nav>
-`;
+`
 const textOnlyNavbarExample = `<nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
     <span class="navbar-text">
@@ -217,7 +217,7 @@ const textOnlyNavbarExample = `<nav class="navbar bg-body-tertiary">
     </span>
   </div>
 </nav>
-`;
+`
 const colorSchemeNavbarExample = `<nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><i class="ri-moon-line me-2"></i>Dark Theme</a>
@@ -274,7 +274,7 @@ const colorSchemeNavbarExample = `<nav class="navbar navbar-expand-lg bg-dark bo
     </div>
   </div>
 </nav>
-`;
+`
 const containerNavbarExample = `<div class="container">
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -282,13 +282,13 @@ const containerNavbarExample = `<div class="container">
     </div>
   </nav>
 </div>
-`;
+`
 const defaultPositionNavbarExample = `<nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><i class="ri-layout-top-line me-2"></i>Default Position</a>
   </div>
 </nav>
-`;
+`
 const stickyTopNavbarExample = `<div style="height: 300px; overflow-y: auto; position: relative; background: #f8f9fa;">
   <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
     <div class="container-fluid">
@@ -349,7 +349,7 @@ const stickyTopNavbarExample = `<div style="height: 300px; overflow-y: auto; pos
       </div>
     </div>
   </div>
-</div>`;
+</div>`
 const stickyBottomNavbarExample = `<div style="height: 300px; overflow-y: auto; position: relative; background: #f8f9fa;">
   <div class="p-4">
     <h4><i class="ri-article-line me-2"></i>Sample Content</h4>
@@ -410,7 +410,7 @@ const stickyBottomNavbarExample = `<div style="height: 300px; overflow-y: auto; 
       </div>
     </div>
   </nav>
-</div>`;
+</div>`
 const scrollableNavbarExample = `<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar scroll</a>
@@ -447,7 +447,7 @@ const scrollableNavbarExample = `<nav class="navbar navbar-expand-lg bg-body-ter
     </div>
   </div>
 </nav>
-`;
+`
 const togglerBasicNavbarExample = `<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -473,7 +473,7 @@ const togglerBasicNavbarExample = `<nav class="navbar navbar-expand-lg bg-body-t
     </div>
   </div>
 </nav>
-`;
+`
 const togglerRightNavbarExample = `<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><i class="ri-layout-right-line me-2"></i>Right Toggler</a>
@@ -499,7 +499,7 @@ const togglerRightNavbarExample = `<nav class="navbar navbar-expand-lg bg-body-t
     </div>
   </div>
 </nav>
-`;
+`
 const togglerLeftNavbarExample = `<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -525,7 +525,7 @@ const togglerLeftNavbarExample = `<nav class="navbar navbar-expand-lg bg-body-te
     </div>
   </div>
 </nav>
-`;
+`
 const externalContentNavbarExample = `<div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
   <div class="bg-dark p-4">
     <h5 class="text-body-emphasis h4"><i class="ri-menu-fold-line me-2"></i>Collapsed Content</h5>
@@ -539,7 +539,7 @@ const externalContentNavbarExample = `<div class="collapse" id="navbarToggleExte
     </button>
   </div>
 </nav>
-`;
+`
 ---
 
 <AdminLayout
@@ -596,7 +596,7 @@ const externalContentNavbarExample = `<div class="collapse" id="navbarToggleExte
             <!-- Navbar Sizing Example -->
             <ComponentPreview
               title="Navigation Link Sizes"
-              height="272px"
+              height="400px"
               component={navLinkSizeVeriations}
               htmlCode={navLinkSizeVeriations}
             />
@@ -818,7 +818,7 @@ const externalContentNavbarExample = `<div class="collapse" id="navbarToggleExte
             <!-- Navbar Examples -->
             <ComponentPreview
               title="Basic Toggler with Hidden Brand"
-              height="300px"
+              height="350px"
               component={togglerBasicNavbarExample}
               htmlCode={togglerBasicNavbarExample}
               cssCode={``}

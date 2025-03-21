@@ -1,19 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 // Page header configuration with navigation breadcrumbs
 const pageHeaderConfig = {
-  title: "Badges",
+  title: 'Badges',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Interface", href: getPathPrefix("/interface") },
-    { label: "Badges", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Interface', href: getPathPrefix('/interface') },
+    { label: 'Badges', class: 'active' }
   ]
-};
+}
 
 // Heading badges with contextual examples for document sections
 const headingBadgeExamples = `<h1>Product Documentation <span class="badge text-bg-primary">Beta Release</span></h1>
@@ -22,7 +22,7 @@ const headingBadgeExamples = `<h1>Product Documentation <span class="badge text-
 <h4>API Documentation <span class="badge text-bg-info">v2.0.0</span></h4>
 <h5>Premium Features <span class="badge text-bg-secondary">Pro Users</span></h5>
 <h6>Developer Tools <span class="badge text-bg-danger">Experimental</span></h6>
-`;
+`
 
 // Button badges with notification counters
 const buttonBadgeExamples = `<div class="d-flex flex-wrap gap-4">
@@ -41,7 +41,7 @@ const buttonBadgeExamples = `<div class="d-flex flex-wrap gap-4">
   <button type="button" class="btn btn-info">
     <i class="ri-notification-3-line me-1"></i>Notifications <span class="badge text-bg-light ms-2">5</span>
   </button>
-</div>`;
+</div>`
 
 // Positioned badges for notification indicators
 const positionedBadgeExamples = `<div class="d-flex flex-wrap gap-4">
@@ -75,7 +75,7 @@ const positionedBadgeExamples = `<div class="d-flex flex-wrap gap-4">
       <span class="visually-hidden">online status</span>
     </span>
   </button>
-</div>`;
+</div>`
 
 // Contextual background variations with icons
 const contextualBadgeExamples = `<div class="d-flex gap-2 flex-wrap">
@@ -96,7 +96,7 @@ const contextualBadgeExamples = `<div class="d-flex gap-2 flex-wrap">
   <span class="badge text-bg-info"><i class="ri-information-line me-1"></i>Note</span>
   <span class="badge text-bg-warning"><i class="ri-time-line me-1"></i>Pending</span>
   <span class="badge text-bg-secondary"><i class="ri-lock-line me-1"></i>Restricted</span>
-</div>`;
+</div>`
 
 // Pill-shaped badges with various states and icons
 const pillBadgeExamples = `<div class="d-flex gap-2 flex-wrap">
@@ -117,7 +117,7 @@ const pillBadgeExamples = `<div class="d-flex gap-2 flex-wrap">
   <span class="badge rounded-pill text-bg-info"><i class="ri-refresh-line me-1"></i>Syncing</span>
   <span class="badge rounded-pill text-bg-danger"><i class="ri-close-circle-line me-1"></i>Rejected</span>
   <span class="badge rounded-pill text-bg-dark"><i class="ri-lock-line me-1"></i>Private</span>
-</div>`;
+</div>`
 
 // Custom styled badges with different sizes and appearances
 const customStyledBadgeExamples = `<div class="mb-3">
@@ -163,13 +163,13 @@ const customStyledBadgeExamples = `<div class="mb-3">
     <i class="ri-checkbox-blank-circle-fill text-secondary me-1" style="font-size: 0.5rem; vertical-align: middle;"></i>
     Inactive
   </span>
-</div>`;
+</div>`
 
 // Shared preview configuration for consistent component display
 const previewConfig = {
-  cssCode: "",
-  jsCode: ""
-};
+  cssCode: '',
+  jsCode: ''
+}
 ---
 
 <AdminLayout
@@ -295,7 +295,7 @@ const previewConfig = {
 
             <ComponentPreview
               title="Pill Badge Examples"
-              height="200px"
+              height="250px"
               component={pillBadgeExamples}
               htmlCode={pillBadgeExamples}
               {...previewConfig}

@@ -1,23 +1,23 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getAssetPrefix, getPathPrefix } from '../../../utils/path.js'
 
 // Page header configuration with breadcrumb navigation
 const placeholderPageHeader = {
-  title: "Placeholders",
+  title: 'Placeholders',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Interface", href: getPathPrefix("/interface") },
-    { label: "Placeholders", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Interface', href: getPathPrefix('/interface') },
+    { label: 'Placeholders', class: 'active' }
   ]
-};
+}
 
 // Card placeholder example with image and content skeleton
 const cardPlaceholderExample = `<div class="card w-50" aria-hidden="true">
-  <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x140.png")}" class="card-img-top" alt="Loading image placeholder">
+  <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-300x140.png')}" class="card-img-top" alt="Loading image placeholder">
   <div class="card-body">
     <h5 class="card-title placeholder-glow">
       <span class="placeholder col-6"></span>
@@ -32,7 +32,7 @@ const cardPlaceholderExample = `<div class="card w-50" aria-hidden="true">
     <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
   </div>
 </div>
-`;
+`
 
 // Basic placeholder elements example
 const basicPlaceholderExample = `<p class="mb-4" aria-hidden="true">
@@ -40,7 +40,7 @@ const basicPlaceholderExample = `<p class="mb-4" aria-hidden="true">
 </p>
 
 <a class="btn btn-primary disabled placeholder col-4" aria-disabled="true"></a>
-`;
+`
 
 // Width variations example
 const widthPlaceholderExample = `<div class="placeholder-examples">
@@ -48,7 +48,7 @@ const widthPlaceholderExample = `<div class="placeholder-examples">
   <span class="placeholder w-75 mb-2"></span>
   <span class="placeholder" style="width: 25%;"></span>
 </div>
-`;
+`
 
 // Color variations example
 const colorPlaceholderExample = `<div class="placeholder-colors">
@@ -62,7 +62,7 @@ const colorPlaceholderExample = `<div class="placeholder-colors">
   <span class="placeholder col-12 bg-light mb-2"></span>
   <span class="placeholder col-12 bg-dark mb-2"></span>
 </div>
-`;
+`
 
 // Size variations example
 const sizePlaceholderExample = `<div class="placeholder-sizes">
@@ -71,7 +71,7 @@ const sizePlaceholderExample = `<div class="placeholder-sizes">
   <span class="placeholder col-12 placeholder-sm mb-3"></span>
   <span class="placeholder col-12 placeholder-xs"></span>
 </div>
-`;
+`
 
 // Animation variations example
 const animationPlaceholderExample = `<div class="placeholder-animations">
@@ -83,7 +83,7 @@ const animationPlaceholderExample = `<div class="placeholder-animations">
     <span class="placeholder col-12"></span>
   </p>
 </div>
-`;
+`
 
 // Loading state example with multiple elements
 const loadingStatePlaceholderExample = `<div class="content-placeholder" aria-hidden="true">
@@ -100,7 +100,7 @@ const loadingStatePlaceholderExample = `<div class="content-placeholder" aria-hi
     </div>
   </div>
 </div>
-`;
+`
 ---
 
 <AdminLayout

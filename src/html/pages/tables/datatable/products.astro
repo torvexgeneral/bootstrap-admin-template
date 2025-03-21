@@ -1,13 +1,13 @@
 ---
-import { getAssetPrefix, getPathPrefix } from "../../../../utils/path.js";
-import IframeLayout from "../../../layouts/admin/ifram-layout.astro";
-import ConfirmationModal from "../../../components/common/confirmation-modal.astro";
+import { getAssetPrefix } from '../../../../utils/path.js'
+import IframeLayout from '../../../layouts/admin/ifram-layout.astro'
+import ConfirmationModal from '../../../components/common/confirmation-modal.astro'
 
 // Register DataTables styles with versioning for better dependency management
 const pageStyles = `
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-bs5@1.13.7/css/dataTables.bootstrap5.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-responsive-bs5@2.5.0/css/responsive.bootstrap5.min.css">
-`;
+`
 
 // Register DataTables scripts with proper initialization sequence
 const pageScript = `<!-- DataTables Dependencies -->
@@ -16,9 +16,9 @@ const pageScript = `<!-- DataTables Dependencies -->
 <!-- DataTables Core -->
 <script src="https://cdn.jsdelivr.net/npm/datatables.net@1.13.7/js/jquery.dataTables.min.js"></script>
 <!-- Custom DataTables Initialization -->
-<script src="${getAssetPrefix("/assets/vendor/datatables/datatables.init.js")}"></script>
-<script type="module" src="${getAssetPrefix("/assets/js/pages/tables/datatable.js")}"></script>
-`;
+<script src="${getAssetPrefix('/assets/vendor/datatables/datatables.init.js')}"></script>
+<script type="module" src="${getAssetPrefix('/assets/js/pages/tables/datatable.js')}"></script>
+`
 ---
 
 <IframeLayout
@@ -321,7 +321,7 @@ const pageScript = `<!-- DataTables Dependencies -->
             >
               <thead>
                 <tr>
-                  <th class="checkbox-column fs-6" width="20" scope="col">
+                  <th class="checkbox-column fs-6" style="width: 20px;" scope="col">
                     <div class="form-check">
                       <input
                         class="form-check-input select-all-checkbox"

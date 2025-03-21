@@ -1,17 +1,17 @@
 ---
-import AdminLayout from "../layouts/admin/admin-layout.astro";
-import PageHeader from "../components/common/page-header.astro";
-import { getPathPrefix } from "../../utils/path.js";
+import AdminLayout from '../layouts/admin/admin-layout.astro'
+import PageHeader from '../components/common/page-header.astro'
+import { getPathPrefix } from '../../utils/path.js'
 
 // Configuration for the page header with title and breadcrumb navigation
 const settingsPageHeader = {
-  title: "System Settings",
-  backLink: "",
+  title: 'System Settings',
+  backLink: '',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "System Settings", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'System Settings', class: 'active' }
   ]
-};
+}
 
 // Client-side JavaScript for form validation and tab navigation
 const settingsPageScript = `
@@ -52,7 +52,7 @@ const settingsPageScript = `
     });
   });
 </script>
-`;
+`
 ---
 
 <AdminLayout

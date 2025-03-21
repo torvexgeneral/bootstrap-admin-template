@@ -1,215 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 // Page header configuration with breadcrumb navigation
-const pageHeaderConfig = {
-  title: "Horizontal Form Layouts",
+const pageConfig = {
+  title: 'Horizontal Form Layouts',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Forms" },
-    { label: "Horizontal Forms", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard'), icon: 'ri-dashboard-line' },
+    { label: 'Forms', href: getPathPrefix('/forms'), icon: 'ri-layout-line' },
+    { label: 'Horizontal Forms', class: 'active', icon: 'ri-layout-right-line' }
   ]
-};
-
-// Form validation and interaction script
-const formValidationScript = `
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Initialize form validation for all forms
-      const formElements = document.querySelectorAll('form');
-
-      formElements.forEach(formElement => {
-        const submitButton = formElement.querySelector('button[type="submit"]');
-        const loadingSpinner = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>';
-
-        // Display validation error message
-        function displayValidationError(inputField, errorMessage) {
-          const formGroupElement = inputField.closest('.form-group');
-          inputField.classList.add('is-invalid');
-
-          // Remove any existing error messages
-          const existingErrorMessage = formGroupElement.querySelector('.invalid-feedback');
-          if (existingErrorMessage) {
-            existingErrorMessage.remove();
-          }
-
-          // Create and insert new error message
-          const errorElement = document.createElement('div');
-          errorElement.className = 'invalid-feedback';
-          errorElement.textContent = errorMessage;
-
-          // Handle input groups specially
-          const inputGroupElement = formGroupElement.querySelector('.input-group');
-          if (inputGroupElement) {
-            inputGroupElement.insertAdjacentElement('afterend', errorElement);
-          } else {
-            formGroupElement.appendChild(errorElement);
-          }
-        }
-
-        // Remove validation error message
-        function clearValidationError(inputField) {
-          const formGroupElement = inputField.closest('.form-group');
-          inputField.classList.remove('is-invalid');
-          const errorMessage = formGroupElement.querySelector('.invalid-feedback');
-          if (errorMessage) {
-            errorMessage.remove();
-          }
-        }
-
-        // Form field validation rules
-        const fieldValidationRules = {
-          fullName: {
-            required: 'Please enter your full name',
-            minLength: { value: 3, message: 'Name must contain at least 3 characters' }
-          },
-          email: {
-            required: 'Please enter your email address',
-            pattern: {
-              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              message: 'Please enter a valid email address'
-            }
-          },
-          password: {
-            required: 'Please enter a password',
-            minLength: { value: 8, message: 'Password must contain at least 8 characters' }
-          },
-          phone: {
-            pattern: {
-              value: /^[0-9+\-\s()]*$/,
-              message: 'Please enter a valid phone number'
-            }
-          },
-          message: {
-            required: 'Please enter your message',
-            minLength: { value: 10, message: 'Message must contain at least 10 characters' }
-          },
-          username: {
-            required: 'Please enter a username',
-            minLength: { value: 3, message: 'Username must contain at least 3 characters' }
-          },
-          country: {
-            required: 'Please select your country'
-          },
-          language: {
-            required: 'Please select at least one language'
-          },
-          birthDate: {
-            required: 'Please enter your birth date'
-          },
-          address: {
-            required: 'Please enter your address',
-            minLength: { value: 10, message: 'Address must contain at least 10 characters' }
-          },
-          city: {
-            required: 'Please enter your city',
-            minLength: { value: 2, message: 'City name must contain at least 2 characters' }
-          },
-          state: {
-            required: 'Please select your state'
-          },
-          pincode: {
-            required: 'Please enter your pincode',
-            pattern: {
-              value: /^[0-9]{6}$/,
-              message: 'Please enter a valid 6-digit pincode'
-            }
-          },
-          addressType: {
-            required: 'Please select an address type'
-          }
-        };
-
-        // Validate individual form field
-        function validateFormField(inputField, rules) {
-          const fieldValue = inputField.value.trim();
-          const fieldRules = rules[inputField.name];
-
-          if (!fieldRules) return true;
-
-          clearValidationError(inputField);
-
-          if (fieldRules.required && !fieldValue) {
-            displayValidationError(inputField, fieldRules.required);
-            return false;
-          }
-
-          if (fieldRules.minLength && fieldValue.length < fieldRules.minLength.value) {
-            displayValidationError(inputField, fieldRules.minLength.message);
-            return false;
-          }
-
-          if (fieldRules.pattern && !fieldRules.pattern.value.test(fieldValue)) {
-            displayValidationError(inputField, fieldRules.pattern.message);
-            return false;
-          }
-
-          return true;
-        }
-
-        // Handle form submission
-        formElement.addEventListener('submit', async function(event) {
-          event.preventDefault();
-
-          // Clear all previous validation errors
-          formElement.querySelectorAll('.is-invalid').forEach(input => clearValidationError(input));
-
-          // Validate all form fields
-          let isFormValid = true;
-          formElement.querySelectorAll('input, textarea, select').forEach(input => {
-            if (input.name && !validateFormField(input, fieldValidationRules)) {
-              isFormValid = false;
-            }
-          });
-
-          if (!isFormValid) {
-            return;
-          }
-
-          // Show loading state during submission
-          if (submitButton) {
-            submitButton.disabled = true;
-            submitButton.innerHTML = loadingSpinner + 'Submitting...';
-          }
-
-          try {
-            // Simulate API call with delay
-            await new Promise(resolve => setTimeout(resolve, 2000));
-
-            // Display success message
-            const successAlert = document.createElement('div');
-            successAlert.className = 'alert alert-success mt-3';
-            successAlert.textContent = 'Form submitted successfully!';
-            formElement.insertBefore(successAlert, formElement.firstChild);
-
-            // Reset form to initial state
-            formElement.reset();
-
-            // Remove success message after delay
-            setTimeout(() => successAlert.remove(), 5000);
-          } catch (error) {
-            // Handle submission error
-            console.error('Submission error:', error);
-            const errorAlert = document.createElement('div');
-            errorAlert.className = 'alert alert-danger mt-3';
-            errorAlert.textContent = 'An error occurred. Please try again.';
-            formElement.insertBefore(errorAlert, formElement.firstChild);
-          } finally {
-            // Reset submit button state
-            if (submitButton) {
-              submitButton.disabled = false;
-              submitButton.innerHTML = 'Submit';
-            }
-          }
-        });
-      });
-    });
-  </script>
-`;
+}
 
 // Basic form example with essential fields
 const basicFormExample = `<form class="basic-form" novalidate>
@@ -257,7 +61,7 @@ const basicFormExample = `<form class="basic-form" novalidate>
         </div>
       </div>
     </div>
-</form>`;
+</form>`
 
 // Form example with Remix icons for visual enhancement
 const iconFormExample = `<form class="icons-form" novalidate>
@@ -314,7 +118,7 @@ const iconFormExample = `<form class="icons-form" novalidate>
   <div class="d-flex justify-content-end">
     <button type="submit" class="btn btn-primary">Submit Form</button>
   </div>
-</form>`;
+</form>`
 
 // Example of a completely disabled form
 const disabledFormExample = `<form>
@@ -373,7 +177,7 @@ const disabledFormExample = `<form>
       </div>
     </div>
   </fieldset>
-</form>`;
+</form>`
 
 // Form example with logical sections and Remix icons
 const sectionsFormExample = `<form class="sections-form" novalidate>
@@ -517,7 +321,7 @@ const sectionsFormExample = `<form class="sections-form" novalidate>
     <button type="button" class="btn btn-light">Cancel</button>
     <button type="submit" class="btn btn-primary">Submit Form</button>
   </div>
-</form>`;
+</form>`
 
 // Form example with right-aligned labels for better visual hierarchy
 const labelAlignmentFormExample = `<form class="alignment-form" novalidate>
@@ -642,7 +446,7 @@ const labelAlignmentFormExample = `<form class="alignment-form" novalidate>
     <button type="button" class="btn btn-light">Cancel</button>
     <button type="submit" class="btn btn-primary">Submit Form</button>
   </div>
-</form>`;
+</form>`
 
 // Multi-column form example for address information
 const multiColumnFormExample = `<form class="multi-column-form" novalidate>
@@ -762,7 +566,7 @@ const multiColumnFormExample = `<form class="multi-column-form" novalidate>
         <button type="button" class="btn btn-light">Cancel</button>
         <button type="submit" class="btn btn-primary">Submit Form</button>
       </div>
-    </form>`;
+    </form>`
 
 // Tabbed form example with separate sections for different types of information
 const tabFormExample = `<ul class="nav nav-tabs form-tabs" id="formTabs" role="tablist">
@@ -785,7 +589,7 @@ const tabFormExample = `<ul class="nav nav-tabs form-tabs" id="formTabs" role="t
 
 <div class="tab-content">
   <!-- Personal Info Tab -->
-  <div class="tab-pane fade show active" id="personal" role="tabpanel">
+  <div class="tab-pane fade show active my-4" id="personal" role="tabpanel">
     <form class="tab-form-personal" novalidate>
       <div class="row mb-3">
         <label for="userFirstName" class="col-sm-3 col-form-label">First Name</label>
@@ -827,7 +631,7 @@ const tabFormExample = `<ul class="nav nav-tabs form-tabs" id="formTabs" role="t
   </div>
 
   <!-- Account Details Tab -->
-  <div class="tab-pane fade" id="account" role="tabpanel">
+  <div class="tab-pane fade my-4" id="account" role="tabpanel">
     <form class="tab-form-account" novalidate>
       <div class="row mb-3">
         <label for="userAccountName" class="col-sm-3 col-form-label">Username</label>
@@ -880,7 +684,7 @@ const tabFormExample = `<ul class="nav nav-tabs form-tabs" id="formTabs" role="t
   </div>
 
   <!-- Social Links Tab -->
-  <div class="tab-pane fade" id="social" role="tabpanel">
+  <div class="tab-pane fade my-4" id="social" role="tabpanel">
     <form class="tab-form-social" novalidate>
       <div class="row mb-3">
         <label for="userTwitter" class="col-sm-3 col-form-label">Twitter Profile</label>
@@ -923,17 +727,16 @@ const tabFormExample = `<ul class="nav nav-tabs form-tabs" id="formTabs" role="t
       </div>
     </form>
   </div>
-</div>`;
+</div>`
 ---
 
 <AdminLayout
   title="Horizontal Form Layouts"
   description="Modern Bootstrap Horizontal Form Layouts with Various Input Types"
   currentPath="forms/horizontal"
-  pageScript={formValidationScript}
   enableComponentPreview={true}
 >
-  <PageHeader {...pageHeaderConfig} />
+  <PageHeader {...pageConfig} />
   <div class="row">
     <div class="col-lg-9 col-xl-9 order-1 order-lg-0">
       <div class="row">
@@ -949,198 +752,185 @@ const tabFormExample = `<ul class="nav nav-tabs form-tabs" id="formTabs" role="t
         </div>
       </div>
       <div class="row js-toc-content">
-        <div class="col-lg-9 col-xl-9 order-1 order-lg-0">
-          <div class="row js-toc-content">
-            <div class="col-12">
-              <h2 class="my-3" id="form-layouts">Essential Form Layouts</h2>
+        <div class="col-12">
+          <h2 class="my-3" id="form-layouts">Essential Form Layouts</h2>
 
-              <!-- Basic Form -->
-              <div class="my-3">
-                <h3 class="mb-0" id="basic-form">Basic Form</h3>
-                <p class="py-2">
-                  A basic horizontal form with commonly used input fields:
-                  <ul>
-                    <li>
-                      <strong>Name and Email:</strong> Essential contact information fields with validation
-                    </li>
-                    <li><strong>Phone:</strong> Optional contact field with pattern validation</li>
-                    <li><strong>Message:</strong> Multi-line text area for detailed input</li>
-                  </ul>
-                  <div class="mb-3">
-                    Required fields are marked with an asterisk (*) using the <code
-                      >required-field</code
-                    > class.
-                  </div>
-                </p>
-                <ComponentPreview
-                  title="Basic Form"
-                  height="420px"
-                  component={basicFormExample}
-                  htmlCode={basicFormExample}
-                />
+          <!-- Basic Form -->
+          <div class="my-3">
+            <h3 class="mb-0" id="basic-form">Basic Form</h3>
+            <p class="py-2">
+              A basic horizontal form with commonly used input fields:
+              <ul>
+                <li>
+                  <strong>Name and Email:</strong> Essential contact information fields with validation
+                </li>
+                <li><strong>Phone:</strong> Optional contact field with pattern validation</li>
+                <li><strong>Message:</strong> Multi-line text area for detailed input</li>
+              </ul>
+              <div class="mb-3">
+                Required fields are marked with an asterisk (*) using the <code>required-field</code
+                > class.
               </div>
+            </p>
+            <ComponentPreview
+              title="Basic Form"
+              height="550px"
+              component={basicFormExample}
+              htmlCode={basicFormExample}
+            />
+          </div>
 
-              <!-- Form with Icons -->
-              <div class="my-3">
-                <h3 class="mb-0" id="form-with-icons">Form with Icons</h3>
-                <p class="py-2">
-                  Enhanced form design that incorporates icons to provide visual cues for each
-                  field:
-                  <ul>
-                    <li>
-                      <strong>Input Groups:</strong> Combines icons and form controls for better visual
-                      hierarchy
-                    </li>
-                    <li>
-                      <strong>Visual Indicators:</strong> Icons help users quickly identify field types
-                    </li>
-                    <li>
-                      <strong>Consistent Styling:</strong> Maintains a cohesive look with icon integration
-                    </li>
-                  </ul>
-                </p>
-                <ComponentPreview
-                  title="Form with Icons"
-                  height="420px"
-                  component={iconFormExample}
-                  htmlCode={iconFormExample}
-                />
-              </div>
+          <!-- Form with Icons -->
+          <div class="my-3">
+            <h3 class="mb-0" id="form-with-icons">Form with Icons</h3>
+            <p class="py-2">
+              Enhanced form design that incorporates icons to provide visual cues for each field:
+              <ul>
+                <li>
+                  <strong>Input Groups:</strong> Combines icons and form controls for better visual hierarchy
+                </li>
+                <li>
+                  <strong>Visual Indicators:</strong> Icons help users quickly identify field types
+                </li>
+                <li>
+                  <strong>Consistent Styling:</strong> Maintains a cohesive look with icon integration
+                </li>
+              </ul>
+            </p>
+            <ComponentPreview
+              title="Form with Icons"
+              height="550px"
+              component={iconFormExample}
+              htmlCode={iconFormExample}
+            />
+          </div>
 
-              <!-- Disabled Form -->
-              <div class="my-3">
-                <h3 class="mb-0" id="disabled-form">Disabled Form</h3>
-                <p class="py-2">
-                  A form in a disabled state that prevents user interaction:
-                  <ul>
-                    <li>
-                      <strong>Fieldset:</strong> Uses the disabled attribute to disable all form elements
-                      within
-                    </li>
-                    <li>
-                      <strong>Visual State:</strong> Shows grayed-out appearance for all form controls
-                    </li>
-                    <li>
-                      <strong>Interaction Prevention:</strong> Blocks user input while maintaining form
-                      layout
-                    </li>
-                  </ul>
-                </p>
-                <ComponentPreview
-                  title="Disabled Form"
-                  height="420px"
-                  component={disabledFormExample}
-                  htmlCode={disabledFormExample}
-                />
-              </div>
+          <!-- Disabled Form -->
+          <div class="my-3">
+            <h3 class="mb-0" id="disabled-form">Disabled Form</h3>
+            <p class="py-2">
+              A form in a disabled state that prevents user interaction:
+              <ul>
+                <li>
+                  <strong>Fieldset:</strong> Uses the disabled attribute to disable all form elements
+                  within
+                </li>
+                <li>
+                  <strong>Visual State:</strong> Shows grayed-out appearance for all form controls
+                </li>
+                <li>
+                  <strong>Interaction Prevention:</strong> Blocks user input while maintaining form layout
+                </li>
+              </ul>
+            </p>
+            <ComponentPreview
+              title="Disabled Form"
+              height="420px"
+              component={disabledFormExample}
+              htmlCode={disabledFormExample}
+            />
+          </div>
 
-              <!-- Form with Sections -->
-              <div class="my-3">
-                <h3 class="mb-0" id="form-with-sections">Form with Sections</h3>
-                <p class="py-2">
-                  A structured form divided into logical sections for better organization:
-                  <ul>
-                    <li>
-                      <strong>Account Details:</strong> Groups username, email, and password fields
-                    </li>
-                    <li>
-                      <strong>Personal Info:</strong> Contains biographical and contact information
-                    </li>
-                    <li>
-                      <strong>Visual Separation:</strong> Uses separators and headings to distinguish
-                      sections
-                    </li>
-                  </ul>
-                </p>
-                <ComponentPreview
-                  title="Form with Sections"
-                  height="600px"
-                  component={sectionsFormExample}
-                  htmlCode={sectionsFormExample}
-                />
-              </div>
-            </div>
-
-            <div class="col-12">
-              <h2 class="mb-4 mt-5" id="advanced-layouts">Advanced Form Layouts</h2>
-
-              <!-- Form Label Alignment -->
-              <div class="my-3">
-                <h3 class="mb-0" id="form-label-alignment">Form Label Alignment</h3>
-                <p class="py-2">
-                  Demonstrates different approaches to label alignment in forms:
-                  <ul>
-                    <li>
-                      <strong>Right-aligned Labels:</strong> Uses text-sm-end class for better visual
-                      connection with inputs
-                    </li>
-                    <li><strong>Input Groups:</strong> Shows email domain appended to input</li>
-                    <li>
-                      <strong>Responsive Design:</strong> Maintains readability across different screen
-                      sizes
-                    </li>
-                  </ul>
-                </p>
-                <ComponentPreview
-                  title="Form Label Alignment"
-                  height="600px"
-                  component={labelAlignmentFormExample}
-                  htmlCode={labelAlignmentFormExample}
-                />
-              </div>
-              <!-- Multi Column Form -->
-              <div class="my-3">
-                <h3 class="mb-0" id="multi-column-form">Multi Column Form</h3>
-                <p class="py-2">
-                  A form layout that uses multiple columns to maximize space efficiency:
-                  <ul>
-                    <li>
-                      <strong>Grid System:</strong> Utilizes Bootstrap's grid for responsive column layouts
-                    </li>
-                    <li><strong>Field Grouping:</strong> Organizes related fields in columns</li>
-                    <li>
-                      <strong>Address Form:</strong> Common example with street, city, state, and other
-                      location fields
-                    </li>
-                  </ul>
-                </p>
-                <ComponentPreview
-                  title="Multi Column Form"
-                  height="420px"
-                  component={multiColumnFormExample}
-                  htmlCode={multiColumnFormExample}
-                />
-              </div>
-
-              <!-- Form with Tabs -->
-              <div class="my-3">
-                <h3 class="mb-0" id="form-with-tabs">Form with Tabs</h3>
-                <p class="py-2">
-                  A tabbed interface that separates form content into manageable sections:
-                  <ul>
-                    <li><strong>Personal Info:</strong> Basic personal details and preferences</li>
-                    <li><strong>Account Details:</strong> Login and security information</li>
-                    <li><strong>Social Links:</strong> Social media profile connections</li>
-                    <li>
-                      <strong>Navigation:</strong> Easy switching between form sections using tabs
-                    </li>
-                  </ul>
-                </p>
-                <ComponentPreview
-                  title="Tabbed Form"
-                  height="380px"
-                  component={tabFormExample}
-                  htmlCode={tabFormExample}
-                  jsCode={formValidationScript}
-                />
-              </div>
-            </div>
+          <!-- Form with Sections -->
+          <div class="my-3">
+            <h3 class="mb-0" id="form-with-sections">Form with Sections</h3>
+            <p class="py-2">
+              A structured form divided into logical sections for better organization:
+              <ul>
+                <li>
+                  <strong>Account Details:</strong> Groups username, email, and password fields
+                </li>
+                <li>
+                  <strong>Personal Info:</strong> Contains biographical and contact information
+                </li>
+                <li>
+                  <strong>Visual Separation:</strong> Uses separators and headings to distinguish sections
+                </li>
+              </ul>
+            </p>
+            <ComponentPreview
+              title="Form with Sections"
+              height="550px"
+              component={sectionsFormExample}
+              htmlCode={sectionsFormExample}
+            />
           </div>
         </div>
-        <div class="col-md-2 mb-4 order-0 order-md-1">
-          <Toc />
+
+        <div class="col-12">
+          <h2 class="mb-4 mt-5" id="advanced-layouts">Advanced Form Layouts</h2>
+
+          <!-- Form Label Alignment -->
+          <div class="my-3">
+            <h3 class="mb-0" id="form-label-alignment">Form Label Alignment</h3>
+            <p class="py-2">
+              Demonstrates different approaches to label alignment in forms:
+              <ul>
+                <li>
+                  <strong>Right-aligned Labels:</strong> Uses text-sm-end class for better visual connection
+                  with inputs
+                </li>
+                <li><strong>Input Groups:</strong> Shows email domain appended to input</li>
+                <li>
+                  <strong>Responsive Design:</strong> Maintains readability across different screen sizes
+                </li>
+              </ul>
+            </p>
+            <ComponentPreview
+              title="Form Label Alignment"
+              height="550px"
+              component={labelAlignmentFormExample}
+              htmlCode={labelAlignmentFormExample}
+            />
+          </div>
+          <!-- Multi Column Form -->
+          <div class="my-3">
+            <h3 class="mb-0" id="multi-column-form">Multi Column Form</h3>
+            <p class="py-2">
+              A form layout that uses multiple columns to maximize space efficiency:
+              <ul>
+                <li>
+                  <strong>Grid System:</strong> Utilizes Bootstrap's grid for responsive column layouts
+                </li>
+                <li><strong>Field Grouping:</strong> Organizes related fields in columns</li>
+                <li>
+                  <strong>Address Form:</strong> Common example with street, city, state, and other location
+                  fields
+                </li>
+              </ul>
+            </p>
+            <ComponentPreview
+              title="Multi Column Form"
+              height="550px"
+              component={multiColumnFormExample}
+              htmlCode={multiColumnFormExample}
+            />
+          </div>
+
+          <!-- Form with Tabs -->
+          <div class="my-3">
+            <h3 class="mb-0" id="form-with-tabs">Form with Tabs</h3>
+            <p class="py-2">
+              A tabbed interface that separates form content into manageable sections:
+              <ul>
+                <li><strong>Personal Info:</strong> Basic personal details and preferences</li>
+                <li><strong>Account Details:</strong> Login and security information</li>
+                <li><strong>Social Links:</strong> Social media profile connections</li>
+                <li>
+                  <strong>Navigation:</strong> Easy switching between form sections using tabs
+                </li>
+              </ul>
+            </p>
+            <ComponentPreview
+              title="Tabbed Form"
+              height="550px"
+              component={tabFormExample}
+              htmlCode={tabFormExample}
+            />
+          </div>
         </div>
       </div>
     </div>
-  </div></AdminLayout
->
+    <Toc />
+  </div>
+</AdminLayout>

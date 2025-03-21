@@ -1,35 +1,38 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
-import permissionsData from "../../../assets/data/permissions.json";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import type { Props as PageHeaderProps } from '../../components/common/page-header.astro'
+import { getAssetPrefix, getPathPrefix } from '../../../utils/path.js'
+import permissionsData from '../../../assets/data/permissions.json'
 
 // Page Header Configuration
-const userFormHeaderConfig = {
-  title: "Create New User",
+const userFormHeaderConfig: PageHeaderProps = {
+  title: 'Add User',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Users", href: getPathPrefix("/users/list") },
-    { label: "Create User", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard'), class: '' },
+    { label: 'Users', href: getPathPrefix('/users/list'), class: '' },
+    { label: 'Add', class: 'active' }
   ],
   actions: [
     {
-      label: "Return to Users",
-      href: getPathPrefix("/users/list"),
-      icon: "ri-arrow-left-line",
-      variant: "btn-outline-primary"
+      label: 'Back',
+      href: getPathPrefix('/users/list'),
+      type: 'link',
+      variant: 'btn-outline-primary',
+      icon: 'ri-arrow-left-s-line',
+      class: ''
     }
   ]
-};
+}
 
 // Load Permission Modules from JSON file
-const { modules: permissionModules } = permissionsData;
+const { modules: permissionModules } = permissionsData
 
 // External Dependencies: Required JavaScript
 const userFormScripts = `
-  <script src="${getAssetPrefix("/assets/js/pages/roles-permissions/roles/toggle-permissions.js")}"></script>
-  <script type="module" src="${getAssetPrefix("/assets/js/pages/users/form.js")}"></script>
-`;
+  <script src="${getAssetPrefix('/assets/js/pages/roles-permissions/roles/toggle-permissions.js')}"></script>
+  <script type="module" src="${getAssetPrefix('/assets/js/pages/users/form.js')}"></script>
+`
 
 // Custom Styles for Form Elements
 const userFormStyles = `
@@ -51,7 +54,7 @@ const userFormStyles = `
         color: var(--bs-primary);
     }
   </style>
-`;
+`
 ---
 
 <AdminLayout
@@ -80,7 +83,7 @@ const userFormStyles = `
               <div class="avatar-upload mb-3">
                 <div class="avatar-preview rounded border" style="width: 120px; height: 120px;">
                   <img
-                    src={getAssetPrefix("/assets/img/avatars/placeholder-avatar.jpg")}
+                    src={getAssetPrefix('/assets/img/avatars/placeholder-avatar.jpg')}
                     alt="Profile Picture"
                     class="rounded w-100 h-100"
                     style="object-fit: cover;"
@@ -394,7 +397,7 @@ const userFormStyles = `
             <i class="ri-arrow-left-line me-1"></i>Cancel
           </button>
           <button type="submit" class="btn btn-primary">
-            <i class="ri-user-add-line me-1"></i>Create User Account
+            <i class="ri-user-add-line me-1"></i>Add User
           </button>
         </div>
       </div>

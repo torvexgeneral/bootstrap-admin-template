@@ -1,19 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getPathPrefix } from "../../../utils/path.js";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
 
 // Page header configuration
 const pageHeaderProps = {
-  title: "Form Controls",
+  title: 'Form Controls',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Forms", href: "" },
-    { label: "Form Controls", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Forms', href: '' },
+    { label: 'Form Controls', class: 'active' }
   ]
-};
+}
 
 // Example code blocks with improved variable names and comments
 const formInputBasicExamples = `<div class="row">
@@ -50,24 +50,7 @@ const formInputBasicExamples = `<div class="row">
           </button>
         </div>
     </div>
-</div>`;
-
-const formInputWithIcons = `<div class="row g-3">
-    <div class="col-md-6">
-        <label class="form-label">Email Input with Icon</label>
-        <div class="input-group">
-            <span class="input-group-text"><i class="ri-mail-line"></i></span>
-            <input type="email" class="form-control" placeholder="example@gmail.com">
-        </div>
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">Search with Icon Right</label>
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search...">
-            <span class="input-group-text"><i class="ri-search-line"></i></span>
-        </div>
-    </div>
-</div>`;
+</div>`
 
 const formInputStates = `<div class="row g-3">
     <div class="col-md-4">
@@ -82,7 +65,7 @@ const formInputStates = `<div class="row g-3">
         <label class="form-label">Disabled Input</label>
         <input type="text" class="form-control" value="Disabled input field" disabled>
     </div>
-</div>`;
+</div>`
 
 const specialInputs = `<div class="row g-3">
     <div class="col-md-6">
@@ -99,7 +82,7 @@ const specialInputs = `<div class="row g-3">
             <span class="input-group-text">@</span>
         </div>
     </div>
-</div>`;
+</div>`
 
 const formDateTimeInputs = `<div class="row g-3">
     <div class="col-md-4">
@@ -123,7 +106,7 @@ const formDateTimeInputs = `<div class="row g-3">
             <input type="datetime-local" class="form-control">
         </div>
     </div>
-</div>`;
+</div>`
 
 const formTextareaAndColor = `<div class="row g-3">
     <div class="col-md-6">
@@ -140,7 +123,7 @@ const formTextareaAndColor = `<div class="row g-3">
         </div>
         <small class="text-muted">Choose your preferred color</small>
     </div>
-</div>`;
+</div>`
 
 const formDataListAndRounded = `<div class="row g-3">
     <div class="col-md-6">
@@ -167,7 +150,7 @@ const formDataListAndRounded = `<div class="row g-3">
             <input type="text" class="form-control rounded-end-pill" placeholder="Search anything...">
         </div>
     </div>
-</div>`;
+</div>`
 
 const formInputSizing = `<div class="row g-3">
     <div class="mb-3">
@@ -200,7 +183,7 @@ const formInputSizing = `<div class="row g-3">
             <input type="text" class="form-control form-control-xl" placeholder="Extra Large Input">
         </div>
     </div>
-</div>`;
+</div>`
 
 const formFileInputs = `<div class="row g-3">
     <div class="col-md-4">
@@ -224,7 +207,7 @@ const formFileInputs = `<div class="row g-3">
             <input class="form-control" type="file" disabled>
         </div>
     </div>
-</div>`;
+</div>`
 
 const formFileInputSizing = `<div class="row g-3">
     <div class="col-12 mb-3">
@@ -257,7 +240,7 @@ const formFileInputSizing = `<div class="row g-3">
             <input class="form-control form-control-xl" type="file">
         </div>
     </div>
-</div>`;
+</div>`
 
 const formInputGroups = `<div class="row g-3">
     <div class="col-md-6">
@@ -296,7 +279,7 @@ const formInputGroups = `<div class="row g-3">
             <span class="input-group-text">.com</span>
         </div>
     </div>
-</div>`;
+</div>`
 
 const inputGroupSizing = `<div class="row g-3">
     <div class="row m-3">
@@ -329,7 +312,7 @@ const inputGroupSizing = `<div class="row g-3">
             <input type="text" class="form-control">
         </div>
     </div>
-</div>`;
+</div>`
 
 const formCheckboxesAndRadios = `<div class="row g-3">
     <div class="col-md-6">
@@ -348,7 +331,7 @@ const formCheckboxesAndRadios = `<div class="row g-3">
             <input type="text" class="form-control" placeholder="Radio with input">
         </div>
     </div>
-</div>`;
+</div>`
 
 const floatingLabels = `<div class="row g-3">
     <div class="col-md-6">
@@ -373,7 +356,7 @@ const floatingLabels = `<div class="row g-3">
             <label for="floatingFilledPassword">Password</label>
         </div>
     </div>
-</div>`;
+</div>`
 
 const formButtonsAndDropdowns = `<div class="row g-3">
     <div class="col-md-6">
@@ -415,7 +398,7 @@ const formButtonsAndDropdowns = `<div class="row g-3">
             <input type="text" class="form-control" placeholder="Filtered results...">
         </div>
     </div>
-</div>`;
+</div>`
 ---
 
 <AdminLayout
@@ -467,7 +450,7 @@ const formButtonsAndDropdowns = `<div class="row g-3">
             </p>
             <ComponentPreview
               title="Basic Input Examples"
-              height="240px"
+              height="550px"
               component={formInputBasicExamples}
               htmlCode={formInputBasicExamples}
               cssCode={``}
@@ -492,7 +475,7 @@ const formButtonsAndDropdowns = `<div class="row g-3">
             </p>
             <ComponentPreview
               title="Floating Labels Examples"
-              height="240px"
+              height="450px"
               component={floatingLabels}
               htmlCode={floatingLabels}
             />
@@ -520,7 +503,7 @@ const formButtonsAndDropdowns = `<div class="row g-3">
             </p>
             <ComponentPreview
               title="Special Input Examples"
-              height="140px"
+              height="300px"
               component={specialInputs}
               htmlCode={specialInputs}
               cssCode={``}
@@ -554,7 +537,7 @@ const formButtonsAndDropdowns = `<div class="row g-3">
             </p>
             <ComponentPreview
               title="Input State Examples"
-              height="140px"
+              height="350px"
               component={formInputStates}
               htmlCode={formInputStates}
               cssCode={``}
@@ -579,7 +562,7 @@ const formButtonsAndDropdowns = `<div class="row g-3">
             </p>
             <ComponentPreview
               title="Date and Time Input Examples"
-              height="140px"
+              height="350px"
               component={formDateTimeInputs}
               htmlCode={formDateTimeInputs}
               cssCode={``}
@@ -606,7 +589,7 @@ const formButtonsAndDropdowns = `<div class="row g-3">
             </p>
             <ComponentPreview
               title="Textarea and Color Picker Examples"
-              height="250px"
+              height="350px"
               component={formTextareaAndColor}
               htmlCode={formTextareaAndColor}
               cssCode={``}
@@ -623,7 +606,7 @@ const formButtonsAndDropdowns = `<div class="row g-3">
             </p>
             <ComponentPreview
               title="Datalist and Rounded Input Examples"
-              height="140px"
+              height="300px"
               component={formDataListAndRounded}
               htmlCode={formDataListAndRounded}
               cssCode={``}
@@ -691,7 +674,7 @@ const formButtonsAndDropdowns = `<div class="row g-3">
             </p>
             <ComponentPreview
               title="File Input Examples"
-              height="140px"
+              height="300px"
               component={formFileInputs}
               htmlCode={formFileInputs}
               cssCode={``}
@@ -707,7 +690,7 @@ const formButtonsAndDropdowns = `<div class="row g-3">
             </p>
             <ComponentPreview
               title="File Input Sizing Examples"
-              height="240px"
+              height="500px"
               component={formFileInputSizing}
               htmlCode={formFileInputSizing}
             />
@@ -735,7 +718,7 @@ const formButtonsAndDropdowns = `<div class="row g-3">
             </p>
             <ComponentPreview
               title="Input Group Examples"
-              height="280px"
+              height="500px"
               component={formInputGroups}
               htmlCode={formInputGroups}
             />
@@ -774,7 +757,7 @@ const formButtonsAndDropdowns = `<div class="row g-3">
             </p>
             <ComponentPreview
               title="Checkbox and Radio Examples"
-              height="100px"
+              height="200px"
               component={formCheckboxesAndRadios}
               htmlCode={formCheckboxesAndRadios}
             />

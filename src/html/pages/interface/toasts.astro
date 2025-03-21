@@ -1,18 +1,18 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 const pageHeaderProps = {
-  title: "Toasts",
+  title: 'Toasts',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Interface", href: getPathPrefix("/interface") },
-    { label: "Toasts", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Interface', href: getPathPrefix('/interface') },
+    { label: 'Toasts', class: 'active' }
   ]
-};
+}
 
 // JavaScript for handling live toast demonstration
 const toastDemoScript = `<script is:inline>
@@ -26,7 +26,7 @@ if (toastTriggerBtn) {
   })
 }
 </script>
-`;
+`
 
 // Basic toast example with Remixicon
 const basicToastExample = `<div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
@@ -40,7 +40,7 @@ const basicToastExample = `<div class="toast show" role="alert" aria-live="asser
     Your profile has been updated successfully!
   </div>
 </div>
-`;
+`
 
 // Live toast demonstration example
 const liveToastExample = `<button type="button" class="btn btn-primary" id="liveToastBtn">Show Notification</button>
@@ -58,7 +58,7 @@ const liveToastExample = `<button type="button" class="btn btn-primary" id="live
     </div>
   </div>
 </div>
-`;
+`
 
 // Translucent toast example
 const translucentToastExample = `<div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
@@ -72,7 +72,7 @@ const translucentToastExample = `<div class="toast show" role="alert" aria-live=
     Your changes have been automatically saved.
   </div>
 </div>
-`;
+`
 
 // Stacked toasts example
 const stackedToastsExample = `<div class="toast-container position-static">
@@ -100,7 +100,7 @@ const stackedToastsExample = `<div class="toast-container position-static">
     </div>
   </div>
 </div>
-`;
+`
 
 // Simple toast example
 const simpleToastExample = `<div class="toast show align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
@@ -111,7 +111,7 @@ const simpleToastExample = `<div class="toast show align-items-center" role="ale
     <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
   </div>
 </div>
-`;
+`
 
 // Interactive toast example
 const interactiveToastExample = `<div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
@@ -123,7 +123,7 @@ const interactiveToastExample = `<div class="toast show" role="alert" aria-live=
     </div>
   </div>
 </div>
-`;
+`
 
 // Colored toast example
 const coloredToastExample = `<div class="toast show align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
@@ -135,7 +135,7 @@ const coloredToastExample = `<div class="toast show align-items-center text-bg-p
     <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
   </div>
 </div>
-`;
+`
 
 // Positioned toasts example
 const positionedToastsExample = `<div aria-live="polite" aria-atomic="true" class="position-relative">
@@ -164,7 +164,7 @@ const positionedToastsExample = `<div aria-live="polite" aria-atomic="true" clas
       </div>
     </div>
   </div>
-</div>`;
+</div>`
 
 // Centered toast example
 const centeredToastExample = `<!-- Flexbox container for centering the toast -->
@@ -181,7 +181,7 @@ const centeredToastExample = `<!-- Flexbox container for centering the toast -->
     </div>
   </div>
 </div>
-`;
+`
 ---
 
 <AdminLayout
@@ -216,7 +216,7 @@ const centeredToastExample = `<!-- Flexbox container for centering the toast -->
 
             <ComponentPreview
               title="Basic Toast"
-              height="150px"
+              height="250px"
               component={basicToastExample}
               htmlCode={basicToastExample}
               cssCode={``}
@@ -232,7 +232,7 @@ const centeredToastExample = `<!-- Flexbox container for centering the toast -->
 
             <ComponentPreview
               title="Live Toast Demo"
-              height="150px"
+              height="250px"
               component={liveToastExample}
               htmlCode={liveToastExample}
               cssCode={``}
@@ -249,7 +249,7 @@ const centeredToastExample = `<!-- Flexbox container for centering the toast -->
 
             <ComponentPreview
               title="Translucent Toast"
-              height="150px"
+              height="250px"
               component={translucentToastExample}
               htmlCode={translucentToastExample}
               cssCode={``}
@@ -282,7 +282,7 @@ const centeredToastExample = `<!-- Flexbox container for centering the toast -->
 
             <ComponentPreview
               title="Simple Toast"
-              height="150px"
+              height="250px"
               component={simpleToastExample}
               htmlCode={simpleToastExample}
               cssCode={``}
@@ -296,7 +296,7 @@ const centeredToastExample = `<!-- Flexbox container for centering the toast -->
 
             <ComponentPreview
               title="Interactive Toast"
-              height="200px"
+              height="250px"
               component={interactiveToastExample}
               htmlCode={interactiveToastExample}
               cssCode={``}
@@ -315,7 +315,7 @@ const centeredToastExample = `<!-- Flexbox container for centering the toast -->
 
             <ComponentPreview
               title="Colored Toast"
-              height="150px"
+              height="250px"
               component={coloredToastExample}
               htmlCode={coloredToastExample}
               cssCode={``}
@@ -331,7 +331,7 @@ const centeredToastExample = `<!-- Flexbox container for centering the toast -->
 
             <ComponentPreview
               title="Positioned Toasts"
-              height="300px"
+              height="350px"
               component={positionedToastsExample}
               htmlCode={positionedToastsExample}
               cssCode={``}
@@ -345,7 +345,7 @@ const centeredToastExample = `<!-- Flexbox container for centering the toast -->
 
             <ComponentPreview
               title="Centered Toast"
-              height="150px"
+              height="250px"
               component={centeredToastExample}
               htmlCode={centeredToastExample}
               cssCode={``}

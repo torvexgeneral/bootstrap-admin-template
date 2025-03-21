@@ -1,18 +1,27 @@
 ---
-import AdminLayout from "../../../layouts/admin/admin-layout.astro";
-import PageHeader from "../../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../../utils/path.js";
+import AdminLayout from '../../../layouts/admin/admin-layout.astro'
+import PageHeader from '../../../components/common/page-header.astro'
+import type { Props as PageHeaderProps } from '../../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../../utils/path.js'
 
-const pageHeaderProps = {
-  title: "Edit Permission",
-  backLink: getPathPrefix("/roles-permissions/permissions/list"),
+const pageHeaderProps: PageHeaderProps = {
+  title: 'Edit Permission',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Roles & Permissions", href: getPathPrefix("/roles-permissions") },
-    { label: "Permissions", href: getPathPrefix("/roles-permissions/permissions/list") },
-    { label: "Edit Permission", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Roles & Permissions', href: getPathPrefix('/roles-permissions') },
+    { label: 'Permissions', href: getPathPrefix('/roles-permissions/permissions/list') },
+    { label: 'Edit Permission', class: 'active' }
+  ],
+  actions: [
+    {
+      label: 'Back',
+      href: getPathPrefix('/roles-permissions/permissions/list'),
+      type: 'link',
+      variant: 'btn-outline-primary',
+      icon: 'ri-arrow-left-s-line'
+    }
   ]
-};
+}
 
 // Add custom validation script
 const pageScript = `
@@ -103,7 +112,7 @@ const pageScript = `
           await new Promise(resolve => setTimeout(resolve, 2000));
 
           // On success
-          window.location.href = '${getPathPrefix("/roles-permissions/permissions/list")}';
+          window.location.href = '${getPathPrefix('/roles-permissions/permissions/list')}';
         } catch (error) {
           // On error
           console.error('Error:', error);
@@ -129,7 +138,7 @@ const pageScript = `
       });
     });
   </script>
-`;
+`
 ---
 
 <AdminLayout
@@ -271,7 +280,7 @@ const pageScript = `
             <!-- Form Actions -->
             <div class="d-flex flex-column flex-lg-row justify-content-end gap-2">
               <a
-                href={getPathPrefix("/roles-permissions/permissions/list")}
+                href={getPathPrefix('/roles-permissions/permissions/list')}
                 class="btn btn-outline-secondary">Cancel</a
               >
               <button type="submit" class="btn btn-primary">Update Permission</button>

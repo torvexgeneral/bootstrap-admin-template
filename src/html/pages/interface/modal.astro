@@ -1,19 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 // Page header configuration with breadcrumb navigation
 const pageHeaderProps = {
-  title: "Modal",
+  title: 'Modal',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Interface", href: getPathPrefix("/interface") },
-    { label: "Modal", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Interface', href: getPathPrefix('/interface') },
+    { label: 'Modal', class: 'active' }
   ]
-};
+}
 
 // Basic modal example with standard functionality
 const basicModalExample = `<!-- Button trigger modal -->
@@ -52,7 +52,7 @@ const basicModalExample = `<!-- Button trigger modal -->
     </div>
   </div>
 </div>
-`;
+`
 
 // Static backdrop modal that prevents closing by clicking outside
 const staticBackdropModal = `<!-- Button trigger modal -->
@@ -90,167 +90,8 @@ const staticBackdropModal = `<!-- Button trigger modal -->
     </div>
   </div>
 </div>
-`;
+`
 
-const code_1 = `<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        This is a sample modal window designed to display additional information or actions. You can use modals to show alerts, forms, or interactive content without navigating away from the current page.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-const code_2 = `<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Launch static backdrop modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        This is a sample modal window designed to display additional information or actions. You can use modals to show alerts, forms, or interactive content without navigating away from the current page.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-const code_3 = `<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLongContent">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLongContent" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" style="min-height: 1500px">
-        This is some placeholder text inside the modal. You can use it to display important information or instructions. Feel free to replace this with your actual content as needed.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-const code_4 = `<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleScrollableModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleScrollableModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>This is some placeholder text inside the modal. You can use it to display important information or instructions. Feel free to replace this with your actual content as needed.</p>
-        <ul>
-            <li>Placeholder item one</li>
-            <li>Random content here</li>
-            <li>More example text</li>
-            <li>Another dummy entry</li>
-            <li>Sample list item</li>
-            <li>Item for testing</li>
-            <li>More dummy items</li>
-            <li>Text for display</li>
-            <li>Additional example data</li>
-            <li>List item dummy</li>
-            <li>Test data entry</li>
-            <li>Sample text item</li>
-            <li>Random list content</li>
-            <li>Dummy placeholder text</li>
-            <li>Example list entry</li>
-            <li>Dummy list content</li>
-            <li>More testing here</li>
-            <li>Extra list example</li>
-            <li>Sample text dummy</li>
-            <li>Test list entry</li>
-            <li>Mock list item</li>
-            <li>Random placeholder</li>
-            <li>Dummy content text</li>
-            <li>Example list test</li>
-            <li>Sample content item</li>
-            <li>Testing placeholder text</li>
-            <li>Example data list</li>
-            <li>Mock content entry</li>
-            <li>Test placeholder list</li>
-            <li>Dummy text for item</li>
-            <li>Example entry for list</li>
-            <li>Random data sample</li>
-            <li>Additional placeholder</li>
-            <li>Mock list example</li>
-            <li>Text item for list</li>
-            <li>Example content entry</li>
-        </ul>
-        <p>This text should appear at the bottom.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-const code_5 = `<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#verticallyCenteredModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="verticallyCenteredModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        This is a vertically centered modal window designed to display additional information or actions. You can use modals to show alerts, forms, or interactive content without navigating away from the current page.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-`;
 const code_6 = `<!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tooltipsExample">
   <i class="ri-information-line me-1"></i> Modal with Tooltips
@@ -281,278 +122,7 @@ const code_6 = `<!-- Button trigger modal -->
     </div>
   </div>
 </div>
-`;
-const code_7 = `<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalGrid">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalGrid" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-4 text-bg-primary">.col-md-4</div>
-            <div class="col-md-4 ms-auto text-bg-primary">.col-md-4 .ms-auto</div>
-          </div>
-          <div class="row">
-            <div class="col-md-3 ms-auto text-bg-primary">.col-md-3 .ms-auto</div>
-            <div class="col-md-2 ms-auto text-bg-primary">.col-md-2 .ms-auto</div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 ms-auto text-bg-primary">.col-md-6 .ms-auto</div>
-          </div>
-          <div class="row">
-            <div class="col-sm-9 text-bg-primary">
-              Level 1: .col-sm-9
-              <div class="row">
-                <div class="col-8 col-sm-6 text-bg-primary">
-                  Level 2: .col-8 .col-sm-6
-                </div>
-                <div class="col-4 col-sm-6 text-bg-primary">
-                  Level 2: .col-4 .col-sm-6
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-const code_8 = `<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Show a second modal and hide this one with the button below.
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Hide this modal and show the first with the button below.
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
-      </div>
-    </div>
-  </div>
-</div>
-<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Open first modal</button>
-`;
-const code_9 = `<button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#smModal">
-  Small modal
-</button>
-<button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#lgModal">
-  Large modal
-</button>
-<button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#xlModal">
-  Extra large modal
-</button>
-
-<!-- Small Modal -->
-<div class="modal fade" id="smModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        This is a small modal window designed to display additional information or actions. You can use modals to show alerts, forms, or interactive content without navigating away from the current page.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Large Modal -->
-<div class="modal fade" id="lgModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        This is a large modal window designed to display additional information or actions. You can use modals to show alerts, forms, or interactive content without navigating away from the current page.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Extra Large Modal -->
-<div class="modal fade" id="xlModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        This is an extra large modal window designed to display additional information or actions. You can use modals to show alerts, forms, or interactive content without navigating away from the current page.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-const code_10 = `<button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#fullscreenModal">
-  Full screen
-</button>
-<button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#fullscreenSmDown">
-  Full screen below sm
-</button>
-<button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#fullscreenMdDown">
-  Full screen below md
-</button>
-<button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#fullscreenLgDown">
-  Full screen below lg
-</button>
-<button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#fullscreenXlDown">
-  Full screen below xl
-</button>
-<button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#fullscreenXxlDown">
-  Full screen below xxl
-</button>
-
-<div class="modal fade" id="fullscreenModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        This is a full screen modal window designed to display additional information or actions. You can use modals to show alerts, forms, or interactive content without navigating away from the current page.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="fullscreenSmDown" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-sm-down">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        This is a full screen modal window designed to display additional information or actions. You can use modals to show alerts, forms, or interactive content without navigating away from the current page.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="fullscreenMdDown" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-md-down">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        This is a full screen modal window designed to display additional information or actions. You can use modals to show alerts, forms, or interactive content without navigating away from the current page.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="fullscreenLgDown" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-lg-down">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        This is a full screen modal window designed to display additional information or actions. You can use modals to show alerts, forms, or interactive content without navigating away from the current page.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="fullscreenXlDown" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-xl-down">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        This is a full screen modal window designed to display additional information or actions. You can use modals to show alerts, forms, or interactive content without navigating away from the current page.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="fullscreenXxlDown" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-xxl-down">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        This is a full screen modal window designed to display additional information or actions. You can use modals to show alerts, forms, or interactive content without navigating away from the current page.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
+`
 // Scrollable modal with long content
 const scrollableModal = `<!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scrollableModalExample">
@@ -605,7 +175,7 @@ const scrollableModal = `<!-- Button trigger modal -->
     </div>
   </div>
 </div>
-`;
+`
 
 // Centered modal example
 const centeredModal = `<!-- Button trigger modal -->
@@ -641,7 +211,7 @@ const centeredModal = `<!-- Button trigger modal -->
     </div>
   </div>
 </div>
-`;
+`
 
 // Grid system modal example
 const gridModal = `<!-- Button trigger modal -->
@@ -685,7 +255,7 @@ const gridModal = `<!-- Button trigger modal -->
     </div>
   </div>
 </div>
-`;
+`
 
 // Toggle between modals example
 const toggleModals = `<!-- First Modal -->
@@ -788,7 +358,7 @@ const toggleModals = `<!-- First Modal -->
 <button class="btn btn-primary" data-bs-target="#toggleModal1" data-bs-toggle="modal">
   <i class="ri-arrow-left-right-line me-1"></i> Start 3-Step Sequence
 </button>
-`;
+`
 
 // Size variations modal examples
 const sizeVariations = `<!-- Size variation buttons -->
@@ -887,7 +457,7 @@ const sizeVariations = `<!-- Size variation buttons -->
     </div>
   </div>
 </div>
-`;
+`
 
 // Fullscreen modal variations
 const fullscreenModals = `<!-- Fullscreen modal buttons -->
@@ -977,7 +547,7 @@ const fullscreenModals = `<!-- Fullscreen modal buttons -->
 <!-- Add similar modals for MD, LG, XL, XXL breakpoints with appropriate icons and content -->
 <!-- Each modal follows the same pattern but uses different modal-fullscreen-*-down classes -->
 
-`;
+`
 ---
 
 <AdminLayout
@@ -1002,9 +572,7 @@ const fullscreenModals = `<!-- Fullscreen modal buttons -->
       <div class="row js-toc-content">
         <div class="col-12">
           <div class="my-3">
-            <h3 class="mb-0" id="live-demo">
-              <i class="ri-play-circle-line me-1"></i> Live Demo
-            </h3>
+            <h3 class="mb-0" id="live-demo">Live Demo</h3>
             <p class="py-2">
               Experience the modal functionality by clicking the button below. This example
               showcases a standard modal implementation with customizable content.
@@ -1013,7 +581,7 @@ const fullscreenModals = `<!-- Fullscreen modal buttons -->
             <!-- Basic Modal Example -->
             <ComponentPreview
               title="Live Demo"
-              height="400px"
+              height="550px"
               component={basicModalExample}
               htmlCode={basicModalExample}
               cssCode={``}
@@ -1021,9 +589,7 @@ const fullscreenModals = `<!-- Fullscreen modal buttons -->
             />
           </div>
           <div class="my-3">
-            <h3 class="mb-0" id="static-backdrop">
-              <i class="ri-lock-line me-1"></i> Static Backdrop
-            </h3>
+            <h3 class="mb-0" id="static-backdrop">Static Backdrop</h3>
             <p class="py-2">
               The static backdrop modal enforces user interaction by preventing dismissal through
               outside clicks. This pattern is ideal for important confirmations or mandatory actions
@@ -1033,7 +599,7 @@ const fullscreenModals = `<!-- Fullscreen modal buttons -->
             <!-- Static Backdrop Modal -->
             <ComponentPreview
               title="Static Backdrop"
-              height="400px"
+              height="550px"
               component={staticBackdropModal}
               htmlCode={staticBackdropModal}
               cssCode={``}
@@ -1041,9 +607,7 @@ const fullscreenModals = `<!-- Fullscreen modal buttons -->
             />
           </div>
           <div class="my-3">
-            <h3 class="mb-0" id="scrolling-long-content">
-              <i class="ri-file-list-line me-1"></i> Scrollable Content
-            </h3>
+            <h3 class="mb-0" id="scrolling-long-content">Scrollable Content</h3>
             <p class="py-2">
               When dealing with extensive content, modals can automatically adapt with scrollable
               areas while maintaining fixed headers and footers. This ensures a clean, organized
@@ -1053,7 +617,7 @@ const fullscreenModals = `<!-- Fullscreen modal buttons -->
             <!-- Scrollable Modal Example -->
             <ComponentPreview
               title="Scrollable Content"
-              height="400px"
+              height="550px"
               component={scrollableModal}
               htmlCode={scrollableModal}
               cssCode={``}
@@ -1061,9 +625,7 @@ const fullscreenModals = `<!-- Fullscreen modal buttons -->
             />
           </div>
           <div class="my-3">
-            <h3 class="mb-0" id="vertically-centered">
-              <i class="ri-focus-2-line me-1"></i> Vertically Centered
-            </h3>
+            <h3 class="mb-0" id="vertically-centered">Vertically Centered</h3>
             <p class="py-2">
               Center your modals vertically in the viewport for optimal visual balance and user
               experience. This is particularly effective for important messages or focused
@@ -1073,7 +635,7 @@ const fullscreenModals = `<!-- Fullscreen modal buttons -->
             <!-- Centered Modal Example -->
             <ComponentPreview
               title="Centered Modal"
-              height="400px"
+              height="550px"
               component={centeredModal}
               htmlCode={centeredModal}
               cssCode={``}
@@ -1081,9 +643,7 @@ const fullscreenModals = `<!-- Fullscreen modal buttons -->
             />
           </div>
           <div class="my-3">
-            <h3 class="mb-0" id="tooltips">
-              <i class="ri-information-line me-1"></i> Interactive Tooltips
-            </h3>
+            <h3 class="mb-0" id="tooltips">Interactive Tooltips</h3>
             <p class="py-2">
               Enhance your modals with interactive tooltips to provide additional context and
               guidance. These tooltips are automatically managed with the modal's lifecycle,
@@ -1101,9 +661,7 @@ const fullscreenModals = `<!-- Fullscreen modal buttons -->
             />
           </div>
           <div class="my-3">
-            <h3 class="mb-0" id="grid">
-              <i class="ri-layout-grid-line me-1"></i> Grid System
-            </h3>
+            <h3 class="mb-0" id="grid">Grid System</h3>
             <p class="py-2">
               Leverage Bootstrap's powerful grid system within modals to create sophisticated
               layouts. The grid system maintains its full functionality, allowing you to design
@@ -1122,9 +680,7 @@ const fullscreenModals = `<!-- Fullscreen modal buttons -->
             />
           </div>
           <div class="my-3">
-            <h3 class="mb-0" id="toggling-between-modals">
-              <i class="ri-arrow-left-right-line me-1"></i> Modal Sequences
-            </h3>
+            <h3 class="mb-0" id="toggling-between-modals">Modal Sequences</h3>
             <p class="py-2">
               Create interactive workflows by chaining multiple modals together. This pattern is
               excellent for multi-step processes, wizards, or progressive disclosure of information.
@@ -1134,7 +690,7 @@ const fullscreenModals = `<!-- Fullscreen modal buttons -->
             <!-- Toggle Modals Example -->
             <ComponentPreview
               title="Modal Sequences"
-              height="400px"
+              height="550px"
               component={toggleModals}
               htmlCode={toggleModals}
               cssCode={``}
@@ -1142,9 +698,7 @@ const fullscreenModals = `<!-- Fullscreen modal buttons -->
             />
           </div>
           <div class="my-3">
-            <h3 class="mb-0" id="modal-sizes">
-              <i class="ri-aspect-ratio-line me-1"></i> Size Variations
-            </h3>
+            <h3 class="mb-0" id="modal-sizes">Size Variations</h3>
             <p class="py-2">
               Modals come in different sizes to accommodate various content needs. Choose from small
               (modal-sm) for simple dialogs, large (modal-lg) for more complex content, or
@@ -1155,7 +709,7 @@ const fullscreenModals = `<!-- Fullscreen modal buttons -->
             <!-- Size Variations Example -->
             <ComponentPreview
               title="Size Variations"
-              height="400px"
+              height="550px"
               component={sizeVariations}
               htmlCode={sizeVariations}
               cssCode={``}
@@ -1163,9 +717,7 @@ const fullscreenModals = `<!-- Fullscreen modal buttons -->
             />
           </div>
           <div class="my-3">
-            <h3 class="mb-0" id="fullscreen-modal">
-              <i class="ri-fullscreen-line me-1"></i> Responsive Fullscreen
-            </h3>
+            <h3 class="mb-0" id="fullscreen-modal">Responsive Fullscreen</h3>
             <p class="py-2">
               Create immersive experiences with fullscreen modals that adapt to different screen
               sizes. Use responsive fullscreen classes (<code>modal-fullscreen-sm-down</code> through

@@ -1,24 +1,24 @@
 ---
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
+import { getAssetPrefix, getPathPrefix } from '../../../utils/path.js'
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
 
 // Register page script for table pagination functionality
 const pageScript = `
-<script src="${getAssetPrefix("/assets/vendor/js/table/table-pagination.js")}"></script>
-`;
+<script src="${getAssetPrefix('/assets/vendor/js/table/table-pagination.js')}"></script>
+`
 
 // Configure page header with breadcrumb navigation
 const pageHeaderProps = {
-  title: "Enhanced Tables",
-  description: "Advanced table examples with features like pagination, sorting, and bulk actions",
+  title: 'Enhanced Tables',
+  description: 'Advanced table examples with features like pagination, sorting, and bulk actions',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Tables", href: getPathPrefix("/tables") },
-    { label: "Enhanced Tables", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Tables', href: getPathPrefix('/tables') },
+    { label: 'Enhanced Tables', class: 'active' }
   ]
-};
+}
 
 // Employee table template with checkboxes and pagination
 const employeeTableTemplate = `<div class="astero-table">
@@ -217,7 +217,7 @@ const employeeTableTemplate = `<div class="astero-table">
         </div>
     </div>
 </div>
-`;
+`
 
 // Orders table template with enhanced pagination
 const ordersTableTemplate = `<div class="astero-table">
@@ -877,7 +877,7 @@ const ordersTableTemplate = `<div class="astero-table">
         </div>
     </div>
 </div>
-`;
+`
 ---
 
 <AdminLayout
@@ -900,7 +900,7 @@ const ordersTableTemplate = `<div class="astero-table">
 
       <ComponentPreview
         title="Employee Table with Bulk Actions"
-        height="535px"
+        height="600px"
         component={employeeTableTemplate}
         htmlCode={employeeTableTemplate}
         cssCode={``}
@@ -921,7 +921,7 @@ const ordersTableTemplate = `<div class="astero-table">
 
       <ComponentPreview
         title="Orders Table with Enhanced Pagination"
-        height="460px"
+        height="600px"
         component={ordersTableTemplate}
         htmlCode={ordersTableTemplate}
         cssCode={``}

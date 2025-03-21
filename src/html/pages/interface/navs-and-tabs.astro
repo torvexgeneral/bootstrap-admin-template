@@ -1,19 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 // Page header configuration with breadcrumb navigation
 const pageConfig = {
-  title: "Navs and Tabs",
+  title: 'Navs and Tabs',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard"), icon: "ri-dashboard-line" },
-    { label: "Interface", href: getPathPrefix("/interface"), icon: "ri-layout-line" },
-    { label: "Navs and Tabs", class: "active", icon: "ri-navigation-line" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard'), icon: 'ri-dashboard-line' },
+    { label: 'Interface', href: getPathPrefix('/interface'), icon: 'ri-layout-line' },
+    { label: 'Navs and Tabs', class: 'active', icon: 'ri-navigation-line' }
   ]
-};
+}
 
 // Basic navigation example with standard links
 const basicNavExample = `<ul class="nav">
@@ -30,7 +30,7 @@ const basicNavExample = `<ul class="nav">
     <a class="nav-link disabled" aria-disabled="true"><i class="ri-lock-line me-2"></i>Disabled</a>
   </li>
 </ul>
-`;
+`
 
 // Centered navigation example
 const centeredNavExample = `<ul class="nav justify-content-center">
@@ -47,7 +47,7 @@ const centeredNavExample = `<ul class="nav justify-content-center">
     <a class="nav-link disabled" aria-disabled="true"><i class="ri-lock-line me-2"></i>Disabled</a>
   </li>
 </ul>
-`;
+`
 
 // Right-aligned navigation example
 const rightAlignedNavExample = `<ul class="nav justify-content-end">
@@ -64,7 +64,7 @@ const rightAlignedNavExample = `<ul class="nav justify-content-end">
     <a class="nav-link disabled" aria-disabled="true"><i class="ri-lock-line me-2"></i>Disabled</a>
   </li>
 </ul>
-`;
+`
 
 // Vertical navigation example
 const verticalNavExample = `<ul class="nav flex-column">
@@ -81,7 +81,7 @@ const verticalNavExample = `<ul class="nav flex-column">
     <a class="nav-link disabled" aria-disabled="true"><i class="ri-lock-line me-2"></i>Disabled</a>
   </li>
 </ul>
-`;
+`
 
 // Tabs navigation example
 const tabsNavExample = `<ul class="nav nav-tabs">
@@ -98,7 +98,7 @@ const tabsNavExample = `<ul class="nav nav-tabs">
     <a class="nav-link disabled" aria-disabled="true"><i class="ri-lock-line me-2"></i>Disabled</a>
   </li>
 </ul>
-`;
+`
 
 // Pills navigation example
 const pillsNavExample = `<ul class="nav nav-pills">
@@ -115,7 +115,7 @@ const pillsNavExample = `<ul class="nav nav-pills">
     <a class="nav-link disabled" aria-disabled="true"><i class="ri-lock-line me-2"></i>Disabled</a>
   </li>
 </ul>
-`;
+`
 
 // Underline navigation example
 const underlineNavExample = `<ul class="nav nav-underline">
@@ -132,7 +132,7 @@ const underlineNavExample = `<ul class="nav nav-underline">
     <a class="nav-link disabled" aria-disabled="true"><i class="ri-lock-line me-2"></i>Disabled</a>
   </li>
 </ul>
-`;
+`
 
 // Fill navigation example
 const fillNavExample = `<ul class="nav nav-pills nav-fill">
@@ -149,7 +149,7 @@ const fillNavExample = `<ul class="nav nav-pills nav-fill">
     <a class="nav-link disabled" aria-disabled="true"><i class="ri-lock-line me-2"></i>Disabled</a>
   </li>
 </ul>
-`;
+`
 
 // Justified navigation example
 const justifiedNavExample = `<ul class="nav nav-pills nav-justified">
@@ -166,7 +166,7 @@ const justifiedNavExample = `<ul class="nav nav-pills nav-justified">
     <a class="nav-link disabled" aria-disabled="true"><i class="ri-lock-line me-2"></i>Disabled</a>
   </li>
 </ul>
-`;
+`
 
 // Responsive navigation example
 const responsiveNavExample = `<nav class="nav nav-pills flex-column flex-sm-row">
@@ -175,7 +175,7 @@ const responsiveNavExample = `<nav class="nav nav-pills flex-column flex-sm-row"
   <a class="flex-sm-fill text-sm-center nav-link" href="#"><i class="ri-settings-line me-2"></i>Settings</a>
   <a class="flex-sm-fill text-sm-center nav-link disabled" aria-disabled="true"><i class="ri-lock-line me-2"></i>Disabled</a>
 </nav>
-`;
+`
 
 // Tabs with dropdown example
 const tabsWithDropdownExample = `<ul class="nav nav-tabs">
@@ -201,7 +201,7 @@ const tabsWithDropdownExample = `<ul class="nav nav-tabs">
     <a class="nav-link disabled" aria-disabled="true"><i class="ri-lock-line me-2"></i>Disabled</a>
   </li>
 </ul>
-`;
+`
 
 // Pills with dropdown example
 const pillsWithDropdownExample = `<ul class="nav nav-pills">
@@ -227,7 +227,7 @@ const pillsWithDropdownExample = `<ul class="nav nav-pills">
     <a class="nav-link disabled" aria-disabled="true"><i class="ri-lock-line me-2"></i>Disabled</a>
   </li>
 </ul>
-`;
+`
 ---
 
 <AdminLayout
@@ -264,7 +264,7 @@ const pillsWithDropdownExample = `<ul class="nav nav-pills">
 
             <ComponentPreview
               title="Base Navigation with Icons"
-              height="100px"
+              height="200px"
               component={basicNavExample}
               htmlCode={basicNavExample}
               cssCode={``}
@@ -289,7 +289,7 @@ const pillsWithDropdownExample = `<ul class="nav nav-pills">
 
             <ComponentPreview
               title="Centered Navigation"
-              height="100px"
+              height="200px"
               component={centeredNavExample}
               htmlCode={centeredNavExample}
               cssCode={``}
@@ -298,7 +298,7 @@ const pillsWithDropdownExample = `<ul class="nav nav-pills">
 
             <ComponentPreview
               title="Right-Aligned Navigation"
-              height="100px"
+              height="200px"
               component={rightAlignedNavExample}
               htmlCode={rightAlignedNavExample}
               cssCode={``}
@@ -333,7 +333,7 @@ const pillsWithDropdownExample = `<ul class="nav nav-pills">
             <!-- Navs and Tabs Example -->
             <ComponentPreview
               title="Tabs"
-              height="150px"
+              height="200px"
               component={tabsNavExample}
               htmlCode={tabsNavExample}
               cssCode={``}
@@ -352,7 +352,7 @@ const pillsWithDropdownExample = `<ul class="nav nav-pills">
             <!-- Navs and Tabs Example -->
             <ComponentPreview
               title="Pills"
-              height="100px"
+              height="200px"
               component={pillsNavExample}
               htmlCode={pillsNavExample}
               cssCode={``}
@@ -369,7 +369,7 @@ const pillsWithDropdownExample = `<ul class="nav nav-pills">
             <!-- Navs and Tabs Example -->
             <ComponentPreview
               title="Underline"
-              height="100px"
+              height="200px"
               component={underlineNavExample}
               htmlCode={underlineNavExample}
               cssCode={``}
@@ -387,7 +387,7 @@ const pillsWithDropdownExample = `<ul class="nav nav-pills">
             <!-- Navs and Tabs Example -->
             <ComponentPreview
               title="Nav Fill"
-              height="150px"
+              height="200px"
               component={fillNavExample}
               htmlCode={fillNavExample}
               cssCode={``}

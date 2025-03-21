@@ -1,30 +1,30 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getAssetPrefix, getPathPrefix } from '../../../utils/path.js'
 
 // Page header configuration with breadcrumb navigation
 const pageHeaderConfig = {
-  title: "Cards",
+  title: 'Cards',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard"), icon: "ri-dashboard-line" },
-    { label: "Interface", href: getPathPrefix("/interface"), icon: "ri-layout-line" },
-    { label: "Cards", class: "active", icon: "ri-layout-masonry-line" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard'), icon: 'ri-dashboard-line' },
+    { label: 'Interface', href: getPathPrefix('/interface'), icon: 'ri-layout-line' },
+    { label: 'Cards', class: 'active', icon: 'ri-layout-masonry-line' }
   ]
-};
+}
 
 // Basic card example with image and action button
 const basicCardExample = `<div class="card" style="width: 18rem;">
-  <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x200.png")}" class="card-img-top" alt="Card image example">
+  <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-300x200.png')}" class="card-img-top" alt="Card image example">
   <div class="card-body">
     <h5 class="card-title"><i class="ri-article-line me-2"></i>Product Overview</h5>
     <p class="card-text">Discover our latest product features and capabilities that will transform your workflow.</p>
     <a href="#" class="btn btn-primary"><i class="ri-arrow-right-line me-2"></i>Learn More</a>
   </div>
 </div>
-`;
+`
 
 // Simple card with only body content
 const simpleCardExample = `<div class="card">
@@ -32,7 +32,7 @@ const simpleCardExample = `<div class="card">
     <i class="ri-information-line me-2"></i>This is a simple card body with essential information.
   </div>
 </div>
-`;
+`
 
 // Card with title, subtitle and links
 const cardWithLinksExample = `<div class="card" style="width: 18rem;">
@@ -44,494 +44,20 @@ const cardWithLinksExample = `<div class="card" style="width: 18rem;">
     <a href="#" class="card-link"><i class="ri-code-line me-2"></i>API Reference</a>
   </div>
 </div>
-`;
+`
 
-const code_1 = `<div class="card" style="width: 18rem;">
-  <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x200.png")}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-`;
-const code_2 = `<div class="card">
-  <div class="card-body">
-    This is some text within a card body.
-  </div>
-</div>
-`;
-const code_3 = `<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
-`;
-const code_4 = `<div class="card" style="width: 18rem;">
-  <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x200.png")}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-`;
-const code_5 = `<div class="card" style="width: 18rem;">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
-  </ul>
-</div>
-`;
-const code_6 = `<div class="card" style="width: 18rem;">
-  <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x200.png")}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
-`;
-const code_7 = `<div class="card">
-  <div class="card-header">
-    Featured
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-`;
-const code_8 = `<div class="card">
-  <h5 class="card-header">Featured</h5>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-`;
-const code_9 = `<div class="row">
-  <div class="col-sm-6 mb-3 mb-sm-0">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-const code_10 = `<div class="card w-75 mb-3">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Button</a>
-  </div>
-</div>
-
-<div class="card w-50">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Button</a>
-  </div>
-</div>
-`;
-const code_11 = `<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-`;
-const code_12 = `<div class="card mb-3" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-
-<div class="card text-center mb-3" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-
-<div class="card text-end" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-`;
-const code_13 = `<div class="card text-center">
-  <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="true" href="#">Active</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-`;
-const code_14 = `<div class="card text-center">
-  <div class="card-header">
-    <ul class="nav nav-pills card-header-pills">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Active</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-`;
-const code_15 = `<div class="card mb-3">
-  <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-740x200.png")}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-  </div>
-</div>
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-  </div>
-  <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-740x200.png")}" class="card-img-bottom" alt="...">
-</div>
-`;
-const code_16 = `<div class="card text-bg-dark">
-  <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-740x200-dark.png")}" class="card-img" alt="...">
-  <div class="card-img-overlay">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small>Last updated 3 mins ago</small></p>
-  </div>
-</div>
-`;
-const code_17 = `<div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-180x240.png")}" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-const code_18 = `<div class="card text-bg-primary mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Primary card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Secondary card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card text-bg-success mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Success card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card text-bg-danger mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Danger card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card text-bg-warning mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Warning card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card text-bg-info mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Info card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card text-bg-light mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Light card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card text-bg-dark mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Dark card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-`;
-const code_19 = `<div class="card border-primary mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body text-primary">
-    <h5 class="card-title">Primary card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card border-secondary mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body text-secondary">
-    <h5 class="card-title">Secondary card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card border-success mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body text-success">
-    <h5 class="card-title">Success card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card border-danger mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body text-danger">
-    <h5 class="card-title">Danger card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card border-warning mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Warning card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card border-info mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Info card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card border-light mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Light card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-<div class="card border-dark mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Dark card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
-`;
-const code_20 = `<div class="card-group">
-  <div class="card">
-    <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x200.png")}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-  <div class="card">
-    <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x200.png")}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-  <div class="card">
-    <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x200.png")}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-</div>
-`;
-const code_21 = `<div class="row row-cols-1 row-cols-md-2 g-4">
-  <div class="col">
-    <div class="card">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x140.png")}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x140.png")}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x140.png")}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x140.png")}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-const code_22 = `<div class="row row-cols-1 row-cols-md-3 g-4">
-  <div class="col">
-    <div class="card">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x140.png")}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x140.png")}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x140.png")}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x140.png")}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-const code_23 = `<div class="row row-cols-1 row-cols-md-3 g-4">
-  <div class="col">
-    <div class="card h-100">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x140.png")}" class="card-img-top" alt="Feature 1">
-      <div class="card-body">
-        <h5 class="card-title"><i class="ri-layout-masonry-line me-2"></i>Responsive Design</h5>
-        <p class="card-text">Create beautiful, responsive layouts that work seamlessly across all devices.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x140.png")}" class="card-img-top" alt="Feature 2">
-      <div class="card-body">
-        <h5 class="card-title"><i class="ri-speed-line me-2"></i>Performance</h5>
-        <p class="card-text">Optimized for speed and efficiency to deliver the best user experience.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x140.png")}" class="card-img-top" alt="Feature 3">
-      <div class="card-body">
-        <h5 class="card-title"><i class="ri-shield-check-line me-2"></i>Security</h5>
-        <p class="card-text">Built-in security features to protect your data and privacy.</p>
-      </div>
-    </div>
-  </div>
-</div>`;
+// Page description as a regular string (not a template literal)
+const pageDescription =
+  'Cards are versatile containers that help organize and present content in a clean, engaging way. They support various content types including text, images, lists, and interactive elements, making them perfect for dashboards, product displays, and feature highlights.'
 
 // Card with image example
 const imageCardExample = `<div class="card" style="width: 18rem;">
-  <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x200.png")}" class="card-img-top" alt="Featured image">
+  <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-300x200.png')}" class="card-img-top" alt="Featured image">
   <div class="card-body">
     <p class="card-text"><i class="ri-image-line me-2"></i>A visually appealing card with an image to enhance the content presentation.</p>
   </div>
 </div>
-`;
+`
 
 // List group card example
 const listGroupCardExample = `<div class="card" style="width: 18rem;">
@@ -541,11 +67,11 @@ const listGroupCardExample = `<div class="card" style="width: 18rem;">
     <li class="list-group-item"><i class="ri-calendar-line me-2"></i>Scheduled</li>
   </ul>
 </div>
-`;
+`
 
 // Kitchen sink card example with multiple components
 const kitchenSinkExample = `<div class="card" style="width: 18rem;">
-  <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x200.png")}" class="card-img-top" alt="Feature overview">
+  <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-300x200.png')}" class="card-img-top" alt="Feature overview">
   <div class="card-body">
     <h5 class="card-title"><i class="ri-apps-line me-2"></i>Complete Feature Set</h5>
     <p class="card-text">Explore all available features and components in one comprehensive example.</p>
@@ -560,7 +86,7 @@ const kitchenSinkExample = `<div class="card" style="width: 18rem;">
     <a href="#" class="card-link"><i class="ri-github-line me-2"></i>Source Code</a>
   </div>
 </div>
-`;
+`
 
 // Card with header example
 const headerCardExample = `<div class="card">
@@ -573,7 +99,7 @@ const headerCardExample = `<div class="card">
     <a href="#" class="btn btn-primary"><i class="ri-arrow-right-line me-2"></i>Explore Features</a>
   </div>
 </div>
-`;
+`
 
 // Card with header as h5 element
 const headerTitleCardExample = `<div class="card">
@@ -584,7 +110,7 @@ const headerTitleCardExample = `<div class="card">
     <a href="#" class="btn btn-primary"><i class="ri-shield-star-line me-2"></i>Upgrade Now</a>
   </div>
 </div>
-`;
+`
 
 // Grid cards example
 const gridCardsExample = `<div class="row">
@@ -607,7 +133,7 @@ const gridCardsExample = `<div class="row">
     </div>
   </div>
 </div>
-`;
+`
 
 // Utility cards example with different widths
 const utilityCardsExample = `<div class="card w-75 mb-3">
@@ -625,7 +151,7 @@ const utilityCardsExample = `<div class="card w-75 mb-3">
     <a href="#" class="btn btn-primary"><i class="ri-arrow-right-line me-2"></i>View Details</a>
   </div>
 </div>
-`;
+`
 
 // Navigation tabs card example
 const navTabsCardExample = `<div class="card text-center">
@@ -648,7 +174,7 @@ const navTabsCardExample = `<div class="card text-center">
     <a href="#" class="btn btn-primary"><i class="ri-arrow-right-line me-2"></i>Explore Sections</a>
   </div>
 </div>
-`;
+`
 
 // Navigation pills card example
 const navPillsCardExample = `<div class="card text-center">
@@ -671,11 +197,7 @@ const navPillsCardExample = `<div class="card text-center">
     <a href="#" class="btn btn-primary"><i class="ri-arrow-right-line me-2"></i>View Dashboard</a>
   </div>
 </div>
-`;
-
-// Page description as a regular string (not a template literal)
-const pageDescription =
-  "Cards are versatile containers that help organize and present content in a clean, engaging way. They support various content types including text, images, lists, and interactive elements, making them perfect for dashboards, product displays, and feature highlights.";
+`
 
 // Text alignment examples
 const textAlignmentExample = `<div class="card mb-3" style="width: 18rem;">
@@ -700,11 +222,11 @@ const textAlignmentExample = `<div class="card mb-3" style="width: 18rem;">
     <p class="card-text">Here's an example of right-aligned text in a card.</p>
     <a href="#" class="btn btn-primary"><i class="ri-arrow-right-line me-2"></i>Learn More</a>
   </div>
-</div>`;
+</div>`
 
 // Image caps examples
 const imageCapExample = `<div class="card mb-3">
-  <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-740x200.png")}" class="card-img-top" alt="Top image cap">
+  <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-740x200.png')}" class="card-img-top" alt="Top image cap">
   <div class="card-body">
     <h5 class="card-title"><i class="ri-image-2-line me-2"></i>Top Image Card</h5>
     <p class="card-text">This card places the image at the top using card-img-top class.</p>
@@ -718,24 +240,24 @@ const imageCapExample = `<div class="card mb-3">
     <p class="card-text">This card demonstrates image placement at the bottom using card-img-bottom.</p>
     <p class="card-text"><small class="text-body-secondary"><i class="ri-time-line me-2"></i>Last updated 3 mins ago</small></p>
   </div>
-  <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-740x200.png")}" class="card-img-bottom" alt="Bottom image cap">
-</div>`;
+  <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-740x200.png')}" class="card-img-bottom" alt="Bottom image cap">
+</div>`
 
 // Image overlay example
 const imageOverlayExample = `<div class="card text-bg-dark">
-  <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-740x200-dark.png")}" class="card-img" alt="Background image">
+  <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-740x200-dark.png')}" class="card-img" alt="Background image">
   <div class="card-img-overlay">
     <h5 class="card-title"><i class="ri-image-edit-line me-2"></i>Image Overlay Card</h5>
     <p class="card-text">This card overlays text on top of an image using the card-img-overlay class.</p>
     <p class="card-text"><small><i class="ri-time-line me-2"></i>Last updated 3 mins ago</small></p>
   </div>
-</div>`;
+</div>`
 
 // Horizontal card example
 const horizontalCardExample = `<div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-180x240.png")}" class="img-fluid w-100 object-fit-cover rounded" style="max-height: 200px;" alt="Card image">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-180x240.png')}" class="img-fluid w-100 object-fit-cover rounded" style="max-height: 200px;" alt="Card image">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -745,7 +267,7 @@ const horizontalCardExample = `<div class="card mb-3" style="max-width: 540px;">
       </div>
     </div>
   </div>
-</div>`;
+</div>`
 
 // Background color examples
 const backgroundColorExample = `<div class="card text-bg-primary mb-3" style="max-width: 18rem;">
@@ -770,7 +292,7 @@ const backgroundColorExample = `<div class="card text-bg-primary mb-3" style="ma
     <h5 class="card-title">Info Card Example</h5>
     <p class="card-text">Info themed cards are perfect for notifications or help text.</p>
   </div>
-</div>`;
+</div>`
 
 // Border color examples
 const borderColorExample = `<div class="card border-primary mb-3" style="max-width: 18rem;">
@@ -795,12 +317,12 @@ const borderColorExample = `<div class="card border-primary mb-3" style="max-wid
     <h5 class="card-title">Info Border Card</h5>
     <p class="card-text">Informational card with matching border and text colors.</p>
   </div>
-</div>`;
+</div>`
 
 // Card group example
 const cardGroupExample = `<div class="card-group">
   <div class="card">
-    <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x200.png")}" class="card-img-top" alt="Feature 1">
+    <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-300x200.png')}" class="card-img-top" alt="Feature 1">
     <div class="card-body">
       <h5 class="card-title"><i class="ri-rocket-line me-2"></i>Quick Start</h5>
       <p class="card-text">Get started quickly with our comprehensive onboarding process and tutorials.</p>
@@ -808,7 +330,7 @@ const cardGroupExample = `<div class="card-group">
     </div>
   </div>
   <div class="card">
-    <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x200.png")}" class="card-img-top" alt="Feature 2">
+    <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-300x200.png')}" class="card-img-top" alt="Feature 2">
     <div class="card-body">
       <h5 class="card-title"><i class="ri-tools-line me-2"></i>Advanced Tools</h5>
       <p class="card-text">Access powerful tools and features to enhance your productivity.</p>
@@ -816,20 +338,20 @@ const cardGroupExample = `<div class="card-group">
     </div>
   </div>
   <div class="card">
-    <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x200.png")}" class="card-img-top" alt="Feature 3">
+    <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-300x200.png')}" class="card-img-top" alt="Feature 3">
     <div class="card-body">
       <h5 class="card-title"><i class="ri-customer-service-line me-2"></i>24/7 Support</h5>
       <p class="card-text">Get help whenever you need it with our round-the-clock support team.</p>
       <p class="card-text"><small class="text-body-secondary"><i class="ri-time-line me-2"></i>Updated 3 days ago</small></p>
     </div>
   </div>
-</div>`;
+</div>`
 
 // Grid cards example with equal height
 const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-4">
   <div class="col">
     <div class="card h-100">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x140.png")}" class="card-img-top" alt="Feature 1">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-300x140.png')}" class="card-img-top" alt="Feature 1">
       <div class="card-body">
         <h5 class="card-title"><i class="ri-layout-masonry-line me-2"></i>Responsive Design</h5>
         <p class="card-text">Create beautiful, responsive layouts that work seamlessly across all devices.</p>
@@ -838,7 +360,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
   </div>
   <div class="col">
     <div class="card h-100">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x140.png")}" class="card-img-top" alt="Feature 2">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-300x140.png')}" class="card-img-top" alt="Feature 2">
       <div class="card-body">
         <h5 class="card-title"><i class="ri-speed-line me-2"></i>Performance</h5>
         <p class="card-text">Optimized for speed and efficiency to deliver the best user experience.</p>
@@ -847,14 +369,14 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
   </div>
   <div class="col">
     <div class="card h-100">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-300x140.png")}" class="card-img-top" alt="Feature 3">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-300x140.png')}" class="card-img-top" alt="Feature 3">
       <div class="card-body">
         <h5 class="card-title"><i class="ri-shield-check-line me-2"></i>Security</h5>
         <p class="card-text">Built-in security features to protect your data and privacy.</p>
       </div>
     </div>
   </div>
-</div>`;
+</div>`
 ---
 
 <AdminLayout
@@ -1074,7 +596,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
 
             <ComponentPreview
               title="Card with Navigation Tabs"
-              height="300px"
+              height="350px"
               component={navTabsCardExample}
               htmlCode={navTabsCardExample}
               cssCode={``}
@@ -1083,7 +605,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
 
             <ComponentPreview
               title="Card with Navigation Pills"
-              height="300px"
+              height="350px"
               component={navPillsCardExample}
               htmlCode={navPillsCardExample}
               cssCode={``}

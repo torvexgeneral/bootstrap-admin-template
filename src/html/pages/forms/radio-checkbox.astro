@@ -1,18 +1,18 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getPathPrefix, getAssetPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix, getAssetPrefix } from '../../../utils/path.js'
 
 const pageHeaderProps = {
-  title: "Radio & Checkbox",
+  title: 'Radio & Checkbox',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Forms", href: "" },
-    { label: "Radio & Checkbox", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Forms', href: '' },
+    { label: 'Radio & Checkbox', class: 'active' }
   ]
-};
+}
 
 const basicControls = `<div class="row g-4">
   <!-- Basic Checkboxes -->
@@ -48,7 +48,7 @@ const basicControls = `<div class="row g-4">
       <label class="form-check-label" for="flexRadioDisabled">Disabled radio</label>
     </div>
   </div>
-</div>`;
+</div>`
 
 const inlineControls = `<div class="row g-4">
   <!-- Inline Checkboxes -->
@@ -88,7 +88,7 @@ const inlineControls = `<div class="row g-4">
       </div>
     </div>
   </div>
-</div>`;
+</div>`
 
 const coloredControls = `<div class="row g-4">
   <!-- Colored Checkboxes -->
@@ -140,7 +140,7 @@ const coloredControls = `<div class="row g-4">
       <label class="form-check-label" for="infoRadio">Info radio</label>
     </div>
   </div>
-</div>`;
+</div>`
 
 const sizedControls = `<div class="row g-4">
   <!-- Sized Checkboxes -->
@@ -192,7 +192,7 @@ const sizedControls = `<div class="row g-4">
       <label class="form-check-label" for="xlRadio">Extra large radio</label>
     </div>
   </div>
-</div>`;
+</div>`
 
 const buttonStyle = `<div class="row g-4">
   <!-- Button Style Checkboxes -->
@@ -224,7 +224,7 @@ const buttonStyle = `<div class="row g-4">
       <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
     </div>
   </div>
-</div>`;
+</div>`
 
 const bootstrapBasicOptions = `<div class="row g-4">
   <!-- Checkbox with Offers -->
@@ -299,7 +299,7 @@ const bootstrapBasicOptions = `<div class="row g-4">
       </div>
     </div>
   </div>
-</div>`;
+</div>`
 
 const bootstrapIconOptions = `<div class="row g-4">
   <!-- Checkbox with Icons -->
@@ -358,7 +358,7 @@ const bootstrapIconOptions = `<div class="row g-4">
       </div>
     </div>
   </div>
-</div>`;
+</div>`
 
 const bootstrapImageOptions = `<div class="row g-4">
   <!-- Checkbox with Images -->
@@ -370,7 +370,7 @@ const bootstrapImageOptions = `<div class="row g-4">
                 <div class="form-check text-center ps-0">
                     <input class="form-check-input position-absolute top-0 end-0 m-3 z-1" type="checkbox" id="beagle">
                     <label class="form-check-label w-lg-100 w-auto" for="beagle">
-                    <img src="${getAssetPrefix("/assets/img/puppies/beagle.png")}" height="150px" alt="beagle" />
+                    <img src="${getAssetPrefix('/assets/img/puppies/beagle.png')}" height="150px" alt="beagle" />
                     </label>
                 </div>
             </div>
@@ -380,7 +380,7 @@ const bootstrapImageOptions = `<div class="row g-4">
                 <div class="form-check text-center ps-0">
                     <input class="form-check-input position-absolute top-0 end-0 m-3 z-1" type="checkbox" id="poodle">
                     <label class="form-check-label w-lg-100 w-auto" for="poodle">
-                    <img src="${getAssetPrefix("/assets/img/puppies/poodle.png")}" height="150px" alt="poodle" />
+                    <img src="${getAssetPrefix('/assets/img/puppies/poodle.png')}" height="150px" alt="poodle" />
                     </label>
                 </div>
             </div>
@@ -396,7 +396,7 @@ const bootstrapImageOptions = `<div class="row g-4">
                 <div class="form-check text-center ps-0">
                     <input class="form-check-input position-absolute top-0 end-0 m-3 z-1" type="radio" id="rottweiler" name="imageRadio" checked>
                     <label class="form-check-label w-lg-100 w-auto" for="rottweiler">
-                    <img src="${getAssetPrefix("/assets/img/puppies/rottweiler.png")}" height="150px" alt="rottweiler" />
+                    <img src="${getAssetPrefix('/assets/img/puppies/rottweiler.png')}" height="150px" alt="rottweiler" />
                     </label>
                 </div>
             </div>
@@ -406,14 +406,14 @@ const bootstrapImageOptions = `<div class="row g-4">
                 <div class="form-check text-center ps-0">
                     <input class="form-check-input position-absolute top-0 end-0 m-3 z-1" type="radio" id="bulldog" name="imageRadio">
                     <label class="form-check-label w-lg-100 w-auto" for="bulldog">
-                    <img src="${getAssetPrefix("/assets/img/puppies/bulldog.png")}" height="150px" alt="bulldog" />
+                    <img src="${getAssetPrefix('/assets/img/puppies/bulldog.png')}" height="150px" alt="bulldog" />
                     </label>
                 </div>
             </div>
         </div>
     </div>
   </div>
-</div>`;
+</div>`
 ---
 
 <AdminLayout
@@ -454,7 +454,7 @@ const bootstrapImageOptions = `<div class="row g-4">
           </p>
           <ComponentPreview
             title="Basic Controls"
-            height="220px"
+            height="400px"
             component={basicControls}
             htmlCode={basicControls}
           />
@@ -468,7 +468,7 @@ const bootstrapImageOptions = `<div class="row g-4">
           </p>
           <ComponentPreview
             title="Inline Controls"
-            height="180px"
+            height="400px"
             component={inlineControls}
             htmlCode={inlineControls}
           />
@@ -481,7 +481,7 @@ const bootstrapImageOptions = `<div class="row g-4">
           </p>
           <ComponentPreview
             title="Colored Controls"
-            height="320px"
+            height="550px"
             component={coloredControls}
             htmlCode={coloredControls}
           />
@@ -494,7 +494,7 @@ const bootstrapImageOptions = `<div class="row g-4">
           </p>
           <ComponentPreview
             title="Sized Controls"
-            height="320px"
+            height="550px"
             component={sizedControls}
             htmlCode={sizedControls}
           />
@@ -508,7 +508,7 @@ const bootstrapImageOptions = `<div class="row g-4">
           </p>
           <ComponentPreview
             title="Button Style Controls"
-            height="180px"
+            height="300px"
             component={buttonStyle}
             htmlCode={buttonStyle}
           />
@@ -525,7 +525,7 @@ const bootstrapImageOptions = `<div class="row g-4">
           </p>
           <ComponentPreview
             title="Basic with paragraph Options"
-            height="320px"
+            height="550px"
             component={bootstrapBasicOptions}
             htmlCode={bootstrapBasicOptions}
           />
@@ -542,7 +542,7 @@ const bootstrapImageOptions = `<div class="row g-4">
           </p>
           <ComponentPreview
             title="Icon Options"
-            height="400px"
+            height="550px"
             component={bootstrapIconOptions}
             htmlCode={bootstrapIconOptions}
           />
@@ -559,7 +559,7 @@ const bootstrapImageOptions = `<div class="row g-4">
           </p>
           <ComponentPreview
             title="Image Options"
-            height="460px"
+            height="550px"
             component={bootstrapImageOptions}
             htmlCode={bootstrapImageOptions}
           />

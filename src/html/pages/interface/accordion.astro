@@ -1,19 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 // Page header configuration with navigation breadcrumbs
 const pageHeaderConfig = {
-  title: "Accordion",
+  title: 'Accordion',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Interface", href: getPathPrefix("/interface") },
-    { label: "Accordion", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Interface', href: getPathPrefix('/interface') },
+    { label: 'Accordion', class: 'active' }
   ]
-};
+}
 
 // Standard accordion example with default styling and behavior
 const standardAccordionExample = `<div class="accordion" id="accordionExample" role="tablist" aria-multiselectable="true">
@@ -70,7 +70,7 @@ const standardAccordionExample = `<div class="accordion" id="accordionExample" r
       </div>
     </div>
   </div>
-</div>`;
+</div>`
 
 // Flush accordion example without borders for a cleaner look
 const flushAccordionExample = `<div class="accordion accordion-flush" id="accordionFlushExample" role="tablist" aria-multiselectable="true">
@@ -122,7 +122,7 @@ const flushAccordionExample = `<div class="accordion accordion-flush" id="accord
       </div>
     </div>
   </div>
-</div>`;
+</div>`
 
 // Accordion example where multiple panels can remain open simultaneously
 const multiPanelAccordionExample = `<div class="accordion" id="accordionPanelsStayOpenExample" role="tablist" aria-multiselectable="true">
@@ -179,7 +179,7 @@ const multiPanelAccordionExample = `<div class="accordion" id="accordionPanelsSt
       </div>
     </div>
   </div>
-</div>`;
+</div>`
 
 // Custom styled accordion with color variations and icons
 const customStyledAccordionExample = `<div class="accordion" id="customStyledAccordion" role="tablist" aria-multiselectable="true">
@@ -247,14 +247,14 @@ const customStyledAccordionExample = `<div class="accordion" id="customStyledAcc
       </div>
     </div>
   </div>
-</div>`;
+</div>`
 
 // Shared preview configuration for consistent component display
 const previewConfig = {
-  height: "550px",
-  cssCode: "",
-  jsCode: ""
-};
+  height: '550px',
+  cssCode: '',
+  jsCode: ''
+}
 ---
 
 <AdminLayout

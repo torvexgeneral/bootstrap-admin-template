@@ -1,87 +1,89 @@
 ---
-import AdminLayout from "../../../layouts/admin/admin-layout.astro";
-import PageHeader from "../../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../../utils/path.js";
-import permissionsData from "../../../../assets/data/permissions.json";
+import AdminLayout from '../../../layouts/admin/admin-layout.astro'
+import type { Props as PageHeaderProps } from '../../../components/common/page-header.astro'
+import PageHeader from '../../../components/common/page-header.astro'
+import { getAssetPrefix, getPathPrefix } from '../../../../utils/path.js'
+import permissionsData from '../../../../assets/data/permissions.json'
 
-const pageHeaderProps = {
-  title: "Edit Role",
-  backLink: getPathPrefix("/roles-permissions/roles/list"),
+const pageHeaderProps: PageHeaderProps = {
+  title: 'Edit Role',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Roles & Permissions", href: getPathPrefix("/roles-permissions") },
-    { label: "Roles", href: getPathPrefix("/roles-permissions/roles/list") },
-    { label: "Edit Role", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard'), class: '' },
+    { label: 'Roles & Permissions', href: getPathPrefix('/roles-permissions'), class: '' },
+    { label: 'Roles', href: getPathPrefix('/roles-permissions/roles/list'), class: '' },
+    { label: 'Edit Role', class: 'active' }
   ],
   actions: [
     {
-      label: "Back",
-      href: getPathPrefix("/roles-permissions/roles/list"),
-      variant: "btn-outline-primary",
-      icon: "ri-arrow-left-s-line"
+      label: 'Back',
+      href: getPathPrefix('/roles-permissions/roles/list'),
+      type: 'link',
+      variant: 'btn-outline-primary',
+      icon: 'ri-arrow-left-s-line',
+      class: ''
     }
   ]
-};
+}
 
 // Add custom validation script
 const pageScript = `
-  <script src="${getAssetPrefix("/assets/js/pages/roles-permissions/roles/toggle-permissions.js")}"></script>
-  <script src="${getAssetPrefix("/assets/js/pages/roles-permissions/roles/submitform.js")}"></script>
-`;
+  <script src="${getAssetPrefix('/assets/js/pages/roles-permissions/roles/toggle-permissions.js')}"></script>
+  <script src="${getAssetPrefix('/assets/js/pages/roles-permissions/roles/submitform.js')}"></script>
+`
 
-const { modules } = permissionsData;
+const { modules } = permissionsData
 
 // Selected permissions for this role
 const selectedPermissions = [
-  { id: "view_pages", name: "View Pages" },
-  { id: "add_pages", name: "Create New Pages" },
-  { id: "edit_pages", name: "Edit Pages" },
-  { id: "delete_pages", name: "Delete Pages" },
-  { id: "restore_pages", name: "Restore Deleted Pages" },
-  { id: "publish_pages", name: "Publish/Unpublish Pages" },
-  { id: "view_posts", name: "View Posts" },
-  { id: "add_posts", name: "Create New Posts" },
-  { id: "edit_posts", name: "Edit Posts" },
-  { id: "delete_posts", name: "Delete Posts" },
-  { id: "restore_posts", name: "Restore Deleted Posts" },
-  { id: "publish_posts", name: "Publish/Unpublish Posts" },
-  { id: "view_media", name: "View Media Files" },
-  { id: "upload_media", name: "Upload Media Files" },
-  { id: "edit_media", name: "Edit Media Details" },
-  { id: "delete_media", name: "Delete Media Files" },
-  { id: "restore_media", name: "Restore Deleted Media" },
-  { id: "view_categories", name: "View Categories" },
-  { id: "add_categories", name: "Create Categories" },
-  { id: "edit_categories", name: "Edit Categories" },
-  { id: "delete_categories", name: "Delete Categories" },
-  { id: "restore_categories", name: "Restore Categories" },
-  { id: "view_seo_settings", name: "View SEO Settings" },
-  { id: "edit_seo_settings", name: "Edit SEO Settings" },
-  { id: "manage_meta_tags", name: "Manage Meta Tags" },
-  { id: "manage_sitemaps", name: "Manage Sitemaps" },
-  { id: "view_redirects", name: "View Redirects" },
-  { id: "add_redirects", name: "Add Redirects" },
-  { id: "edit_redirects", name: "Edit Redirects" },
-  { id: "delete_redirects", name: "Delete Redirects" },
-  { id: "view_analytics", name: "View Analytics Dashboard" },
-  { id: "export_analytics", name: "Export Analytics Data" },
-  { id: "manage_analytics_settings", name: "Manage Analytics Settings" },
-  { id: "view_users", name: "View Users" },
-  { id: "add_users", name: "Create Users" },
-  { id: "edit_users", name: "Edit Users" },
-  { id: "delete_users", name: "Delete Users" },
-  { id: "restore_users", name: "Restore Users" },
-  { id: "block_users", name: "Block/Unblock Users" },
-  { id: "view_roles", name: "View Roles" },
-  { id: "add_roles", name: "Create Roles" },
-  { id: "edit_roles", name: "Edit Roles" },
-  { id: "delete_roles", name: "Delete Roles" },
-  { id: "assign_permissions", name: "Assign Role Permissions" },
-  { id: "view_settings", name: "View System Settings" },
-  { id: "edit_settings", name: "Edit System Settings" },
-  { id: "manage_backups", name: "Manage System Backups" },
-  { id: "manage_cache", name: "Manage System Cache" }
-];
+  { id: 'view_pages', name: 'View Pages' },
+  { id: 'add_pages', name: 'Create New Pages' },
+  { id: 'edit_pages', name: 'Edit Pages' },
+  { id: 'delete_pages', name: 'Delete Pages' },
+  { id: 'restore_pages', name: 'Restore Deleted Pages' },
+  { id: 'publish_pages', name: 'Publish/Unpublish Pages' },
+  { id: 'view_posts', name: 'View Posts' },
+  { id: 'add_posts', name: 'Create New Posts' },
+  { id: 'edit_posts', name: 'Edit Posts' },
+  { id: 'delete_posts', name: 'Delete Posts' },
+  { id: 'restore_posts', name: 'Restore Deleted Posts' },
+  { id: 'publish_posts', name: 'Publish/Unpublish Posts' },
+  { id: 'view_media', name: 'View Media Files' },
+  { id: 'upload_media', name: 'Upload Media Files' },
+  { id: 'edit_media', name: 'Edit Media Details' },
+  { id: 'delete_media', name: 'Delete Media Files' },
+  { id: 'restore_media', name: 'Restore Deleted Media' },
+  { id: 'view_categories', name: 'View Categories' },
+  { id: 'add_categories', name: 'Create Categories' },
+  { id: 'edit_categories', name: 'Edit Categories' },
+  { id: 'delete_categories', name: 'Delete Categories' },
+  { id: 'restore_categories', name: 'Restore Categories' },
+  { id: 'view_seo_settings', name: 'View SEO Settings' },
+  { id: 'edit_seo_settings', name: 'Edit SEO Settings' },
+  { id: 'manage_meta_tags', name: 'Manage Meta Tags' },
+  { id: 'manage_sitemaps', name: 'Manage Sitemaps' },
+  { id: 'view_redirects', name: 'View Redirects' },
+  { id: 'add_redirects', name: 'Add Redirects' },
+  { id: 'edit_redirects', name: 'Edit Redirects' },
+  { id: 'delete_redirects', name: 'Delete Redirects' },
+  { id: 'view_analytics', name: 'View Analytics Dashboard' },
+  { id: 'export_analytics', name: 'Export Analytics Data' },
+  { id: 'manage_analytics_settings', name: 'Manage Analytics Settings' },
+  { id: 'view_users', name: 'View Users' },
+  { id: 'add_users', name: 'Create Users' },
+  { id: 'edit_users', name: 'Edit Users' },
+  { id: 'delete_users', name: 'Delete Users' },
+  { id: 'restore_users', name: 'Restore Users' },
+  { id: 'block_users', name: 'Block/Unblock Users' },
+  { id: 'view_roles', name: 'View Roles' },
+  { id: 'add_roles', name: 'Create Roles' },
+  { id: 'edit_roles', name: 'Edit Roles' },
+  { id: 'delete_roles', name: 'Delete Roles' },
+  { id: 'assign_permissions', name: 'Assign Role Permissions' },
+  { id: 'view_settings', name: 'View System Settings' },
+  { id: 'edit_settings', name: 'Edit System Settings' },
+  { id: 'manage_backups', name: 'Manage System Backups' },
+  { id: 'manage_cache', name: 'Manage System Cache' }
+]
 ---
 
 <AdminLayout
@@ -147,7 +149,7 @@ const selectedPermissions = [
                 </div>
                 <div class="permissions-container">
                   {
-                    modules.map((module, moduleIndex) => (
+                    modules.map((module) => (
                       <div class="module-section mb-3" id={`module_${module.id}`}>
                         <div class="card">
                           <div class="card-header bg-transparent py-2">
@@ -172,14 +174,14 @@ const selectedPermissions = [
                                 data-module-id={module.id}
                                 data-expanded="false"
                               >
-                                <i class="ri-add-line me-md-1" />{" "}
+                                <i class="ri-add-line me-md-1" />{' '}
                                 <span class="d-none d-md-inline">Expand All</span>
                               </button>
                             </div>
                           </div>
                           <div class="card-body py-2">
                             <div class="permission-groups d-flex flex-column flex-md-row flex-wrap">
-                              {module.groups.map((group, groupIndex) => (
+                              {module.groups.map((group) => (
                                 <div
                                   class="col-12 col-md-6 permission-group px-2 mb-3"
                                   id={`group_${group.id}`}
@@ -275,7 +277,7 @@ const selectedPermissions = [
             <!-- Form Actions -->
             <div class="d-flex flex-column flex-lg-row justify-content-end gap-2">
               <a
-                href={getPathPrefix("/roles-permissions/roles/list")}
+                href={getPathPrefix('/roles-permissions/roles/list')}
                 class="btn btn-outline-secondary">Cancel</a
               >
               <button type="submit" class="btn btn-primary">Update Role</button>

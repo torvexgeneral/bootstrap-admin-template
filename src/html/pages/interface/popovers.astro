@@ -1,19 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 // Page header configuration with breadcrumb navigation
 const popoverPageHeader = {
-  title: "Popovers",
+  title: 'Popovers',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Interface", href: getPathPrefix("/interface") },
-    { label: "Popovers", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Interface', href: getPathPrefix('/interface') },
+    { label: 'Popovers', class: 'active' }
   ]
-};
+}
 
 // Basic popover example with title and content
 const basicPopoverExample = `<div class="d-flex gap-2">
@@ -40,7 +40,7 @@ const basicPopoverExample = `<div class="d-flex gap-2">
     Hover to show popover
   </button>
 </div>
-`;
+`
 
 // Directional popovers example
 const directionalPopoversExample = `<div class="popover-directions d-flex flex-wrap gap-2">
@@ -92,7 +92,7 @@ const directionalPopoversExample = `<div class="popover-directions d-flex flex-w
     Popover on left
   </button>
 </div>
-`;
+`
 
 // Interactive elements example
 const interactiveElementsExample = `<div class="d-flex gap-3 align-items-center">
@@ -122,7 +122,7 @@ const interactiveElementsExample = `<div class="d-flex gap-3 align-items-center"
     Hover over this link
   </a>
 </div>
-`;
+`
 
 // Rich content popover example
 const richContentPopoverExample = `<button
@@ -142,7 +142,7 @@ const richContentPopoverExample = `<button
   <i class="ri-html5-line me-1"></i>
   Show rich content
 </button>
-`;
+`
 ---
 
 <AdminLayout
@@ -179,7 +179,7 @@ const richContentPopoverExample = `<button
 
             <ComponentPreview
               title="Basic Popovers"
-              height="150px"
+              height="250px"
               component={basicPopoverExample}
               htmlCode={basicPopoverExample}
               cssCode={``}
@@ -198,7 +198,7 @@ const richContentPopoverExample = `<button
 
             <ComponentPreview
               title="Directional Popovers"
-              height="150px"
+              height="300px"
               component={directionalPopoversExample}
               htmlCode={directionalPopoversExample}
               cssCode={``}
@@ -217,7 +217,7 @@ const richContentPopoverExample = `<button
 
             <ComponentPreview
               title="Interactive Elements"
-              height="150px"
+              height="200px"
               component={interactiveElementsExample}
               htmlCode={interactiveElementsExample}
               cssCode={``}
@@ -235,7 +235,7 @@ const richContentPopoverExample = `<button
 
             <ComponentPreview
               title="Rich Content Popover"
-              height="150px"
+              height="250px"
               component={richContentPopoverExample}
               htmlCode={richContentPopoverExample}
               cssCode={``}

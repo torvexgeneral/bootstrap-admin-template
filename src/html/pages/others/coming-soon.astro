@@ -1,6 +1,6 @@
 ---
-import AuthenticationLayout from "../../layouts/admin/authentication-layout.astro";
-import { getAssetPrefix } from "../../../utils/path.js";
+import AuthenticationLayout from '../../layouts/admin/authentication-layout.astro'
+import { getAssetPrefix } from '../../../utils/path.js'
 
 const pageScript = `<script>
     function updateCountdown() {
@@ -35,7 +35,7 @@ const pageScript = `<script>
     }
 
     document.addEventListener('DOMContentLoaded', updateCountdown);
-</script>`;
+</script>`
 ---
 
 <AuthenticationLayout
@@ -58,7 +58,7 @@ const pageScript = `<script>
           <div class="illustration-wrapper position-relative mx-auto mb-3 mb-lg-4">
             <div class="position-relative">
               <img
-                src={getAssetPrefix("/assets/img/pages/maintenance2.png")}
+                src={getAssetPrefix('/assets/img/pages/maintenance2.png')}
                 alt="Coming Soon Illustration"
                 class="img-fluid coming-soon-img"
                 width="400"

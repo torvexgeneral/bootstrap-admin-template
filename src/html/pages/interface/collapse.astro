@@ -1,19 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 // Page header configuration with breadcrumb navigation and icons
 const pageHeaderConfig = {
-  title: "Collapse",
+  title: 'Collapse',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard"), icon: "ri-dashboard-line" },
-    { label: "Interface", href: getPathPrefix("/interface"), icon: "ri-layout-line" },
-    { label: "Collapse", class: "active", icon: "ri-arrow-up-down-line" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard'), icon: 'ri-dashboard-line' },
+    { label: 'Interface', href: getPathPrefix('/interface'), icon: 'ri-layout-line' },
+    { label: 'Collapse', class: 'active', icon: 'ri-arrow-up-down-line' }
   ]
-};
+}
 
 // Basic collapse example with link and button triggers
 const basicCollapseExample = `<p class="d-inline-flex gap-1">
@@ -29,7 +29,7 @@ const basicCollapseExample = `<p class="d-inline-flex gap-1">
     <i class="ri-information-line me-2"></i>Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
   </div>
 </div>
-`;
+`
 
 // Horizontal collapse example with width animation
 const horizontalCollapseExample = `<p>
@@ -44,7 +44,7 @@ const horizontalCollapseExample = `<p>
     </div>
   </div>
 </div>
-`;
+`
 
 // Multiple collapse example with independent and combined triggers
 const multipleCollapseExample = `<p class="d-inline-flex gap-1">
@@ -74,7 +74,7 @@ const multipleCollapseExample = `<p class="d-inline-flex gap-1">
     </div>
   </div>
 </div>
-`;
+`
 ---
 
 <AdminLayout

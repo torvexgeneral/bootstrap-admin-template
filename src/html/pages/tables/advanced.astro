@@ -1,25 +1,25 @@
 ---
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
+import { getAssetPrefix, getPathPrefix } from '../../../utils/path.js'
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
 
 // Register table scripts for search, filter and pagination functionality
 const pageScript = `
-  <script src="${getAssetPrefix("/assets/vendor/js/table/table-filter.js")}"></script>
-  <script src="${getAssetPrefix("/assets/vendor/js/table/table-pagination.js")}"></script>
-`;
+  <script src="${getAssetPrefix('/assets/vendor/js/table/table-filter.js')}"></script>
+  <script src="${getAssetPrefix('/assets/vendor/js/table/table-pagination.js')}"></script>
+`
 
 // Configure page header with descriptive breadcrumb navigation
 const pageHeaderProps = {
-  title: "Advanced Tables",
-  description: "Feature-rich tables with search, filters, sorting and bulk actions",
+  title: 'Advanced Tables',
+  description: 'Feature-rich tables with search, filters, sorting and bulk actions',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Tables", href: getPathPrefix("/tables") },
-    { label: "Advanced Tables", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Tables', href: getPathPrefix('/tables') },
+    { label: 'Advanced Tables', class: 'active' }
   ]
-};
+}
 
 // Advanced table template with search, filters and actions
 const advancedTableTemplate = `<div class="astero-table">
@@ -337,7 +337,7 @@ const advancedTableTemplate = `<div class="astero-table">
         </form>
     </div>
 </div>
-`;
+`
 ---
 
 <AdminLayout
@@ -360,7 +360,7 @@ const advancedTableTemplate = `<div class="astero-table">
 
       <ComponentPreview
         title="Advanced Table with Search and Filters"
-        height="625px"
+        height="600px"
         component={advancedTableTemplate}
         htmlCode={advancedTableTemplate}
         cssCode={``}

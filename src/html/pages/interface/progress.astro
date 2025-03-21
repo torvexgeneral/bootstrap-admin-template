@@ -1,18 +1,18 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 const pageHeaderProps = {
-  title: "Progress",
+  title: 'Progress',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Interface", href: getPathPrefix("/interface") },
-    { label: "Progress", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Interface', href: getPathPrefix('/interface') },
+    { label: 'Progress', class: 'active' }
   ]
-};
+}
 
 // Basic progress bar examples with different completion percentages
 const basicProgressExamples = `<div class="progress mb-3" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
@@ -30,13 +30,13 @@ const basicProgressExamples = `<div class="progress mb-3" role="progressbar" ari
 <div class="progress mb-3" role="progressbar" aria-label="Basic example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
   <div class="progress-bar" style="width: 100%"></div>
 </div>
-`;
+`
 
 // Example using utility class for width
 const utilityWidthExample = `<div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
   <div class="progress-bar w-75"></div>
 </div>
-`;
+`
 
 // Examples with different height variations
 const heightVariationExamples = `<div class="progress mb-3" role="progressbar" aria-label="Example 1px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 1px">
@@ -45,13 +45,13 @@ const heightVariationExamples = `<div class="progress mb-3" role="progressbar" a
 <div class="progress" role="progressbar" aria-label="Example 20px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
   <div class="progress-bar" style="width: 25%"></div>
 </div>
-`;
+`
 
 // Example with basic label
 const basicLabelExample = `<div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
   <div class="progress-bar" style="width: 25%">25%</div>
 </div>
-`;
+`
 
 // Example with overflow label
 const overflowLabelExample = `<div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
@@ -59,7 +59,7 @@ const overflowLabelExample = `<div class="progress" role="progressbar" aria-labe
     <i class="ri-information-line me-1"></i>Processing data... (10% complete)
   </div>
 </div>
-`;
+`
 
 // Examples with contextual colors
 const contextualColorExamples = `<div class="progress mb-3" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
@@ -82,7 +82,7 @@ const contextualColorExamples = `<div class="progress mb-3" role="progressbar" a
     <i class="ri-error-warning-line me-1"></i>Danger
   </div>
 </div>
-`;
+`
 
 // Example with stacked progress bars
 const stackedProgressExample = `<div class="progress-stacked">
@@ -102,7 +102,7 @@ const stackedProgressExample = `<div class="progress-stacked">
     </div>
   </div>
 </div>
-`;
+`
 
 // Examples with striped variations
 const stripedProgressExamples = `<div class="progress mb-3" role="progressbar" aria-label="Default striped example" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
@@ -120,7 +120,7 @@ const stripedProgressExamples = `<div class="progress mb-3" role="progressbar" a
 <div class="progress" role="progressbar" aria-label="Danger striped example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
   <div class="progress-bar progress-bar-striped bg-danger" style="width: 100%"></div>
 </div>
-`;
+`
 
 // Example with animated stripes
 const animatedStripesExample = `<div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
@@ -128,7 +128,7 @@ const animatedStripesExample = `<div class="progress" role="progressbar" aria-la
     <i class="ri-loader-4-line me-1"></i>Loading...
   </div>
 </div>
-`;
+`
 
 // Example with gradient background
 const gradientProgressExample = `<div class="progress" role="progressbar" aria-label="Gradient progress example" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
@@ -136,7 +136,7 @@ const gradientProgressExample = `<div class="progress" role="progressbar" aria-l
     <i class="ri-palette-line me-1"></i>60%
   </div>
 </div>
-`;
+`
 ---
 
 <AdminLayout

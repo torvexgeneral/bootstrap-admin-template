@@ -1,19 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getPathPrefix } from "../../../utils/path.js";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
 
 // Page header configuration with breadcrumb navigation
 const pageHeaderConfiguration = {
-  title: "Info Box Components",
+  title: 'Info Box Components',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Interface", href: getPathPrefix("/interface") },
-    { label: "Info Box", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Interface', href: getPathPrefix('/interface') },
+    { label: 'Info Box', class: 'active' }
   ]
-};
+}
 
 // Basic info box examples showcasing different metrics with Remixicon icons
 const basicInfoBoxExample = `<div class="row">
@@ -53,7 +53,7 @@ const basicInfoBoxExample = `<div class="row">
             </div>
         </div>
     </div>
-</div>`;
+</div>`
 
 // Background info box examples with progress indicators
 const backgroundInfoBoxExample = `<div class="row">
@@ -117,7 +117,7 @@ const backgroundInfoBoxExample = `<div class="row">
             </div>
         </div>
     </div>
-</div>`;
+</div>`
 
 // Outline style info box examples
 const outlineInfoBoxExample = `<div class="row">
@@ -157,7 +157,7 @@ const outlineInfoBoxExample = `<div class="row">
             </div>
         </div>
     </div>
-</div>`;
+</div>`
 
 // Loading state info box examples
 const loadingStateInfoBoxExample = `<div class="row">
@@ -233,7 +233,7 @@ const loadingStateInfoBoxExample = `<div class="row">
             </div>
         </div>
     </div>
-</div>`;
+</div>`
 ---
 
 <AdminLayout

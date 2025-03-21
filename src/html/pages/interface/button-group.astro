@@ -1,26 +1,26 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 // Page header configuration with navigation breadcrumbs
 const pageHeaderConfig = {
-  title: "Button Group",
+  title: 'Button Group',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Interface", href: getPathPrefix("/interface") },
-    { label: "Button Group", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Interface', href: getPathPrefix('/interface') },
+    { label: 'Button Group', class: 'active' }
   ]
-};
+}
 
 // Standard button group example with default styling and icons
 const standardButtonGroupExample = `<div class="btn-group" role="group" aria-label="Basic button group example">
   <button type="button" class="btn btn-primary"><i class="ri-home-line me-1"></i>Home</button>
   <button type="button" class="btn btn-primary"><i class="ri-user-line me-1"></i>Profile</button>
   <button type="button" class="btn btn-primary"><i class="ri-settings-line me-1"></i>Settings</button>
-</div>`;
+</div>`
 
 // Button group with active state for indicating current selection
 const activeStateButtonGroupExample = `<div class="btn-group">
@@ -33,21 +33,21 @@ const activeStateButtonGroupExample = `<div class="btn-group">
   <button type="button" class="btn btn-primary">
     <i class="ri-folder-line me-1"></i>Files
   </button>
-</div>`;
+</div>`
 
 // Button group with different contextual styles for various actions
 const mixedStyleButtonGroupExample = `<div class="btn-group" role="group" aria-label="Mixed style buttons">
   <button type="button" class="btn btn-danger"><i class="ri-delete-bin-line me-1"></i>Delete</button>
   <button type="button" class="btn btn-warning"><i class="ri-alert-line me-1"></i>Warning</button>
   <button type="button" class="btn btn-success"><i class="ri-check-line me-1"></i>Approve</button>
-</div>`;
+</div>`
 
 // Button group with outline styling for a more subtle appearance
 const outlinedButtonGroupExample = `<div class="btn-group" role="group" aria-label="Outlined style buttons">
   <button type="button" class="btn btn-outline-primary"><i class="ri-edit-line me-1"></i>Edit</button>
   <button type="button" class="btn btn-outline-primary"><i class="ri-save-line me-1"></i>Save</button>
   <button type="button" class="btn btn-outline-primary"><i class="ri-close-line me-1"></i>Cancel</button>
-</div>`;
+</div>`
 
 // Checkbox toggle button group for multiple selection options
 const checkboxButtonGroupExample = `<div class="btn-group" role="group" aria-label="Checkbox toggle button group">
@@ -59,7 +59,7 @@ const checkboxButtonGroupExample = `<div class="btn-group" role="group" aria-lab
 
   <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
   <label class="btn btn-outline-primary" for="btncheck3"><i class="ri-underline me-1"></i>Underline</label>
-</div>`;
+</div>`
 
 // Radio toggle button group for single selection options
 const radioButtonGroupExample = `<div class="btn-group" role="group" aria-label="Radio toggle button group">
@@ -71,7 +71,7 @@ const radioButtonGroupExample = `<div class="btn-group" role="group" aria-label=
 
   <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
   <label class="btn btn-outline-primary" for="btnradio3"><i class="ri-align-right me-1"></i>Right</label>
-</div>`;
+</div>`
 
 // Button toolbar example with multiple button groups for complex interfaces
 const buttonToolbarExample = `<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
@@ -87,7 +87,7 @@ const buttonToolbarExample = `<div class="btn-toolbar" role="toolbar" aria-label
   <div class="btn-group" role="group" aria-label="Third group">
     <button type="button" class="btn btn-success"><i class="ri-settings-line me-1"></i>6</button>
   </div>
-</div>`;
+</div>`
 
 // Button toolbar with input groups for combined functionality
 const toolbarWithInputGroupExample = `<div class="btn-toolbar mb-2" role="toolbar" aria-label="Toolbar with button groups and input">
@@ -114,7 +114,7 @@ const toolbarWithInputGroupExample = `<div class="btn-toolbar mb-2" role="toolba
     <div class="input-group-text" id="btnGroupAddon2"><i class="ri-volume-up-line"></i></div>
     <input type="text" class="form-control" placeholder="Volume" aria-label="Volume control" aria-describedby="btnGroupAddon2">
   </div>
-</div>`;
+</div>`
 
 // Size variations for button groups from extra large to extra small
 const buttonGroupSizeVariationsExample = `<div class="btn-group btn-group-xl mb-2" role="group" aria-label="Extra large button group">
@@ -145,7 +145,7 @@ const buttonGroupSizeVariationsExample = `<div class="btn-group btn-group-xl mb-
   <button type="button" class="btn btn-outline-primary"><i class="ri-add-line"></i></button>
   <button type="button" class="btn btn-outline-primary"><i class="ri-subtract-line"></i></button>
   <button type="button" class="btn btn-outline-primary"><i class="ri-close-line"></i></button>
-</div>`;
+</div>`
 
 // Nested dropdown example for advanced button group functionality
 const nestedDropdownButtonGroupExample = `<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
@@ -161,7 +161,7 @@ const nestedDropdownButtonGroupExample = `<div class="btn-group" role="group" ar
       <li><a class="dropdown-item" href="#"><i class="ri-user-settings-line me-2"></i>Profile</a></li>
     </ul>
   </div>
-</div>`;
+</div>`
 
 // Vertical button group for vertical layouts
 const verticalButtonGroupExample = `<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
@@ -169,7 +169,7 @@ const verticalButtonGroupExample = `<div class="btn-group-vertical" role="group"
   <button type="button" class="btn btn-primary text-start"><i class="ri-user-line me-2"></i>Profile</button>
   <button type="button" class="btn btn-primary text-start"><i class="ri-settings-line me-2"></i>Settings</button>
   <button type="button" class="btn btn-primary text-start"><i class="ri-notification-line me-2"></i>Notifications</button>
-</div>`;
+</div>`
 
 // Vertical button group with dropdowns for complex vertical menus
 const verticalDropdownButtonGroupExample = `<div class="btn-group-vertical" role="group" aria-label="Vertical button group with dropdowns">
@@ -193,7 +193,7 @@ const verticalDropdownButtonGroupExample = `<div class="btn-group-vertical" role
       <li><a class="dropdown-item" href="#"><i class="ri-question-line me-2"></i>Help</a></li>
     </ul>
   </div>
-</div>`;
+</div>`
 
 // Vertical radio button group for vertical selection options
 const verticalRadioButtonGroupExample = `<div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
@@ -203,13 +203,7 @@ const verticalRadioButtonGroupExample = `<div class="btn-group-vertical" role="g
   <label class="btn btn-outline-danger text-start" for="vbtn-radio2"><i class="ri-layout-bottom-line me-2"></i>Bottom</label>
   <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio3" autocomplete="off">
   <label class="btn btn-outline-danger text-start" for="vbtn-radio3"><i class="ri-layout-right-line me-2"></i>Right</label>
-</div>`;
-
-// Shared preview configuration for consistent component display
-const previewConfig = {
-  cssCode: "",
-  jsCode: ""
-};
+</div>`
 ---
 
 <AdminLayout

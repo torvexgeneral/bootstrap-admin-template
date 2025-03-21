@@ -1,31 +1,31 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getAssetPrefix, getPathPrefix } from '../../../utils/path.js'
 
 // Page header configuration with breadcrumb navigation and icons
 const pageHeaderConfig = {
-  title: "Carousel",
+  title: 'Carousel',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard"), icon: "ri-dashboard-line" },
-    { label: "Interface", href: getPathPrefix("/interface"), icon: "ri-layout-line" },
-    { label: "Carousel", class: "active", icon: "ri-slideshow-line" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard'), icon: 'ri-dashboard-line' },
+    { label: 'Interface', href: getPathPrefix('/interface'), icon: 'ri-layout-line' },
+    { label: 'Carousel', class: 'active', icon: 'ri-slideshow-line' }
   ]
-};
+}
 
 // Basic carousel example with navigation controls
 const basicCarouselExample = `<div id="carouselExample" class="carousel slide">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="First slide showing product features">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="First slide showing product features">
     </div>
     <div class="carousel-item">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Second slide showcasing services">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Second slide showcasing services">
     </div>
     <div class="carousel-item">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Third slide highlighting achievements">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Third slide highlighting achievements">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -37,7 +37,7 @@ const basicCarouselExample = `<div id="carouselExample" class="carousel slide">
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-`;
+`
 
 // Carousel with indicators for slide navigation
 const carouselWithIndicatorsExample = `<div id="carouselExampleIndicators" class="carousel slide">
@@ -48,13 +48,13 @@ const carouselWithIndicatorsExample = `<div id="carouselExampleIndicators" class
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Product features showcase">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Product features showcase">
     </div>
     <div class="carousel-item">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Services overview">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Services overview">
     </div>
     <div class="carousel-item">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Customer testimonials">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Customer testimonials">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -66,7 +66,7 @@ const carouselWithIndicatorsExample = `<div id="carouselExampleIndicators" class
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-`;
+`
 
 // Carousel with captions for detailed content
 const carouselWithCaptionsExample = `<div id="carouselExampleCaptions" class="carousel slide">
@@ -77,21 +77,21 @@ const carouselWithCaptionsExample = `<div id="carouselExampleCaptions" class="ca
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Innovation showcase">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Innovation showcase">
       <div class="carousel-caption d-none d-md-block">
         <h5><i class="ri-rocket-line me-2"></i>Innovation at Its Best</h5>
         <p>Discover groundbreaking features that set us apart from the competition.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Technology overview">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Technology overview">
       <div class="carousel-caption d-none d-md-block">
         <h5><i class="ri-code-line me-2"></i>Cutting-edge Technology</h5>
         <p>Built with the latest technologies to ensure optimal performance.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Success stories">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Success stories">
       <div class="carousel-caption d-none d-md-block">
         <h5><i class="ri-award-line me-2"></i>Proven Success</h5>
         <p>Join thousands of satisfied customers who trust our solutions.</p>
@@ -107,19 +107,19 @@ const carouselWithCaptionsExample = `<div id="carouselExampleCaptions" class="ca
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-`;
+`
 
 // Carousel with crossfade transition effect
 const carouselCrossfadeExample = `<div id="carouselExampleFade" class="carousel slide carousel-fade">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Feature presentation with fade effect">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Feature presentation with fade effect">
     </div>
     <div class="carousel-item">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440.png")}" class="d-block w-100" alt="Service overview with smooth transition">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440.png')}" class="d-block w-100" alt="Service overview with smooth transition">
     </div>
     <div class="carousel-item">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Product showcase with fade animation">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Product showcase with fade animation">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -131,19 +131,19 @@ const carouselCrossfadeExample = `<div id="carouselExampleFade" class="carousel 
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-`;
+`
 
 // Autoplaying carousel example
 const autoplayCarouselExample = `<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Autoplay feature demonstration">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Autoplay feature demonstration">
     </div>
     <div class="carousel-item">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Continuous slideshow example">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Continuous slideshow example">
     </div>
     <div class="carousel-item">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Automatic transition showcase">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Automatic transition showcase">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -155,19 +155,19 @@ const autoplayCarouselExample = `<div id="carouselExampleAutoplaying" class="car
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-`;
+`
 
 // User-triggered carousel example
 const userTriggeredCarouselExample = `<div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Interactive feature showcase">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Interactive feature showcase">
     </div>
     <div class="carousel-item">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="User-controlled slideshow">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="User-controlled slideshow">
     </div>
     <div class="carousel-item">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Manual navigation example">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Manual navigation example">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
@@ -179,19 +179,19 @@ const userTriggeredCarouselExample = `<div id="carouselExampleRide" class="carou
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-`;
+`
 
 // Carousel with individual slide intervals
 const individualIntervalCarouselExample = `<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="10000">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Extended duration slide">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Extended duration slide">
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Quick transition slide">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Quick transition slide">
     </div>
     <div class="carousel-item">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Default interval slide">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Default interval slide">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -203,35 +203,35 @@ const individualIntervalCarouselExample = `<div id="carouselExampleInterval" cla
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-`;
+`
 
 // Carousel without controls example
 const noControlsCarouselExample = `<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Automatic slideshow first slide">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Automatic slideshow first slide">
     </div>
     <div class="carousel-item">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Automatic slideshow second slide">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Automatic slideshow second slide">
     </div>
     <div class="carousel-item">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Automatic slideshow third slide">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Automatic slideshow third slide">
     </div>
   </div>
 </div>
-`;
+`
 
 // Carousel with disabled touch swiping
 const noTouchCarouselExample = `<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Non-touch interface first slide">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Non-touch interface first slide">
     </div>
     <div class="carousel-item">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Non-touch interface second slide">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Non-touch interface second slide">
     </div>
     <div class="carousel-item">
-      <img src="${getAssetPrefix("/assets/img/placeholder-images/placeholder-image-1200x440-dark.png")}" class="d-block w-100" alt="Non-touch interface third slide">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-1200x440-dark.png')}" class="d-block w-100" alt="Non-touch interface third slide">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
@@ -243,7 +243,7 @@ const noTouchCarouselExample = `<div id="carouselExampleControlsNoTouching" clas
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-`;
+`
 ---
 
 <AdminLayout

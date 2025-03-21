@@ -1,6 +1,6 @@
 ---
-import AuthenticationLayout from "../../layouts/admin/authentication-layout.astro";
-import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
+import AuthenticationLayout from '../../layouts/admin/authentication-layout.astro'
+import { getAssetPrefix, getPathPrefix } from '../../../utils/path.js'
 ---
 
 <AuthenticationLayout
@@ -22,7 +22,7 @@ import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
               <!-- Error Image -->
               <div class="error-image mb-2">
                 <img
-                  src={getAssetPrefix("/assets/img/pages/401.png")}
+                  src={getAssetPrefix('/assets/img/pages/401.png')}
                   alt="401 Error Illustration"
                   class="img-fluid"
                   width="400"
@@ -40,12 +40,12 @@ import { getAssetPrefix, getPathPrefix } from "../../../utils/path.js";
                 </p>
                 <div class="d-flex gap-3 justify-content-center flex-wrap">
                   <a
-                    href={getPathPrefix("/authentication/basic/login")}
+                    href={getPathPrefix('/authentication/basic/login')}
                     class="btn btn-primary px-4"
                   >
                     <i class="ri-login-box-line me-2"></i> Login
                   </a>
-                  <a href={getPathPrefix("/dashboard")} class="btn btn-outline-primary px-4">
+                  <a href={getPathPrefix('/dashboard')} class="btn btn-outline-primary px-4">
                     <i class="ri-home-line me-2"></i> Back to Home
                   </a>
                 </div>

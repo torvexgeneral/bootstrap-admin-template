@@ -1,19 +1,19 @@
 ---
-import AdminLayout from "../../layouts/admin/admin-layout.astro";
-import ComponentPreview from "../../components/component-preview/component-preview.astro";
-import Toc from "../../components/toc/toc.astro";
-import PageHeader from "../../components/common/page-header.astro";
-import { getPathPrefix } from "../../../utils/path.js";
+import AdminLayout from '../../layouts/admin/admin-layout.astro'
+import ComponentPreview from '../../components/component-preview/component-preview.astro'
+import Toc from '../../components/toc/toc.astro'
+import PageHeader from '../../components/common/page-header.astro'
+import { getPathPrefix } from '../../../utils/path.js'
 
 // Page configuration with breadcrumb navigation
 const pageHeaderProps = {
-  title: "Switches",
+  title: 'Switches',
   breadcrumbs: [
-    { label: "Dashboard", href: getPathPrefix("/dashboard") },
-    { label: "Forms", href: "" },
-    { label: "Switches", class: "active" }
+    { label: 'Dashboard', href: getPathPrefix('/dashboard') },
+    { label: 'Forms', href: '' },
+    { label: 'Switches', class: 'active' }
   ]
-};
+}
 
 // Basic switch controls with default and square styles
 const basicSwitchControls = `<div class="row switch-examples g-4">
@@ -25,19 +25,19 @@ const basicSwitchControls = `<div class="row switch-examples g-4">
     <div class="form-check form-switch mb-3">
       <input class="form-check-input" type="checkbox" role="switch" id="defaultFeatureSwitch">
       <label class="form-check-label" for="defaultFeatureSwitch">
-        <i class="ri-toggle-line me-2"></i>Enable Feature
+        Enable Feature
       </label>
     </div>
     <div class="form-check form-switch mb-3">
       <input class="form-check-input" type="checkbox" role="switch" id="defaultNotificationSwitch" checked>
       <label class="form-check-label" for="defaultNotificationSwitch">
-        <i class="ri-notification-line me-2"></i>Notifications
+        Notifications
       </label>
     </div>
     <div class="form-check form-switch">
       <input class="form-check-input" type="checkbox" role="switch" id="defaultMaintenanceSwitch" disabled>
       <label class="form-check-label" for="defaultMaintenanceSwitch">
-        <i class="ri-tools-line me-2"></i>Maintenance Mode
+        Maintenance Mode
       </label>
     </div>
   </div>
@@ -50,23 +50,23 @@ const basicSwitchControls = `<div class="row switch-examples g-4">
     <div class="form-check form-switch switch-square mb-3">
       <input class="form-check-input" type="checkbox" role="switch" id="squareThemeSwitch">
       <label class="form-check-label" for="squareThemeSwitch">
-        <i class="ri-contrast-2-line me-2"></i>Dark Theme
+        Dark Theme
       </label>
     </div>
     <div class="form-check form-switch switch-square mb-3">
       <input class="form-check-input" type="checkbox" role="switch" id="squareAutoSaveSwitch" checked>
       <label class="form-check-label" for="squareAutoSaveSwitch">
-        <i class="ri-save-line me-2"></i>Auto Save
+        Auto Save
       </label>
     </div>
     <div class="form-check form-switch switch-square">
       <input class="form-check-input" type="checkbox" role="switch" id="squareAnalyticsSwitch" disabled>
       <label class="form-check-label" for="squareAnalyticsSwitch">
-        <i class="ri-line-chart-line me-2"></i>Analytics
+        Analytics
       </label>
     </div>
   </div>
-</div>`;
+</div>`
 
 // Colored switch controls for visual context
 const coloredSwitchControls = `
@@ -79,31 +79,31 @@ const coloredSwitchControls = `
     <div class="form-check form-switch mb-3">
       <input class="form-check-input bg-primary" type="checkbox" role="switch" id="primaryFeatureSwitch" checked>
       <label class="form-check-label" for="primaryFeatureSwitch">
-        <i class="ri-star-line me-2"></i>Premium Features
+        Premium Features
       </label>
     </div>
     <div class="form-check form-switch mb-3">
       <input class="form-check-input bg-success" type="checkbox" role="switch" id="successBackupSwitch" checked>
       <label class="form-check-label" for="successBackupSwitch">
-        <i class="ri-database-2-line me-2"></i>Auto Backup
+        Auto Backup
       </label>
     </div>
     <div class="form-check form-switch mb-3">
       <input class="form-check-input bg-danger" type="checkbox" role="switch" id="dangerDeleteSwitch" checked>
       <label class="form-check-label" for="dangerDeleteSwitch">
-        <i class="ri-delete-bin-line me-2"></i>Auto Delete
+        Auto Delete
       </label>
     </div>
     <div class="form-check form-switch mb-3">
       <input class="form-check-input bg-warning" type="checkbox" role="switch" id="warningTestSwitch" checked>
       <label class="form-check-label" for="warningTestSwitch">
-        <i class="ri-error-warning-line me-2"></i>Test Mode
+        Test Mode
       </label>
     </div>
     <div class="form-check form-switch">
       <input class="form-check-input bg-info" type="checkbox" role="switch" id="infoUpdateSwitch" checked>
       <label class="form-check-label" for="infoUpdateSwitch">
-        <i class="ri-information-line me-2"></i>Auto Update
+        Auto Update
       </label>
     </div>
   </div>
@@ -116,35 +116,35 @@ const coloredSwitchControls = `
     <div class="form-check form-switch switch-square mb-3">
       <input class="form-check-input bg-primary" type="checkbox" role="switch" id="primaryNotifySwitch" checked>
       <label class="form-check-label" for="primaryNotifySwitch">
-        <i class="ri-notification-4-line me-2"></i>Push Notifications
+        Push Notifications
       </label>
     </div>
     <div class="form-check form-switch switch-square mb-3">
       <input class="form-check-input bg-success" type="checkbox" role="switch" id="successSyncSwitch" checked>
       <label class="form-check-label" for="successSyncSwitch">
-        <i class="ri-refresh-line me-2"></i>Auto Sync
+        Auto Sync
       </label>
     </div>
     <div class="form-check form-switch switch-square mb-3">
       <input class="form-check-input bg-danger" type="checkbox" role="switch" id="dangerModeSwitch" checked>
       <label class="form-check-label" for="dangerModeSwitch">
-        <i class="ri-shield-flash-line me-2"></i>Security Mode
+        Security Mode
       </label>
     </div>
     <div class="form-check form-switch switch-square mb-3">
       <input class="form-check-input bg-warning" type="checkbox" role="switch" id="warningBackupSwitch" checked>
       <label class="form-check-label" for="warningBackupSwitch">
-        <i class="ri-cloud-line me-2"></i>Cloud Backup
+        Cloud Backup
       </label>
     </div>
     <div class="form-check form-switch switch-square">
       <input class="form-check-input bg-info" type="checkbox" role="switch" id="infoEmailSwitch" checked>
       <label class="form-check-label" for="infoEmailSwitch">
-        <i class="ri-mail-line me-2"></i>Email Notifications
+        Email Notifications
       </label>
     </div>
   </div>
-</div>`;
+</div>`
 
 // Size variations for switch controls
 const sizedSwitchControls = `
@@ -157,31 +157,31 @@ const sizedSwitchControls = `
     <div class="form-check form-switch switch-xs mb-3">
       <input class="form-check-input" type="checkbox" role="switch" id="xsDefaultSwitch" checked>
       <label class="form-check-label" for="xsDefaultSwitch">
-        <i class="ri-smartphone-line me-2"></i>Extra Small Switch
+        Extra Small Switch
       </label>
     </div>
     <div class="form-check form-switch switch-sm mb-3">
       <input class="form-check-input" type="checkbox" role="switch" id="smDefaultSwitch" checked>
       <label class="form-check-label" for="smDefaultSwitch">
-        <i class="ri-tablet-line me-2"></i>Small Switch
+        Small Switch
       </label>
     </div>
     <div class="form-check form-switch mb-3">
       <input class="form-check-input" type="checkbox" role="switch" id="defaultSizeSwitch" checked>
       <label class="form-check-label" for="defaultSizeSwitch">
-        <i class="ri-computer-line me-2"></i>Default Switch
+        Default Switch
       </label>
     </div>
     <div class="form-check form-switch switch-lg mb-3">
       <input class="form-check-input" type="checkbox" role="switch" id="lgDefaultSwitch" checked>
       <label class="form-check-label" for="lgDefaultSwitch">
-        <i class="ri-macbook-line me-2"></i>Large Switch
+        Large Switch
       </label>
     </div>
     <div class="form-check form-switch switch-xl">
       <input class="form-check-input" type="checkbox" role="switch" id="xlDefaultSwitch" checked>
       <label class="form-check-label" for="xlDefaultSwitch">
-        <i class="ri-tv-line me-2"></i>Extra Large Switch
+        Extra Large Switch
       </label>
     </div>
   </div>
@@ -194,35 +194,35 @@ const sizedSwitchControls = `
     <div class="form-check form-switch switch-square switch-xs mb-3">
       <input class="form-check-input" type="checkbox" role="switch" id="xsSquareSwitch" checked>
       <label class="form-check-label" for="xsSquareSwitch">
-        <i class="ri-smartphone-line me-2"></i>Extra Small Switch
+        Extra Small Switch
       </label>
     </div>
     <div class="form-check form-switch switch-square switch-sm mb-3">
       <input class="form-check-input" type="checkbox" role="switch" id="smSquareSwitch" checked>
       <label class="form-check-label" for="smSquareSwitch">
-        <i class="ri-tablet-line me-2"></i>Small Switch
+        Small Switch
       </label>
     </div>
     <div class="form-check form-switch switch-square mb-3">
       <input class="form-check-input" type="checkbox" role="switch" id="defaultSquareSwitch" checked>
       <label class="form-check-label" for="defaultSquareSwitch">
-        <i class="ri-computer-line me-2"></i>Default Switch
+        Default Switch
       </label>
     </div>
     <div class="form-check form-switch switch-square switch-lg mb-3">
       <input class="form-check-input" type="checkbox" role="switch" id="lgSquareSwitch" checked>
       <label class="form-check-label" for="lgSquareSwitch">
-        <i class="ri-macbook-line me-2"></i>Large Switch
+        Large Switch
       </label>
     </div>
     <div class="form-check form-switch switch-square switch-xl">
       <input class="form-check-input" type="checkbox" role="switch" id="xlSquareSwitch" checked>
       <label class="form-check-label" for="xlSquareSwitch">
-        <i class="ri-tv-line me-2"></i>Extra Large Switch
+        Extra Large Switch
       </label>
     </div>
   </div>
-</div>`;
+</div>`
 ---
 
 <AdminLayout
@@ -252,9 +252,7 @@ const sizedSwitchControls = `
         <div class="col-12">
           <!-- Basic Usage Section -->
           <div class="my-3">
-            <h2 class="mb-0" id="basic-usage">
-              <i class="ri-toggle-line me-2"></i>Basic Usage
-            </h2>
+            <h2 class="mb-0" id="basic-usage">Basic Usage</h2>
             <p class="py-2">
               Switch controls come in two distinct styles:
               <ul class="mt-2">
@@ -266,7 +264,7 @@ const sizedSwitchControls = `
             </p>
             <ComponentPreview
               title="Basic Switch Controls"
-              height="220px"
+              height="450px"
               component={basicSwitchControls}
               htmlCode={basicSwitchControls}
             />
@@ -274,9 +272,7 @@ const sizedSwitchControls = `
 
           <!-- Switch Colors -->
           <div class="my-3">
-            <h2 class="mb-0" id="switch-colors">
-              <i class="ri-palette-line me-2"></i>Switch Colors
-            </h2>
+            <h2 class="mb-0" id="switch-colors">Switch Colors</h2>
             <p class="py-2">
               Enhance switches with contextual colors:
               <ul class="mt-2">
@@ -293,7 +289,7 @@ const sizedSwitchControls = `
             </p>
             <ComponentPreview
               title="Colored Switch Controls"
-              height="320px"
+              height="550px"
               component={coloredSwitchControls}
               htmlCode={coloredSwitchControls}
             />
@@ -301,9 +297,7 @@ const sizedSwitchControls = `
 
           <!-- Switch Sizes -->
           <div class="my-3">
-            <h2 class="mb-0" id="switch-sizes">
-              <i class="ri-font-size-2 me-2"></i>Switch Sizes
-            </h2>
+            <h2 class="mb-0" id="switch-sizes">Switch Sizes</h2>
             <p class="py-2">
               Five size variations to match your design needs:
               <ul class="mt-2">
