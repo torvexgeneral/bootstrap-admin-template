@@ -63,7 +63,10 @@ function getRtlCSS() {
 <meta property="og:type" content="website" />
 
 <!-- Favicon -->
-<link rel="icon" type="image/x-icon" href={getAssetPrefix('/assets/svg/astero-icon-color.svg')} />
+<link rel="icon" href={getAssetPrefix('/favicon.ico')} sizes="32x32" />
+<link rel="icon" href={getAssetPrefix('/icon.svg')} type="image/svg+xml" />
+<link rel="apple-touch-icon" href={getAssetPrefix('/apple-touch-icon.png')} />
+<link rel="manifest" href={getAssetPrefix('/manifest.webmanifest')} />
 
 <!-- Astero Admin CSS -->
 {isRtl ? <link href={getRtlCSS()} rel="stylesheet" /> : <link href={getCSS()} rel="stylesheet" />}

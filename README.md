@@ -74,8 +74,8 @@ Add the following CDN links to your HTML file:
 
 You can also include specific files or versions:
 
-- CSS: `https://cdn.jsdelivr.net/npm/asteroadmin@1.0.2/dist/css/style.min.css`
-- JavaScript: `https://cdn.jsdelivr.net/npm/asteroadmin@1.0.2/dist/js/main.min.js`
+- CSS: `https://cdn.jsdelivr.net/npm/asteroadmin@1.0.3/dist/css/style.min.css`
+- JavaScript: `https://cdn.jsdelivr.net/npm/asteroadmin@1.0.3/dist/js/main.min.js`
 
 #### 3. Clone the repository
 

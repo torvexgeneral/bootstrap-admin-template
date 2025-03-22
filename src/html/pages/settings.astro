@@ -13,6 +13,8 @@ const settingsPageHeader = {
   ]
 }
 
+const address = `123 Business Avenue Corporate Plaza, Suite 100 New York, NY 10001, United States`
+
 // Client-side JavaScript for form validation and tab navigation
 const settingsPageScript = `
 <script>
@@ -210,9 +212,7 @@ const settingsPageScript = `
                       class="form-control"
                       rows="3"
                       placeholder="Enter complete business address"
-                      required
-                      >123 Business Avenue Corporate Plaza, Suite 100 New York, NY 10001, United
-                      States</textarea
+                      required>{address}</textarea
                     >
                     <div class="invalid-feedback">Business address is required</div>
                   </div>
