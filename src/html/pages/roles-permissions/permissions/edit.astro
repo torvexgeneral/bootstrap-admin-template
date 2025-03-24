@@ -23,6 +23,9 @@ const pageHeaderProps: PageHeaderProps = {
   ]
 }
 
+// Get the redirect URL for use in the script
+const redirectUrl = getPathPrefix('/roles-permissions/permissions/list')
+
 // Add custom validation script
 const pageScript = `
   <script>
@@ -30,6 +33,7 @@ const pageScript = `
       const form = document.getElementById('permissionForm');
       const submitBtn = form.querySelector('button[type="submit"]');
       const spinner = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>';
+      const redirectUrl = "${redirectUrl}"; // Use the pre-computed URL here
 
       // Function to show error feedback
       function showError(input, message) {
@@ -112,7 +116,7 @@ const pageScript = `
           await new Promise(resolve => setTimeout(resolve, 2000));
 
           // On success
-          window.location.href = '${getPathPrefix('/roles-permissions/permissions/list')}';
+          window.location.href = redirectUrl; // Use the variable defined above
         } catch (error) {
           // On error
           console.error('Error:', error);
