@@ -21,15 +21,15 @@
 .dropdown-toggle {
   &::after {
     display: inline-block;
-    vertical-align: 0.15em;
-    content: '';
-    border: none;
     width: 0.5em;
     height: 0.5em;
-    border-bottom: 0.15em solid;
+    vertical-align: 0.15em;
+    content: '';
+    border: 0;
     border-right: 0.15em solid;
-    transform: rotate(45deg);
+    border-bottom: 0.15em solid;
     transition: transform 0.3s ease-in-out;
+    transform: rotate(45deg);
   }
 
   /* Ensure proper border-radius on different sides */
@@ -55,19 +55,11 @@
 .btn-group > .btn:nth-child(n + 3),
 .btn-group > :not(.btn-check) + .btn,
 .btn-group > .btn-group:not(:first-child) > .btn {
+  margin-left: -1px; /* Remove gap between buttons */
+
   /* Ensure no rounding on left side for split button */
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  margin-left: -1px; /* Remove gap between buttons */
-}
-
-/* Dropdown divider with subtle styling */
-.dropdown-divider {
-  height: 0;
-  margin: $dropdown-divider-margin-y 0.5rem;
-  overflow: hidden;
-  border-top: 1px solid $dropdown-divider-bg;
-  opacity: 0.8;
 }
 
 /* Dropdown header improvements */
@@ -78,9 +70,9 @@
   font-size: $font-size-sm;
   font-weight: 600;
   color: $dropdown-header-color;
-  white-space: nowrap;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+  white-space: nowrap;
 }
 
 /* Dropdown item sizes */
@@ -115,15 +107,15 @@
 /* Specific styling for dropup toggle arrow - point upward */
 .dropup .dropdown-toggle::after {
   display: inline-block;
-  vertical-align: 0em;
-  content: '';
-  border: none;
   width: 0.5em;
   height: 0.5em;
-  border-bottom: 0.15em solid;
+  vertical-align: 0;
+  content: '';
+  border: 0;
   border-right: 0.15em solid;
-  transform: rotate(225deg);
+  border-bottom: 0.15em solid;
   transition: transform 0.3s ease-in-out;
+  transform: rotate(225deg);
 }
 
 .dropend .dropdown-menu {
@@ -136,14 +128,14 @@
 
 /* Styling for dropend toggle arrow */
 .dropend .dropdown-toggle::after {
-  vertical-align: 0;
-  border: none;
   width: 0.5em;
   height: 0.5em;
+  vertical-align: 0;
+  border: 0;
   border-top: 0.15em solid;
   border-right: 0.15em solid;
-  transform: rotate(45deg);
   transition: transform 0.3s ease-in-out;
+  transform: rotate(45deg);
 }
 
 .dropstart .dropdown-menu {
@@ -157,49 +149,17 @@
 /* Styling for dropstart toggle arrow */
 .dropstart .dropdown-toggle::before {
   display: inline-block;
-  border: none;
   width: 0.5em;
   height: 0.5em;
+  vertical-align: 0;
+  border: 0;
   border-top: 0.15em solid;
   border-left: 0.15em solid;
-  transform: rotate(-45deg);
-  vertical-align: 0;
   transition: transform 0.3s ease-in-out;
+  transform: rotate(-45deg);
 }
 
 .dropstart .dropdown-toggle::after {
-  display: none;
-}
-
-/* Dropdown with submenu - nested menu with click functionality */
-.dropdown-item.has-submenu {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-
-  /* Arrow indicator for submenu */
-  &::after {
-    display: inline-block;
-    margin-left: 8px;
-    content: '';
-    width: 0.5em;
-    height: 0.5em;
-    border-top: 0.15em solid currentColor;
-    border-right: 0.15em solid currentColor;
-    transform: rotate(45deg);
-    opacity: 0.7;
-    transition: opacity 0.3s ease-in-out;
-  }
-
-  &:hover::after {
-    opacity: 1;
-  }
-}
-
-/* Remove the default Bootstrap down arrow for items with submenus */
-.dropdown-item.has-submenu.dropdown-toggle::after {
   display: none;
 }
 
@@ -222,21 +182,21 @@
       position: absolute;
       top: 0;
       left: 100%;
+      z-index: 1001;
+      display: none;
       margin-top: -0.5rem;
       margin-left: 0.1rem;
       border-radius: 6px;
-      display: none;
-      z-index: 1001;
       opacity: 0;
-      transform: translateY(10px);
       transition:
         opacity 0.2s ease,
         transform 0.2s ease;
+      transform: translateY(10px);
 
       &.show {
+        display: block;
         opacity: 1;
         transform: translateY(0);
-        display: block;
       }
     }
   }
@@ -249,32 +209,26 @@
 }
 
 .dropstart .dropdown-menu li > .dropdown-menu {
-  left: auto;
   right: 100%;
-  margin-left: 0;
+  left: auto;
   margin-right: 0.1rem;
+  margin-left: 0;
 }
 
 /* Improve RTL support */
 [dir='rtl'] {
-  .dropdown-item.has-submenu::after {
-    margin-left: 0;
-    margin-right: 8px;
-    transform: rotate(135deg);
-  }
-
   .dropdown-menu li > .dropdown-menu {
-    left: auto;
     right: 100%;
-    margin-left: 0;
+    left: auto;
     margin-right: 0.1rem;
+    margin-left: 0;
   }
 
   .dropstart .dropdown-menu li > .dropdown-menu {
-    left: 100%;
     right: auto;
-    margin-left: 0.1rem;
+    left: 100%;
     margin-right: 0;
+    margin-left: 0.1rem;
   }
 }
 
@@ -297,8 +251,8 @@
 .overflow-hidden,
 .overflow-scroll {
   .dropdown-menu {
-    transform: none !important;
     position: fixed;
+    transform: none !important;
   }
 }
 
@@ -312,38 +266,17 @@
   z-index: 1002;
   margin-top: -0.25rem !important;
   margin-left: 0.25rem !important;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-/* Animate submenu arrows */
-.dropdown-item.has-submenu::after {
-  transition: transform 0.2s ease;
-}
-
-li.show > .dropdown-item.has-submenu::after {
-  transform: rotate(135deg);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
 /* Better spacing for nested menus */
 .dropdown-menu .dropdown-item {
-  padding-left: 1.5rem;
   padding-right: 1.5rem;
+  padding-left: 1.5rem;
 }
 
 .dropdown-menu .dropdown-menu .dropdown-item {
-  padding-left: 2rem;
   padding-right: 2rem;
-}
-
-/* Ensure consistent dropdown item height */
-.dropdown-item {
-  min-height: 2rem;
-}
-
-/* Ensure submenus don't close when clicking inside them */
-.dropdown-menu {
-  li.show > .dropdown-menu {
-    pointer-events: auto;
-  }
+  padding-left: 2rem;
 }
