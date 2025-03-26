@@ -271,10 +271,26 @@ var PermissionsDatatable = (function () {
     }
 
     if (search_html != '') {
-      search_html +=
-        '<span class="badge text-bg-danger fs-7 me-2 d-flex align-items-center fw-semibold cursor-pointer clear-filter" data-filter="all">Clear All</span>'
+      // Create clear all button element
+      const clearAllButton = document.createElement('span')
+      clearAllButton.className =
+        'badge text-bg-danger fs-7 me-2 d-flex align-items-center fw-semibold cursor-pointer clear-filter'
+      clearAllButton.setAttribute('data-filter', 'all')
+      clearAllButton.textContent = 'Clear All'
 
-      filterData.innerHTML = search_html
+      // Clear existing content
+      filterData.textContent = ''
+
+      // Add the search HTML content safely
+      const tempDiv = document.createElement('div')
+      tempDiv.innerHTML = search_html
+      while (tempDiv.firstChild) {
+        filterData.appendChild(tempDiv.firstChild)
+      }
+
+      // Add the clear all button
+      filterData.appendChild(clearAllButton)
+
       filterDataView.classList.remove('d-none')
       filterDataView.classList.add('d-flex')
       clearFilters()
