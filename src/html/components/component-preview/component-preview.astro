@@ -97,9 +97,14 @@ type TabButtonAttributes = HTMLAttributes<'button'> & {
 
   <div class="card-body p-1">
     <div
-      class="preview-container p-1 p-lg-3"
+      class="preview-container p-1 p-lg-3 position-relative"
       style={`width: 100%; transition: width 0.3s ease; height: ${height}; overflow: hidden;`}
     >
+      <div class="iframe-loader">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
       <iframe
         id={`iframe-${previewId}`}
         class="preview-iframe"
@@ -311,9 +316,14 @@ type TabButtonAttributes = HTMLAttributes<'button'> & {
           </div>
           <div class="modal-body h-100 p-0">
             <div
-              class="preview-container rounded h-100"
+              class="preview-container rounded h-100 position-relative"
               style="width: 100%; transition: width 0.3s ease; overflow: hidden;"
             >
+              <div class="iframe-loader">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
               <iframe
                 id={`iframe-modal-${previewId}`}
                 class="preview-iframe"
