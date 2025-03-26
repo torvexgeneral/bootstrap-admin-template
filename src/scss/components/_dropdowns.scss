@@ -25,7 +25,7 @@
     height: 0.5em;
     vertical-align: 0.15em;
     content: '';
-    border: none;
+    border: 0;
     border-right: 0.15em solid;
     border-bottom: 0.15em solid;
     transition: transform 0.3s ease-in-out;
@@ -60,15 +60,6 @@
   /* Ensure no rounding on left side for split button */
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-}
-
-/* Dropdown divider with subtle styling */
-.dropdown-divider {
-  height: 0;
-  margin: $dropdown-divider-margin-y 0.5rem;
-  overflow: hidden;
-  border-top: 1px solid $dropdown-divider-bg;
-  opacity: 0.8;
 }
 
 /* Dropdown header improvements */
@@ -120,7 +111,7 @@
   height: 0.5em;
   vertical-align: 0;
   content: '';
-  border: none;
+  border: 0;
   border-right: 0.15em solid;
   border-bottom: 0.15em solid;
   transition: transform 0.3s ease-in-out;
@@ -140,7 +131,7 @@
   width: 0.5em;
   height: 0.5em;
   vertical-align: 0;
-  border: none;
+  border: 0;
   border-top: 0.15em solid;
   border-right: 0.15em solid;
   transition: transform 0.3s ease-in-out;
@@ -161,7 +152,7 @@
   width: 0.5em;
   height: 0.5em;
   vertical-align: 0;
-  border: none;
+  border: 0;
   border-top: 0.15em solid;
   border-left: 0.15em solid;
   transition: transform 0.3s ease-in-out;
@@ -169,38 +160,6 @@
 }
 
 .dropstart .dropdown-toggle::after {
-  display: none;
-}
-
-/* Dropdown with submenu - nested menu with click functionality */
-.dropdown-item.has-submenu {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-
-  /* Arrow indicator for submenu */
-  &::after {
-    display: inline-block;
-    width: 0.5em;
-    height: 0.5em;
-    margin-left: 8px;
-    content: '';
-    border-top: 0.15em solid currentcolor;
-    border-right: 0.15em solid currentcolor;
-    opacity: 0.7;
-    transition: opacity 0.3s ease-in-out;
-    transform: rotate(45deg);
-  }
-
-  &:hover::after {
-    opacity: 1;
-  }
-}
-
-/* Remove the default Bootstrap down arrow for items with submenus */
-.dropdown-item.has-submenu.dropdown-toggle::after {
   display: none;
 }
 
@@ -258,12 +217,6 @@
 
 /* Improve RTL support */
 [dir='rtl'] {
-  .dropdown-item.has-submenu::after {
-    margin-right: 8px;
-    margin-left: 0;
-    transform: rotate(135deg);
-  }
-
   .dropdown-menu li > .dropdown-menu {
     right: 100%;
     left: auto;
@@ -317,15 +270,6 @@
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-/* Animate submenu arrows */
-.dropdown-item.has-submenu::after {
-  transition: transform 0.2s ease;
-}
-
-li.show > .dropdown-item.has-submenu::after {
-  transform: rotate(135deg);
-}
-
 /* Better spacing for nested menus */
 .dropdown-menu .dropdown-item {
   padding-right: 1.5rem;
@@ -335,16 +279,4 @@ li.show > .dropdown-item.has-submenu::after {
 .dropdown-menu .dropdown-menu .dropdown-item {
   padding-right: 2rem;
   padding-left: 2rem;
-}
-
-/* Ensure consistent dropdown item height */
-.dropdown-item {
-  min-height: 2rem;
-}
-
-/* Ensure submenus don't close when clicking inside them */
-.dropdown-menu {
-  li.show > .dropdown-menu {
-    pointer-events: auto;
-  }
 }
