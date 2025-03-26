@@ -3,17 +3,28 @@
  * @module css
  */
 
-import { fileURLToPath } from "url"
-import { log } from "./utils.mjs"
-import { transform } from "lightningcss"
-import fs from "fs/promises"
-import path from "path"
-import { glob } from "glob"
+import { fileURLToPath } from 'url'
+import { log } from './utils.mjs'
+import { transform } from 'lightningcss'
+import fs from 'fs/promises'
+import path from 'path'
+import { glob } from 'glob'
 import * as sass from 'sass-embedded'
 import { URL } from 'url'
+import { readFileSync } from 'fs'
 
 // Get the absolute path to the project root
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
+
+// Read package.json from root directory
+const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))
+
+const year = new Date().getFullYear()
+const banner = `/*!
+ * Astero Admin v${pkg.version} (${pkg.homepage})
+ * Copyright 2025-${year} ${pkg.author}
+ * Licensed under MIT (https://github.com/asterodigital/bootstrap-admin-template/blob/master/LICENSE)
+ */`
 
 /**
  * Compiles SASS to CSS
@@ -31,12 +42,12 @@ async function compileSass(options = {}) {
     ...options
   }
 
-  log("Compiling SASS...", "info", "CSS")
+  log('Compiling SASS...', 'info', 'CSS')
 
   try {
     // Ensure the entry file exists and is properly resolved
     if (!opts.entryFile) {
-      throw new Error("Entry file path is undefined or empty")
+      throw new Error('Entry file path is undefined or empty')
     }
 
     const entryFilePath = path.resolve(projectRoot, opts.entryFile)
@@ -60,7 +71,7 @@ async function compileSass(options = {}) {
       warn: false
     })
 
-    log("SASS compilation successful", "success", "CSS")
+    log('SASS compilation successful', 'success', 'CSS')
 
     // Ensure output directory exists
     const cssDir = path.join(projectRoot, 'dist/css')
@@ -68,13 +79,13 @@ async function compileSass(options = {}) {
 
     // Ensure source map has correct source path
     if (result.sourceMap) {
-      result.sourceMap.sources = result.sourceMap.sources.map(source =>
+      result.sourceMap.sources = result.sourceMap.sources.map((source) =>
         source.startsWith('/') ? source.substring(1) : source
       )
     }
 
     // Add sourcemap URL to CSS file
-    const cssWithSourceMap = result.css + '\n/*# sourceMappingURL=style.css.map */'
+    const cssWithSourceMap = banner + '\n' + result.css + '\n/*# sourceMappingURL=style.css.map */'
     const cssOutputPath = path.join(cssDir, 'style.css')
     await fs.writeFile(cssOutputPath, cssWithSourceMap)
 
@@ -84,12 +95,12 @@ async function compileSass(options = {}) {
     }
 
     if (opts.verbose) {
-      log(`CSS written to ${path.relative(projectRoot, cssOutputPath)}`, "info", "CSS")
+      log(`CSS written to ${path.relative(projectRoot, cssOutputPath)}`, 'info', 'CSS')
     }
 
-    log("CSS files written to disk", "success", "CSS")
+    log('CSS files written to disk', 'success', 'CSS')
   } catch (error) {
-    log(`SASS compilation error: ${error.message}`, "error", "CSS")
+    log(`SASS compilation error: ${error.message}`, 'error', 'CSS')
     throw error
   }
 }
@@ -104,7 +115,7 @@ async function compileSass(options = {}) {
  */
 async function minifyCSS(inputPath, options) {
   const fileName = path.basename(inputPath)
-  log(`Minifying ${fileName}...`, "info", "CSS")
+  log(`Minifying ${fileName}...`, 'info', 'CSS')
 
   try {
     // Check if input file exists
@@ -114,28 +125,32 @@ async function minifyCSS(inputPath, options) {
       throw new Error(`CSS file not found: ${inputPath}`)
     }
 
-    const code = await fs.readFile(inputPath)
+    const code = await fs.readFile(inputPath, 'utf8')
+
+    // Remove existing banner if present
+    const codeWithoutBanner = code.replace(/\/\*![\s\S]*?\*\/\n?/, '')
+
     const { code: minified, map } = transform({
       filename: fileName,
-      code: Buffer.from(code),
+      code: Buffer.from(codeWithoutBanner),
       minify: true,
       sourceMap: true
     })
 
-    const outputPath = inputPath.replace(".css", ".min.css")
-    await fs.writeFile(outputPath, minified)
+    const outputPath = inputPath.replace('.css', '.min.css')
+    await fs.writeFile(outputPath, banner + '\n' + minified)
 
     if (map) {
       await fs.writeFile(`${outputPath}.map`, map)
     }
 
     if (options && options.verbose) {
-      log(`Minification details for ${fileName}: ${minified.length} bytes`, "info", "CSS")
+      log(`Minification details for ${fileName}: ${minified.length} bytes`, 'info', 'CSS')
     }
 
-    log(`Minified ${fileName} -> ${path.basename(outputPath)}`, "success", "CSS")
+    log(`Minified ${fileName} -> ${path.basename(outputPath)}`, 'success', 'CSS')
   } catch (error) {
-    log(`Minification error for ${inputPath}: ${error.message}`, "error", "CSS")
+    log(`Minification error for ${inputPath}: ${error.message}`, 'error', 'CSS')
     throw error
   }
 }
@@ -147,20 +162,18 @@ async function minifyCSS(inputPath, options) {
  * @returns {Promise<void>}
  */
 async function minifyAllCSS(options = { verbose: false }) {
-  log("Starting CSS minification...", "info", "CSS")
+  log('Starting CSS minification...', 'info', 'CSS')
 
   try {
-    const cssFiles = await glob("dist/css/*.css")
-    const filesToMinify = cssFiles.filter(file =>
-      !file.includes(".min.css")
-    )
+    const cssFiles = await glob('dist/css/*.css')
+    const filesToMinify = cssFiles.filter((file) => !file.includes('.min.css'))
 
     if (filesToMinify.length === 0) {
-      log("No CSS files found to minify", "warning", "CSS")
+      log('No CSS files found to minify', 'warning', 'CSS')
       return
     }
 
-    log(`Found ${filesToMinify.length} CSS files to minify`, "info", "CSS")
+    log(`Found ${filesToMinify.length} CSS files to minify`, 'info', 'CSS')
 
     // Process files sequentially to avoid overwhelming the system
     for (const file of filesToMinify) {
@@ -168,13 +181,13 @@ async function minifyAllCSS(options = { verbose: false }) {
         await minifyCSS(file, options)
       } catch (error) {
         // Log error but continue with other files
-        log(`Error minifying ${file}: ${error.message}`, "error", "CSS")
+        log(`Error minifying ${file}: ${error.message}`, 'error', 'CSS')
       }
     }
 
-    log("CSS minification completed", "success", "CSS")
+    log('CSS minification completed', 'success', 'CSS')
   } catch (error) {
-    log(`CSS minification error: ${error.message}`, "error", "CSS")
+    log(`CSS minification error: ${error.message}`, 'error', 'CSS')
     // Don't throw as we want to continue with other steps
   }
 }
@@ -187,11 +200,11 @@ async function minifyAllCSS(options = { verbose: false }) {
  * @returns {Promise<void>}
  */
 async function processWithPostcss(files, options = { verbose: false }) {
-  log("Processing CSS with PostCSS...", "info", "CSS")
+  log('Processing CSS with PostCSS...', 'info', 'CSS')
 
   try {
     if (files.length === 0) {
-      log("No CSS files to process with PostCSS", "warning", "CSS")
+      log('No CSS files to process with PostCSS', 'warning', 'CSS')
       return
     }
 
@@ -208,7 +221,9 @@ async function processWithPostcss(files, options = { verbose: false }) {
 
     // Convert to file URL for ESM import compatibility (especially on Windows)
     const configUrl = path.isAbsolute(configPath)
-      ? new URL(`file://${configPath.replace(/\\/g, '/').replace(/^([a-zA-Z]):/, (_, drive) => `/${drive}:`)}`)
+      ? new URL(
+          `file://${configPath.replace(/\\/g, '/').replace(/^([a-zA-Z]):/, (_, drive) => `/${drive}:`)}`
+        )
       : new URL(configPath, import.meta.url)
 
     const postcssConfig = await import(configUrl)
@@ -223,7 +238,7 @@ async function processWithPostcss(files, options = { verbose: false }) {
     }
 
     if (plugins.length === 0) {
-      log("No PostCSS plugins configured, skipping", "warning", "CSS")
+      log('No PostCSS plugins configured, skipping', 'warning', 'CSS')
       return
     }
 
@@ -231,7 +246,7 @@ async function processWithPostcss(files, options = { verbose: false }) {
 
     for (const file of files) {
       const fileName = path.basename(file)
-      log(`Adding vendor prefixes to ${fileName}...`, "info", "CSS")
+      log(`Adding vendor prefixes to ${fileName}...`, 'info', 'CSS')
 
       try {
         const css = await fs.readFile(file, 'utf8')
@@ -247,17 +262,17 @@ async function processWithPostcss(files, options = { verbose: false }) {
         }
 
         if (options.verbose) {
-          log(`Processed ${fileName} with PostCSS`, "success", "CSS")
+          log(`Processed ${fileName} with PostCSS`, 'success', 'CSS')
         }
       } catch (error) {
-        log(`Error processing ${fileName} with PostCSS: ${error.message}`, "error", "CSS")
+        log(`Error processing ${fileName} with PostCSS: ${error.message}`, 'error', 'CSS')
         // Continue with other files
       }
     }
 
-    log("PostCSS processing completed", "success", "CSS")
+    log('PostCSS processing completed', 'success', 'CSS')
   } catch (error) {
-    log(`PostCSS processing error: ${error.message}`, "error", "CSS")
+    log(`PostCSS processing error: ${error.message}`, 'error', 'CSS')
     // Don't throw as we want to continue with other steps
   }
 }
@@ -270,33 +285,32 @@ async function processWithPostcss(files, options = { verbose: false }) {
  * @throws {Error} If RTL generation fails
  */
 async function generateRtl(options = { verbose: false }) {
-  log("Generating RTL CSS...", "info", "CSS")
+  log('Generating RTL CSS...', 'info', 'CSS')
 
   try {
     // Import rtlcss
     const rtlcss = (await import('rtlcss')).default
 
     // Find all CSS files that don't already have .rtl or .min in their names
-    const cssFiles = await glob("dist/css/*.css")
-    const filesToProcess = cssFiles.filter(file =>
-      !file.includes(".rtl.css") &&
-      !file.includes(".min.css")
+    const cssFiles = await glob('dist/css/*.css')
+    const filesToProcess = cssFiles.filter(
+      (file) => !file.includes('.rtl.css') && !file.includes('.min.css')
     )
 
     if (filesToProcess.length === 0) {
-      log("No CSS files found for RTL conversion", "warning", "CSS")
+      log('No CSS files found for RTL conversion', 'warning', 'CSS')
       return
     }
 
-    log(`Found ${filesToProcess.length} CSS files for RTL conversion`, "info", "CSS")
+    log(`Found ${filesToProcess.length} CSS files for RTL conversion`, 'info', 'CSS')
 
     // Process each file
     for (const file of filesToProcess) {
       const fileName = path.basename(file)
-      const rtlFileName = fileName.replace(".css", ".rtl.css")
+      const rtlFileName = fileName.replace('.css', '.rtl.css')
       const rtlOutputPath = path.join(path.dirname(file), rtlFileName)
 
-      log(`Converting ${fileName} to RTL...`, "info", "CSS")
+      log(`Converting ${fileName} to RTL...`, 'info', 'CSS')
 
       try {
         // Read the CSS file
@@ -305,23 +319,23 @@ async function generateRtl(options = { verbose: false }) {
         // Convert to RTL
         const rtlCss = rtlcss.process(css)
 
-        // Write the RTL CSS file
-        await fs.writeFile(rtlOutputPath, rtlCss)
+        // Write the RTL CSS file with banner
+        await fs.writeFile(rtlOutputPath, banner + '\n' + rtlCss)
 
         if (options.verbose) {
-          log(`RTL conversion details for ${fileName}: ${rtlCss.length} bytes`, "info", "CSS")
+          log(`RTL conversion details for ${fileName}: ${rtlCss.length} bytes`, 'info', 'CSS')
         }
 
-        log(`Generated RTL CSS: ${rtlFileName}`, "success", "CSS")
+        log(`Generated RTL CSS: ${rtlFileName}`, 'success', 'CSS')
       } catch (error) {
-        log(`RTL conversion error for ${fileName}: ${error.message}`, "error", "CSS")
+        log(`RTL conversion error for ${fileName}: ${error.message}`, 'error', 'CSS')
         // Continue with other files
       }
     }
 
-    log("RTL CSS generation completed", "success", "CSS")
+    log('RTL CSS generation completed', 'success', 'CSS')
   } catch (error) {
-    log(`RTL CSS generation error: ${error.message}`, "error", "CSS")
+    log(`RTL CSS generation error: ${error.message}`, 'error', 'CSS')
     // Don't throw as we want to continue with other steps
   }
 }
@@ -349,7 +363,7 @@ export async function buildCss(options = {}) {
   }
 
   try {
-    log(`Starting CSS ${opts.isDev ? 'development' : 'production'} build...`, "info", "CSS")
+    log(`Starting CSS ${opts.isDev ? 'development' : 'production'} build...`, 'info', 'CSS')
 
     // Always compile SASS
     await compileSass({ verbose: opts.verbose })
@@ -358,38 +372,37 @@ export async function buildCss(options = {}) {
     if (!opts.skipRtl) {
       await generateRtl({ verbose: opts.verbose })
     } else if (opts.verbose) {
-      log("Skipping RTL generation", "info", "CSS")
+      log('Skipping RTL generation', 'info', 'CSS')
     }
 
     // Skip optimization steps in dev mode
     if (!opts.isDev) {
       // Add vendor prefixes if not skipped
       if (!opts.skipPrefixing) {
-        log("Adding vendor prefixes...", "info", "CSS")
-        const cssFiles = await glob("dist/css/*.css")
-        const filesToProcess = cssFiles.filter(file =>
-          !file.includes(".rtl.css") &&
-          !file.includes(".min.css")
+        log('Adding vendor prefixes...', 'info', 'CSS')
+        const cssFiles = await glob('dist/css/*.css')
+        const filesToProcess = cssFiles.filter(
+          (file) => !file.includes('.rtl.css') && !file.includes('.min.css')
         )
         await processWithPostcss(filesToProcess, { verbose: opts.verbose })
       } else if (opts.verbose) {
-        log("Skipping vendor prefixing", "info", "CSS")
+        log('Skipping vendor prefixing', 'info', 'CSS')
       }
 
       // Minify CSS if not skipped
       if (!opts.skipMinification) {
-        log("Minifying CSS...", "info", "CSS")
+        log('Minifying CSS...', 'info', 'CSS')
         await minifyAllCSS({ verbose: opts.verbose })
       } else if (opts.verbose) {
-        log("Skipping CSS minification", "info", "CSS")
+        log('Skipping CSS minification', 'info', 'CSS')
       }
     }
 
-    log(`CSS ${opts.isDev ? 'development' : 'production'} build completed`, "success", "CSS")
+    log(`CSS ${opts.isDev ? 'development' : 'production'} build completed`, 'success', 'CSS')
   } catch (error) {
-    log(`CSS build error: ${error.message}`, "error", "CSS")
+    log(`CSS build error: ${error.message}`, 'error', 'CSS')
     if (error.stack && opts.verbose) {
-      log(`Stack trace: ${error.stack}`, "error", "CSS")
+      log(`Stack trace: ${error.stack}`, 'error', 'CSS')
     }
     throw error
   }
@@ -410,7 +423,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     skipRtl,
     verbose
   }).catch((error) => {
-    log(`Fatal CSS build error: ${error.message}`, "error", "CSS")
+    log(`Fatal CSS build error: ${error.message}`, 'error', 'CSS')
     process.exit(1)
   })
 }
