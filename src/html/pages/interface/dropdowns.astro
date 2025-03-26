@@ -492,7 +492,7 @@ const dropdownWithTextExample = `<div class="btn-group">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
     <i class="ri-information-line me-1"></i>System Info
   </button>
-  <div class="dropdown-menu p-4 text-body-secondary" style="max-width: 300px;">
+  <div class="dropdown-menu p-4 text-body-secondary" style="width: 300px;">
     <div class="mb-2">
       <i class="ri-computer-line me-2"></i><strong>System Status:</strong>
     </div>
@@ -582,6 +582,69 @@ const dropdownAutoCloseExample = `<div class="btn-group pb-1">
   </ul>
 </div>
 `
+
+// Add nested dropdown menu example
+const nestedDropdownExample = `<div class="btn-group pb-1" data-example="nested-dropdown">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="ri-menu-3-line me-1"></i>Multi-level Menu
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#"><i class="ri-dashboard-line me-2"></i>Dashboard</a></li>
+    <li>
+      <a class="dropdown-item has-submenu" href="#">
+        <i class="ri-settings-3-line me-2"></i>Settings
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#"><i class="ri-user-settings-line me-2"></i>User Settings</a></li>
+        <li><a class="dropdown-item" href="#"><i class="ri-shield-line me-2"></i>Security</a></li>
+        <li>
+          <a class="dropdown-item has-submenu" href="#">
+            <i class="ri-notification-line me-2"></i>Notifications
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#"><i class="ri-mail-line me-2"></i>Email Alerts</a></li>
+            <li><a class="dropdown-item" href="#"><i class="ri-pushpin-line me-2"></i>Push Notifications</a></li>
+            <li><a class="dropdown-item" href="#"><i class="ri-timer-line me-2"></i>Reminders</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><hr class="dropdown-divider"></li>
+    <li>
+      <a class="dropdown-item has-submenu" href="#">
+        <i class="ri-folder-line me-2"></i>Projects
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#"><i class="ri-file-list-line me-2"></i>Recent Projects</a></li>
+        <li><a class="dropdown-item" href="#"><i class="ri-star-line me-2"></i>Starred</a></li>
+        <li><a class="dropdown-item" href="#"><i class="ri-archive-line me-2"></i>Archived</a></li>
+      </ul>
+    </li>
+    <li><a class="dropdown-item" href="#"><i class="ri-logout-box-line me-2"></i>Logout</a></li>
+  </ul>
+</div>
+
+<div class="btn-group pb-1 ms-4" data-example="nested-dropdown">
+  <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="ri-user-line me-1"></i>User Menu
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#"><i class="ri-user-line me-2"></i>My Profile</a></li>
+    <li><a class="dropdown-item" href="#"><i class="ri-message-3-line me-2"></i>Messages</a></li>
+    <li>
+      <a class="dropdown-item has-submenu" href="#">
+        <i class="ri-group-line me-2"></i>Teams
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#"><i class="ri-team-line me-2"></i>Marketing</a></li>
+        <li><a class="dropdown-item" href="#"><i class="ri-code-s-slash-line me-2"></i>Development</a></li>
+        <li><a class="dropdown-item" href="#"><i class="ri-customer-service-line me-2"></i>Support</a></li>
+      </ul>
+    </li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item text-danger" href="#"><i class="ri-logout-box-line me-2"></i>Sign Out</a></li>
+  </ul>
+</div>`
 ---
 
 <AdminLayout
@@ -628,7 +691,7 @@ const dropdownAutoCloseExample = `<div class="btn-group pb-1">
             <!-- Basic Dropdown Example -->
             <ComponentPreview
               title="Single Button Dropdown"
-              height="200px"
+              height="250px"
               component={dropdownBasicExample}
               htmlCode={dropdownBasicExample}
               cssCode={``}
@@ -643,7 +706,7 @@ const dropdownAutoCloseExample = `<div class="btn-group pb-1">
             <!-- Link Dropdown Example -->
             <ComponentPreview
               title="Link Dropdown"
-              height="200px"
+              height="250px"
               component={dropdownLinkExample}
               htmlCode={dropdownLinkExample}
               cssCode={``}
@@ -708,7 +771,7 @@ const dropdownAutoCloseExample = `<div class="btn-group pb-1">
             <!-- Small Buttons Example -->
             <ComponentPreview
               title="Small Dropdowns"
-              height="200px"
+              height="250px"
               component={dropdownSmallButtons}
               htmlCode={dropdownSmallButtons}
               cssCode={``}
@@ -728,7 +791,7 @@ const dropdownAutoCloseExample = `<div class="btn-group pb-1">
             <!-- Dropdown Item Sizes Example -->
             <ComponentPreview
               title="Menu Item Sizes"
-              height="280px"
+              height="300px"
               component={dropdownItemSizingExample}
               htmlCode={dropdownItemSizingExample}
               cssCode={``}
@@ -755,7 +818,7 @@ const dropdownAutoCloseExample = `<div class="btn-group pb-1">
             <!-- Centered Dropdown Example -->
             <ComponentPreview
               title="Centered Dropdown"
-              height="200px"
+              height="250px"
               component={dropdownCenteredExample}
               htmlCode={dropdownCenteredExample}
               cssCode={``}
@@ -773,7 +836,7 @@ const dropdownAutoCloseExample = `<div class="btn-group pb-1">
             <!-- Dropup Example -->
             <ComponentPreview
               title="Dropup Menu"
-              height="200px"
+              height="250px"
               component={dropupDefault}
               htmlCode={dropupDefault}
               cssCode={``}
@@ -791,7 +854,7 @@ const dropdownAutoCloseExample = `<div class="btn-group pb-1">
             <!-- Centered Dropup Example -->
             <ComponentPreview
               title="Centered Dropup"
-              height="200px"
+              height="250px"
               component={dropupCenteredExample}
               htmlCode={dropupCenteredExample}
               cssCode={``}
@@ -809,7 +872,7 @@ const dropdownAutoCloseExample = `<div class="btn-group pb-1">
             <!-- Dropend Example -->
             <ComponentPreview
               title="Right-aligned Dropdown"
-              height="150px"
+              height="250px"
               component={dropendExample}
               htmlCode={dropendExample}
               cssCode={``}
@@ -828,7 +891,7 @@ const dropdownAutoCloseExample = `<div class="btn-group pb-1">
             <!-- Dropstart Example -->
             <ComponentPreview
               title="Left-aligned Dropdown"
-              height="200px"
+              height="250px"
               component={dropstartExample}
               htmlCode={dropstartExample}
               cssCode={``}
@@ -849,7 +912,7 @@ const dropdownAutoCloseExample = `<div class="btn-group pb-1">
             <!-- Button Items Example -->
             <ComponentPreview
               title="Button Menu Items"
-              height="200px"
+              height="250px"
               component={dropdownButtonItemsExample}
               htmlCode={dropdownButtonItemsExample}
               cssCode={``}
@@ -883,7 +946,7 @@ const dropdownAutoCloseExample = `<div class="btn-group pb-1">
             <!-- Active Items Example -->
             <ComponentPreview
               title="Active Menu Items"
-              height="200px"
+              height="250px"
               component={dropdownActiveItemsExample}
               htmlCode={dropdownActiveItemsExample}
               cssCode={``}
@@ -901,7 +964,7 @@ const dropdownAutoCloseExample = `<div class="btn-group pb-1">
             <!-- Disabled Items Example -->
             <ComponentPreview
               title="Disabled Menu Items"
-              height="200px"
+              height="250px"
               component={dropdownDisabledItemsExample}
               htmlCode={dropdownDisabledItemsExample}
               cssCode={``}
@@ -920,7 +983,7 @@ const dropdownAutoCloseExample = `<div class="btn-group pb-1">
             <!-- Right-aligned Menu Example -->
             <ComponentPreview
               title="Right-aligned Menu"
-              height="200px"
+              height="250px"
               component={dropdownRightAlignedExample}
               htmlCode={dropdownRightAlignedExample}
               cssCode={``}
@@ -941,7 +1004,7 @@ const dropdownAutoCloseExample = `<div class="btn-group pb-1">
             <!-- Responsive Right Alignment Example -->
             <ComponentPreview
               title="Left to Right Responsive Alignment"
-              height="200px"
+              height="250px"
               component={dropdownResponsiveRightExample}
               htmlCode={dropdownResponsiveRightExample}
               cssCode={``}
@@ -957,7 +1020,7 @@ const dropdownAutoCloseExample = `<div class="btn-group pb-1">
             <!-- Responsive Left Alignment Example -->
             <ComponentPreview
               title="Right to Left Responsive Alignment"
-              height="200px"
+              height="250px"
               component={dropdownResponsiveLeftExample}
               htmlCode={dropdownResponsiveLeftExample}
               cssCode={``}
@@ -997,7 +1060,7 @@ const dropdownAutoCloseExample = `<div class="btn-group pb-1">
             <!-- Header Example -->
             <ComponentPreview
               title="Menu with Headers"
-              height="300px"
+              height="350px"
               component={dropdownWithHeaderExample}
               htmlCode={dropdownWithHeaderExample}
               cssCode={``}
@@ -1034,7 +1097,7 @@ const dropdownAutoCloseExample = `<div class="btn-group pb-1">
             <!-- Text Content Example -->
             <ComponentPreview
               title="Menu with Text Content"
-              height="300px"
+              height="350px"
               component={dropdownWithTextExample}
               htmlCode={dropdownWithTextExample}
               cssCode={``}
