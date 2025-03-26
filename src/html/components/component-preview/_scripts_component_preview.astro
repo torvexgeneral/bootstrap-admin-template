@@ -29,6 +29,37 @@ import { getAssetPrefix } from '../../../utils/path.js'
 <!-- JSZip for download functionality -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" is:inline></script>
 
+<!-- Iframe Loader Script -->
+<script is:inline>
+  // Function to handle iframe loading
+  function setupIframeLoaders() {
+    const iframes = document.querySelectorAll('.preview-iframe')
+
+    iframes.forEach((iframe) => {
+      const loaderContainer = iframe.closest('.preview-container').querySelector('.iframe-loader')
+
+      // Show loader initially
+      if (loaderContainer) {
+        loaderContainer.classList.remove('hidden')
+      }
+
+      // Hide loader when iframe is loaded
+      iframe.addEventListener('load', () => {
+        if (loaderContainer) {
+          loaderContainer.classList.add('hidden')
+        }
+      })
+
+      // For iframes that might already be loaded
+      if (iframe.contentDocument && iframe.contentDocument.readyState === 'complete') {
+        if (loaderContainer) {
+          loaderContainer.classList.add('hidden')
+        }
+      }
+    })
+  }
+</script>
+
 <!-- Simple Initialization -->
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
@@ -54,5 +85,15 @@ import { getAssetPrefix } from '../../../utils/path.js'
         new bootstrap.Tooltip(tooltip)
       })
     }
+
+    // Setup iframe loaders
+    setupIframeLoaders()
+
+    // Handle dynamically loaded iframes (e.g., in modals)
+    document.addEventListener('shown.bs.modal', function (event) {
+      if (event.target.classList.contains('preview-modal')) {
+        setupIframeLoaders()
+      }
+    })
   })
 </script>
