@@ -1,5 +1,6 @@
 ---
 import SearchModal from '../../../components/modals/search-modal.astro'
+import packageJson from '../../../../../package.json'
 ---
 
 <footer class="footer">
@@ -11,7 +12,7 @@ import SearchModal from '../../../components/modals/search-modal.astro'
         </p>
       </div>
       <div class="col-md-6 text-md-end">
-        <p class="mb-0">Version 1.0.0</p>
+        <p class="mb-0">Version {packageJson.version}</p>
       </div>
     </div>
   </div>
