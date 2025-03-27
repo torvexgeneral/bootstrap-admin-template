@@ -156,6 +156,39 @@ const customStyledAlertExamples = `<div class="alert alert-primary border-0 bord
   </div>
 </div>`
 
+// Live alert example with JavaScript interaction
+const liveAlertExample = `<div id="liveAlertPlaceholder"></div>
+<button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>`
+
+// JavaScript code for the live alert example
+const liveAlertJsCode = `<script>
+const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+const appendAlert = (message, type) => {
+  const wrapper = document.createElement('div')
+  wrapper.innerHTML = [
+    \`<div class="alert alert-\${type} alert-dismissible fade show" role="alert">\`,
+    \`   <div>\${message}</div>\`,
+    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+    '</div>'
+  ].join('')
+
+  alertPlaceholder.append(wrapper)
+}
+
+const alertTrigger = document.getElementById('liveAlertBtn')
+if (alertTrigger) {
+  alertTrigger.addEventListener('click', () => {
+    appendAlert('Nice, you triggered this alert message!', 'success')
+  })
+}
+</script>`
+
+// Configuration for live alert preview
+const liveAlertConfig = {
+  cssCode: '',
+  jsCode: liveAlertJsCode
+}
+
 // Shared preview configuration for consistent component display
 const previewConfig = {
   cssCode: '',
@@ -275,6 +308,25 @@ const previewConfig = {
           </div>
 
           <div class="my-3">
+            <h3 class="mb-0 fs-2" id="live-alert">Live Alert Example</h3>
+            <p class="py-2">
+              Create dynamic alerts that respond to user interactions using JavaScript. This example
+              demonstrates how to show an alert (hidden initially) when a button is clicked, then
+              dismiss it with the built-in close button. This pattern is useful for providing
+              feedback after user actions without requiring a page refresh.
+            </p>
+
+            <ComponentPreview
+              title="Live Alert Example"
+              height="300px"
+              component={liveAlertExample}
+              htmlCode={liveAlertExample}
+              jsCode={liveAlertJsCode}
+              cssCode=""
+            />
+          </div>
+
+          <div class="my-3">
             <h3 class="mb-0 fs-2" id="custom-styled">Custom Styled Alerts</h3>
             <p class="py-2">
               Create visually distinctive alerts by combining utility classes with the base alert
@@ -289,7 +341,7 @@ const previewConfig = {
               height="550px"
               component={customStyledAlertExamples}
               htmlCode={customStyledAlertExamples}
-              {...previewConfig}
+              {...liveAlertConfig}
             />
           </div>
         </div>
