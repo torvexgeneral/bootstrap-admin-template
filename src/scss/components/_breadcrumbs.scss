@@ -1,0 +1,107 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  margin: 0;
+  list-style: none;
+  color: var(--breadcrumb-color);
+
+  .breadcrumb-item {
+    display: inline-flex;
+    align-items: center;
+    color: var(--breadcrumb-color);
+    white-space: nowrap;
+    padding: 0;
+
+    // Remove any existing content between items
+    &::before,
+    &::after {
+      display: none !important;
+    }
+
+    // Add new separator
+    &:not(:last-child) {
+      position: relative;
+      padding-right: 1.5rem;
+
+      &::after {
+        content: '/';
+        position: absolute;
+        right: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--breadcrumb-color);
+        line-height: 1;
+        display: block !important;
+      }
+    }
+
+    a {
+      color: var(--breadcrumb-color);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+
+      &:hover {
+        color: var(--breadcrumb-hover-color);
+      }
+
+      i {
+        font-size: 1rem;
+        line-height: 1;
+        margin-top: -0.125rem;
+      }
+    }
+
+    &.active {
+      color: var(--breadcrumb-active-color);
+      font-weight: 500;
+    }
+  }
+
+  // Custom separator variants
+  &.separator-chevron {
+    .breadcrumb-item:not(:last-child)::after {
+      content: '›';
+      font-size: 1.125rem;
+      line-height: 1;
+      right: 0.5rem;
+      margin-top: -1px;
+    }
+  }
+
+  &.separator-dot {
+    .breadcrumb-item:not(:last-child)::after {
+      content: '•';
+      font-size: 0.875rem;
+      line-height: 1;
+      right: 0.5rem;
+    }
+  }
+
+  // Responsive styles
+  @media (max-width: 640px) {
+    font-size: 0.75rem;
+
+    .breadcrumb-item {
+      &:not(:last-child) {
+        padding-right: 1.25rem;
+
+        &::after {
+          right: 0.375rem;
+        }
+      }
+    }
+  }
+}
+
+// Interactive breadcrumb with dropdown
+.breadcrumb-item {
+  .dropdown-toggle {
+    &::after {
+      margin-top: -0.255rem;
+    }
+  }
+}

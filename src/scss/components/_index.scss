@@ -5,6 +5,7 @@
 // Bootstrap Core Components
 @import 'alerts';
 @import 'borders';
+@import 'breadcrumbs';
 @import 'button-group';
 @import 'buttons';
 @import 'dropdowns';
@@ -17,12 +18,10 @@
 @import 'tables';
 @import 'tooltips';
 
-
 // Astero Admin Components
 @import 'datatable';
-@import 'info-box';   // Credit: AdminLTE
+@import 'info-box'; // Credit: AdminLTE
 @import 'simplebar'; // Custom SimpleBar styles
-@import 'small-box';  // Credit: AdminLTE
-@import 'toc';  // Table of Contents Component
+@import 'small-box'; // Credit: AdminLTE
+@import 'toc'; // Table of Contents Component
 // @import 'timeline';   // Credit: AdminLTE
-
