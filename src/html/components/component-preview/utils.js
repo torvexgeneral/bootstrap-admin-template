@@ -57,6 +57,12 @@ export function createIframeContent({ component, cssCode, jsCode, isDev }) {
   <link href="${getCSS(isDev)}" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
 
+  <!-- Source Sans 3 from Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet"
+  />
+
   <style id="component-style">
     body {
       padding: 1rem;
