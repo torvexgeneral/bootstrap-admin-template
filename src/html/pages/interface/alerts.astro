@@ -183,12 +183,6 @@ if (alertTrigger) {
 }
 </script>`
 
-// Configuration for live alert preview
-const liveAlertConfig = {
-  cssCode: '',
-  jsCode: liveAlertJsCode
-}
-
 // Shared preview configuration for consistent component display
 const previewConfig = {
   cssCode: '',
@@ -341,7 +335,7 @@ const previewConfig = {
               height="550px"
               component={customStyledAlertExamples}
               htmlCode={customStyledAlertExamples}
-              {...liveAlertConfig}
+              {...previewConfig}
             />
           </div>
         </div>
