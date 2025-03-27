@@ -3,10 +3,10 @@
  * @module lint
  */
 
-import { fileURLToPath } from "url"
-import { runCommand, log } from "./utils.mjs"
-import path from "path"
-import fs from "fs/promises"
+import { fileURLToPath } from 'url'
+import { runCommand, log } from './utils.mjs'
+import path from 'path'
+import fs from 'fs/promises'
 
 // Get the absolute path to the project root
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -14,46 +14,55 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 // Define linting tasks with their commands and arguments
 const tasks = {
   lockfile: {
-    name: "Package Lockfile",
-    description: "Validates package lockfile integrity",
-    cmd: "lockfile-lint",
+    name: 'Package Lockfile',
+    description: 'Validates package lockfile integrity',
+    cmd: 'lockfile-lint',
     args: [
-      "--allowed-hosts", "npm",
-      "--allowed-schemes", "https:",
-      "--empty-hostname", "false",
-      "--type", "npm",
-      "--path", "package-lock.json"
+      '--allowed-hosts',
+      'npm',
+      '--allowed-schemes',
+      'https:',
+      '--empty-hostname',
+      'false',
+      '--type',
+      'npm',
+      '--path',
+      'package-lock.json'
     ]
   },
   js: {
-    name: "JavaScript",
-    description: "Checks JavaScript code quality",
-    cmd: "eslint",
+    name: 'JavaScript',
+    description: 'Checks JavaScript code quality',
+    cmd: 'eslint',
     args: [
-      "--config", "config/eslint.config.mjs",
-      "--cache",
-      "--cache-location", ".cache/.eslintcache",
-      "--report-unused-disable-directives",
-      "."
+      '--config',
+      'config/eslint.config.mjs',
+      '--cache',
+      '--cache-location',
+      '.cache/.eslintcache',
+      '--report-unused-disable-directives',
+      '.'
     ]
   },
   css: {
-    name: "CSS/SCSS",
-    description: "Checks CSS/SCSS code quality",
-    cmd: "stylelint",
+    name: 'CSS/SCSS',
+    description: 'Checks CSS/SCSS code quality',
+    cmd: 'stylelint',
     args: [
-      "--config", "config/stylelint.config.mjs",
-      "src/scss/**/*.scss",
-      "--cache",
-      "--cache-location", ".cache/.stylelintcache",
-      "--rd"
+      '--config',
+      'config/stylelint.config.mjs',
+      'src/scss/**/*.scss',
+      '--cache',
+      '--cache-location',
+      '.cache/.stylelintcache',
+      '--rd'
     ]
   },
   astro: {
-    name: "Astro",
-    description: "Validates Astro templates",
-    cmd: "astro",
-    args: ["--config", "config/astro.config.mjs", "check"]
+    name: 'Astro',
+    description: 'Validates Astro templates',
+    cmd: 'astro',
+    args: ['--config', 'config/astro.config.mjs', 'check']
   }
 }
 
@@ -71,7 +80,7 @@ async function verifyConfig(taskType) {
   const task = tasks[taskType]
 
   // Check for config files in arguments
-  const configIndex = task.args.indexOf("--config")
+  const configIndex = task.args.indexOf('--config')
   if (configIndex !== -1 && configIndex + 1 < task.args.length) {
     const configPath = path.join(projectRoot, task.args[configIndex + 1])
     try {
@@ -94,7 +103,9 @@ export async function lint(taskType, options = {}) {
   try {
     // Validate task type if provided
     if (taskType && !tasks[taskType]) {
-      throw new Error(`Unknown task type: ${taskType}. Available types: ${Object.keys(tasks).join(", ")}`)
+      throw new Error(
+        `Unknown task type: ${taskType}. Available types: ${Object.keys(tasks).join(', ')}`
+      )
     }
 
     const tasksToRun = taskType ? { [taskType]: tasks[taskType] } : tasks
@@ -103,12 +114,12 @@ export async function lint(taskType, options = {}) {
     try {
       await fs.mkdir(path.join(projectRoot, '.cache'), { recursive: true })
     } catch (error) {
-      log(`Warning: Could not create cache directory: ${error.message}`, "warning")
+      log(`Warning: Could not create cache directory: ${error.message}`, 'warning')
     }
 
     // Run each task
     for (const [name, task] of Object.entries(tasksToRun)) {
-      log(`Running ${task.name} lint check...`, "info")
+      log(`Running ${task.name} lint check...`, 'info')
 
       // Verify config files exist
       await verifyConfig(name)
@@ -117,15 +128,15 @@ export async function lint(taskType, options = {}) {
       await runCommand(task.cmd, task.args)
 
       if (options.verbose) {
-        log(`${task.name} lint check completed with detailed output`, "info")
+        log(`${task.name} lint check completed with detailed output`, 'info')
       }
 
-      log(`✓ ${task.name} passed`, "success")
+      log(`✓ ${task.name} passed`, 'success')
     }
 
-    log("All lint checks passed successfully", "success")
+    log('All lint checks passed successfully', 'success')
   } catch (error) {
-    log(`Lint error: ${error.message}`, "error")
+    log(`Lint error: ${error.message}`, 'error')
     throw error
   }
 }
@@ -136,7 +147,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const verbose = process.argv.includes('--verbose')
 
   lint(taskType, { verbose }).catch((error) => {
-    log(`Fatal lint error: ${error.message}`, "error")
+    log(`Fatal lint error: ${error.message}`, 'error')
     process.exit(1)
   })
 }

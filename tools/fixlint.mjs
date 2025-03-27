@@ -3,10 +3,10 @@
  * @module fixlint
  */
 
-import { fileURLToPath } from "url"
-import { runCommand, log } from "./utils.mjs"
-import path from "path"
-import fs from "fs/promises"
+import { fileURLToPath } from 'url'
+import { runCommand, log } from './utils.mjs'
+import path from 'path'
+import fs from 'fs/promises'
 
 // Get the absolute path to the project root
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -15,54 +15,63 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 const CONFIG = {
   tasks: {
     lock: {
-      name: "Lockfile",
-      description: "Package lockfile validation",
-      cmd: "lockfile-lint",
+      name: 'Lockfile',
+      description: 'Package lockfile validation',
+      cmd: 'lockfile-lint',
       args: [
-        "--allowed-hosts", "npm",
-        "--allowed-schemes", "https:",
-        "--empty-hostname", "false",
-        "--type", "npm",
-        "--path", "package-lock.json"
+        '--allowed-hosts',
+        'npm',
+        '--allowed-schemes',
+        'https:',
+        '--empty-hostname',
+        'false',
+        '--type',
+        'npm',
+        '--path',
+        'package-lock.json'
       ]
     },
     js: {
-      name: "ESLint",
-      description: "JavaScript lints fixes",
-      cmd: "eslint",
+      name: 'ESLint',
+      description: 'JavaScript lints fixes',
+      cmd: 'eslint',
       args: [
-        "--config", "config/eslint.config.mjs",
-        "--cache",
-        "--cache-location", ".cache/.eslintcache",
-        "--report-unused-disable-directives",
-        "--fix",
-        "."
+        '--config',
+        'config/eslint.config.mjs',
+        '--cache',
+        '--cache-location',
+        '.cache/.eslintcache',
+        '--report-unused-disable-directives',
+        '--fix',
+        '.'
       ]
     },
     css: {
-      name: "StyleLint",
-      description: "SCSS/CSS style lints fixes",
-      cmd: "stylelint",
+      name: 'StyleLint',
+      description: 'SCSS/CSS style lints fixes',
+      cmd: 'stylelint',
       args: [
-        "src/scss/**/*.scss",
-        "--config", "config/stylelint.config.mjs",
-        "--cache",
-        "--cache-location", ".cache/.stylelintcache",
-        "--fix",
-        "--rd"
+        'src/scss/**/*.scss',
+        '--config',
+        'config/stylelint.config.mjs',
+        '--cache',
+        '--cache-location',
+        '.cache/.stylelintcache',
+        '--fix',
+        '--rd'
       ]
     },
     astro: {
-      name: "Astro",
-      description: "Astro template validation",
-      cmd: "astro",
-      args: ["--config", "config/astro.config.mjs", "check"]
+      name: 'Astro',
+      description: 'Astro template validation',
+      cmd: 'astro',
+      args: ['--config', 'config/astro.config.mjs', 'check']
     }
   },
   messages: {
-    start: "====== Running {task} ======",
-    complete: "🎉 {task} completed successfully!",
-    error: "❌ Fix process failed"
+    start: '====== Running {task} ======',
+    complete: '🎉 {task} completed successfully!',
+    error: '❌ Fix process failed'
   }
 }
 
@@ -80,7 +89,7 @@ async function verifyConfig(taskType) {
   const task = CONFIG.tasks[taskType]
 
   // Check for config files in arguments
-  const configIndex = task.args.indexOf("--config")
+  const configIndex = task.args.indexOf('--config')
   if (configIndex !== -1 && configIndex + 1 < task.args.length) {
     const configPath = path.join(projectRoot, task.args[configIndex + 1])
     try {
@@ -100,7 +109,7 @@ async function verifyConfig(taskType) {
 function getStepsForTaskType(taskType) {
   if (taskType && !CONFIG.tasks[taskType]) {
     throw new Error(
-      `Unknown task type: ${taskType}. Available types: ${Object.keys(CONFIG.tasks).join(", ")}`
+      `Unknown task type: ${taskType}. Available types: ${Object.keys(CONFIG.tasks).join(', ')}`
     )
   }
 
@@ -110,7 +119,7 @@ function getStepsForTaskType(taskType) {
     description: task.description,
     fn: async () => {
       await runCommand(task.cmd, task.args)
-      log(`✅ ${task.description} complete`, "success")
+      log(`✅ ${task.description} complete`, 'success')
     }
   }))
 }
@@ -135,7 +144,7 @@ export async function fixlint(taskType, options = {}) {
     try {
       await fs.mkdir(path.join(projectRoot, '.cache'), { recursive: true })
     } catch (error) {
-      log(`Warning: Could not create cache directory: ${error.message}`, "warning")
+      log(`Warning: Could not create cache directory: ${error.message}`, 'warning')
     }
 
     // Verify config files exist
@@ -149,11 +158,9 @@ export async function fixlint(taskType, options = {}) {
     }
 
     const stepsToRun = getStepsForTaskType(taskType)
-    const taskDescription = taskType
-      ? CONFIG.tasks[taskType].description
-      : "all available fixes"
+    const taskDescription = taskType ? CONFIG.tasks[taskType].description : 'all available fixes'
 
-    log(CONFIG.messages.start.replace("{task}", taskDescription), "info")
+    log(CONFIG.messages.start.replace('{task}', taskDescription), 'info')
 
     for (let i = 0; i < stepsToRun.length; i++) {
       const step = stepsToRun[i]
@@ -161,21 +168,20 @@ export async function fixlint(taskType, options = {}) {
 
       try {
         if (opts.verbose) {
-          log(`${stepNumber} Running ${step.name}...`, "info")
+          log(`${stepNumber} Running ${step.name}...`, 'info')
         }
 
         await step.fn()
-        log(`${stepNumber} ${step.description} applied`, "success")
+        log(`${stepNumber} ${step.description} applied`, 'success')
       } catch (error) {
         throw new Error(`${step.name} failed: ${error.message}`)
       }
     }
 
-    log(CONFIG.messages.complete.replace("{task}", taskDescription), "success")
-
+    log(CONFIG.messages.complete.replace('{task}', taskDescription), 'success')
   } catch (error) {
-    log(CONFIG.messages.error, "error")
-    log(error.message, "error")
+    log(CONFIG.messages.error, 'error')
+    log(error.message, 'error')
     throw error
   }
 }
@@ -186,7 +192,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const verbose = process.argv.includes('--verbose')
 
   fixlint(taskType, { verbose }).catch((error) => {
-    log(`Fatal fixlint error: ${error.message}`, "error")
+    log(`Fatal fixlint error: ${error.message}`, 'error')
     process.exit(1)
   })
 }

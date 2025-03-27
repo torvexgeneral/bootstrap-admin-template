@@ -3,10 +3,10 @@
  * @module js
  */
 
-import { fileURLToPath } from "url"
-import { runCommand, log } from "./utils.mjs"
-import fs from "fs/promises"
-import path from "path"
+import { fileURLToPath } from 'url'
+import { runCommand, log } from './utils.mjs'
+import fs from 'fs/promises'
+import path from 'path'
 
 // Get the absolute path to the project root
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -30,7 +30,7 @@ export async function buildJs(options = {}) {
   }
 
   try {
-    log("JS build process started...", "info", "JS")
+    log('JS build process started...', 'info', 'JS')
 
     // Ensure the config file exists
     const configPath = path.join(projectRoot, 'config/rollup.config.mjs')
@@ -45,14 +45,16 @@ export async function buildJs(options = {}) {
     await fs.mkdir(distJsDir, { recursive: true })
 
     // Bundle with Rollup
-    log("Bundling JavaScript...", "info", "JS")
+    log('Bundling JavaScript...', 'info', 'JS')
 
     // In development, only build non-minified version
     if (opts.isDev || opts.skipMinification) {
-      await runCommand("rollup", [
-        "--config", configPath,
-        "--sourcemap",
-        "--environment", "BUILD:development"
+      await runCommand('rollup', [
+        '--config',
+        configPath,
+        '--sourcemap',
+        '--environment',
+        'BUILD:development'
       ])
       // Remove the minified version if it exists
       try {
@@ -63,18 +65,20 @@ export async function buildJs(options = {}) {
       }
     } else {
       // In production, build both versions
-      await runCommand("rollup", [
-        "--config", configPath,
-        "--sourcemap",
-        "--environment", "BUILD:production"
+      await runCommand('rollup', [
+        '--config',
+        configPath,
+        '--sourcemap',
+        '--environment',
+        'BUILD:production'
       ])
     }
 
-    log(`JS ${opts.isDev ? 'development' : 'production'} build completed`, "success", "JS")
+    log(`JS ${opts.isDev ? 'development' : 'production'} build completed`, 'success', 'JS')
   } catch (error) {
-    log(`JavaScript build error: ${error.message}`, "error", "JS")
+    log(`JavaScript build error: ${error.message}`, 'error', 'JS')
     if (error.stack && opts.verbose) {
-      log(`Stack trace: ${error.stack}`, "error", "JS")
+      log(`Stack trace: ${error.stack}`, 'error', 'JS')
     }
     throw error
   }
@@ -91,7 +95,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     skipMinification,
     verbose
   }).catch((error) => {
-    log(`Fatal JavaScript build error: ${error.message}`, "error", "JS")
+    log(`Fatal JavaScript build error: ${error.message}`, 'error', 'JS')
     process.exit(1)
   })
 }

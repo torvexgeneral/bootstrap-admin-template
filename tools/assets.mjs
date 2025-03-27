@@ -3,10 +3,10 @@
  * @module assets
  */
 
-import { fileURLToPath } from "url"
-import { runCommand, log } from "./utils.mjs"
-import fs from "fs/promises"
-import path from "path"
+import { fileURLToPath } from 'url'
+import { runCommand, log } from './utils.mjs'
+import fs from 'fs/promises'
+import path from 'path'
 
 // Get the absolute path to the project root
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -48,14 +48,14 @@ async function touchReloadFile(options = {}) {
     await fs.writeFile(jsReloadPath, `// Reload trigger: ${now.toISOString()}`)
 
     if (opts.verbose) {
-      log("Created reload trigger files", "info", "ASSETS")
+      log('Created reload trigger files', 'info', 'ASSETS')
     }
 
     // Clean up old reload files (keep only the last 5)
     const reloadDir = path.join(projectRoot, 'dist')
     try {
       const files = await fs.readdir(reloadDir)
-      const oldReloadFiles = files.filter(f => f.startsWith('reload-') && f.endsWith('.js'))
+      const oldReloadFiles = files.filter((f) => f.startsWith('reload-') && f.endsWith('.js'))
 
       if (oldReloadFiles.length > 5) {
         // Sort by creation time and remove the oldest ones
@@ -70,7 +70,7 @@ async function touchReloadFile(options = {}) {
         const filesToRemove = fileStats
           .sort((a, b) => a.mtime - b.mtime)
           .slice(0, oldReloadFiles.length - 5)
-          .map(file => file.path)
+          .map((file) => file.path)
 
         for (const file of filesToRemove) {
           await fs.unlink(file).catch(() => {})
@@ -78,10 +78,10 @@ async function touchReloadFile(options = {}) {
       }
     } catch (error) {
       // Non-fatal error, just log it
-      log(`Warning: Error cleaning up old reload files: ${error.message}`, "warning", "ASSETS")
+      log(`Warning: Error cleaning up old reload files: ${error.message}`, 'warning', 'ASSETS')
     }
   } catch (error) {
-    log(`Error creating reload trigger: ${error.message}`, "error", "ASSETS")
+    log(`Error creating reload trigger: ${error.message}`, 'error', 'ASSETS')
     // Don't throw this error as it's not critical
   }
 }
@@ -103,7 +103,7 @@ export async function copyAssets(options = {}) {
   }
 
   try {
-    log("Copying assets...", "info", "ASSETS")
+    log('Copying assets...', 'info', 'ASSETS')
 
     // Ensure the config file exists
     const configPath = path.join(projectRoot, 'config/assets.config.mjs')
@@ -113,30 +113,30 @@ export async function copyAssets(options = {}) {
       throw new Error(`Assets config file not found: ${configPath}`)
     }
 
-    await runCommand("node", [configPath])
-    log("Assets copied successfully", "success", "ASSETS")
+    await runCommand('node', [configPath])
+    log('Assets copied successfully', 'success', 'ASSETS')
 
     // Touch the reload file to trigger a browser refresh if needed
     if (opts.triggerReload) {
       await touchReloadFile(opts)
-      log("Triggered browser reload", "info", "ASSETS")
+      log('Triggered browser reload', 'info', 'ASSETS')
     }
   } catch (error) {
-    log(`Asset copy error: ${error.message}`, "error", "ASSETS")
+    log(`Asset copy error: ${error.message}`, 'error', 'ASSETS')
     throw error
   }
 }
 
 // Execute if run directly
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const verbose = process.argv.includes("--verbose")
-  const noReload = process.argv.includes("--no-reload")
+  const verbose = process.argv.includes('--verbose')
+  const noReload = process.argv.includes('--no-reload')
 
   copyAssets({
     verbose,
     triggerReload: !noReload
   }).catch((error) => {
-    log(`Fatal asset copy error: ${error.message}`, "error", "ASSETS")
+    log(`Fatal asset copy error: ${error.message}`, 'error', 'ASSETS')
     process.exit(1)
   })
 }

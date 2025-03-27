@@ -3,18 +3,18 @@
  * @module utils
  */
 
-import spawn from "cross-spawn"
-import chalk from "chalk"
+import spawn from 'cross-spawn'
+import chalk from 'chalk'
 
 /**
  * Log types configuration with icons and colors
  * @constant {Object}
  */
 const LOG_TYPES = {
-  success: { icon: "✓", color: chalk.green },
-  error: { icon: "✗", color: chalk.red },
-  warning: { icon: "⚠", color: chalk.yellow },
-  info: { icon: "ℹ", color: chalk.blue }
+  success: { icon: '✓', color: chalk.green },
+  error: { icon: '✗', color: chalk.red },
+  warning: { icon: '⚠', color: chalk.yellow },
+  info: { icon: 'ℹ', color: chalk.blue }
 }
 
 /**
@@ -28,15 +28,15 @@ const LOG_TYPES = {
 export function runCommand(command, args = [], options = {}) {
   return new Promise((resolve, reject) => {
     const child = spawn(command, args, {
-      stdio: "inherit",
+      stdio: 'inherit',
       ...options
     })
 
-    child.on("error", error => {
+    child.on('error', (error) => {
       reject(new Error(`Failed to start command: ${error.message}`))
     })
 
-    child.on("close", code => {
+    child.on('close', (code) => {
       if (code === 0) {
         resolve()
       } else {
@@ -45,9 +45,9 @@ export function runCommand(command, args = [], options = {}) {
     })
 
     // Handle user interruption
-    process.on("SIGINT", () => {
-      child.kill("SIGINT")
-      reject(new Error("Command interrupted by user"))
+    process.on('SIGINT', () => {
+      child.kill('SIGINT')
+      reject(new Error('Command interrupted by user'))
     })
   })
 }
@@ -58,13 +58,13 @@ export function runCommand(command, args = [], options = {}) {
  * @param {string} type - Log type (info, success, error, warning)
  * @param {string} [context] - Optional context label for the log
  */
-export function log(message, type = "info", context = null) {
+export function log(message, type = 'info', context = null) {
   const timestamp = new Date().toLocaleTimeString()
   const timestampStr = chalk.gray(`[${timestamp}]`)
   const logType = LOG_TYPES[type] || LOG_TYPES.info
 
   // Add context if provided
-  const contextStr = context ? chalk.cyan(`[${context}]`) + " " : ""
+  const contextStr = context ? chalk.cyan(`[${context}]`) + ' ' : ''
 
   console.log(`${timestampStr} ${logType.color(logType.icon)} ${contextStr}${message}`)
 }
