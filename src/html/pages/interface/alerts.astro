@@ -42,7 +42,7 @@ const contextualAlertExamples = `<div class="alert alert-primary" role="alert">
 </div>`
 
 // Alert examples with interactive links
-const alertWithLinkExamples = `<div class="alert alert-primary" role="alert">
+const alertWithLinkExamples = `<div class="alert alert-primary alert-dismissible fade show" role="alert">
   <i class="ri-question-line me-2"></i>Need help? Check our <a href="#" class="alert-link">documentation guide</a> for detailed instructions.
 </div>
 <div class="alert alert-secondary" role="alert">
@@ -166,8 +166,8 @@ const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
 const appendAlert = (message, type) => {
   const wrapper = document.createElement('div')
   wrapper.innerHTML = [
-    \`<div class="alert alert-\${type} alert-dismissible fade show" role="alert">\`,
-    \`   <div>\${message}</div>\`,
+    '<div class="alert alert-' + type + ' alert-dismissible fade show" role="alert">',
+    '   <div>' + message + '</div>',
     '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
     '</div>'
   ].join('')

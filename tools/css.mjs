@@ -135,22 +135,26 @@ async function minifyCSS(inputPath, options) {
     // Remove existing banner if present
     const codeWithoutBanner = code.replace(/\/\*![\s\S]*?\*\/\n?/, '')
 
-    const { code: minified, map } = transform({
+    const { code: minified } = transform({
       filename: fileName,
       code: Buffer.from(codeWithoutBanner),
       minify: true,
-      sourceMap: true
+      // Skip source map generation for minified files
+      sourceMap: false
     })
 
     const outputPath = inputPath.replace('.css', '.min.css')
     await fs.writeFile(outputPath, banner + '\n' + minified)
 
-    if (map) {
-      await fs.writeFile(`${outputPath}.map`, map)
-    }
-
     if (options && options.verbose) {
-      log(`Minification details for ${fileName}: ${minified.length} bytes`, 'info', 'CSS')
+      const originalSize = code.length
+      const minifiedSize = minified.length
+      const savings = (((originalSize - minifiedSize) / originalSize) * 100).toFixed(2)
+      log(
+        `Minified ${fileName}: ${savings}% smaller (${originalSize} -> ${minifiedSize} bytes)`,
+        'info',
+        'CSS'
+      )
     }
 
     log(`Minified ${fileName} -> ${path.basename(outputPath)}`, 'success', 'CSS')
@@ -346,12 +350,156 @@ async function generateRtl(options = { verbose: false }) {
 }
 
 /**
+ * Optimizes CSS files using cssnano
+ * @param {string[]} files - Array of CSS file paths to optimize
+ * @param {Object} [options] - Optimization options
+ * @param {boolean} [options.verbose=false] - Whether to log verbose output
+ * @returns {Promise<void>}
+ */
+async function optimizeCSS(files, options = { verbose: false }) {
+  log('Optimizing CSS...', 'info', 'CSS')
+
+  try {
+    if (files.length === 0) {
+      log('No CSS files to optimize', 'warning', 'CSS')
+      return
+    }
+
+    const postcss = await import('postcss')
+    const cssnano = await import('cssnano')
+    const preset = await import('cssnano-preset-advanced')
+
+    // Custom plugin to merge duplicate :root selectors
+    const mergeRootSelectorsPlugin = postcss.default.plugin('merge-root-selectors', () => {
+      return (root) => {
+        const rootRules = []
+        const rootRuleIndices = []
+
+        // Find all :root rules
+        root.walkRules(/:root/, (rule, index) => {
+          rootRules.push(rule)
+          rootRuleIndices.push(index)
+        })
+
+        // If we have multiple :root rules
+        if (rootRules.length > 1) {
+          log(`Found ${rootRules.length} duplicate :root selectors to merge`, 'info', 'CSS')
+
+          // Store all declarations from all :root rules
+          const allDeclarations = []
+
+          // Collect all declarations from all :root rules
+          rootRules.forEach((rule) => {
+            rule.walkDecls((decl) => {
+              allDeclarations.push(decl.clone())
+            })
+          })
+
+          // Remove all but the first :root rule
+          for (let i = rootRules.length - 1; i >= 1; i--) {
+            rootRules[i].remove()
+          }
+
+          // Add all collected declarations to the first :root rule
+          allDeclarations.forEach((decl) => {
+            // Check if this property already exists in the target rule
+            let exists = false
+            rootRules[0].walkDecls((existingDecl) => {
+              if (existingDecl.prop === decl.prop) {
+                // Update existing declaration with the latest value
+                existingDecl.value = decl.value
+                exists = true
+              }
+            })
+
+            // If the property doesn't exist yet, append it
+            if (!exists) {
+              rootRules[0].append(decl)
+            }
+          })
+        }
+      }
+    })
+
+    // Configure cssnano with advanced preset
+    const processor = postcss.default([
+      mergeRootSelectorsPlugin(),
+      cssnano.default({
+        preset: preset.default({
+          discardComments: false,
+          normalizeWhitespace: false,
+          reduceIdents: false,
+          mergeLonghand: true,
+          mergeRules: true,
+          minifyFontValues: true,
+          minifyGradients: true,
+          minifyParams: true,
+          minifySelectors: true,
+          normalizeCharset: true,
+          normalizeDisplayValues: true,
+          normalizePositions: true,
+          normalizeRepeatStyle: true,
+          normalizeString: true,
+          normalizeTimingFunctions: true,
+          normalizeUnicode: true,
+          normalizeUrl: true,
+          orderedValues: true,
+          reduceInitial: true,
+          reduceTransforms: true,
+          uniqueSelectors: true,
+          zindex: false // Disable z-index optimization to prevent potential issues
+        })
+      })
+    ])
+
+    for (const file of files) {
+      const fileName = path.basename(file)
+      log(`Optimizing ${fileName}...`, 'info', 'CSS')
+
+      try {
+        const css = await fs.readFile(file, 'utf8')
+        const result = await processor.process(css, {
+          from: file,
+          to: file,
+          map: { inline: false }
+        })
+
+        await fs.writeFile(file, result.css)
+        if (result.map) {
+          await fs.writeFile(`${file}.map`, result.map.toString())
+        }
+
+        if (options.verbose) {
+          const originalSize = css.length
+          const optimizedSize = result.css.length
+          const savings = (((originalSize - optimizedSize) / originalSize) * 100).toFixed(2)
+          log(
+            `Optimized ${fileName}: ${savings}% smaller (${originalSize} -> ${optimizedSize} bytes)`,
+            'success',
+            'CSS'
+          )
+        }
+      } catch (error) {
+        log(`Error optimizing ${fileName}: ${error.message}`, 'error', 'CSS')
+        // Continue with other files
+      }
+    }
+
+    log('CSS optimization completed', 'success', 'CSS')
+  } catch (error) {
+    log(`CSS optimization error: ${error.message}`, 'error', 'CSS')
+    // Don't throw as we want to continue with other steps
+  }
+}
+
+/**
  * Main CSS build function
  * @param {Object} [options] - Build options
  * @param {boolean} [options.isDev=false] - Whether to build for development
  * @param {boolean} [options.skipMinification=false] - Whether to skip minification
  * @param {boolean} [options.skipPrefixing=false] - Whether to skip vendor prefixing
  * @param {boolean} [options.skipRtl=false] - Whether to skip RTL generation
+ * @param {boolean} [options.skipOptimization=false] - Whether to skip CSS optimization
  * @param {boolean} [options.verbose=false] - Whether to log verbose output
  * @returns {Promise<void>}
  * @throws {Error} If build fails
@@ -363,6 +511,7 @@ export async function buildCss(options = {}) {
     skipMinification: false,
     skipPrefixing: false,
     skipRtl: false,
+    skipOptimization: false,
     verbose: false,
     ...options
   }
@@ -370,31 +519,41 @@ export async function buildCss(options = {}) {
   try {
     log(`Starting CSS ${opts.isDev ? 'development' : 'production'} build...`, 'info', 'CSS')
 
-    // Always compile SASS
+    // Step 1: Always compile SASS
     await compileSass({ verbose: opts.verbose })
 
-    // Generate RTL if not skipped (do this in both dev and production)
+    // Step 2: Generate RTL if not skipped (do this in both dev and production)
+    // But don't apply optimizations yet - we'll do that in a separate step
     if (!opts.skipRtl) {
-      await generateRtl({ verbose: opts.verbose })
+      await generateRtl({
+        verbose: opts.verbose
+      })
     } else if (opts.verbose) {
       log('Skipping RTL generation', 'info', 'CSS')
     }
 
     // Skip optimization steps in dev mode
     if (!opts.isDev) {
-      // Add vendor prefixes if not skipped
+      // Step 3: Add vendor prefixes if not skipped
       if (!opts.skipPrefixing) {
         log('Adding vendor prefixes...', 'info', 'CSS')
         const cssFiles = await glob('dist/css/*.css')
-        const filesToProcess = cssFiles.filter(
-          (file) => !file.includes('.rtl.css') && !file.includes('.min.css')
-        )
+        const filesToProcess = cssFiles.filter((file) => !file.includes('.min.css'))
         await processWithPostcss(filesToProcess, { verbose: opts.verbose })
       } else if (opts.verbose) {
         log('Skipping vendor prefixing', 'info', 'CSS')
       }
 
-      // Minify CSS if not skipped
+      // Step 4: Optimize both regular and RTL CSS files together if not skipped
+      if (!opts.skipOptimization) {
+        const cssFiles = await glob('dist/css/*.css')
+        const filesToOptimize = cssFiles.filter((file) => !file.includes('.min.css'))
+        await optimizeCSS(filesToOptimize, { verbose: opts.verbose })
+      } else if (opts.verbose) {
+        log('Skipping CSS optimization', 'info', 'CSS')
+      }
+
+      // Step 5: Minify CSS if not skipped
       if (!opts.skipMinification) {
         log('Minifying CSS...', 'info', 'CSS')
         await minifyAllCSS({ verbose: opts.verbose })
@@ -419,6 +578,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const skipMinification = process.argv.includes('--skip-minification')
   const skipPrefixing = process.argv.includes('--skip-prefixing')
   const skipRtl = process.argv.includes('--skip-rtl') && !process.argv.includes('--skip-rtl=false')
+  const skipOptimization = process.argv.includes('--skip-optimization')
   const verbose = process.argv.includes('--verbose')
 
   buildCss({
@@ -426,6 +586,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     skipMinification,
     skipPrefixing,
     skipRtl,
+    skipOptimization,
     verbose
   }).catch((error) => {
     log(`Fatal CSS build error: ${error.message}`, 'error', 'CSS')
