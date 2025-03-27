@@ -90,14 +90,13 @@ export async function build(options = {}) {
       }).then(() => log('Assets copied', 'success'))
     ]
 
-    await Promise.all(buildTasks).catch(error => {
+    await Promise.all(buildTasks).catch((error) => {
       throw new Error(`Build process failed during parallel execution: ${error.message}`)
     })
 
     const buildEndTime = performance.now()
     const totalTime = ((buildEndTime - buildStartTime) / 1000).toFixed(2)
     log(`✨ Build completed in ${totalTime}s`, 'success')
-
   } catch (error) {
     log('❌ Build process failed!', 'error')
     log(error.message, 'error')

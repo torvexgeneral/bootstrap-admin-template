@@ -58,7 +58,7 @@ async function compileSass(options = {}) {
       throw new Error(`SASS entry file not found: ${entryFilePath}`)
     }
 
-    // Compile SASS
+    // Compile SASS with development-specific settings
     const result = await sass.compileAsync(entryFilePath, {
       style: 'expanded',
       sourceMap: true,
@@ -93,6 +93,11 @@ async function compileSass(options = {}) {
       const mapOutputPath = path.join(cssDir, 'style.css.map')
       await fs.writeFile(mapOutputPath, JSON.stringify(result.sourceMap, null, 2))
     }
+
+    // Create a reload trigger file for Astro
+    const reloadFilePath = path.join(projectRoot, 'dist', '.reload-trigger')
+    await fs.mkdir(path.dirname(reloadFilePath), { recursive: true })
+    await fs.writeFile(reloadFilePath, `Last CSS update: ${new Date().toISOString()}`)
 
     if (opts.verbose) {
       log(`CSS written to ${path.relative(projectRoot, cssOutputPath)}`, 'info', 'CSS')

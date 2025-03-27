@@ -25,7 +25,11 @@ export async function formatCode(targetPath = null) {
 
   // Ensure we're only formatting within src/html
   if (!relativePath.startsWith('src/html') && !relativePath.startsWith('src\\html')) {
-    log(`Warning: Formatting is restricted to src/html directory. Adjusting target path.`, 'warn', 'PRETTIER')
+    log(
+      `Warning: Formatting is restricted to src/html directory. Adjusting target path.`,
+      'warn',
+      'PRETTIER'
+    )
     pathToFormat = path.join(projectRoot, 'src', 'html')
   }
 
@@ -40,7 +44,11 @@ export async function formatCode(targetPath = null) {
     try {
       astroPlugin = await import('prettier-plugin-astro')
     } catch (pluginError) {
-      log(`Warning: Could not load prettier-plugin-astro: ${pluginError.message}`, 'warn', 'PRETTIER')
+      log(
+        `Warning: Could not load prettier-plugin-astro: ${pluginError.message}`,
+        'warn',
+        'PRETTIER'
+      )
     }
 
     // Import the Prettier config directly
@@ -52,7 +60,11 @@ export async function formatCode(targetPath = null) {
       const configModule = await import(`file://${configPath}`)
       prettierConfig = configModule.default
     } catch (configError) {
-      log(`Could not load Prettier config from ${configPath}, falling back to resolveConfig: ${configError.message}`, 'warn', 'PRETTIER')
+      log(
+        `Could not load Prettier config from ${configPath}, falling back to resolveConfig: ${configError.message}`,
+        'warn',
+        'PRETTIER'
+      )
       // Fall back to resolveConfig if direct import fails
       prettierConfig = await prettier.resolveConfig(projectRoot)
     }
@@ -63,7 +75,7 @@ export async function formatCode(targetPath = null) {
     }
 
     // Add parser overrides for Astro files if not already present
-    if (!prettierConfig.overrides || !prettierConfig.overrides.some(o => o.files === '*.astro')) {
+    if (!prettierConfig.overrides || !prettierConfig.overrides.some((o) => o.files === '*.astro')) {
       prettierConfig.overrides = [
         ...(prettierConfig.overrides || []),
         {
@@ -140,11 +152,21 @@ export async function formatCode(targetPath = null) {
       }
     }
 
-    log(`Processed ${files.length} files: ${formattedCount} formatted, ${unchangedCount} unchanged, ${skippedCount} skipped`, 'info', 'PRETTIER')
+    log(
+      `Processed ${files.length} files: ${formattedCount} formatted, ${unchangedCount} unchanged, ${skippedCount} skipped`,
+      'info',
+      'PRETTIER'
+    )
 
     if (problemFiles.length > 0) {
-      const fileList = problemFiles.map(file => `  - ${path.relative(projectRoot, file)}`).join('\n')
-      log(`The following ${problemFiles.length} files were skipped due to errors:\n${fileList}`, 'warn', 'PRETTIER')
+      const fileList = problemFiles
+        .map((file) => `  - ${path.relative(projectRoot, file)}`)
+        .join('\n')
+      log(
+        `The following ${problemFiles.length} files were skipped due to errors:\n${fileList}`,
+        'warn',
+        'PRETTIER'
+      )
     }
 
     log(`HTML formatting completed successfully`, 'success', 'PRETTIER')

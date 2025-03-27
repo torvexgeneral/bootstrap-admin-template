@@ -3,12 +3,12 @@
  * @module watch
  */
 
-import { fileURLToPath } from "url"
-import { log } from "./utils.mjs"
-import chokidar from "chokidar"
-import { spawn } from "child_process"
-import path from "path"
-import fs from "fs/promises"
+import { fileURLToPath } from 'url'
+import { log } from './utils.mjs'
+import chokidar from 'chokidar'
+import { spawn } from 'child_process'
+import path from 'path'
+import fs from 'fs/promises'
 
 // Get the absolute path to the project root
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -24,26 +24,27 @@ const ASSETS_DIR = path.join(projectRoot, 'src/assets')
 // Define watch configurations
 const WATCH_CONFIGS = [
   {
-    name: "CSS",
+    name: 'CSS',
     dir: SCSS_DIR,
-    command: "node tools/css.mjs --dev --skip-rtl=false",
-    color: "blue",
+    command: 'node tools/css.mjs --dev --skip-rtl=false',
+    color: 'blue',
     filter: (path) => path.endsWith('.scss'),
-    debounceMs: 300
+    debounceMs: 300,
+    triggerReload: true
   },
   {
-    name: "JS",
+    name: 'JS',
     dir: JS_DIR,
-    command: "node tools/js.mjs --dev",
-    color: "green",
+    command: 'node tools/js.mjs --dev',
+    color: 'green',
     filter: (path) => path.endsWith('.js'),
     debounceMs: 300
   },
   {
-    name: "ASSETS",
+    name: 'ASSETS',
     dir: ASSETS_DIR,
-    command: "node tools/assets.mjs",
-    color: "yellow",
+    command: 'node tools/assets.mjs',
+    color: 'yellow',
     filter: () => true, // Accept all files in assets directory
     // This will trigger Astro reload via the assets.mjs script
     triggerReload: true,
@@ -70,10 +71,10 @@ async function verifyDirectories(options = {}) {
     try {
       await fs.access(config.dir, fs.constants.F_OK)
       if (opts.verbose) {
-        log(`Verified directory ${path.relative(projectRoot, config.dir)} exists`, "info")
+        log(`Verified directory ${path.relative(projectRoot, config.dir)} exists`, 'info')
       }
     } catch {
-      log(`Warning: Directory ${path.relative(projectRoot, config.dir)} does not exist`, "warning")
+      log(`Warning: Directory ${path.relative(projectRoot, config.dir)} does not exist`, 'warning')
       allExist = false
     }
   }
@@ -103,10 +104,10 @@ async function touchReloadFile(options = {}) {
     await fs.writeFile(reloadFilePath, `Last reload: ${now.toISOString()}`)
 
     if (opts.verbose) {
-      log("Created reload trigger file", "info")
+      log('Created reload trigger file', 'info')
     }
   } catch (error) {
-    log(`Error creating reload trigger: ${error.message}`, "error")
+    log(`Error creating reload trigger: ${error.message}`, 'error')
   }
 }
 
@@ -132,7 +133,10 @@ export async function watchAll(options = {}) {
   try {
     // Create a watcher for each config
     for (const config of WATCH_CONFIGS) {
-      log(`${config.name}: Setting up watcher for ${path.relative(projectRoot, config.dir)}`, "info")
+      log(
+        `${config.name}: Setting up watcher for ${path.relative(projectRoot, config.dir)}`,
+        'info'
+      )
 
       // Configure watcher with optimal settings
       const watcher = chokidar.watch(config.dir, {
@@ -190,7 +194,7 @@ export async function watchAll(options = {}) {
 
           isProcessing = true
           const relativePath = path.relative(projectRoot, filePath)
-          log(`${config.name}: Changes detected in ${relativePath}, rebuilding...`, "info")
+          log(`${config.name}: Changes detected in ${relativePath}, rebuilding...`, 'info')
 
           try {
             const child = spawn(config.command, {
@@ -200,31 +204,31 @@ export async function watchAll(options = {}) {
             })
 
             await new Promise((resolve, reject) => {
-              child.on('close', code => {
+              child.on('close', (code) => {
                 if (code === 0) {
-                  log(`${config.name}: Rebuild completed`, "success")
+                  log(`${config.name}: Rebuild completed`, 'success')
 
                   // If this config should trigger a reload, touch the reload file
                   if (config.triggerReload) {
                     touchReloadFile({ verbose: opts.verbose }).then(() => {
-                      log(`${config.name}: Triggered browser reload`, "info")
+                      log(`${config.name}: Triggered browser reload`, 'info')
                     })
                   }
 
                   resolve()
                 } else {
-                  log(`${config.name}: Rebuild failed with code ${code}`, "error")
+                  log(`${config.name}: Rebuild failed with code ${code}`, 'error')
                   reject(new Error(`Process exited with code ${code}`))
                 }
               })
 
               child.on('error', (error) => {
-                log(`${config.name}: Command execution error: ${error.message}`, "error")
+                log(`${config.name}: Command execution error: ${error.message}`, 'error')
                 reject(error)
               })
             })
           } catch (error) {
-            log(`${config.name}: ${error.message}`, "error")
+            log(`${config.name}: ${error.message}`, 'error')
           } finally {
             isProcessing = false
 
@@ -239,65 +243,65 @@ export async function watchAll(options = {}) {
 
       // Add event listeners for all relevant events
       watcher
-        .on('add', path => {
+        .on('add', (path) => {
           if (opts.verbose) {
-            log(`${config.name}: File ${path} has been added`, "info")
+            log(`${config.name}: File ${path} has been added`, 'info')
           }
           runCommand(path)
         })
-        .on('change', path => {
+        .on('change', (path) => {
           if (opts.verbose) {
-            log(`${config.name}: File ${path} has been changed`, "info")
+            log(`${config.name}: File ${path} has been changed`, 'info')
           }
           runCommand(path)
         })
-        .on('unlink', path => {
+        .on('unlink', (path) => {
           if (opts.verbose) {
-            log(`${config.name}: File ${path} has been removed`, "info")
+            log(`${config.name}: File ${path} has been removed`, 'info')
           }
           runCommand(path)
         })
-        .on('addDir', path => {
+        .on('addDir', (path) => {
           if (opts.verbose) {
-            log(`${config.name}: Directory ${path} has been added`, "info")
+            log(`${config.name}: Directory ${path} has been added`, 'info')
           }
           if (config.triggerReload) {
             touchReloadFile({ verbose: opts.verbose })
           }
         })
-        .on('unlinkDir', path => {
+        .on('unlinkDir', (path) => {
           if (opts.verbose) {
-            log(`${config.name}: Directory ${path} has been removed`, "info")
+            log(`${config.name}: Directory ${path} has been removed`, 'info')
           }
           if (config.triggerReload) {
             touchReloadFile({ verbose: opts.verbose })
           }
         })
-        .on('error', error => {
-          log(`${config.name}: Watcher error: ${error}`, "error")
+        .on('error', (error) => {
+          log(`${config.name}: Watcher error: ${error}`, 'error')
         })
         .on('ready', () => {
-          log(`${config.name}: Initial scan complete. Ready for changes`, "success")
+          log(`${config.name}: Initial scan complete. Ready for changes`, 'success')
         })
 
-      log(`${config.name}: Watching ${path.relative(projectRoot, config.dir)} for changes`, "info")
+      log(`${config.name}: Watching ${path.relative(projectRoot, config.dir)} for changes`, 'info')
       watchers.push(watcher)
     }
 
     // Return a cleanup function
     return async () => {
-      log("Closing all file watchers...", "info")
+      log('Closing all file watchers...', 'info')
       for (const watcher of watchers) {
         await watcher.close()
       }
-      log("All file watchers closed", "success")
+      log('All file watchers closed', 'success')
     }
   } catch (error) {
-    log(`Watch error: ${error.message}`, "error")
+    log(`Watch error: ${error.message}`, 'error')
 
     // Clean up any watchers that were created before the error
     if (watchers.length > 0) {
-      log("Cleaning up watchers due to error...", "info")
+      log('Cleaning up watchers due to error...', 'info')
       for (const watcher of watchers) {
         await watcher.close().catch(() => {})
       }
@@ -312,7 +316,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const verbose = process.argv.includes('--verbose')
 
   watchAll({ verbose }).catch((error) => {
-    log(`Fatal error: ${error.message}`, "error")
+    log(`Fatal error: ${error.message}`, 'error')
     process.exit(1)
   })
 }
