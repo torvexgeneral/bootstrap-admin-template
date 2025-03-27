@@ -31,77 +31,91 @@ window.PreviewManager = class PreviewManager {
 
     // Debounce updates by preview box
     const previewBoxId = previewBox.id || 'default'
-    this.debounceByPreviewBox(previewBoxId, () => {
-      try {
-        // Check if using external source
-        const externalSrc = previewBox.dataset.externalSrc
-        if (externalSrc) {
-          // For external sources, only update if src has changed
-          if (iframe.src !== externalSrc) {
-            //iframe.src = externalSrc
-          }
-        }else{
-          // Get all editors
-          const htmlEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'html')
-          const cssEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'css')
-          const jsEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'javascript')
-
-          // Validate editors and content
-          const validateEditor = (editor, type) => {
-            if (!editor) return ''
-            try {
-              const value = editor.getValue()
-              return typeof value === 'string' ? value : ''
-            } catch (err) {
-              console.error(`Error getting ${type} content:`, err)
-              return ''
-            }
-          }
-
-          const htmlContent = validateEditor(htmlEditor, 'HTML')
-          const cssContent = validateEditor(cssEditor, 'CSS')
-          const jsContent = validateEditor(jsEditor, 'JavaScript')
-
-          // Get theme
-          const themeToggle = previewBox.querySelector('.theme-toggle')
-          const theme = themeToggle?.dataset.currentTheme || 'light'
-
-          // Update iframe content with error handling
-          if (iframe.contentWindow) {
-            try {
-              iframe.contentWindow.postMessage({
-                type: 'updateContent',
-                html: htmlContent,
-                css: cssContent,
-                js: jsContent
-              }, '*')
-
-              iframe.contentWindow.postMessage({ type: 'setTheme', theme: theme }, '*')
-
-              // Clear any previous error messages
-              const errorContainer = previewBox.querySelector('.preview-update-container')
-              if (errorContainer) {
-                errorContainer.classList.add('d-none')
-              }
-            } catch (err) {
-              console.error('Error updating iframe content:', err)
-              this.showError(previewBox, 'Failed to update preview: ' + err.message)
+    this.debounceByPreviewBox(
+      previewBoxId,
+      () => {
+        try {
+          // Check if using external source
+          const externalSrc = previewBox.dataset.externalSrc
+          if (externalSrc) {
+            // For external sources, only update if src has changed
+            if (iframe.src !== externalSrc) {
+              //iframe.src = externalSrc
             }
           } else {
-            // Fallback to full refresh if contentWindow is not available
-            const iframeContent = this.createIframeContent(htmlContent, cssContent, jsContent, theme)
-            iframe.srcdoc = iframeContent
+            // Get all editors
+            const htmlEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'html')
+            const cssEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'css')
+            const jsEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(
+              previewBox,
+              'javascript'
+            )
+
+            // Validate editors and content
+            const validateEditor = (editor, type) => {
+              if (!editor) return ''
+              try {
+                const value = editor.getValue()
+                return typeof value === 'string' ? value : ''
+              } catch (err) {
+                console.error(`Error getting ${type} content:`, err)
+                return ''
+              }
+            }
+
+            const htmlContent = validateEditor(htmlEditor, 'HTML')
+            const cssContent = validateEditor(cssEditor, 'CSS')
+            const jsContent = validateEditor(jsEditor, 'JavaScript')
+
+            // Get theme
+            const themeToggle = previewBox.querySelector('.theme-toggle')
+            const theme = themeToggle?.dataset.currentTheme || 'light'
+
+            // Update iframe content with error handling
+            if (iframe.contentWindow) {
+              try {
+                iframe.contentWindow.postMessage(
+                  {
+                    type: 'updateContent',
+                    html: htmlContent,
+                    css: cssContent,
+                    js: jsContent
+                  },
+                  '*'
+                )
+
+                iframe.contentWindow.postMessage({ type: 'setTheme', theme: theme }, '*')
+
+                // Clear any previous error messages
+                const errorContainer = previewBox.querySelector('.preview-update-container')
+                if (errorContainer) {
+                  errorContainer.classList.add('d-none')
+                }
+              } catch (err) {
+                console.error('Error updating iframe content:', err)
+                this.showError(previewBox, 'Failed to update preview: ' + err.message)
+              }
+            } else {
+              // Fallback to full refresh if contentWindow is not available
+              const iframeContent = this.createIframeContent(
+                htmlContent,
+                cssContent,
+                jsContent,
+                theme
+              )
+              iframe.srcdoc = iframeContent
+            }
           }
+
+          // Sync with other previews
+          this.syncPreviewContent(previewBox)
+        } catch (err) {
+          console.error('Error in content change handler:', err)
+          this.showError(previewBox, 'An error occurred while updating the preview')
         }
-
-
-        // Sync with other previews
-        this.syncPreviewContent(previewBox)
-      } catch (err) {
-        console.error('Error in content change handler:', err)
-        this.showError(previewBox, 'An error occurred while updating the preview')
-      }
-    }, this.CONFIG.DEBOUNCE_DELAY)
+      },
+      this.CONFIG.DEBOUNCE_DELAY
+    )
   }
 
   static showError(previewBox, message) {
@@ -164,12 +178,15 @@ window.PreviewManager = class PreviewManager {
     } else {
       if (iframe.contentWindow) {
         try {
-          iframe.contentWindow.postMessage({
-            type: 'updateContent',
-            html: htmlContent,
-            css: cssContent,
-            js: jsContent
-          }, '*')
+          iframe.contentWindow.postMessage(
+            {
+              type: 'updateContent',
+              html: htmlContent,
+              css: cssContent,
+              js: jsContent
+            },
+            '*'
+          )
 
           iframe.contentWindow.postMessage({ type: 'setTheme', theme: theme }, '*')
         } catch (e) {
@@ -225,8 +242,12 @@ window.PreviewManager = class PreviewManager {
 
     // For non-external sources, proceed with full content sync
     if (previewBox.classList.contains('preview-box')) {
-      const modalId = previewBox.dataset.modal ||
-                     previewBox.querySelector(".preview-expand")?.getAttribute("data-bs-target")?.replace('#', '')
+      const modalId =
+        previewBox.dataset.modal ||
+        previewBox
+          .querySelector('.preview-expand')
+          ?.getAttribute('data-bs-target')
+          ?.replace('#', '')
 
       if (modalId) {
         const modal = document.getElementById(modalId)
@@ -287,6 +308,11 @@ window.PreviewManager = class PreviewManager {
 
         <link href="${this.getCSSPath()}" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+        <!-- Source Sans 3 from Google Fonts -->
+        <link
+          href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+          rel="stylesheet"
+        />
 
         <style id="component-style">
           body {
@@ -446,6 +472,11 @@ window.PreviewManager = class PreviewManager {
   <title>Component Preview</title>
   <link href="https://cdn.jsdelivr.net/npm/asteroadmin@latest/dist/css/style.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- Source Sans 3 from Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet"
+  />
   <style>
     body {
       padding: 1rem;
@@ -467,19 +498,25 @@ window.PreviewManager = class PreviewManager {
     if (!previewBox) return
 
     // Reset HTML editor
-    const htmlContainer = previewBox.querySelector('.codemirror-editor-container[data-language="html"]')
+    const htmlContainer = previewBox.querySelector(
+      '.codemirror-editor-container[data-language="html"]'
+    )
     if (htmlContainer && htmlContainer.editor && htmlContainer.defaultCode) {
       htmlContainer.editor.setValue(htmlContainer.defaultCode)
     }
 
     // Reset CSS editor
-    const cssContainer = previewBox.querySelector('.codemirror-editor-container[data-language="css"]')
+    const cssContainer = previewBox.querySelector(
+      '.codemirror-editor-container[data-language="css"]'
+    )
     if (cssContainer && cssContainer.editor && cssContainer.defaultCode) {
       cssContainer.editor.setValue(cssContainer.defaultCode)
     }
 
     // Reset JS editor
-    const jsContainer = previewBox.querySelector('.codemirror-editor-container[data-language="javascript"]')
+    const jsContainer = previewBox.querySelector(
+      '.codemirror-editor-container[data-language="javascript"]'
+    )
     if (jsContainer && jsContainer.editor && jsContainer.defaultCode) {
       jsContainer.editor.setValue(jsContainer.defaultCode)
     }
@@ -503,7 +540,7 @@ window.PreviewManager = class PreviewManager {
   }
 
   static setupResetButtons() {
-    document.querySelectorAll('.reset-button, .reset-all-button').forEach(button => {
+    document.querySelectorAll('.reset-button, .reset-all-button').forEach((button) => {
       button.addEventListener('click', () => {
         const previewBox = button.closest('.preview-box') || button.closest('.preview-modal')
         if (!previewBox) return
@@ -537,7 +574,7 @@ window.PreviewManager = class PreviewManager {
   }
 
   static setupCodeToggles() {
-    document.querySelectorAll('.preview-box').forEach(previewBox => {
+    document.querySelectorAll('.preview-box').forEach((previewBox) => {
       const toggleBtn = previewBox.querySelector('.code-toggle-link')
       const codePreviewBox = previewBox.querySelector('.code-preview-box')
 
@@ -562,7 +599,7 @@ window.PreviewManager = class PreviewManager {
           if (isHidden) {
             setTimeout(() => {
               const editors = codePreviewBox.querySelectorAll('.codemirror-editor-container')
-              editors.forEach(container => {
+              editors.forEach((container) => {
                 if (container.editor) {
                   container.editor.refresh()
                 }
@@ -576,7 +613,7 @@ window.PreviewManager = class PreviewManager {
 
   static setupThemeToggles() {
     // Theme toggle functionality
-    document.querySelectorAll('.theme-toggle').forEach(button => {
+    document.querySelectorAll('.theme-toggle').forEach((button) => {
       button.addEventListener('click', () => {
         const currentTheme = button.dataset.currentTheme || 'light'
         const newTheme = currentTheme === 'light' ? 'dark' : 'light'
@@ -618,7 +655,7 @@ window.PreviewManager = class PreviewManager {
 
   static setupDeviceButtons() {
     // Device buttons functionality
-    document.querySelectorAll('.preview-devices .btn').forEach(button => {
+    document.querySelectorAll('.preview-devices .btn').forEach((button) => {
       button.addEventListener('click', () => {
         const width = button.dataset.width
         if (!width) return
@@ -626,7 +663,7 @@ window.PreviewManager = class PreviewManager {
         // Find all buttons in this device group and update active state
         const deviceGroup = button.closest('.preview-devices')
         if (deviceGroup) {
-          deviceGroup.querySelectorAll('.btn').forEach(btn => {
+          deviceGroup.querySelectorAll('.btn').forEach((btn) => {
             btn.classList.toggle('active', btn === button)
             btn.setAttribute('aria-pressed', btn === button)
           })
@@ -672,9 +709,9 @@ window.PreviewManager = class PreviewManager {
 
   // Remove or use the unused variables in the relevant function
   static handlePreviewUpdate(previewBox) {
-    const htmlEditor = window.CodeMirrorManager.getEditorFromPreviewBox(previewBox, "html")
-    const cssEditor = window.CodeMirrorManager.getEditorFromPreviewBox(previewBox, "css")
-    const jsEditor = window.CodeMirrorManager.getEditorFromPreviewBox(previewBox, "javascript")
+    const htmlEditor = window.CodeMirrorManager.getEditorFromPreviewBox(previewBox, 'html')
+    const cssEditor = window.CodeMirrorManager.getEditorFromPreviewBox(previewBox, 'css')
+    const jsEditor = window.CodeMirrorManager.getEditorFromPreviewBox(previewBox, 'javascript')
 
     if (!htmlEditor && !cssEditor && !jsEditor) {
       console.error('No editors found in preview box')

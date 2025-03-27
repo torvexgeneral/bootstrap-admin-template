@@ -10,28 +10,11 @@
 
   /* Typography */
   --font-family-sans-serif:
-    'Source Sans 3',
-    system-ui,
-    -apple-system,
-    'Segoe UI',
-    roboto,
-    'Helvetica Neue',
-    'Noto Sans',
-    'Liberation Sans',
-    arial,
-    sans-serif,
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol',
+    'Source Sans 3', system-ui, -apple-system, 'Segoe UI', roboto, 'Helvetica Neue', 'Noto Sans',
+    'Liberation Sans', arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji';
   --font-family-monospace:
-    sfmono-regular,
-    menlo,
-    monaco,
-    consolas,
-    'Liberation Mono',
-    'Courier New',
-    monospace;
+    sfmono-regular, menlo, monaco, consolas, 'Liberation Mono', 'Courier New', monospace;
 }
 
 // Light Theme Variables
@@ -57,13 +40,16 @@
   // Topbar Theme
   --topbar-color: #5a5a5a;
   --topbar-bg: #f2f4f7;
+  // Breadcrumb Theme
+  --breadcrumb-color: var(--bs-secondary-color);
+  --breadcrumb-active-color: var(--bs-body-color);
+  --breadcrumb-hover-color: var(--bs-body-color);
   // Content Wrapper Theme
   --content-wrapper-color: #252525;
   --content-wrapper-bg: #f2f4f7;
   // Footer Theme
   --footer-color: #5a5a5a;
   --footer-bg: #f2f4f7;
-
 
   // Bootstrap muted color
   --#{$prefix}text-muted: #{$text-muted};

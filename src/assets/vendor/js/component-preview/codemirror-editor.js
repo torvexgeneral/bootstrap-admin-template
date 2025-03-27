@@ -48,7 +48,7 @@ window.CodeMirrorManager = class CodeMirrorEditorSystem {
 
   // Editor initialization and management
   static initializeEditors() {
-    document.querySelectorAll('.codemirror-editor-container').forEach(container => {
+    document.querySelectorAll('.codemirror-editor-container').forEach((container) => {
       if (container.editor) return
 
       const editorLanguage = container.dataset.language
@@ -81,7 +81,6 @@ window.CodeMirrorManager = class CodeMirrorEditorSystem {
             window.PreviewManager.handleContentChange(editor, container)
           }
         })
-
       } catch (error) {
         console.error('CodeMirror editor initialization failed:', error)
         this.createFallbackEditor(container, defaultCode)
@@ -92,18 +91,18 @@ window.CodeMirrorManager = class CodeMirrorEditorSystem {
   // Map language to CodeMirror mode
   static getCodeMirrorMode(language) {
     const modeMap = {
-      'html': 'htmlmixed',
-      'css': 'css',
-      'javascript': 'javascript',
-      'js': 'javascript',
-      'json': { name: 'javascript', json: true },
-      'typescript': { name: 'javascript', typescript: true },
-      'xml': 'xml',
-      'markdown': 'markdown',
-      'php': 'php',
-      'python': 'python',
-      'ruby': 'ruby',
-      'sql': 'sql'
+      html: 'htmlmixed',
+      css: 'css',
+      javascript: 'javascript',
+      js: 'javascript',
+      json: { name: 'javascript', json: true },
+      typescript: { name: 'javascript', typescript: true },
+      xml: 'xml',
+      markdown: 'markdown',
+      php: 'php',
+      python: 'python',
+      ruby: 'ruby',
+      sql: 'sql'
     }
 
     return modeMap[language] || 'text/plain'
@@ -125,7 +124,7 @@ window.CodeMirrorManager = class CodeMirrorEditorSystem {
   }
 
   static showFallbackEditors() {
-    document.querySelectorAll('.codemirror-editor-container').forEach(container => {
+    document.querySelectorAll('.codemirror-editor-container').forEach((container) => {
       if (container.editor) return
 
       const defaultCode = container.dataset.code || ''
@@ -135,16 +134,18 @@ window.CodeMirrorManager = class CodeMirrorEditorSystem {
 
   // Utility methods for editor access and code download
   static getEditorFromPreviewBox(previewBox, editorLanguage) {
-    const container = previewBox.querySelector(`.codemirror-editor-container[data-language="${editorLanguage}"]`)
+    const container = previewBox.querySelector(
+      `.codemirror-editor-container[data-language="${editorLanguage}"]`
+    )
     return container?.editor
   }
 
   static downloadCode(previewBox, format = 'zip') {
     if (!previewBox) return
 
-    const htmlEditor = this.getEditorFromPreviewBox(previewBox, "html")
-    const cssEditor = this.getEditorFromPreviewBox(previewBox, "css")
-    const jsEditor = this.getEditorFromPreviewBox(previewBox, "javascript")
+    const htmlEditor = this.getEditorFromPreviewBox(previewBox, 'html')
+    const cssEditor = this.getEditorFromPreviewBox(previewBox, 'css')
+    const jsEditor = this.getEditorFromPreviewBox(previewBox, 'javascript')
 
     const htmlContent = htmlEditor ? htmlEditor.getValue() : ''
     const cssContent = cssEditor ? cssEditor.getValue() : ''
@@ -159,6 +160,11 @@ window.CodeMirrorManager = class CodeMirrorEditorSystem {
   <title>Component</title>
   <link href="https://cdn.jsdelivr.net/npm/asteroadmin@latest/dist/css/style.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- Source Sans 3 from Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet"
+  />
   ${cssContent ? '<style>\n' + cssContent + '\n</style>' : ''}
 </head>
 <body>
@@ -171,12 +177,12 @@ window.CodeMirrorManager = class CodeMirrorEditorSystem {
     if (format === 'zip' && typeof window.JSZip !== 'undefined') {
       // Download as ZIP file
       const zip = new window.JSZip()
-      zip.file("index.html", fullHTML)
-      if (cssContent) zip.file("styles.css", cssContent)
-      if (jsContent) zip.file("script.js", jsContent)
+      zip.file('index.html', fullHTML)
+      if (cssContent) zip.file('styles.css', cssContent)
+      if (jsContent) zip.file('script.js', jsContent)
 
       // Generate and download the zip
-      zip.generateAsync({ type: "blob" }).then(function(content) {
+      zip.generateAsync({ type: 'blob' }).then(function (content) {
         const url = window.URL.createObjectURL(content)
         const a = document.createElement('a')
         a.href = url
@@ -209,15 +215,19 @@ window.CodeMirrorManager = class CodeMirrorEditorSystem {
     window.codeMirrorInitialized = true
 
     // Handle tab changes to ensure editors are properly refreshed
-    document.addEventListener('shown.bs.tab', (event) => {
-      const tabPane = document.querySelector(event.target.getAttribute('data-bs-target'))
-      if (tabPane) {
-        const editor = tabPane.querySelector('.codemirror-editor-container')?.editor
-        if (editor) {
-          editor.refresh()
+    document.addEventListener(
+      'shown.bs.tab',
+      (event) => {
+        const tabPane = document.querySelector(event.target.getAttribute('data-bs-target'))
+        if (tabPane) {
+          const editor = tabPane.querySelector('.codemirror-editor-container')?.editor
+          if (editor) {
+            editor.refresh()
+          }
         }
-      }
-    }, { passive: true })
+      },
+      { passive: true }
+    )
 
     // Add basic styles
     const style = document.createElement('style')
@@ -245,7 +255,7 @@ window.CodeMirrorManager = class CodeMirrorEditorSystem {
         .then(() => {
           this.setupDownloadButtons()
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('CodeMirror initialization failed:', error)
           this.showFallbackEditors()
         })
@@ -256,13 +266,17 @@ window.CodeMirrorManager = class CodeMirrorEditorSystem {
   }
 
   static setupDownloadButtons() {
-    document.querySelectorAll('.download-button').forEach(button => {
-      button.addEventListener('click', () => {
-        const previewBox = button.closest('.preview-box') || button.closest('.preview-modal')
-        if (previewBox) {
-          window.CodeMirrorManager.downloadCode(previewBox, 'zip')
-        }
-      }, { passive: true })
+    document.querySelectorAll('.download-button').forEach((button) => {
+      button.addEventListener(
+        'click',
+        () => {
+          const previewBox = button.closest('.preview-box') || button.closest('.preview-modal')
+          if (previewBox) {
+            window.CodeMirrorManager.downloadCode(previewBox, 'zip')
+          }
+        },
+        { passive: true }
+      )
     })
   }
 }
@@ -271,6 +285,10 @@ window.CodeMirrorManager = class CodeMirrorEditorSystem {
 window.CodeMirrorManager.init()
 
 // Set up download buttons when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  window.CodeMirrorManager.setupDownloadButtons()
-}, { passive: true })
+document.addEventListener(
+  'DOMContentLoaded',
+  () => {
+    window.CodeMirrorManager.setupDownloadButtons()
+  },
+  { passive: true }
+)
