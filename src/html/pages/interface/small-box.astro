@@ -15,10 +15,10 @@ const pageHeaderProps = {
 }
 
 // Basic small box examples with different contextual styles and metrics
-const metricSmallBoxExamples = `<div class="row">
+const metricSmallBoxExamples = `<div class="row g-4">
     <div class="col-lg-6 col-12">
         <!-- Revenue Metric Box -->
-        <div class="small-box bg-info">
+        <div class="small-box text-bg-info">
             <div class="inner">
                 <h3>
                     <i class="ri-money-dollar-circle-line me-2"></i>
@@ -40,7 +40,7 @@ const metricSmallBoxExamples = `<div class="row">
     </div>
     <div class="col-lg-6 col-12">
         <!-- Task Completion Box -->
-        <div class="small-box bg-success">
+        <div class="small-box text-bg-success">
             <div class="inner">
                 <h3>
                     <i class="ri-task-line me-2"></i>
@@ -62,7 +62,7 @@ const metricSmallBoxExamples = `<div class="row">
     </div>
     <div class="col-lg-6 col-12">
         <!-- Active Projects Box -->
-        <div class="small-box bg-warning">
+        <div class="small-box text-bg-warning">
             <div class="inner">
                 <h3>
                     <i class="ri-folder-shield-line me-2"></i>
@@ -84,7 +84,7 @@ const metricSmallBoxExamples = `<div class="row">
     </div>
     <div class="col-lg-6 col-12">
         <!-- Downloads Metric Box -->
-        <div class="small-box bg-danger">
+        <div class="small-box text-bg-danger">
             <div class="inner">
                 <h3>
                     <i class="ri-download-cloud-2-line me-2"></i>
@@ -107,10 +107,10 @@ const metricSmallBoxExamples = `<div class="row">
 </div>`
 
 // Loading state examples for small boxes with loading indicators
-const loadingStateSmallBoxExamples = `<div class="row">
+const loadingStateSmallBoxExamples = `<div class="row g-4">
     <div class="col-lg-6 col-12">
         <!-- Loading Revenue Box -->
-        <div class="small-box bg-info loading">
+        <div class="small-box text-bg-info loading">
             <div class="overlay">
                 <i class="ri-loader-4-line fa-spin"></i>
                 <span class="ms-2">Updating Revenue Data...</span>
@@ -136,7 +136,7 @@ const loadingStateSmallBoxExamples = `<div class="row">
     </div>
     <div class="col-lg-6 col-12">
         <!-- Loading Tasks Box -->
-        <div class="small-box bg-success loading">
+        <div class="small-box text-bg-success loading">
             <div class="overlay">
                 <i class="ri-loader-4-line fa-spin"></i>
                 <span class="ms-2">Calculating Completion Rate...</span>
@@ -162,7 +162,7 @@ const loadingStateSmallBoxExamples = `<div class="row">
     </div>
     <div class="col-lg-6 col-12">
         <!-- Loading Projects Box -->
-        <div class="small-box bg-warning loading">
+        <div class="small-box text-bg-warning loading">
             <div class="overlay">
                 <i class="ri-loader-4-line fa-spin"></i>
                 <span class="ms-2">Loading Project Data...</span>
@@ -188,7 +188,7 @@ const loadingStateSmallBoxExamples = `<div class="row">
     </div>
     <div class="col-lg-6 col-12">
         <!-- Loading Downloads Box -->
-        <div class="small-box bg-danger loading">
+        <div class="small-box text-bg-danger loading">
             <div class="overlay">
                 <i class="ri-loader-4-line fa-spin"></i>
                 <span class="ms-2">Fetching Download Stats...</span>
@@ -215,7 +215,7 @@ const loadingStateSmallBoxExamples = `<div class="row">
 </div>`
 
 // Gradient small box examples with enhanced styling
-const gradientSmallBoxExamples = `<div class="row">
+const gradientSmallBoxExamples = `<div class="row g-4">
     <div class="col-lg-6 col-12">
         <div class="small-box" style="background: linear-gradient(135deg, #2193b0, #6dd5ed);">
             <div class="inner text-white">
@@ -338,7 +338,7 @@ const gradientSmallBoxExamples = `<div class="row">
             </p>
             <ComponentPreview
               title="Gradient Style Examples"
-              height="350px"
+              height="550px"
               component={gradientSmallBoxExamples}
               htmlCode={gradientSmallBoxExamples}
             />
