@@ -1,0 +1,38 @@
+// card changes
+.card {
+  padding: 1.5rem;
+  border-width: 0px;
+  border-radius: var(--bs-border-radius-xl);
+  box-shadow: none;
+}
+
+.card-header {
+  background-color: transparent;
+  padding: 0 0 1.5rem 0;
+  border-width: 0;
+}
+
+.card-body {
+  padding: 0;
+}
+
+.card-footer {
+  background-color: transparent;
+  padding: 1.5rem 0 0 0;
+  border-width: 0;
+}
+
+.card-img,
+.card-img-top {
+  border-top-left-radius: calc(var(--bs-border-radius-xl) - (var(--bs-border-width)));
+  border-top-right-radius: calc(var(--bs-border-radius-xl) - (var(--bs-border-width)));
+}
+.card-img,
+.card-img-bottom {
+  border-bottom-left-radius: calc(var(--bs-border-radius-xl) - (var(--bs-border-width)));
+  border-bottom-right-radius: calc(var(--bs-border-radius-xl) - (var(--bs-border-width)));
+}
+
+.card-img-overlay {
+  border-radius: calc(var(--bs-border-radius-xl) - (var(--bs-border-width)));
+}

@@ -4,7 +4,6 @@
 
 // Core Variables & Configuration
 @import 'variables/index';
-@import 'variables/theme';
 
 // Bootstrap Framework
 @import '../../node_modules/bootstrap/scss/bootstrap';
@@ -13,11 +12,26 @@
 @import 'core/mixins';
 @import 'core/utilities';
 
+// Theme Configuration
+@import 'variables/theme';
+
 // ==========================================================================
 //   Base & Typography
 // ==========================================================================
 
 @import 'base/typography';
+
+// ==========================================================================
+//  Utilities
+// ==========================================================================
+
+@import 'utilities/index';
+
+// ==========================================================================
+//   UI Components
+// ==========================================================================
+
+@import 'components/index';
 
 // ==========================================================================
 //   Layout Components
@@ -37,12 +51,6 @@
 // Sidebar Components
 @import 'layout/sidebar/sidebar';
 @import 'layout/sidebar/user-profile';
-
-// ==========================================================================
-//   UI Components
-// ==========================================================================
-
-@import 'components/index';
 
 // ==========================================================================
 //   Page-Specific Styles

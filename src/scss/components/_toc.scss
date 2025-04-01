@@ -2,7 +2,6 @@
 // Uses Bootstrap's scrollspy functionality
 
 .toc {
-  position: sticky;
   top: 20px;
   /* stylelint-disable function-disallowed-list */
   max-height: calc(100vh - 120px); // Prevent TOC from being too long
@@ -10,9 +9,6 @@
   padding: 0.75rem;
   overflow-y: auto; // Add scrollbar if needed
   font-size: 0.95rem;
-  background-color: var(--bs-body-bg);
-  border: 1px solid var(--bs-border-color);
-  border-radius: var(--bs-border-radius);
 
   // Custom scrollbar styling
   &::-webkit-scrollbar {
@@ -156,14 +152,6 @@
 // Dark mode adjustments
 [data-bs-theme='dark'] {
   .toc {
-    background-color: var(--bs-dark);
-    border-color: var(--bs-border-color);
-
-    .fw-bold,
-    hr {
-      background-color: var(--bs-dark);
-    }
-
     .nav-link {
       &:hover {
         background-color: rgba(var(--bs-primary-rgb), 0.15);

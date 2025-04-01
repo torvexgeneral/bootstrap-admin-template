@@ -15,10 +15,14 @@ const pageHeaderConfig = {
   ]
 }
 
+// Page description as a regular string (not a template literal)
+const pageDescription =
+  'Cards are versatile containers that help organize and present content in a clean, engaging way. They support various content types including text, images, lists, and interactive elements, making them perfect for dashboards, product displays, and feature highlights.'
+
 // Basic card example with image and action button
-const basicCardExample = `<div class="card" style="width: 18rem;">
+const basicCardExample = `<div class="card p-0" style="max-width: 18rem;">
   <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-300x200.png')}" class="card-img-top" alt="Card image example">
-  <div class="card-body">
+  <div class="card-body p-3">
     <h5 class="card-title"><i class="ri-article-line me-2"></i>Product Overview</h5>
     <p class="card-text">Discover our latest product features and capabilities that will transform your workflow.</p>
     <a href="#" class="btn btn-primary"><i class="ri-arrow-right-line me-2"></i>Learn More</a>
@@ -35,7 +39,7 @@ const simpleCardExample = `<div class="card">
 `
 
 // Card with title, subtitle and links
-const cardWithLinksExample = `<div class="card" style="width: 18rem;">
+const cardWithLinksExample = `<div class="card" style="max-width: 20rem;">
   <div class="card-body">
     <h5 class="card-title"><i class="ri-file-list-3-line me-2"></i>Documentation</h5>
     <h6 class="card-subtitle mb-2 text-body-secondary">Developer Resources</h6>
@@ -46,22 +50,18 @@ const cardWithLinksExample = `<div class="card" style="width: 18rem;">
 </div>
 `
 
-// Page description as a regular string (not a template literal)
-const pageDescription =
-  'Cards are versatile containers that help organize and present content in a clean, engaging way. They support various content types including text, images, lists, and interactive elements, making them perfect for dashboards, product displays, and feature highlights.'
-
 // Card with image example
-const imageCardExample = `<div class="card" style="width: 18rem;">
+const imageCardExample = `<div class="card p-0" style="width: 18rem;">
   <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-300x200.png')}" class="card-img-top" alt="Featured image">
-  <div class="card-body">
+  <div class="card-body p-3">
     <p class="card-text"><i class="ri-image-line me-2"></i>A visually appealing card with an image to enhance the content presentation.</p>
   </div>
 </div>
 `
 
 // List group card example
-const listGroupCardExample = `<div class="card" style="width: 18rem;">
-  <ul class="list-group list-group-flush">
+const listGroupCardExample = `<div class="card p-0" style="width: 18rem;">
+  <ul class="card-body list-group list-group-flush p-3">
     <li class="list-group-item"><i class="ri-checkbox-circle-line me-2"></i>Task completed</li>
     <li class="list-group-item"><i class="ri-time-line me-2"></i>In progress</li>
     <li class="list-group-item"><i class="ri-calendar-line me-2"></i>Scheduled</li>
@@ -70,9 +70,9 @@ const listGroupCardExample = `<div class="card" style="width: 18rem;">
 `
 
 // Kitchen sink card example with multiple components
-const kitchenSinkExample = `<div class="card" style="width: 18rem;">
+const kitchenSinkExample = `<div class="card p-0" style="width: 18rem;">
   <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-300x200.png')}" class="card-img-top" alt="Feature overview">
-  <div class="card-body">
+  <div class="card-body p-3">
     <h5 class="card-title"><i class="ri-apps-line me-2"></i>Complete Feature Set</h5>
     <p class="card-text">Explore all available features and components in one comprehensive example.</p>
   </div>
@@ -81,7 +81,7 @@ const kitchenSinkExample = `<div class="card" style="width: 18rem;">
     <li class="list-group-item"><i class="ri-settings-line me-2"></i>Configuration</li>
     <li class="list-group-item"><i class="ri-tools-line me-2"></i>Advanced Tools</li>
   </ul>
-  <div class="card-body">
+  <div class="card-body p-3">
     <a href="#" class="card-link"><i class="ri-book-open-line me-2"></i>Documentation</a>
     <a href="#" class="card-link"><i class="ri-github-line me-2"></i>Source Code</a>
   </div>
@@ -225,17 +225,17 @@ const textAlignmentExample = `<div class="card mb-3" style="width: 18rem;">
 </div>`
 
 // Image caps examples
-const imageCapExample = `<div class="card mb-3">
+const imageCapExample = `<div class="card p-0 mb-3" style="max-width: 20rem;">
   <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-740x200.png')}" class="card-img-top" alt="Top image cap">
-  <div class="card-body">
+  <div class="card-body p-3">
     <h5 class="card-title"><i class="ri-image-2-line me-2"></i>Top Image Card</h5>
     <p class="card-text">This card places the image at the top using card-img-top class.</p>
     <p class="card-text"><small class="text-body-secondary"><i class="ri-time-line me-2"></i>Last updated 3 mins ago</small></p>
   </div>
 </div>
 
-<div class="card">
-  <div class="card-body">
+<div class="card p-0" style="max-width: 20rem;">
+  <div class="card-body p-3">
     <h5 class="card-title"><i class="ri-image-2-line me-2"></i>Bottom Image Card</h5>
     <p class="card-text">This card demonstrates image placement at the bottom using card-img-bottom.</p>
     <p class="card-text"><small class="text-body-secondary"><i class="ri-time-line me-2"></i>Last updated 3 mins ago</small></p>
@@ -244,9 +244,9 @@ const imageCapExample = `<div class="card mb-3">
 </div>`
 
 // Image overlay example
-const imageOverlayExample = `<div class="card text-bg-dark">
+const imageOverlayExample = `<div class="card text-bg-dark p-0">
   <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-740x200-dark.png')}" class="card-img" alt="Background image">
-  <div class="card-img-overlay">
+  <div class="card-img-overlay p-3">
     <h5 class="card-title"><i class="ri-image-edit-line me-2"></i>Image Overlay Card</h5>
     <p class="card-text">This card overlays text on top of an image using the card-img-overlay class.</p>
     <p class="card-text"><small><i class="ri-time-line me-2"></i>Last updated 3 mins ago</small></p>
@@ -254,13 +254,13 @@ const imageOverlayExample = `<div class="card text-bg-dark">
 </div>`
 
 // Horizontal card example
-const horizontalCardExample = `<div class="card mb-3" style="max-width: 540px;">
+const horizontalCardExample = `<div class="card p-0 mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-180x240.png')}" class="img-fluid w-100 object-fit-cover rounded" style="max-height: 200px;" alt="Card image">
+      <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-180x240.png')}" class="img-fluid w-100 object-fit-cover rounded-4" style="max-height: 200px;" alt="Card image">
     </div>
     <div class="col-md-8">
-      <div class="card-body">
+      <div class="card-body p-3">
         <h5 class="card-title"><i class="ri-layout-right-line me-2"></i>Horizontal Card Layout</h5>
         <p class="card-text">This card uses a horizontal layout with the image positioned to the left of the content.</p>
         <p class="card-text"><small class="text-body-secondary"><i class="ri-time-line me-2"></i>Last updated 3 mins ago</small></p>
@@ -295,7 +295,7 @@ const backgroundColorExample = `<div class="card text-bg-primary mb-3" style="ma
 </div>`
 
 // Border color examples
-const borderColorExample = `<div class="card border-primary mb-3" style="max-width: 18rem;">
+const borderColorExample = `<div class="card border border-primary mb-3" style="max-width: 18rem;">
   <div class="card-header"><i class="ri-brush-line me-2"></i>Primary Border</div>
   <div class="card-body text-primary">
     <h5 class="card-title">Primary Border Card</h5>
@@ -303,7 +303,7 @@ const borderColorExample = `<div class="card border-primary mb-3" style="max-wid
   </div>
 </div>
 
-<div class="card border-success mb-3" style="max-width: 18rem;">
+<div class="card border border-success mb-3" style="max-width: 18rem;">
   <div class="card-header"><i class="ri-checkbox-circle-line me-2"></i>Success Border</div>
   <div class="card-body text-success">
     <h5 class="card-title">Success Border Card</h5>
@@ -311,7 +311,7 @@ const borderColorExample = `<div class="card border-primary mb-3" style="max-wid
   </div>
 </div>
 
-<div class="card border-info mb-3" style="max-width: 18rem;">
+<div class="card border border-info mb-3" style="max-width: 18rem;">
   <div class="card-header"><i class="ri-information-line me-2"></i>Info Border</div>
   <div class="card-body text-info">
     <h5 class="card-title">Info Border Card</h5>
@@ -321,25 +321,25 @@ const borderColorExample = `<div class="card border-primary mb-3" style="max-wid
 
 // Card group example
 const cardGroupExample = `<div class="card-group">
-  <div class="card">
+  <div class="card p-0">
     <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-300x200.png')}" class="card-img-top" alt="Feature 1">
-    <div class="card-body">
+    <div class="card-body p-3">
       <h5 class="card-title"><i class="ri-rocket-line me-2"></i>Quick Start</h5>
       <p class="card-text">Get started quickly with our comprehensive onboarding process and tutorials.</p>
       <p class="card-text"><small class="text-body-secondary"><i class="ri-time-line me-2"></i>Updated today</small></p>
     </div>
   </div>
-  <div class="card">
+  <div class="card p-0">
     <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-300x200.png')}" class="card-img-top" alt="Feature 2">
-    <div class="card-body">
+    <div class="card-body p-3">
       <h5 class="card-title"><i class="ri-tools-line me-2"></i>Advanced Tools</h5>
       <p class="card-text">Access powerful tools and features to enhance your productivity.</p>
       <p class="card-text"><small class="text-body-secondary"><i class="ri-time-line me-2"></i>Updated yesterday</small></p>
     </div>
   </div>
-  <div class="card">
+  <div class="card p-0">
     <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-300x200.png')}" class="card-img-top" alt="Feature 3">
-    <div class="card-body">
+    <div class="card-body p-3">
       <h5 class="card-title"><i class="ri-customer-service-line me-2"></i>24/7 Support</h5>
       <p class="card-text">Get help whenever you need it with our round-the-clock support team.</p>
       <p class="card-text"><small class="text-body-secondary"><i class="ri-time-line me-2"></i>Updated 3 days ago</small></p>
@@ -350,27 +350,27 @@ const cardGroupExample = `<div class="card-group">
 // Grid cards example with equal height
 const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-4">
   <div class="col">
-    <div class="card h-100">
+    <div class="card h-100 p-0">
       <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-300x140.png')}" class="card-img-top" alt="Feature 1">
-      <div class="card-body">
+      <div class="card-body p-3">
         <h5 class="card-title"><i class="ri-layout-masonry-line me-2"></i>Responsive Design</h5>
         <p class="card-text">Create beautiful, responsive layouts that work seamlessly across all devices.</p>
       </div>
     </div>
   </div>
   <div class="col">
-    <div class="card h-100">
+    <div class="card h-100 p-0">
       <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-300x140.png')}" class="card-img-top" alt="Feature 2">
-      <div class="card-body">
+      <div class="card-body p-3">
         <h5 class="card-title"><i class="ri-speed-line me-2"></i>Performance</h5>
         <p class="card-text">Optimized for speed and efficiency to deliver the best user experience.</p>
       </div>
     </div>
   </div>
   <div class="col">
-    <div class="card h-100">
+    <div class="card h-100 p-0">
       <img src="${getAssetPrefix('/assets/img/placeholder-images/placeholder-image-300x140.png')}" class="card-img-top" alt="Feature 3">
-      <div class="card-body">
+      <div class="card-body p-3">
         <h5 class="card-title"><i class="ri-shield-check-line me-2"></i>Security</h5>
         <p class="card-text">Built-in security features to protect your data and privacy.</p>
       </div>
@@ -408,10 +408,9 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Basic Card Example"
               height="450px"
+              bgColor={true}
               component={basicCardExample}
               htmlCode={basicCardExample}
-              cssCode={``}
-              jsCode={``}
             />
           </div>
           <div class="my-3">
@@ -435,10 +434,9 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Simple Card Body"
               height="150px"
+              bgColor={true}
               component={simpleCardExample}
               htmlCode={simpleCardExample}
-              cssCode={``}
-              jsCode={``}
             />
           </div>
           <div class="my-3">
@@ -453,6 +451,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Card with Text Elements"
               height="250px"
+              bgColor={true}
               component={cardWithLinksExample}
               htmlCode={cardWithLinksExample}
               cssCode={``}
@@ -470,6 +469,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Card with Image"
               height="350px"
+              bgColor={true}
               component={imageCardExample}
               htmlCode={imageCardExample}
               cssCode={``}
@@ -489,6 +489,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Card with List Group"
               height="200px"
+              bgColor={true}
               component={listGroupCardExample}
               htmlCode={listGroupCardExample}
               cssCode={``}
@@ -506,6 +507,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Kitchen Sink Example"
               height="550px"
+              bgColor={true}
               component={kitchenSinkExample}
               htmlCode={kitchenSinkExample}
               cssCode={``}
@@ -522,6 +524,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Card with Header"
               height="300px"
+              bgColor={true}
               component={headerCardExample}
               htmlCode={headerCardExample}
               cssCode={``}
@@ -537,6 +540,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Card with Header Title"
               height="300px"
+              bgColor={true}
               component={headerTitleCardExample}
               htmlCode={headerTitleCardExample}
               cssCode={``}
@@ -563,6 +567,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Cards in Grid Layout"
               height="400px"
+              bgColor={true}
               component={gridCardsExample}
               htmlCode={gridCardsExample}
               cssCode={``}
@@ -580,6 +585,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Cards with Utility Classes"
               height="550px"
+              bgColor={true}
               component={utilityCardsExample}
               htmlCode={utilityCardsExample}
               cssCode={``}
@@ -597,6 +603,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Card with Navigation Tabs"
               height="350px"
+              bgColor={true}
               component={navTabsCardExample}
               htmlCode={navTabsCardExample}
               cssCode={``}
@@ -606,6 +613,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Card with Navigation Pills"
               height="350px"
+              bgColor={true}
               component={navPillsCardExample}
               htmlCode={navPillsCardExample}
               cssCode={``}
@@ -625,6 +633,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Text Alignment Examples"
               height="550px"
+              bgColor={true}
               component={textAlignmentExample}
               htmlCode={textAlignmentExample}
               cssCode={``}
@@ -650,6 +659,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Image Caps Examples"
               height="550px"
+              bgColor={true}
               component={imageCapExample}
               htmlCode={imageCapExample}
               cssCode={``}
@@ -667,6 +677,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Image Overlay Example"
               height="350px"
+              bgColor={true}
               component={imageOverlayExample}
               htmlCode={imageOverlayExample}
               cssCode={``}
@@ -684,6 +695,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Horizontal Card Layout"
               height="500px"
+              bgColor={true}
               component={horizontalCardExample}
               htmlCode={horizontalCardExample}
               cssCode={``}
@@ -708,6 +720,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Background Color Examples"
               height="550px"
+              bgColor={true}
               component={backgroundColorExample}
               htmlCode={backgroundColorExample}
               cssCode={``}
@@ -725,6 +738,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Border Color Examples"
               height="550px"
+              bgColor={true}
               component={borderColorExample}
               htmlCode={borderColorExample}
               cssCode={``}
@@ -748,6 +762,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Card Group Example"
               height="550px"
+              bgColor={true}
               component={cardGroupExample}
               htmlCode={cardGroupExample}
               cssCode={``}
@@ -765,6 +780,7 @@ const gridCardsEqualHeightExample = `<div class="row row-cols-1 row-cols-md-3 g-
             <ComponentPreview
               title="Grid Cards Example"
               height="550px"
+              bgColor={true}
               component={gridCardsEqualHeightExample}
               htmlCode={gridCardsEqualHeightExample}
               cssCode={``}

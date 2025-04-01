@@ -31,7 +31,7 @@ window.UIControlsManager = class UIControlsManager {
   }
 
   static setupEditButtons() {
-    document.querySelectorAll('.edit-button').forEach(button => {
+    document.querySelectorAll('.edit-button').forEach((button) => {
       button.addEventListener('click', () => {
         const card = button.closest('.card')
         const allEditorContainers = card.querySelectorAll('.codemirror-editor-container')
@@ -43,7 +43,7 @@ window.UIControlsManager = class UIControlsManager {
         const isReadOnly = firstEditor.getOption('readOnly')
 
         // Toggle edit mode for all editors
-        allEditorContainers.forEach(container => {
+        allEditorContainers.forEach((container) => {
           if (container.editor) {
             container.editor.setOption('readOnly', !isReadOnly)
 
@@ -59,7 +59,8 @@ window.UIControlsManager = class UIControlsManager {
               // Enabling edit mode - add indicator if doesn't exist
               if (!indicator) {
                 indicator = document.createElement('div')
-                indicator.className = 'edit-mode-indicator position-absolute top-0 end-0 m-2 px-2 py-1 bg-primary text-white rounded-pill fs-sm'
+                indicator.className =
+                  'edit-mode-indicator position-absolute top-0 end-0 m-2 px-2 py-1 bg-primary text-white rounded-pill fs-sm'
                 indicator.innerHTML = '<i class="ri-edit-line me-1"></i>Edit Mode'
                 indicator.style.zIndex = '10'
                 indicator.style.fontSize = '0.75rem'
@@ -89,7 +90,34 @@ window.UIControlsManager = class UIControlsManager {
 
         const previewBox = card.closest('.preview-box') || card.closest('.preview-modal')
         if (previewBox) {
-          window.PreviewManager.updateIframeContent(previewBox)
+          // Get the current bgColor value before updating
+          const bgColor = previewBox.getAttribute('data-bg-color') === 'true'
+
+          // Update iframe with preserved bgColor
+          setTimeout(() => {
+            window.PreviewManager.updateIframeContent(previewBox)
+
+            // Force the background color to be applied again
+            const iframe = previewBox.querySelector('.preview-iframe')
+            if (iframe && iframe.contentWindow) {
+              try {
+                // Always send the bgColor explicitly to ensure it's preserved
+                iframe.contentWindow.postMessage({ type: 'updateContent', bgColor: bgColor }, '*')
+
+                // Force another update after a short delay to ensure the background color sticks
+                setTimeout(() => {
+                  if (iframe.contentWindow) {
+                    iframe.contentWindow.postMessage(
+                      { type: 'updateContent', bgColor: bgColor },
+                      '*'
+                    )
+                  }
+                }, 500)
+              } catch (e) {
+                console.error('Error updating background color:', e)
+              }
+            }
+          }, 100)
         }
 
         // Show feedback based on the current state
@@ -130,12 +158,12 @@ window.UIControlsManager = class UIControlsManager {
   }
 
   static setupResetButtons() {
-    document.querySelectorAll('.reset-all-button').forEach(button => {
+    document.querySelectorAll('.reset-all-button').forEach((button) => {
       button.addEventListener('click', () => {
         const card = button.closest('.card')
         const editors = card.querySelectorAll('.codemirror-editor-container')
 
-        editors.forEach(container => {
+        editors.forEach((container) => {
           if (container.editor && container.defaultCode) {
             const editor = container.editor
             editor.setValue(container.defaultCode)
@@ -205,13 +233,14 @@ window.UIControlsManager = class UIControlsManager {
   static setupCopyButtons() {
     const copyButtons = document.querySelectorAll('.copy-button')
 
-    copyButtons.forEach(button => {
+    copyButtons.forEach((button) => {
       button.addEventListener('click', async () => {
         try {
           // Find the closest component preview container
-          const componentPreview = button.closest('.component-preview') ||
-                                  button.closest('.preview-box') ||
-                                  button.closest('.preview-modal')
+          const componentPreview =
+            button.closest('.component-preview') ||
+            button.closest('.preview-box') ||
+            button.closest('.preview-modal')
           if (!componentPreview) return
 
           // Find the active tab pane
@@ -264,7 +293,6 @@ window.UIControlsManager = class UIControlsManager {
               placement: 'top'
             })
           }, 1000)
-
         } catch (error) {
           console.error('Failed to copy code:', error)
         }
@@ -273,8 +301,8 @@ window.UIControlsManager = class UIControlsManager {
   }
 
   static setupPreviewDevices() {
-    document.querySelectorAll('.preview-devices').forEach(devices => {
-      devices.querySelectorAll('.btn').forEach(button => {
+    document.querySelectorAll('.preview-devices').forEach((devices) => {
+      devices.querySelectorAll('.btn').forEach((button) => {
         button.addEventListener('click', () => {
           const width = button.dataset.width
           const previewBox = button.closest('.preview-box') || button.closest('.preview-modal')
@@ -296,7 +324,7 @@ window.UIControlsManager = class UIControlsManager {
   static updatePreviewWidth(element, width) {
     const devices = element.querySelector('.preview-devices')
     if (devices) {
-      devices.querySelectorAll('.btn').forEach(btn => {
+      devices.querySelectorAll('.btn').forEach((btn) => {
         btn.classList.toggle('active', btn.dataset.width === width)
         btn.setAttribute('aria-pressed', btn.dataset.width === width)
       })
@@ -312,8 +340,9 @@ window.UIControlsManager = class UIControlsManager {
 
   static syncModalToMainPreview(modal, width) {
     const modalId = modal.id
-    const mainPreview = document.querySelector(`.preview-box[data-modal="${modalId}"]`) ||
-                       document.querySelector('.preview-box')
+    const mainPreview =
+      document.querySelector(`.preview-box[data-modal="${modalId}"]`) ||
+      document.querySelector('.preview-box')
     if (mainPreview) {
       this.updatePreviewWidth(mainPreview, width)
     }
@@ -330,10 +359,11 @@ window.UIControlsManager = class UIControlsManager {
   }
 
   static setupThemeToggle() {
-    document.querySelectorAll('.theme-toggle').forEach(button => {
-      // Get initial theme
+    document.querySelectorAll('.theme-toggle').forEach((button) => {
+      // Get initial theme from localStorage, document, or default to light
+      const storedTheme = localStorage.getItem('theme')
       const documentTheme = document.documentElement.getAttribute('data-bs-theme')
-      const initialTheme = documentTheme || 'light'
+      const initialTheme = storedTheme || documentTheme || 'light'
 
       // Set initial theme state
       button.dataset.currentTheme = initialTheme
@@ -345,6 +375,19 @@ window.UIControlsManager = class UIControlsManager {
       // Find associated preview box and iframe
       const previewBox = button.closest('.preview-box') || button.closest('.preview-modal')
       if (!previewBox) return
+
+      // Set theme on card-body or modal-body
+      if (previewBox.classList.contains('preview-box')) {
+        const cardBody = previewBox.querySelector('.card-body')
+        if (cardBody) {
+          cardBody.setAttribute('data-bs-theme', initialTheme)
+        }
+      } else if (previewBox.classList.contains('preview-modal')) {
+        const modalBody = previewBox.querySelector('.modal-body')
+        if (modalBody) {
+          modalBody.setAttribute('data-bs-theme', initialTheme)
+        }
+      }
 
       const iframe = previewBox.querySelector('.preview-iframe')
       if (!iframe) return
@@ -369,7 +412,14 @@ window.UIControlsManager = class UIControlsManager {
           this.updateThemeIcon(icon, newTheme)
         }
 
-        // Update only this specific component's iframe
+        // Store theme preference for this component only (in component-specific key)
+        const componentId = previewBox.id || 'default'
+        localStorage.setItem(`iframe-theme-${componentId}`, newTheme)
+
+        // Do NOT update the document theme - only components should be affected
+        // document.documentElement.setAttribute('data-bs-theme', newTheme)
+
+        // Update only this specific component's iframe and sync with modal/main preview
         this.updateComponentTheme(previewBox, newTheme)
       })
 
@@ -411,10 +461,124 @@ window.UIControlsManager = class UIControlsManager {
       }
     }
 
-    if(!previewBox.dataset.externalSrc) {
-      const htmlEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, "html")
-      const cssEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, "css")
-      const jsEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, "javascript")
+    // Get the background color setting
+    const bgColor = previewBox.getAttribute('data-bg-color') === 'true'
+
+    // Update data-bs-theme on card-body or modal-body
+    if (previewBox.classList.contains('preview-box')) {
+      // For main preview, set data-bs-theme on card-body
+      const cardBody = previewBox.querySelector('.card-body')
+      if (cardBody) {
+        cardBody.setAttribute('data-bs-theme', theme)
+      }
+
+      // Find and update the associated modal if it exists
+      const modalId = previewBox.querySelector('.preview-expand')?.getAttribute('data-bs-target')
+      if (modalId) {
+        const modal = document.querySelector(modalId)
+        if (modal) {
+          // Update modal theme toggle
+          const modalThemeToggle = modal.querySelector('.theme-toggle')
+          if (modalThemeToggle) {
+            modalThemeToggle.dataset.currentTheme = theme
+            const modalIcon = modalThemeToggle.querySelector('i')
+            if (modalIcon) {
+              this.updateThemeIcon(modalIcon, theme)
+            }
+          }
+
+          // Update modal-body theme
+          const modalBody = modal.querySelector('.modal-body')
+          if (modalBody) {
+            modalBody.setAttribute('data-bs-theme', theme)
+          }
+
+          // Update modal iframe theme if it exists
+          const modalIframe = modal.querySelector('.preview-iframe')
+          if (modalIframe && modalIframe.contentWindow) {
+            try {
+              modalIframe.contentWindow.postMessage(
+                {
+                  type: 'setTheme',
+                  theme: theme,
+                  version: ++this.themeVersion
+                },
+                '*'
+              )
+
+              // Also update background color
+              modalIframe.contentWindow.postMessage(
+                {
+                  type: 'updateContent',
+                  bgColor: bgColor
+                },
+                '*'
+              )
+            } catch (e) {
+              console.error('Error updating modal iframe theme:', e)
+            }
+          }
+        }
+      }
+    } else if (previewBox.classList.contains('preview-modal')) {
+      // For modal preview, set data-bs-theme on modal-body
+      const modalBody = previewBox.querySelector('.modal-body')
+      if (modalBody) {
+        modalBody.setAttribute('data-bs-theme', theme)
+      }
+
+      // Find and update the associated main preview
+      const modalId = previewBox.id
+      const mainPreview = document.querySelector(`.preview-box[data-modal="${modalId}"]`)
+      if (mainPreview) {
+        // Update main preview theme toggle
+        const mainThemeToggle = mainPreview.querySelector('.theme-toggle')
+        if (mainThemeToggle) {
+          mainThemeToggle.dataset.currentTheme = theme
+          const mainIcon = mainThemeToggle.querySelector('i')
+          if (mainIcon) {
+            this.updateThemeIcon(mainIcon, theme)
+          }
+        }
+
+        // Update card-body theme
+        const cardBody = mainPreview.querySelector('.card-body')
+        if (cardBody) {
+          cardBody.setAttribute('data-bs-theme', theme)
+        }
+
+        // Update main preview iframe theme
+        const mainIframe = mainPreview.querySelector('.preview-iframe')
+        if (mainIframe && mainIframe.contentWindow) {
+          try {
+            mainIframe.contentWindow.postMessage(
+              {
+                type: 'setTheme',
+                theme: theme,
+                version: ++this.themeVersion
+              },
+              '*'
+            )
+
+            // Also update background color
+            mainIframe.contentWindow.postMessage(
+              {
+                type: 'updateContent',
+                bgColor: bgColor
+              },
+              '*'
+            )
+          } catch (e) {
+            console.error('Error updating main preview iframe theme:', e)
+          }
+        }
+      }
+    }
+
+    if (!previewBox.dataset.externalSrc) {
+      const htmlEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'html')
+      const cssEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'css')
+      const jsEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'javascript')
 
       const htmlContent = htmlEditor ? htmlEditor.getValue() : ''
       const cssContent = cssEditor ? cssEditor.getValue() : ''
@@ -423,52 +587,70 @@ window.UIControlsManager = class UIControlsManager {
       // Update iframe content with new theme
       if (iframe.contentWindow) {
         try {
-          iframe.contentWindow.postMessage({
-            type: 'setTheme',
-            theme: theme,
-            version: ++this.themeVersion
-          }, '*')
+          iframe.contentWindow.postMessage(
+            {
+              type: 'setTheme',
+              theme: theme,
+              version: ++this.themeVersion
+            },
+            '*'
+          )
+
+          // Also update the background color
+          iframe.contentWindow.postMessage(
+            {
+              type: 'updateContent',
+              bgColor: bgColor
+            },
+            '*'
+          )
         } catch (e) {
           console.error('Error updating iframe theme:', e)
 
           // If direct update fails, recreate the iframe content
           if (typeof window.PreviewManager !== 'undefined') {
-            const iframeContent = window.PreviewManager.createIframeContent(htmlContent, cssContent, jsContent, theme)
+            const iframeContent = window.PreviewManager.createIframeContent(
+              htmlContent,
+              cssContent,
+              jsContent,
+              theme,
+              bgColor
+            )
             iframe.srcdoc = iframeContent
           }
         }
       } else {
         // If contentWindow is not available, recreate the iframe content
         if (typeof window.PreviewManager !== 'undefined') {
-          const iframeContent = window.PreviewManager.createIframeContent(htmlContent, cssContent, jsContent, theme)
+          const iframeContent = window.PreviewManager.createIframeContent(
+            htmlContent,
+            cssContent,
+            jsContent,
+            theme,
+            bgColor
+          )
           iframe.srcdoc = iframeContent
         }
       }
-    }else{
+    } else {
       // iframe.src = previewBox.dataset.externalSrc
 
       if (iframe.contentWindow) {
         try {
           iframe.contentWindow.postMessage({ type: 'setTheme', theme: theme }, '*')
+
+          // Also send background color
+          iframe.contentWindow.postMessage({ type: 'updateContent', bgColor: bgColor }, '*')
         } catch (e) {
           console.error('Error updating iframe theme:', e)
         }
-      }
-    }
-
-    // Update any associated modal
-    const modalId = previewBox.dataset.modalTarget
-    if (modalId) {
-      const modal = document.getElementById(modalId)
-      if (modal && modal.classList.contains('show')) {
-        this.syncModalContent(previewBox, modal)
       }
     }
   }
 
   static updateAllIframeThemes(sourcePreviewBox, theme) {
     // Update all theme toggles in the document
-    document.querySelectorAll('.theme-toggle').forEach(toggle => {
+    document.querySelectorAll('.theme-toggle').forEach((toggle) => {
       toggle.dataset.currentTheme = theme
       const icon = toggle.querySelector('i')
       if (icon) {
@@ -483,7 +665,9 @@ window.UIControlsManager = class UIControlsManager {
     }
 
     // Find and update modal iframe if exists
-    const modalId = sourcePreviewBox.querySelector('.preview-expand')?.getAttribute('data-bs-target')
+    const modalId = sourcePreviewBox
+      .querySelector('.preview-expand')
+      ?.getAttribute('data-bs-target')
     if (modalId) {
       const modal = document.querySelector(modalId)
       if (modal?.classList.contains('show')) {
@@ -507,14 +691,17 @@ window.UIControlsManager = class UIControlsManager {
     }
 
     // Update all iframes in the document
-    document.querySelectorAll('.preview-iframe').forEach(iframe => {
+    document.querySelectorAll('.preview-iframe').forEach((iframe) => {
       if (iframe.contentWindow) {
         try {
-          iframe.contentWindow.postMessage({
-            type: 'setTheme',
-            theme: theme,
-            version: ++this.themeVersion
-          }, '*')
+          iframe.contentWindow.postMessage(
+            {
+              type: 'setTheme',
+              theme: theme,
+              version: ++this.themeVersion
+            },
+            '*'
+          )
         } catch (e) {
           console.error('Error updating iframe theme:', e)
         }
@@ -531,11 +718,14 @@ window.UIControlsManager = class UIControlsManager {
     const version = ++this.themeVersion
     const tryUpdateTheme = (remainingRetries) => {
       try {
-        iframe.contentWindow.postMessage({
-          type: 'setTheme',
-          theme,
-          version
-        }, '*')
+        iframe.contentWindow.postMessage(
+          {
+            type: 'setTheme',
+            theme,
+            version
+          },
+          '*'
+        )
       } catch (e) {
         console.error('Error setting iframe theme:', e)
         if (remainingRetries > 0) {
@@ -585,7 +775,7 @@ window.UIControlsManager = class UIControlsManager {
   }
 
   static setupCodeToggle() {
-    document.querySelectorAll('.preview-box').forEach(previewBox => {
+    document.querySelectorAll('.preview-box').forEach((previewBox) => {
       const toggleBtn = previewBox.querySelector('.code-toggle-link')
       const codePreviewBox = previewBox.querySelector('.code-preview-box')
 
@@ -611,7 +801,7 @@ window.UIControlsManager = class UIControlsManager {
             // Refresh all editors with a slight delay to ensure DOM is updated
             setTimeout(() => {
               const editors = codePreviewBox.querySelectorAll('.codemirror-editor-container')
-              editors.forEach(container => {
+              editors.forEach((container) => {
                 if (container.editor) {
                   container.editor.refresh()
 
@@ -628,7 +818,7 @@ window.UIControlsManager = class UIControlsManager {
   }
 
   static setupPreviewExpand() {
-    document.querySelectorAll('.preview-expand').forEach(button => {
+    document.querySelectorAll('.preview-expand').forEach((button) => {
       button.addEventListener('click', () => {
         const previewBox = button.closest('.preview-box')
         if (!previewBox) return
@@ -655,19 +845,23 @@ window.UIControlsManager = class UIControlsManager {
 
         this.showModal(modal, previewBox, modalIframe)
 
-        modal.addEventListener('hidden.bs.modal', () => {
-          const icon = button.querySelector('i')
-          if (icon) {
-            icon.classList.remove('ri-fullscreen-exit-line')
-            icon.classList.add('ri-fullscreen-line')
-          }
+        modal.addEventListener(
+          'hidden.bs.modal',
+          () => {
+            const icon = button.querySelector('i')
+            if (icon) {
+              icon.classList.remove('ri-fullscreen-exit-line')
+              icon.classList.add('ri-fullscreen-line')
+            }
 
-          const modalDevices = modal.querySelector('.preview-devices .btn.active')
-          if (modalDevices) {
-            const width = modalDevices.dataset.width
-            this.updatePreviewWidth(previewBox, width)
-          }
-        }, { once: false })
+            const modalDevices = modal.querySelector('.preview-devices .btn.active')
+            if (modalDevices) {
+              const width = modalDevices.dataset.width
+              this.updatePreviewWidth(previewBox, width)
+            }
+          },
+          { once: false }
+        )
       })
     })
   }
@@ -680,9 +874,9 @@ window.UIControlsManager = class UIControlsManager {
       const externalSrc = previewBox.dataset.externalSrc
       if (!externalSrc) {
         // For non-external sources, proceed with full content sync
-        const htmlEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, "html")
-        const cssEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, "css")
-        const jsEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, "javascript")
+        const htmlEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'html')
+        const cssEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'css')
+        const jsEditor = window.CodeMirrorManager?.getEditorFromPreviewBox(previewBox, 'javascript')
 
         const htmlContent = htmlEditor ? htmlEditor.getValue() : ''
         const cssContent = cssEditor ? cssEditor.getValue() : ''
@@ -691,10 +885,19 @@ window.UIControlsManager = class UIControlsManager {
         // Get component-specific theme
         const themeToggle = previewBox.querySelector('.theme-toggle')
         const theme = themeToggle?.dataset.currentTheme || 'light'
-  
+
+        // Get bgColor from preview box
+        const bgColor = previewBox.getAttribute('data-bg-color') === 'true'
+
         // Create iframe content
         if (typeof window.PreviewManager !== 'undefined') {
-          const iframeContent = window.PreviewManager.createIframeContent(htmlContent, cssContent, jsContent, theme)
+          const iframeContent = window.PreviewManager.createIframeContent(
+            htmlContent,
+            cssContent,
+            jsContent,
+            theme,
+            bgColor
+          )
           modalIframe.srcdoc = iframeContent
         }
       } else {
@@ -722,7 +925,7 @@ window.UIControlsManager = class UIControlsManager {
     }
 
     if (modalIframe) {
-      const onIframeLoad = function() {
+      const onIframeLoad = function () {
         modalIframe.removeEventListener('load', onIframeLoad)
         showModalContent()
       }
@@ -762,7 +965,14 @@ window.UIControlsManager = class UIControlsManager {
       if (jsEditor && modalJsEditor) {
         modalJsEditor.setValue(jsEditor.getValue())
       }
+
+      // Sync background color - use getAttribute for consistency
+      const bgColor = previewBox.getAttribute('data-bg-color')
+      if (bgColor !== null) {
+        modal.setAttribute('data-bg-color', bgColor)
+      }
     }
+
     // Sync theme
     const themeToggle = previewBox.querySelector('.theme-toggle')
     const modalThemeToggle = modal.querySelector('.theme-toggle')
@@ -775,24 +985,34 @@ window.UIControlsManager = class UIControlsManager {
       if (icon) {
         this.updateThemeIcon(icon, theme)
       }
+
+      // Sync data-bs-theme between card-body and modal-body
+      const cardBody = previewBox.querySelector('.card-body')
+      const modalBody = modal.querySelector('.modal-body')
+
+      if (cardBody && modalBody) {
+        // Get the theme from the card-body or default to the toggle value
+        const cardBodyTheme = cardBody.getAttribute('data-bs-theme') || theme
+        modalBody.setAttribute('data-bs-theme', cardBodyTheme)
+      }
     }
   }
 
   static syncModalDeviceWidth(previewBox, modal) {
-    const activeDevice = previewBox.querySelector(".preview-devices .btn.active")
+    const activeDevice = previewBox.querySelector('.preview-devices .btn.active')
     if (activeDevice) {
       const width = activeDevice.dataset.width
-      const modalContainer = modal.querySelector(".preview-container")
+      const modalContainer = modal.querySelector('.preview-container')
       if (modalContainer) {
-        modalContainer.style.maxWidth = "100%"
-        modalContainer.style.width = width === "100%" ? "100%" : `${width}px`
-        modalContainer.style.margin = width === "100%" ? "0" : "0 auto"
+        modalContainer.style.maxWidth = '100%'
+        modalContainer.style.width = width === '100%' ? '100%' : `${width}px`
+        modalContainer.style.margin = width === '100%' ? '0' : '0 auto'
       }
 
-      const modalDevices = modal.querySelector(".preview-devices")
+      const modalDevices = modal.querySelector('.preview-devices')
       if (modalDevices) {
-        modalDevices.querySelectorAll(".btn").forEach((btn) => {
-          btn.classList.toggle("active", btn.dataset.width === width)
+        modalDevices.querySelectorAll('.btn').forEach((btn) => {
+          btn.classList.toggle('active', btn.dataset.width === width)
           btn.setAttribute('aria-pressed', btn.dataset.width === width)
         })
       }
@@ -800,17 +1020,18 @@ window.UIControlsManager = class UIControlsManager {
   }
 
   static setupDownloadButtons() {
-    document.querySelectorAll('.download-button').forEach(button => {
+    document.querySelectorAll('.download-button').forEach((button) => {
       // Remove any existing event listeners by cloning and replacing
       const newButton = button.cloneNode(true)
       button.parentNode.replaceChild(newButton, button)
 
       newButton.addEventListener('click', () => {
         const format = newButton.getAttribute('data-format') || 'zip'
-        const previewBox = newButton.closest('.preview-box') ||
-                          newButton.closest('.preview-modal') ||
-                          newButton.closest('.card')?.closest('.preview-box') ||
-                          newButton.closest('.card')?.closest('.preview-modal')
+        const previewBox =
+          newButton.closest('.preview-box') ||
+          newButton.closest('.preview-modal') ||
+          newButton.closest('.card')?.closest('.preview-box') ||
+          newButton.closest('.card')?.closest('.preview-modal')
 
         if (previewBox) {
           console.log(`Downloading in ${format} format from UIControlsManager`)
@@ -831,7 +1052,8 @@ window.UIControlsManager = class UIControlsManager {
         // Ctrl+Shift+E: Toggle edit mode
         if (e.shiftKey && e.key === 'E') {
           const activeElement = document.activeElement
-          const previewBox = activeElement.closest('.preview-box') || activeElement.closest('.preview-modal')
+          const previewBox =
+            activeElement.closest('.preview-box') || activeElement.closest('.preview-modal')
           if (previewBox) {
             const editButton = previewBox.querySelector('.edit-button')
             if (editButton) {
@@ -844,7 +1066,8 @@ window.UIControlsManager = class UIControlsManager {
         // Ctrl+Shift+R: Reset code
         if (e.shiftKey && e.key === 'R') {
           const activeElement = document.activeElement
-          const previewBox = activeElement.closest('.preview-box') || activeElement.closest('.preview-modal')
+          const previewBox =
+            activeElement.closest('.preview-box') || activeElement.closest('.preview-modal')
           if (previewBox) {
             const resetButton = previewBox.querySelector('.reset-all-button')
             if (resetButton) {
@@ -857,7 +1080,8 @@ window.UIControlsManager = class UIControlsManager {
         // Ctrl+Shift+D: Download code
         if (e.shiftKey && e.key === 'D') {
           const activeElement = document.activeElement
-          const previewBox = activeElement.closest('.preview-box') || activeElement.closest('.preview-modal')
+          const previewBox =
+            activeElement.closest('.preview-box') || activeElement.closest('.preview-modal')
           if (previewBox) {
             window.CodeMirrorManager.downloadCode(previewBox, 'zip')
             e.preventDefault()
@@ -894,11 +1118,11 @@ window.UIControlsManager = class UIControlsManager {
     document.head.appendChild(style)
 
     // Add aria attributes to interactive elements
-    document.querySelectorAll('.preview-devices .btn').forEach(btn => {
+    document.querySelectorAll('.preview-devices .btn').forEach((btn) => {
       btn.setAttribute('aria-pressed', btn.classList.contains('active'))
     })
 
-    document.querySelectorAll('.code-toggle-link').forEach(btn => {
+    document.querySelectorAll('.code-toggle-link').forEach((btn) => {
       btn.setAttribute('aria-expanded', btn.classList.contains('active'))
     })
   }

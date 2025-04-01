@@ -151,9 +151,16 @@ window.CodeMirrorManager = class CodeMirrorEditorSystem {
     const cssContent = cssEditor ? cssEditor.getValue() : ''
     const jsContent = jsEditor ? jsEditor.getValue() : ''
 
+    // Get bgColor from preview box data attribute - use getAttribute for consistency
+    const bgColor = previewBox.getAttribute('data-bg-color') === 'true'
+
+    // Get the current theme
+    const themeToggle = previewBox.querySelector('.theme-toggle')
+    const theme = themeToggle?.dataset.currentTheme || 'light'
+
     // Create the full HTML content
     let fullHTML = `<!DOCTYPE html>
-<html>
+<html data-bs-theme="${theme}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -165,10 +172,22 @@ window.CodeMirrorManager = class CodeMirrorEditorSystem {
     href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
     rel="stylesheet"
   />
+  <style>
+    html, body {
+      padding: 0;
+      margin: 0;
+      background-color: ${bgColor ? 'var(--content-wrapper-bg)' : 'transparent'};
+    }
+    .component-wrapper {
+      padding: 1rem;
+    }
+  </style>
   ${cssContent ? '<style>\n' + cssContent + '\n</style>' : ''}
 </head>
 <body>
-  ${htmlContent}
+  <div class="component-wrapper">
+    ${htmlContent}
+  </div>
   ${jsContent ? '<script>\n' + jsContent + '\n</script>' : ''}
   <script src="https://cdn.jsdelivr.net/npm/asteroadmin@latest/dist/js/main.min.js" type="module"></script>
 </body>
