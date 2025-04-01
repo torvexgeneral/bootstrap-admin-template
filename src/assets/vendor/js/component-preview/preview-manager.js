@@ -592,8 +592,6 @@ window.PreviewManager = class PreviewManager {
   }
 
   static resetAllCode(previewBox) {
-    if (!previewBox) return
-
     // Reset HTML editor
     const htmlContainer = previewBox.querySelector(
       '.codemirror-editor-container[data-language="html"]'
@@ -621,15 +619,7 @@ window.PreviewManager = class PreviewManager {
     // Update preview
     const iframe = previewBox.querySelector('.preview-iframe')
     if (iframe) {
-      const htmlContent = htmlContainer?.defaultCode || ''
-      const cssContent = cssContainer?.defaultCode || ''
-      const jsContent = jsContainer?.defaultCode || ''
-      const themeToggle = previewBox.querySelector('.theme-toggle')
-      const theme = themeToggle?.dataset.currentTheme || 'light'
-      // Get bgColor from the preview box
-      const bgColor = previewBox.getAttribute('data-bg-color') === 'true'
-
-      // Use updateIframeContent with the proper parameters
+      // Use updateIframeContent directly without creating unused variables
       this.updateIframeContent(previewBox)
     }
   }
