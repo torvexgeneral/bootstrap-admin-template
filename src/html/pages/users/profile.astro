@@ -12,6 +12,8 @@ const pageHeaderProps: PageHeaderProps = {
     { label: 'Profile', class: 'active' }
   ]
 }
+
+const bio = 'Administrator with 5+ years of experience in system management and web development.'
 ---
 
 <AdminLayout title="User Profile" description="User profile settings" currentPath="users/profile">
@@ -20,8 +22,8 @@ const pageHeaderProps: PageHeaderProps = {
   <div class="row g-4">
     <!-- Profile Card -->
     <div class="col-lg-3">
-      <div class="card">
-        <div class="card-header text-center p-4">
+      <div class="card p-3">
+        <div class="card-header pt-3 text-center">
           <div class="position-relative d-inline-block mb-4">
             <img
               src={getAssetPrefix('/assets/img/avatars/avatar2.jpg')}
@@ -93,7 +95,7 @@ const pageHeaderProps: PageHeaderProps = {
     <!-- Profile Information -->
     <div class="col-lg-9">
       <div class="card">
-        <div class="card-header bg-transparent pt-4 pb-3">
+        <div class="card-header">
           <div class="d-flex align-items-center">
             <i class="ri-user-line me-2"></i>
             <h5 class="card-title mb-0">Basic Info</h5>
@@ -116,10 +118,7 @@ const pageHeaderProps: PageHeaderProps = {
               </div>
               <div class="col-12">
                 <label class="form-label">Bio</label>
-                <textarea class="form-control" rows="3"
-                  >Administrator with 5+ years of experience in system management and web
-                  development.
-                </textarea>
+                <textarea class="form-control" rows="3">{bio} </textarea>
                 <div class="form-text">Brief description for your profile.</div>
               </div>
               <div class="col-md-6">
@@ -140,7 +139,7 @@ const pageHeaderProps: PageHeaderProps = {
         </div>
       </div>
       <div class="card mt-4">
-        <div class="card-header bg-transparent pt-4 pb-3">
+        <div class="card-header">
           <div class="d-flex align-items-center">
             <i class="ri-lock-line me-2"></i>
             <h5 class="card-title mb-0">Privacy Settings</h5>
@@ -202,7 +201,7 @@ const pageHeaderProps: PageHeaderProps = {
         </div>
       </div>
       <div class="card mt-4">
-        <div class="card-header bg-transparent pt-4 pb-3">
+        <div class="card-header">
           <div class="d-flex align-items-center">
             <i class="ri-delete-bin-6-line me-2"></i>
             <h5 class="card-title mb-0">Delete Account</h5>
