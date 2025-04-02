@@ -71,6 +71,9 @@ window.PreviewManager = class PreviewManager {
             const themeToggle = previewBox.querySelector('.theme-toggle')
             const theme = themeToggle?.dataset.currentTheme || 'light'
 
+            // Get bgColor from the preview box - use getAttribute to ensure we get the correct value
+            const bgColor = previewBox.getAttribute('data-bg-color') === 'true'
+
             // Update iframe content with error handling
             if (iframe.contentWindow) {
               try {
@@ -79,7 +82,8 @@ window.PreviewManager = class PreviewManager {
                     type: 'updateContent',
                     html: htmlContent,
                     css: cssContent,
-                    js: jsContent
+                    js: jsContent,
+                    bgColor: bgColor
                   },
                   '*'
                 )
@@ -101,7 +105,8 @@ window.PreviewManager = class PreviewManager {
                 htmlContent,
                 cssContent,
                 jsContent,
-                theme
+                theme,
+                bgColor
               )
               iframe.srcdoc = iframeContent
             }
@@ -171,8 +176,17 @@ window.PreviewManager = class PreviewManager {
     const themeToggle = previewBox.querySelector('.theme-toggle')
     const theme = themeToggle?.dataset.currentTheme || 'light'
 
+    // Get bgColor from the preview box - use getAttribute to ensure we get the correct value
+    const bgColor = previewBox.getAttribute('data-bg-color') === 'true'
+
     if (iframe.dataset.initialized !== 'true') {
-      const iframeContent = this.createIframeContent(htmlContent, cssContent, jsContent, theme)
+      const iframeContent = this.createIframeContent(
+        htmlContent,
+        cssContent,
+        jsContent,
+        theme,
+        bgColor
+      )
       iframe.srcdoc = iframeContent
       iframe.dataset.initialized = 'true'
     } else {
@@ -183,7 +197,8 @@ window.PreviewManager = class PreviewManager {
               type: 'updateContent',
               html: htmlContent,
               css: cssContent,
-              js: jsContent
+              js: jsContent,
+              bgColor: bgColor
             },
             '*'
           )
@@ -192,11 +207,23 @@ window.PreviewManager = class PreviewManager {
         } catch (e) {
           console.error('Error updating iframe content:', e)
           // Fallback to full refresh
-          const iframeContent = this.createIframeContent(htmlContent, cssContent, jsContent, theme)
+          const iframeContent = this.createIframeContent(
+            htmlContent,
+            cssContent,
+            jsContent,
+            theme,
+            bgColor
+          )
           iframe.srcdoc = iframeContent
         }
       } else {
-        const iframeContent = this.createIframeContent(htmlContent, cssContent, jsContent, theme)
+        const iframeContent = this.createIframeContent(
+          htmlContent,
+          cssContent,
+          jsContent,
+          theme,
+          bgColor
+        )
         iframe.srcdoc = iframeContent
       }
     }
@@ -288,10 +315,19 @@ window.PreviewManager = class PreviewManager {
     return isDev ? `/dist/js/${filename}.js` : `/js/${filename}.min.js`
   }
 
-  static createIframeContent(htmlContent = '', cssContent = '', jsContent = '', theme = null) {
+  static createIframeContent(
+    htmlContent = '',
+    cssContent = '',
+    jsContent = '',
+    theme = null,
+    bgColor = false
+  ) {
     if (theme === null) {
+      // Use document theme as fallback, default to light
       theme = document.documentElement.getAttribute('data-bs-theme') || 'light'
     }
+
+    console.log('Creating iframe content with bgColor:', bgColor, 'and theme:', theme)
 
     return `
       <!DOCTYPE html>
@@ -301,9 +337,18 @@ window.PreviewManager = class PreviewManager {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <script>
-          // Initialize theme from parent
+          // Initialize theme from component parameter
           document.documentElement.setAttribute('data-bs-theme', '${theme}');
           let themeVersion = 0;
+
+          // Store background color in a variable that persists
+          window.iframeBgColor = ${bgColor};
+
+          // We'll apply the background color to the body after the DOM is loaded
+          document.addEventListener('DOMContentLoaded', function() {
+            document.body.style.backgroundColor = ${bgColor} ? 'var(--content-wrapper-bg)' : 'transparent';
+            console.log('Set body background to:', ${bgColor} ? 'var(--content-wrapper-bg)' : 'transparent');
+          });
         </script>
 
         <link href="${this.getCSSPath()}" rel="stylesheet">
@@ -315,14 +360,17 @@ window.PreviewManager = class PreviewManager {
         />
 
         <style id="component-style">
-          body {
-            padding: 1rem;
+          html, body {
+            padding: 0;
             margin: 0;
+            background-color: ${bgColor ? 'var(--content-wrapper-bg)' : 'transparent'};
+            transition: background-color 0.2s ease;
           }
           #component-wrapper {
             width: 100%;
             height: 100%;
             position: relative;
+            padding: 1rem;
           }
           #component-html {
             width: 100%;
@@ -386,6 +434,54 @@ window.PreviewManager = class PreviewManager {
                 if (event.data.css !== undefined) {
                   document.getElementById('custom-css').textContent = event.data.css;
                 }
+                if (event.data.bgColor !== undefined) {
+                  console.log('Received bgColor update:', event.data.bgColor);
+                  window.iframeBgColor = event.data.bgColor;
+
+                  // Apply background color to the body instead of component wrapper
+                  document.body.style.backgroundColor = event.data.bgColor ? 'var(--content-wrapper-bg)' : 'transparent';
+
+                  // Also update the style element
+                  const styleEl = document.getElementById('component-style');
+                  if (styleEl) {
+                    styleEl.textContent = \`
+                      html, body {
+                        padding: 0;
+                        margin: 0;
+                        background-color: \${event.data.bgColor ? 'var(--content-wrapper-bg)' : 'transparent'};
+                        transition: background-color 0.2s ease;
+                      }
+                      #component-wrapper {
+                        width: 100%;
+                        height: 100%;
+                        position: relative;
+                        padding: 1rem;
+                      }
+                      #component-html {
+                        width: 100%;
+                        height: 100%;
+                      }
+                      .theme-update {
+                        transition: background-color 0.3s ease;
+                      }
+                      .js-error {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        background-color: #f8d7da;
+                        color: #842029;
+                        padding: 0.5rem;
+                        font-family: monospace;
+                        font-size: 0.875rem;
+                        z-index: 1000;
+                        border-bottom: 1px solid #f5c2c7;
+                        max-height: 100px;
+                        overflow-y: auto;
+                      }
+                    \`;
+                  }
+                }
                 if (event.data.js !== undefined) {
                   try {
                     const oldScript = document.getElementById('custom-js');
@@ -411,39 +507,33 @@ window.PreviewManager = class PreviewManager {
                     errorElement.textContent = 'JavaScript Error: ' + error.message;
                   }
                 }
-                window.parent.postMessage({ type: 'contentAcknowledged' }, '*');
+
+                // If we didn't get a bgColor update but have a stored value, re-apply it
+                if (event.data.bgColor === undefined && window.iframeBgColor !== undefined) {
+                  document.body.style.backgroundColor = window.iframeBgColor ? 'var(--content-wrapper-bg)' : 'transparent';
+                }
+
+                window.parent.postMessage({
+                  type: 'contentAcknowledged',
+                  bgColor: document.body.style.backgroundColor,
+                  storedBgColor: window.iframeBgColor
+                }, '*');
                 break;
             }
           });
 
-          // Catch runtime errors
-          window.onerror = function(message, source, lineno, colno, error) {
-            let errorElement = document.querySelector('.js-error');
-            if (!errorElement) {
-              errorElement = document.createElement('div');
-              errorElement.className = 'js-error';
-              document.body.prepend(errorElement);
-            }
-            errorElement.textContent = 'Runtime Error: ' + message;
-
-            // Report back to parent
-            window.parent.postMessage({
-              type: 'jsError',
-              message: message,
-              line: lineno,
-              column: colno
-            }, '*');
-
-            return true; // Prevents the error from appearing in the console
-          };
-
-          // Notify parent when iframe is ready
+          // Once loaded, apply the stored background color again to ensure consistency
           window.addEventListener('load', function() {
+            if (window.iframeBgColor !== undefined) {
+              document.body.style.backgroundColor = window.iframeBgColor ? 'var(--content-wrapper-bg)' : 'transparent';
+            }
+
             const currentTheme = document.documentElement.getAttribute('data-bs-theme');
             window.parent.postMessage({
               type: 'iframeReady',
               theme: currentTheme,
-              version: themeVersion
+              version: themeVersion,
+              bgColor: window.iframeBgColor
             }, '*');
           });
         </script>
@@ -463,7 +553,7 @@ window.PreviewManager = class PreviewManager {
     `
   }
 
-  static createStandaloneHTML(htmlContent = '', cssContent = '', jsContent = '') {
+  static createStandaloneHTML(htmlContent = '', cssContent = '', jsContent = '', bgColor = false) {
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -478,14 +568,21 @@ window.PreviewManager = class PreviewManager {
     rel="stylesheet"
   />
   <style>
-    body {
+    html, body {
+      padding: 0;
+      margin: 0;
+      background-color: ${bgColor ? 'var(--content-wrapper-bg)' : 'transparent'};
+    }
+    .component-wrapper {
       padding: 1rem;
     }
     ${cssContent}
   </style>
 </head>
 <body>
-  ${htmlContent}
+  <div class="component-wrapper">
+    ${htmlContent}
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/asteroadmin@latest/dist/js/main.min.js" type="module"></script>
   <script>
     ${jsContent}
@@ -495,8 +592,6 @@ window.PreviewManager = class PreviewManager {
   }
 
   static resetAllCode(previewBox) {
-    if (!previewBox) return
-
     // Reset HTML editor
     const htmlContainer = previewBox.querySelector(
       '.codemirror-editor-container[data-language="html"]'
@@ -524,18 +619,8 @@ window.PreviewManager = class PreviewManager {
     // Update preview
     const iframe = previewBox.querySelector('.preview-iframe')
     if (iframe) {
-      const htmlContent = htmlContainer?.defaultCode || ''
-      const cssContent = cssContainer?.defaultCode || ''
-      const jsContent = jsContainer?.defaultCode || ''
-      const themeToggle = previewBox.querySelector('.theme-toggle')
-      const theme = themeToggle?.dataset.currentTheme || 'light'
-
-      this.updateIframeContent(previewBox, {
-        html: htmlContent,
-        css: cssContent,
-        js: jsContent,
-        theme
-      })
+      // Use updateIframeContent directly without creating unused variables
+      this.updateIframeContent(previewBox)
     }
   }
 
@@ -639,6 +724,21 @@ window.PreviewManager = class PreviewManager {
         const previewBox = button.closest('.preview-box') || button.closest('.preview-modal')
         if (!previewBox) return
 
+        // Update data-bs-theme on card-body or modal-body
+        if (previewBox.classList.contains('preview-box')) {
+          // For main preview, set data-bs-theme on card-body
+          const cardBody = previewBox.querySelector('.card-body')
+          if (cardBody) {
+            cardBody.setAttribute('data-bs-theme', newTheme)
+          }
+        } else if (previewBox.classList.contains('preview-modal')) {
+          // For modal preview, set data-bs-theme on modal-body
+          const modalBody = previewBox.querySelector('.modal-body')
+          if (modalBody) {
+            modalBody.setAttribute('data-bs-theme', newTheme)
+          }
+        }
+
         // Find the iframe
         const iframe = previewBox.querySelector('.preview-iframe')
         if (!iframe || !iframe.contentWindow) return
@@ -730,6 +830,130 @@ window.PreviewManager = class PreviewManager {
       js: jsContent,
       theme: theme
     })
+  }
+
+  static updateAllIframeThemes(sourcePreviewBox, theme) {
+    // Update all theme toggles in the document
+    document.querySelectorAll('.theme-toggle').forEach((toggle) => {
+      toggle.dataset.currentTheme = theme
+      const icon = toggle.querySelector('i')
+      if (icon) {
+        if (typeof window.UIControlsManager !== 'undefined') {
+          window.UIControlsManager.updateThemeIcon(icon, theme)
+        }
+      }
+
+      // Also update the data-bs-theme for card-body or modal-body
+      const previewBox = toggle.closest('.preview-box') || toggle.closest('.preview-modal')
+      if (previewBox) {
+        // Store theme preference for this component
+        if (previewBox.id) {
+          localStorage.setItem(`iframe-theme-${previewBox.id}`, theme)
+        }
+
+        if (previewBox.classList.contains('preview-box')) {
+          // For main preview, set data-bs-theme on card-body
+          const cardBody = previewBox.querySelector('.card-body')
+          if (cardBody) {
+            cardBody.setAttribute('data-bs-theme', theme)
+          }
+        } else if (previewBox.classList.contains('preview-modal')) {
+          // For modal preview, set data-bs-theme on modal-body
+          const modalBody = previewBox.querySelector('.modal-body')
+          if (modalBody) {
+            modalBody.setAttribute('data-bs-theme', theme)
+          }
+        }
+      }
+    })
+
+    // Get the background color from the source preview box
+    const bgColor = sourcePreviewBox.getAttribute('data-bg-color') === 'true'
+
+    // Update main preview iframe
+    const mainIframe = sourcePreviewBox.querySelector('.preview-iframe')
+    if (mainIframe) {
+      this.updateIframeTheme(mainIframe, theme)
+
+      // Also update the background color
+      if (mainIframe.contentWindow) {
+        try {
+          mainIframe.contentWindow.postMessage({ type: 'updateContent', bgColor: bgColor }, '*')
+        } catch (e) {
+          console.error('Error updating background color:', e)
+        }
+      }
+    }
+
+    // Find and update modal iframe if exists
+    const modalId = sourcePreviewBox
+      .querySelector('.preview-expand')
+      ?.getAttribute('data-bs-target')
+    if (modalId) {
+      const modal = document.querySelector(modalId)
+      if (modal?.classList.contains('show')) {
+        const modalIframe = modal.querySelector('.preview-iframe')
+        if (modalIframe) {
+          this.updateIframeTheme(modalIframe, theme)
+
+          // Also update the background color
+          if (modalIframe.contentWindow) {
+            try {
+              modalIframe.contentWindow.postMessage(
+                { type: 'updateContent', bgColor: bgColor },
+                '*'
+              )
+            } catch (e) {
+              console.error('Error updating background color:', e)
+            }
+          }
+        }
+      }
+    }
+
+    // If source is modal, update main preview
+    if (sourcePreviewBox.classList.contains('preview-modal')) {
+      const modalId = sourcePreviewBox.id
+      const mainPreview = document.querySelector(`.preview-box[data-modal="${modalId}"]`)
+      if (mainPreview) {
+        const mainIframe = mainPreview.querySelector('.preview-iframe')
+        if (mainIframe) {
+          this.updateIframeTheme(mainIframe, theme)
+
+          // Also update the background color
+          if (mainIframe.contentWindow) {
+            try {
+              mainIframe.contentWindow.postMessage({ type: 'updateContent', bgColor: bgColor }, '*')
+            } catch (e) {
+              console.error('Error updating background color:', e)
+            }
+          }
+        }
+      }
+    }
+
+    // Update all iframes in the document
+    document.querySelectorAll('.preview-iframe').forEach((iframe) => {
+      if (iframe.contentWindow) {
+        try {
+          iframe.contentWindow.postMessage(
+            {
+              type: 'setTheme',
+              theme: theme,
+              version: ++this.themeVersion
+            },
+            '*'
+          )
+        } catch (e) {
+          console.error('Error updating iframe theme:', e)
+        }
+      }
+    })
+
+    // Store theme preference for source component
+    if (sourcePreviewBox.id) {
+      localStorage.setItem(`iframe-theme-${sourcePreviewBox.id}`, theme)
+    }
   }
 }
 

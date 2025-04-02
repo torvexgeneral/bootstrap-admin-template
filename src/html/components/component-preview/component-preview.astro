@@ -6,11 +6,12 @@ import type { HTMLAttributes } from 'astro/types'
 
 export interface Props {
   title: string
+  height?: string
+  bgColor?: boolean
   component: string
   htmlCode: string
   cssCode?: string
   jsCode?: string
-  height?: string
   disableModal?: boolean
   disableEditMode?: boolean
   disableDownload?: boolean
@@ -19,11 +20,12 @@ export interface Props {
 
 const {
   title,
+  height = 'auto',
+  bgColor = false,
   component,
   htmlCode,
   cssCode,
   jsCode,
-  height = 'auto',
   disableModal = false,
   disableEditMode = false,
   disableDownload = false,
@@ -35,6 +37,7 @@ const isDev = import.meta.env.DEV
 
 const iframeContent = !iframeSrc
   ? createIframeContent({
+      bgColor,
       component,
       cssCode,
       jsCode,
@@ -59,17 +62,18 @@ type TabButtonAttributes = HTMLAttributes<'button'> & {
   'data-bs-toggle': string
   'data-bs-target': string
 }
+
+// bgColor is used to set the background color of the preview container
+const backgroundColor = bgColor ? 'var(--content-wrapper-bg)' : 'transparent'
 ---
 
 <div
-  class="card mb-4 preview-box"
+  class="card p-0 mb-4 border-1 preview-box"
   data-toc-skip
+  data-bg-color={bgColor.toString()}
   {...iframeSrc && { 'data-external-src': iframeSrc }}
 >
-  <div
-    class="card-header d-flex justify-content-between align-items-center preview-header"
-    style="min-height: 48px;"
-  >
+  <div class="card-header p-3 border-bottom d-flex justify-content-between align-items-center">
     <span class="card-title fs-6 mb-0">{title}</span>
 
     <PreviewDevices />
@@ -95,9 +99,9 @@ type TabButtonAttributes = HTMLAttributes<'button'> & {
     </div>
   </div>
 
-  <div class="card-body p-1">
+  <div class="card-body" style={`background-color: ${backgroundColor};`} data-bs-theme="">
     <div
-      class="preview-container p-1 p-lg-3 position-relative"
+      class="preview-container position-relative"
       style={`width: 100%; transition: width 0.3s ease; height: ${height}; overflow: hidden;`}
     >
       <div class="iframe-loader">
@@ -281,6 +285,7 @@ type TabButtonAttributes = HTMLAttributes<'button'> & {
       data-toc-skip
       id={previewId}
       tabindex="-1"
+      data-bg-color={bgColor.toString()}
       aria-labelledby={`${previewId}-label`}
       aria-hidden="true"
       {...(iframeSrc && { 'data-external-src': iframeSrc })}
@@ -314,7 +319,11 @@ type TabButtonAttributes = HTMLAttributes<'button'> & {
               />
             </div>
           </div>
-          <div class="modal-body h-100 p-0">
+          <div
+            class="modal-body h-100 p-0"
+            style={`background-color: ${backgroundColor};`}
+            data-bs-theme=""
+          >
             <div
               class="preview-container rounded h-100 position-relative"
               style="width: 100%; transition: width 0.3s ease; overflow: hidden;"
@@ -339,7 +348,7 @@ type TabButtonAttributes = HTMLAttributes<'button'> & {
   )
 }
 
-<script is:inline define:vars={{ previewId, iframeSrc }}>
+<script is:inline define:vars={{ previewId, iframeSrc, bgColor }}>
   document.addEventListener('DOMContentLoaded', () => {
     // Add keyboard shortcut hints to tooltips
     const editButton = document.querySelector(
@@ -356,6 +365,114 @@ type TabButtonAttributes = HTMLAttributes<'button'> & {
     if (resetButton) {
       const originalTitle = resetButton.getAttribute('title')
       resetButton.setAttribute('title', `${originalTitle} (Ctrl+Shift+R)`)
+    }
+
+    // Initialize theme based on component-specific theme or document theme as fallback
+    const componentTheme = localStorage.getItem(`iframe-theme-${previewId}`)
+    const siteTheme = document.documentElement.getAttribute('data-bs-theme') || 'light'
+    const initialTheme = componentTheme || siteTheme
+
+    // Apply theme to card-body and modal-body
+    const cardBody = document.querySelector(`#${previewId}`)?.querySelector('.card-body')
+    if (cardBody) {
+      cardBody.setAttribute('data-bs-theme', initialTheme)
+    }
+
+    const modal = document.getElementById(previewId)
+    if (modal) {
+      const modalBody = modal.querySelector('.modal-body')
+      if (modalBody) {
+        modalBody.setAttribute('data-bs-theme', initialTheme)
+      }
+    }
+
+    // Set the theme toggle initial state
+    const themeToggle = document.querySelector(
+      `#${previewId} .theme-toggle, .preview-box[data-modal="${previewId}"] .theme-toggle`
+    )
+    if (themeToggle) {
+      themeToggle.dataset.currentTheme = initialTheme
+      const icon = themeToggle.querySelector('i')
+      if (icon) {
+        if (initialTheme === 'dark') {
+          icon.classList.remove('ri-sun-line')
+          icon.classList.add('ri-moon-line')
+          themeToggle.setAttribute('title', 'Switch to light theme')
+        } else {
+          icon.classList.remove('ri-moon-line')
+          icon.classList.add('ri-sun-line')
+          themeToggle.setAttribute('title', 'Switch to dark theme')
+        }
+      }
+
+      // Listen for theme changes
+      window.addEventListener('storage', (event) => {
+        // Only listen for component-specific theme changes
+        if (event.key === `iframe-theme-${previewId}`) {
+          const newTheme = event.newValue || 'light'
+
+          // Update all theme toggles for this preview
+          const allToggles = document.querySelectorAll(
+            `#${previewId} .theme-toggle, .preview-box[data-modal="${previewId}"] .theme-toggle`
+          )
+          allToggles.forEach((toggle) => {
+            toggle.dataset.currentTheme = newTheme
+            const toggleIcon = toggle.querySelector('i')
+            if (toggleIcon) {
+              if (newTheme === 'dark') {
+                toggleIcon.classList.remove('ri-sun-line')
+                toggleIcon.classList.add('ri-moon-line')
+                toggle.setAttribute('title', 'Switch to light theme')
+              } else {
+                toggleIcon.classList.remove('ri-moon-line')
+                toggleIcon.classList.add('ri-sun-line')
+                toggle.setAttribute('title', 'Switch to dark theme')
+              }
+            }
+          })
+
+          // Find both preview box and modal and update them
+          const previewBox = document.querySelector(`.preview-box[data-modal="${previewId}"]`)
+          if (previewBox && typeof window.UIControlsManager !== 'undefined') {
+            window.UIControlsManager.updateComponentTheme(previewBox, newTheme)
+          }
+
+          if (modal && typeof window.UIControlsManager !== 'undefined') {
+            window.UIControlsManager.updateComponentTheme(modal, newTheme)
+          }
+        }
+      })
+    }
+
+    // Ensure the iframe gets the correct background color when editing starts
+    const previewBox = document.getElementById(previewId)
+    if (previewBox) {
+      // Set up an observer to watch for edit mode changes
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+            const iframe = previewBox.querySelector('.preview-iframe')
+            if (iframe && iframe.contentWindow) {
+              try {
+                iframe.contentWindow.postMessage(
+                  {
+                    type: 'updateContent',
+                    bgColor: bgColor
+                  },
+                  '*'
+                )
+              } catch (e) {
+                console.error('Error updating background color after edit mode change:', e)
+              }
+            }
+          }
+        })
+      })
+
+      // Start observing the edit button
+      if (editButton) {
+        observer.observe(editButton, { attributes: true, attributeFilter: ['class'] })
+      }
     }
   })
 </script>

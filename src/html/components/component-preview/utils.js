@@ -27,6 +27,7 @@ export function generatePreviewId() {
 
 /**
  * @typedef {Object} IframeContentProps
+ * @property {boolean} bgColor - Whether to use a background color
  * @property {string} component - The component HTML
  * @property {string} [cssCode] - Optional CSS code
  * @property {string} [jsCode] - Optional JavaScript code
@@ -38,7 +39,9 @@ export function generatePreviewId() {
  * @param {IframeContentProps} props - The iframe content properties
  * @returns {string} Generated iframe HTML content
  */
-export function createIframeContent({ component, cssCode, jsCode, isDev }) {
+export function createIframeContent({ bgColor, component, cssCode, jsCode, isDev }) {
+  // Set the background color based on the bgColor prop
+  const backgroundColor = bgColor ? 'var(--content-wrapper-bg)' : 'transparent'
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -67,6 +70,7 @@ export function createIframeContent({ component, cssCode, jsCode, isDev }) {
     body {
       padding: 1rem;
       margin: 0;
+      background-color: ${backgroundColor};
     }
     #component-wrapper {
       width: 100%;
