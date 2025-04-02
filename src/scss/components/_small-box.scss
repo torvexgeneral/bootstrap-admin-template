@@ -42,8 +42,8 @@
     text-align: center;
     text-decoration: none;
     background-color: rgba(var(--bs-black-rgb), 0.07);
-    border-bottom-left-radius: $border-radius-xl;
     border-bottom-right-radius: $border-radius-xl;
+    border-bottom-left-radius: $border-radius-xl;
 
     &:hover {
       background-color: rgba(var(--bs-black-rgb), 0.1);

@@ -60,7 +60,9 @@
   --table-hover-bg: #f3f3f4;
 
   // Card variables
+  /* stylelint-disable function-disallowed-list */
   --bs-card-inner-border-radius: calc(var(--bs-border-radius-xl) -(var(--bs-border-width)));
+  /* stylelint-enable function-disallowed-list */
 }
 
 // Dark Theme Variables
