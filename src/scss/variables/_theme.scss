@@ -6,11 +6,28 @@
 [data-bs-theme='light'] {
   // Typography
   --font-family-sans-serif:
-    'Source Sans 3', system-ui, -apple-system, 'Segoe UI', roboto, 'Helvetica Neue', 'Noto Sans',
-    'Liberation Sans', arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Source Sans 3',
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    roboto,
+    'Helvetica Neue',
+    'Noto Sans',
+    'Liberation Sans',
+    arial,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
     'Noto Color Emoji';
   --font-family-monospace:
-    sfmono-regular, menlo, monaco, consolas, 'Liberation Mono', 'Courier New', monospace;
+    sfmono-regular,
+    menlo,
+    monaco,
+    consolas,
+    'Liberation Mono',
+    'Courier New',
+    monospace;
   // Layout
   --sidebar-width: 260px;
   --sidebar-mini-width: 65px;
@@ -61,7 +78,7 @@
 
   // Card variables
   /* stylelint-disable function-disallowed-list */
-  --bs-card-inner-border-radius: calc(var(--bs-border-radius-xl) -(var(--bs-border-width)));
+  --bs-card-inner-border-radius: calc(var(--bs-border-radius-xl) - (var(--bs-border-width)));
   /* stylelint-enable function-disallowed-list */
 }
 

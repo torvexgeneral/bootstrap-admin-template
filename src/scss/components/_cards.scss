@@ -29,11 +29,10 @@
 }
 .card-img,
 .card-img-bottom {
-  border-bottom-left-radius: calc(var(--bs-border-radius-xl) - (var(--bs-border-width)));
   border-bottom-right-radius: calc(var(--bs-border-radius-xl) - (var(--bs-border-width)));
+  border-bottom-left-radius: calc(var(--bs-border-radius-xl) - (var(--bs-border-width)));
 }
 
 .card-img-overlay {
   border-radius: calc(var(--bs-border-radius-xl) - (var(--bs-border-width)));
 }
-/* stylelint-disable function-disallowed-list */
