@@ -70,7 +70,7 @@ const userFormStyles = `
     <!-- User Profile Information -->
     <div class="col-lg-4">
       <div class="card">
-        <div class="card-header bg-transparent pt-4 pb-3">
+        <div class="card-header">
           <div class="d-flex align-items-center">
             <i class="ri-user-settings-line me-2"></i>
             <h5 class="card-title mb-0">Profile Information</h5>
@@ -204,7 +204,7 @@ const userFormStyles = `
     <!-- Access Control Settings -->
     <div class="col-lg-8">
       <div class="card">
-        <div class="card-header bg-transparent pt-4 pb-3">
+        <div class="card-header">
           <div class="d-flex align-items-center">
             <i class="ri-shield-keyhole-line me-2"></i>
             <h5 class="card-title mb-0">Access & Permissions</h5>
@@ -279,8 +279,8 @@ const userFormStyles = `
               {
                 permissionModules.map((module) => (
                   <div class="module-section mb-3" id={`module_${module.id}`}>
-                    <div class="card">
-                      <div class="card-header bg-transparent py-2">
+                    <div class="card border rounded p-0">
+                      <div class="card-header border-bottom px-3 py-2">
                         <div class="d-flex justify-content-between align-items-center">
                           <div class="form-check">
                             <input
@@ -317,7 +317,7 @@ const userFormStyles = `
                               class="col-12 col-md-6 permission-group px-2 mb-3"
                               id={`group_${group.id}`}
                             >
-                              <div class="card ">
+                              <div class="card rounded px-2 py-1">
                                 <div class="card-header d-flex flex-row py-1 justify-content-between align-items-center border-0">
                                   <div class="form-check">
                                     <input
