@@ -82,12 +82,12 @@ const roles = [
     {
       roles.map((role) => (
         <div class="col-12 col-md-6 col-xl-3">
-          <div class="card shadow-sm h-100">
-            <div class="card-header">
+          <div class="card h-100">
+            <div class="card-header pb-2">
               <h5 class="fw-semibold text-capitalize mb-2">{role.title}</h5>
               <p class="text-muted small mb-0">Total users with this role: {role.totalUsers}</p>
             </div>
-            <div class="card-body p-4 d-flex flex-column">
+            <div class="card-body p-2 d-flex flex-column">
               <ul class="list-unstyled mb-0">
                 {role.permissions.map((permission) => (
                   <li class="mb-2 d-flex align-items-center">

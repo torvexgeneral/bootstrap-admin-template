@@ -97,7 +97,7 @@ const selectedPermissions = [
   <form id="roleForm" novalidate>
     <div class="row justify-content-center">
       <div class="col-md-8 mb-3">
-        <div class="card shadow-sm">
+        <div class="card">
           <div class="card-body">
             <!-- Role Name -->
             <div class="row mb-3">
@@ -151,8 +151,8 @@ const selectedPermissions = [
                   {
                     modules.map((module) => (
                       <div class="module-section mb-3" id={`module_${module.id}`}>
-                        <div class="card">
-                          <div class="card-header bg-transparent py-2">
+                        <div class="card border rounded p-0">
+                          <div class="card-header border-bottom px-3 py-2">
                             <div class="d-flex justify-content-between align-items-center">
                               <div class="form-check">
                                 <input
@@ -173,8 +173,11 @@ const selectedPermissions = [
                                 class="btn btn-sm btn-outline-primary toggle-module"
                                 data-module-id={module.id}
                                 data-expanded="false"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Expand All Permissions"
                               >
-                                <i class="ri-add-line me-md-1" />{' '}
+                                <i class="ri-add-line me-md-1" />
                                 <span class="d-none d-md-inline">Expand All</span>
                               </button>
                             </div>
@@ -186,7 +189,7 @@ const selectedPermissions = [
                                   class="col-12 col-md-6 permission-group px-2 mb-3"
                                   id={`group_${group.id}`}
                                 >
-                                  <div class="card ">
+                                  <div class="card rounded px-2 py-1">
                                     <div class="card-header d-flex flex-row py-1 justify-content-between align-items-center border-0">
                                       <div class="form-check">
                                         <input
@@ -206,6 +209,7 @@ const selectedPermissions = [
                                         type="button"
                                         class="btn btn-outline-primary toggle-permissions mb-0"
                                         data-group-id={group.id}
+                                        title="Toggle Group Permissions"
                                       >
                                         <i class="ri-add-line" />
                                       </button>
@@ -256,7 +260,7 @@ const selectedPermissions = [
         </div>
       </div>
       <div class="col-md-4 mb-3">
-        <div class="card shadow-sm">
+        <div class="card">
           <div class="card-body">
             <!-- Status -->
             <div class="row mb-3">
