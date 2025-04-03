@@ -4,7 +4,8 @@ A responsive open source admin dashboard and control panel built with Bootstrap 
 
 [![AsteroAdmin Dashboard](https://raw.githubusercontent.com/asterodigital/bootstrap-admin-template/main/.github/images/feature-image.png)](https://astero-admin.asterodigital.com/pages/dashboard)
 
-<a href="https://www.producthunt.com/posts/astero-admin?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-astero&#0045;admin" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=941743&theme=light&t=1742294352921" alt="Astero&#0032;Admin - Free&#0032;Bootstrap&#0032;5&#0032;Admin&#0032;Template | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+<!-- Product Hunt badge - Verify post_id if necessary -->
+<a href="https://www.producthunt.com/posts/astero-admin?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-astero&#0045;admin" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=941743&theme=light" alt="Astero&#0032;Admin - Free&#0032;Bootstrap&#0032;5&#0032;Admin&#0032;Template | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 
 ## Overview
 
@@ -12,22 +13,22 @@ AsteroAdmin is a modern, responsive admin template designed to provide a solid f
 
 ## Key Features
 
-- 🎨 **Modern UI Design** - Built with Bootstrap 5.3 for a clean, professional look
-- 📱 **Fully Responsive** - Works perfectly on all devices and screen sizes
-- 🌙 **Light/Dark Mode** - Switch between light and dark themes with one click
-- 🚀 **Advanced Build System** - Optimized workflow with parallel processing
-- 📦 **Modular Architecture** - Well-organized SCSS and JS components
-- 🔧 **Highly Customizable** - Easy to adapt to your brand and requirements
-- 📊 **Dashboard Components** - Charts, tables, forms, and more
-- 🔍 **Performance Optimized** - Fast loading times and smooth interactions
-- 🔄 **Live Reload** - Instant preview of changes during development
-- 📚 **Comprehensive Documentation** - Detailed guides for all components
-- 🔒 **5 Auth Design Systems** - Five ready-made login and signup page designs
-- 🌐 **RTL Support** - Works perfectly for right-to-left languages
-- 🖌️ **3000+ Icons** - Thousands of icons ready to use in your projects
-- 📁 **Simple Folder Structure** - Logically arranged files for quick development
-- 🧩 **Various Components** - Extensive collection of UI components
-- 📱 **Offcanvas Navbar** - Modern navigation for mobile and desktop
+- ✨ **Built with Astro** - Modern static site generator for performance.
+- 🎨 **Bootstrap 5.3.3** - Latest version for a clean, professional look.
+- 📱 **Fully Responsive** - Works perfectly on all devices and screen sizes.
+- 🌙 **Light/Dark Mode** - Switch between light and dark themes easily.
+- 🚀 **Optimized Build System** - Uses ESBuild, LightningCSS, PostCSS for fast builds.
+- 📦 **Modular Architecture** - Well-organized SCSS, JS, and Astro components.
+- 🔧 **Highly Customizable** - Easy to adapt via SCSS variables.
+- 📊 **Dashboard Components** - Charts, tables, forms, and more included.
+- ⚡ **Performance Optimized** - Fast loading times and smooth interactions.
+- 🔄 **Live Reload** - Instant preview during development (`npm run dev`).
+- 📚 **Component Examples** - Clear examples for UI elements.
+- 🔒 **Auth Page Designs** - Ready-made login and signup page designs.
+- 🌐 **RTL Support** - Works perfectly for right-to-left languages.
+- 📁 **Logical Folder Structure** - Easy navigation for developers.
+- 🧩 **Extensive UI Components** - Wide collection of pre-built elements.
+- 📱 **Offcanvas Navbar** - Modern navigation for mobile and desktop.
 
 ## Demo
 
@@ -62,20 +63,15 @@ import 'asteroadmin/dist/js/main.js'
 
 #### 2. Using CDN
 
-Add the following CDN links to your HTML file:
+Add the following CDN links to your HTML file (replace `1.0.5` with the desired version):
 
 ```html
 <!-- CSS -->
-<link href="https://cdn.jsdelivr.net/npm/asteroadmin@1/dist/css/style.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/asteroadmin@1.0.5/dist/css/style.min.css" rel="stylesheet">
 
 <!-- JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/asteroadmin@1/dist/js/main.min.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/asteroadmin@1.0.5/dist/js/main.min.js" type="module"></script>
 ```
-
-You can also include specific files or versions:
-
-- CSS: `https://cdn.jsdelivr.net/npm/asteroadmin@1.0.3/dist/css/style.min.css`
-- JavaScript: `https://cdn.jsdelivr.net/npm/asteroadmin@1.0.3/dist/js/main.min.js`
 
 #### 3. Clone the repository
 
@@ -123,47 +119,44 @@ AsteroAdmin uses a custom-built, optimized build system that handles:
 | `npm run clean` | Remove build artifacts |
 | `npm run watch` | Watch files for changes |
 | `npm run serve` | Serve the built files locally |
+| `npm run bundlewatch` | Check bundle sizes against limits |
 
 ## Project Structure
 
-```
-├── dist/               # Compiled files (generated)
+```plaintext
+.
+├── config/             # Build and tool configurations (PostCSS, Rollup, etc.)
+├── dist/               # Compiled files (generated by build process)
 ├── src/                # Source files
-│   ├── assets/         # Static assets (images, fonts, etc.)
-│   │   ├── components/ # Reusable UI components
-│   │   ├── layouts/    # Page layouts
-│   │   ├── pages/      # Astro page templates
-│   │   └── utils/      # Utility functions
+│   ├── assets/         # Static assets (images, fonts, data, etc.)
+│   ├── html/           # Astro components, layouts, and pages (.astro files)
+│   │   ├── components/ # Reusable UI components (Astro)
+│   │   ├── layouts/    # Page layouts (Astro)
+│   │   └── pages/      # Site pages (Astro)
 │   ├── js/             # JavaScript source files
-│   │   ├── components/ # JS components
-│   │   ├── plugins/    # Third-party plugins
+│   │   ├── components/ # JS for specific components
+│   │   ├── layout/     # JS for layout features (dark mode, sidebar)
 │   │   └── main.js     # Main JavaScript entry point
-│   └── scss/           # SCSS stylesheets
-│       ├── base/       # Base styles
-│       ├── components/ # Component styles
-│       ├── core/       # Core styles
-│       ├── extra-components/ # Additional components
-│       ├── layout/     # Layout styles
-│       ├── mixins/     # SCSS mixins
-│       ├── pages/      # Page-specific styles
-│       ├── variables/  # SCSS variables
-│       └── style.scss  # Main SCSS entry point
-├── tools/              # Build system scripts
-│   ├── assets.mjs      # Asset processing
-│   ├── astro.mjs       # Astro build configuration
-│   ├── build.mjs       # Main build orchestration
-│   ├── clean.mjs       # Cleanup utilities
-│   ├── css.mjs         # CSS processing
-│   ├── dev.mjs         # Development server
-│   ├── fixlint.mjs     # Linting fixes
-│   ├── format.mjs      # Code formatting
-│   ├── js.mjs          # JavaScript processing
-│   ├── lint.mjs        # Code quality checks
-│   ├── prettier.mjs    # Prettier configuration
-│   ├── serve.mjs       # Local server for testing
-│   ├── utils.mjs       # Build utilities
-│   └── watch.mjs       # File watching
-└── package.json        # Project dependencies and scripts
+│   ├── scss/           # SCSS stylesheets
+│   │   ├── base/       # Base styles (typography, reset)
+│   │   ├── components/ # Component-specific styles
+│   │   ├── core/       # Core mixins and utilities
+│   │   ├── layout/     # Layout styles (header, sidebar, footer)
+│   │   ├── pages/      # Page-specific styles
+│   │   ├── utilities/  # Utility classes
+│   │   ├── variables/  # SCSS variables (colors, fonts, config)
+│   │   └── style.scss  # Main SCSS entry point
+│   └── utils/          # Utility functions (JS)
+├── tools/              # Build system scripts (.mjs files)
+├── .browserslistrc     # Target browsers for CSS prefixes
+├── .editorconfig       # Editor configuration
+├── .gitignore          # Files ignored by Git
+├── eslint.config.js    # ESLint configuration
+├── index.html          # Redirect or simple landing page (if used)
+├── LICENSE             # Project license (MIT)
+├── package.json        # Project dependencies and scripts
+├── pnpm-lock.yaml      # PNPM lock file (if using PNPM)
+└── README.md           # This file
 ```
 
 ## Customization
@@ -185,9 +178,10 @@ All UI components are modular and can be found in `src/scss/components/` and `sr
 
 To create a new page:
 
-1. Create a new `.astro` file in the `src/html/pages/` directory
-2. Use existing components and layouts
-3. Run the development server to see your changes
+1. Create a new `.astro` file in the `src/html/pages/` directory.
+2. Use existing Astro components from `src/html/components/` and layouts from `src/html/layouts/`.
+3. Import necessary CSS and JS as needed.
+4. Run `npm run dev` to see your changes live.
 
 ## Dashboard Layouts
 
@@ -209,13 +203,17 @@ AsteroAdmin offers multiple dashboard layouts to suit different needs:
 
 ## Technologies Used
 
-- **Bootstrap 5.3** - Front-end component library
-- **Astro** - Static site generator
-- **SASS** - CSS preprocessor
-- **ESBuild** - JavaScript bundler
-- **SimpleBar** - Custom scrollbar plugin
-- **LightningCSS** - CSS optimization
-- **PostCSS** - CSS transformation tool
+- **Astro (^5.5.5)** - Static site generator for building fast websites.
+- **Bootstrap (^5.3.3)** - Front-end component library.
+- **Sass (Embedded) (^1.86.0)** - CSS preprocessor.
+- **ESBuild (^0.25.1)** - JavaScript bundler and minifier.
+- **Rollup (^4.36.0)** - JavaScript module bundler (used alongside ESBuild).
+- **LightningCSS (^1.29.3)** - CSS parser, transformer, bundler, and minifier.
+- **PostCSS (^8.5.3)** - Tool for transforming CSS with JavaScript plugins.
+- **SimpleBar (^6.3.0)** - Custom scrollbar plugin.
+- **Prettier (^3.5.3)** - Code formatter.
+- **ESLint (^9.23.0)** - Code linter for JavaScript and Astro.
+- **Stylelint (^16.16.0)** - CSS linter.
 
 ## Performance Optimization
 
@@ -242,6 +240,13 @@ Yes, the theme is fully customizable to match your branding needs.
 Installation is simple and comes with detailed instructions in the docs.
 
 ## Change Log
+
+**Version 1.0.5** - April 3, 2025
+
+- Updated dependencies (Bootstrap 5.3.3, Astro 5.5.5, etc.)
+- Refreshed project structure in README
+- Updated build tools and configurations
+- Added `bundlewatch` script
 
 **Version 1.0.0** - March 13, 2025
 
