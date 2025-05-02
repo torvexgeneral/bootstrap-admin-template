@@ -119,7 +119,8 @@ const userFormStyles = `
               type="text"
               class="form-control"
               id="fullName"
-              placeholder="Enter user's full name"
+              placeholder="John Doe"
+              autocomplete="name"
               required
             />
           </div>
@@ -130,7 +131,8 @@ const userFormStyles = `
               type="email"
               class="form-control"
               id="email"
-              placeholder="Enter user's email address"
+              placeholder="m@example.com"
+              autocomplete="username"
               required
             />
           </div>
@@ -141,7 +143,7 @@ const userFormStyles = `
               type="text"
               class="form-control"
               id="username"
-              placeholder="Choose a unique username"
+              placeholder="johndoe"
               required
             />
           </div>
@@ -154,10 +156,11 @@ const userFormStyles = `
                   type="password"
                   class="form-control password-input"
                   id="password"
-                  placeholder="Enter secure password"
+                  placeholder="Password"
+                  autocomplete="new-password"
                   required
                 />
-                <button class="password-toggle" type="button" title="Toggle Password Visibility">
+                <button class="password-toggle" type="button" title="Toggle Password Visibility" aria-label="Show password">
                   <i class="ri-eye-off-line"></i>
                 </button>
               </div>
@@ -178,7 +181,7 @@ const userFormStyles = `
           <!-- Additional Information Fields -->
           <div class="mb-3">
             <label class="form-label">Phone Number</label>
-            <input type="tel" class="form-control" id="phone" placeholder="Enter contact number" />
+            <input type="tel" class="form-control" id="phone" placeholder="+1 (XXX) XXX-XXXX" autocomplete="tel" />
           </div>
 
           <div class="mb-3">
