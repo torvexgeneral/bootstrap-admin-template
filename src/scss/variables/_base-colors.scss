@@ -34,30 +34,58 @@ $text-muted: $gray-500 !default;
 // fusv-enable
 
 // scss-docs-start color-variables
-$blue:    #0d6efd !default;
-$indigo:  #6610f2 !default;
-$purple:  #6f42c1 !default;
-$pink:    #d63384 !default;
-$red:     #dc3545 !default;
-$orange:  #fd7e14 !default;
-$yellow:  #ffc107 !default;
-$green:   #198754 !default;
-$teal:    #20c997 !default;
-$cyan:    #0dcaf0 !default;
+$sky:     #5eb9f0 !default;
+$blue:    #3f78e0 !default;
+$indigo:  #7e4ff6 !default;
+$grape:   #605dba !default;
+$purple:  #747ed1 !default;
+$violet:  #a07cc5 !default;
+$pink:    #d16b86 !default;
+$fuchsia: #e668b3 !default;
+$red:     #e2626b !default;
+$orange:  #f78b77 !default;
+$yellow:  #fab758 !default;
+$green:   #45c4a0 !default;
+$leaf:    #7cb798 !default;
+$teal:    #4fd4b8 !default;
+$cyan:    #5dd5f6 !default;
+$aqua:    #54a8c7 !default;
+$navy:    #343f52 !default;
+$ash:     #9499a3 !default;
 // scss-docs-end color-variables
+
+// scss-docs-start gradient-variables
+$gradient-1: linear-gradient(120deg, #f857a6 10%, #ef3f6e 100%) !default;
+$gradient-2: linear-gradient(40deg, rgba(245, 177, 97, 1) 0.4%, rgba(236, 54, 110, 1) 100.2%) !default;
+$gradient-3: linear-gradient(45deg, #fbda61 0%, #ff5acd 100%) !default;
+$gradient-4: linear-gradient(125deg, #9040db, #ff72c2 50%, #ffd84f) !default;
+$gradient-5: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%) !default;
+$gradient-6: linear-gradient(45deg, #08aeea 0%, #2af598 100%) !default;
+$gradient-7: linear-gradient(100deg, #605dba 20%, #3f78e0 85%) !default;
+$gradient-8: linear-gradient(0deg, #2c46a7, #3757c4) !default;
+$gradient-9: linear-gradient(45deg, rgb(255, 222, 233), rgb(181, 255, 252)) !default;
+// scss-docs-end gradient-variables
 
 // scss-docs-start colors-map
 $colors: (
+  'sky':        $sky,
   'blue':       $blue,
   'indigo':     $indigo,
+  'grape':      $grape,
   'purple':     $purple,
+  'violet':     $violet,
   'pink':       $pink,
+  'fuchsia':    $fuchsia,
   'red':        $red,
   'orange':     $orange,
   'yellow':     $yellow,
   'green':      $green,
+  'leaf':       $leaf,
   'teal':       $teal,
   'cyan':       $cyan,
+  'aqua':       $aqua,
+  'navy':       $navy,
+  'ash':        $ash,
   'black':      $black,
   'white':      $white,
   'gray':       $gray-600,
@@ -74,6 +102,20 @@ $colors: (
 ) !default;
 // scss-docs-end colors-map
 
+// scss-docs-start gradients-map
+$gradients: (
+  'gradient-1': $gradient-1,
+  'gradient-2': $gradient-2,
+  'gradient-3': $gradient-3,
+  'gradient-4': $gradient-4,
+  'gradient-5': $gradient-5,
+  'gradient-6': $gradient-6,
+  'gradient-7': $gradient-7,
+  'gradient-8': $gradient-8,
+  'gradient-9': $gradient-9,
+) !default;
+// scss-docs-end gradients-map
+
 // The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
 // See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
 $min-contrast-ratio:   4.5 !default;
@@ -83,6 +125,16 @@ $color-contrast-dark:      $black !default;
 $color-contrast-light:     $white !default;
 
 // fusv-disable
+$sky-100: tint-color($sky, 80%) !default;
+$sky-200: tint-color($sky, 60%) !default;
+$sky-300: tint-color($sky, 40%) !default;
+$sky-400: tint-color($sky, 20%) !default;
+$sky-500: $sky !default;
+$sky-600: shade-color($sky, 20%) !default;
+$sky-700: shade-color($sky, 40%) !default;
+$sky-800: shade-color($sky, 60%) !default;
+$sky-900: shade-color($sky, 80%) !default;
+
 $blue-100: tint-color($blue, 80%) !default;
 $blue-200: tint-color($blue, 60%) !default;
 $blue-300: tint-color($blue, 40%) !default;
@@ -103,6 +155,16 @@ $indigo-700: shade-color($indigo, 40%) !default;
 $indigo-800: shade-color($indigo, 60%) !default;
 $indigo-900: shade-color($indigo, 80%) !default;
 
+$grape-100: tint-color($grape, 80%) !default;
+$grape-200: tint-color($grape, 60%) !default;
+$grape-300: tint-color($grape, 40%) !default;
+$grape-400: tint-color($grape, 20%) !default;
+$grape-500: $grape !default;
+$grape-600: shade-color($grape, 20%) !default;
+$grape-700: shade-color($grape, 40%) !default;
+$grape-800: shade-color($grape, 60%) !default;
+$grape-900: shade-color($grape, 80%) !default;
+
 $purple-100: tint-color($purple, 80%) !default;
 $purple-200: tint-color($purple, 60%) !default;
 $purple-300: tint-color($purple, 40%) !default;
@@ -113,6 +175,16 @@ $purple-700: shade-color($purple, 40%) !default;
 $purple-800: shade-color($purple, 60%) !default;
 $purple-900: shade-color($purple, 80%) !default;
 
+$violet-100: tint-color($violet, 80%) !default;
+$violet-200: tint-color($violet, 60%) !default;
+$violet-300: tint-color($violet, 40%) !default;
+$violet-400: tint-color($violet, 20%) !default;
+$violet-500: $violet !default;
+$violet-600: shade-color($violet, 20%) !default;
+$violet-700: shade-color($violet, 40%) !default;
+$violet-800: shade-color($violet, 60%) !default;
+$violet-900: shade-color($violet, 80%) !default;
+
 $pink-100: tint-color($pink, 80%) !default;
 $pink-200: tint-color($pink, 60%) !default;
 $pink-300: tint-color($pink, 40%) !default;
@@ -122,6 +194,16 @@ $pink-600: shade-color($pink, 20%) !default;
 $pink-700: shade-color($pink, 40%) !default;
 $pink-800: shade-color($pink, 60%) !default;
 $pink-900: shade-color($pink, 80%) !default;
+
+$fuchsia-100: tint-color($fuchsia, 80%) !default;
+$fuchsia-200: tint-color($fuchsia, 60%) !default;
+$fuchsia-300: tint-color($fuchsia, 40%) !default;
+$fuchsia-400: tint-color($fuchsia, 20%) !default;
+$fuchsia-500: $fuchsia !default;
+$fuchsia-600: shade-color($fuchsia, 20%) !default;
+$fuchsia-700: shade-color($fuchsia, 40%) !default;
+$fuchsia-800: shade-color($fuchsia, 60%) !default;
+$fuchsia-900: shade-color($fuchsia, 80%) !default;
 
 $red-100: tint-color($red, 80%) !default;
 $red-200: tint-color($red, 60%) !default;
@@ -163,6 +245,16 @@ $green-700: shade-color($green, 40%) !default;
 $green-800: shade-color($green, 60%) !default;
 $green-900: shade-color($green, 80%) !default;
 
+$leaf-100: tint-color($leaf, 80%) !default;
+$leaf-200: tint-color($leaf, 60%) !default;
+$leaf-300: tint-color($leaf, 40%) !default;
+$leaf-400: tint-color($leaf, 20%) !default;
+$leaf-500: $leaf !default;
+$leaf-600: shade-color($leaf, 20%) !default;
+$leaf-700: shade-color($leaf, 40%) !default;
+$leaf-800: shade-color($leaf, 60%) !default;
+$leaf-900: shade-color($leaf, 80%) !default;
+
 $teal-100: tint-color($teal, 80%) !default;
 $teal-200: tint-color($teal, 60%) !default;
 $teal-300: tint-color($teal, 40%) !default;
@@ -182,6 +274,48 @@ $cyan-600: shade-color($cyan, 20%) !default;
 $cyan-700: shade-color($cyan, 40%) !default;
 $cyan-800: shade-color($cyan, 60%) !default;
 $cyan-900: shade-color($cyan, 80%) !default;
+
+$aqua-100: tint-color($aqua, 80%) !default;
+$aqua-200: tint-color($aqua, 60%) !default;
+$aqua-300: tint-color($aqua, 40%) !default;
+$aqua-400: tint-color($aqua, 20%) !default;
+$aqua-500: $aqua !default;
+$aqua-600: shade-color($aqua, 20%) !default;
+$aqua-700: shade-color($aqua, 40%) !default;
+$aqua-800: shade-color($aqua, 60%) !default;
+$aqua-900: shade-color($aqua, 80%) !default;
+
+$navy-100: tint-color($navy, 80%) !default;
+$navy-200: tint-color($navy, 60%) !default;
+$navy-300: tint-color($navy, 40%) !default;
+$navy-400: tint-color($navy, 20%) !default;
+$navy-500: $navy !default;
+$navy-600: shade-color($navy, 20%) !default;
+$navy-700: shade-color($navy, 40%) !default;
+$navy-800: shade-color($navy, 60%) !default;
+$navy-900: shade-color($navy, 80%) !default;
+
+$ash-100: tint-color($ash, 80%) !default;
+$ash-200: tint-color($ash, 60%) !default;
+$ash-300: tint-color($ash, 40%) !default;
+$ash-400: tint-color($ash, 20%) !default;
+$ash-500: $ash !default;
+$ash-600: shade-color($ash, 20%) !default;
+$ash-700: shade-color($ash, 40%) !default;
+$ash-800: shade-color($ash, 60%) !default;
+$ash-900: shade-color($ash, 80%) !default;
+
+$skies: (
+  'sky-100': $sky-100,
+  'sky-200': $sky-200,
+  'sky-300': $sky-300,
+  'sky-400': $sky-400,
+  'sky-500': $sky-500,
+  'sky-600': $sky-600,
+  'sky-700': $sky-700,
+  'sky-800': $sky-800,
+  'sky-900': $sky-900
+) !default;
 
 $blues: (
   'blue-100': $blue-100,
@@ -207,6 +341,18 @@ $indigos: (
   'indigo-900': $indigo-900
 ) !default;
 
+$grapes: (
+  'grape-100': $grape-100,
+  'grape-200': $grape-200,
+  'grape-300': $grape-300,
+  'grape-400': $grape-400,
+  'grape-500': $grape-500,
+  'grape-600': $grape-600,
+  'grape-700': $grape-700,
+  'grape-800': $grape-800,
+  'grape-900': $grape-900
+) !default;
+
 $purples: (
   'purple-100': $purple-100,
   'purple-200': $purple-200,
@@ -219,6 +365,18 @@ $purples: (
   'purple-900': $purple-900
 ) !default;
 
+$violets: (
+  'violet-100': $violet-100,
+  'violet-200': $violet-200,
+  'violet-300': $violet-300,
+  'violet-400': $violet-400,
+  'violet-500': $violet-500,
+  'violet-600': $violet-600,
+  'violet-700': $violet-700,
+  'violet-800': $violet-800,
+  'violet-900': $violet-900
+) !default;
+
 $pinks: (
   'pink-100': $pink-100,
   'pink-200': $pink-200,
@@ -229,6 +387,18 @@ $pinks: (
   'pink-700': $pink-700,
   'pink-800': $pink-800,
   'pink-900': $pink-900
+) !default;
+
+$fuchsias: (
+  'fuchsia-100': $fuchsia-100,
+  'fuchsia-200': $fuchsia-200,
+  'fuchsia-300': $fuchsia-300,
+  'fuchsia-400': $fuchsia-400,
+  'fuchsia-500': $fuchsia-500,
+  'fuchsia-600': $fuchsia-600,
+  'fuchsia-700': $fuchsia-700,
+  'fuchsia-800': $fuchsia-800,
+  'fuchsia-900': $fuchsia-900
 ) !default;
 
 $reds: (
@@ -279,6 +449,18 @@ $greens: (
   'green-900': $green-900
 ) !default;
 
+$leaves: (
+  'leaf-100': $leaf-100,
+  'leaf-200': $leaf-200,
+  'leaf-300': $leaf-300,
+  'leaf-400': $leaf-400,
+  'leaf-500': $leaf-500,
+  'leaf-600': $leaf-600,
+  'leaf-700': $leaf-700,
+  'leaf-800': $leaf-800,
+  'leaf-900': $leaf-900
+) !default;
+
 $teals: (
   'teal-100': $teal-100,
   'teal-200': $teal-200,
@@ -302,4 +484,61 @@ $cyans: (
   'cyan-800': $cyan-800,
   'cyan-900': $cyan-900
 ) !default;
+
+$aquas: (
+  'aqua-100': $aqua-100,
+  'aqua-200': $aqua-200,
+  'aqua-300': $aqua-300,
+  'aqua-400': $aqua-400,
+  'aqua-500': $aqua-500,
+  'aqua-600': $aqua-600,
+  'aqua-700': $aqua-700,
+  'aqua-800': $aqua-800,
+  'aqua-900': $aqua-900
+) !default;
+
+$navies: (
+  'navy-100': $navy-100,
+  'navy-200': $navy-200,
+  'navy-300': $navy-300,
+  'navy-400': $navy-400,
+  'navy-500': $navy-500,
+  'navy-600': $navy-600,
+  'navy-700': $navy-700,
+  'navy-800': $navy-800,
+  'navy-900': $navy-900
+) !default;
+
+$ashes: (
+  'ash-100': $ash-100,
+  'ash-200': $ash-200,
+  'ash-300': $ash-300,
+  'ash-400': $ash-400,
+  'ash-500': $ash-500,
+  'ash-600': $ash-600,
+  'ash-700': $ash-700,
+  'ash-800': $ash-800,
+  'ash-900': $ash-900
+) !default;
 // fusv-enable
+
+$color-groups: (
+  'skies': $skies,
+  'blues': $blues,
+  'indigos': $indigos,
+  'grapes': $grapes,
+  'purples': $purples,
+  'violets': $violets,
+  'pinks': $pinks,
+  'fuchsias': $fuchsias,
+  'reds': $reds,
+  'oranges': $oranges,
+  'yellows': $yellows,
+  'greens': $greens,
+  'leaves': $leaves,
+  'teals': $teals,
+  'cyans': $cyans,
+  'aquas': $aquas,
+  'navies': $navies,
+  'ashes': $ashes
+) !default;
