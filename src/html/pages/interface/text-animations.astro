@@ -101,10 +101,10 @@ let currentIndex = 0;
 function fadeText() {
   // Reset all texts to be hidden
   texts.forEach(text => text.classList.remove('active'));
-  
+
   // Show the current text with the fade-in effect
   texts[currentIndex].classList.add('active');
-  
+
   // Move to the next index for the next iteration
   currentIndex = (currentIndex + 1) % texts.length;
 }
@@ -116,12 +116,6 @@ setInterval(fadeText, 3000);
 fadeText();
 </script>
 `
-
-// Shared preview configuration for consistent component display
-const previewConfig = {
-  cssCode: '',
-  jsCode: ''
-}
 ---
 
 <AdminLayout
