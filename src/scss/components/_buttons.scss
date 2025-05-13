@@ -101,7 +101,7 @@
   // Light Primary Button
   &.btn-light-primary {
     color: var(--bs-primary);
-    background-color: rgba(var(--bs-primary-rgb), 0.2);
+    background-color: rgb(var(--bs-primary-rgb), 0.2);
 
     &:hover,
     &:focus {
@@ -111,14 +111,14 @@
 
     &:active {
       color: var(--bs-white);
-      background-color: rgba(var(--bs-primary-rgb), 0.8);
+      background-color: rgb(var(--bs-primary-rgb), 0.8);
     }
   }
 
   // Light Danger Button
   &.btn-light-danger {
     color: var(--bs-danger);
-    background-color: rgba(var(--bs-danger-rgb), 0.2);
+    background-color: rgb(var(--bs-danger-rgb), 0.2);
 
     &:hover,
     &:focus {
@@ -128,7 +128,7 @@
 
     &:active {
       color: var(--bs-white);
-      background-color: rgba(var(--bs-danger-rgb), 0.8);
+      background-color: rgb(var(--bs-danger-rgb), 0.8);
     }
   }
 
@@ -137,12 +137,12 @@
     &:hover,
     &:focus {
       color: var(--bs-primary);
-      background-color: rgba(var(--bs-primary-rgb), 0.2);
+      background-color: rgb(var(--bs-primary-rgb), 0.2);
     }
 
     &:active {
       color: var(--bs-primary);
-      background-color: rgba(var(--bs-primary-rgb), 0.3);
+      background-color: rgb(var(--bs-primary-rgb), 0.3);
     }
   }
 }
