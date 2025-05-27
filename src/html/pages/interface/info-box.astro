@@ -454,6 +454,96 @@ const loadingStateInfoBoxExample = `<div class="row g-3">
         </div>
     </div>
 </div>`
+
+// Interactive info box examples with JavaScript functionality
+const interactiveInfoBoxExample = `<div class="row g-3">
+    <div class="col-md-6 col-lg-3">
+        <div class="info-box interactive-box" onclick="refreshMetric(this)">
+            <span class="info-box-icon bg-info"><i class="ri-cursor-line"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Click-through Rate</span>
+                <span class="info-box-number" id="ctr-rate">3.45%</span>
+                <span class="info-box-more-info">Click to refresh</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="info-box interactive-box" onclick="refreshMetric(this)">
+            <span class="info-box-icon bg-success"><i class="ri-eye-line"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Page Views</span>
+                <span class="info-box-number" id="page-views">127.3K</span>
+                <span class="info-box-more-info">Real-time data</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="info-box interactive-box" onclick="refreshMetric(this)">
+            <span class="info-box-icon bg-warning"><i class="ri-time-line"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Avg. Session</span>
+                <span class="info-box-number" id="avg-session">4m 32s</span>
+                <span class="info-box-more-info">Updated hourly</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="info-box interactive-box" onclick="refreshMetric(this)">
+            <span class="info-box-icon bg-danger"><i class="ri-arrow-up-line"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Bounce Rate</span>
+                <span class="info-box-number" id="bounce-rate">28.7%</span>
+                <span class="info-box-more-info">7-day average</span>
+            </div>
+        </div>
+    </div>
+</div>`
+
+const interactiveInfoBoxCSS = `.interactive-box {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.interactive-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.interactive-box:active {
+    transform: translateY(-1px);
+}`
+
+const interactiveInfoBoxJS = `function refreshMetric(element) {
+    const number = element.querySelector('.info-box-number');
+    const icon = element.querySelector('.info-box-icon i');
+
+    // Add loading state
+    const originalIcon = icon.className;
+    icon.className = 'ri-loader-4-line fa-spin';
+
+    setTimeout(() => {
+        // Simulate data update
+        const randomValue = Math.random();
+        if (number.id === 'ctr-rate') {
+            number.textContent = (randomValue * 5 + 2).toFixed(2) + '%';
+        } else if (number.id === 'page-views') {
+            number.textContent = Math.floor(randomValue * 50 + 100) + '.3K';
+        } else if (number.id === 'avg-session') {
+            const minutes = Math.floor(randomValue * 3 + 3);
+            const seconds = Math.floor(randomValue * 60);
+            number.textContent = minutes + 'm ' + seconds + 's';
+        } else if (number.id === 'bounce-rate') {
+            number.textContent = (randomValue * 20 + 20).toFixed(1) + '%';
+        }
+
+        // Restore original icon
+        icon.className = originalIcon;
+
+        // Add success animation
+        element.style.transform = 'scale(1.02)';
+        setTimeout(() => {
+            element.style.transform = '';
+        }, 200);
+    }, 1000);
+}`
 ---
 
 <AdminLayout
@@ -559,302 +649,193 @@ const loadingStateInfoBoxExample = `<div class="row g-3">
             <ComponentPreview
               title="Interactive Dashboard Metrics"
               height="650px"
-              component={`<div class="row g-3">
-                <div class="col-md-6 col-lg-3">
-                    <div class="info-box interactive-box" onclick="refreshMetric(this)">
-                        <span class="info-box-icon bg-info"><i class="ri-cursor-line"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">Click-through Rate</span>
-                            <span class="info-box-number" id="ctr-rate">3.45%</span>
-                            <span class="info-box-more-info">Click to refresh</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="info-box interactive-box" onclick="refreshMetric(this)">
-                        <span class="info-box-icon bg-success"><i class="ri-eye-line"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">Page Views</span>
-                            <span class="info-box-number" id="page-views">127.3K</span>
-                            <span class="info-box-more-info">Real-time data</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="info-box interactive-box" onclick="refreshMetric(this)">
-                        <span class="info-box-icon bg-warning"><i class="ri-time-line"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">Avg. Session</span>
-                            <span class="info-box-number" id="avg-session">4m 32s</span>
-                            <span class="info-box-more-info">Updated hourly</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="info-box interactive-box" onclick="refreshMetric(this)">
-                        <span class="info-box-icon bg-danger"><i class="ri-arrow-up-line"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">Bounce Rate</span>
-                            <span class="info-box-number" id="bounce-rate">28.7%</span>
-                            <span class="info-box-more-info">7-day average</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <style>
-            .interactive-box {
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
-            .interactive-box:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            }
-            .interactive-box:active {
-                transform: translateY(-1px);
-            }
-            </style>`}
-              htmlCode={`<div class="row g-3">
-                <div class="col-md-6 col-lg-3">
-                    <div class="info-box interactive-box" onclick="refreshMetric(this)">
-                        <span class="info-box-icon bg-info"><i class="ri-cursor-line"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">Click-through Rate</span>
-                            <span class="info-box-number" id="ctr-rate">3.45%</span>
-                            <span class="info-box-more-info">Click to refresh</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Additional interactive boxes -->
-            </div>`}
-              cssCode={`.interactive-box {
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-.interactive-box:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-.interactive-box:active {
-    transform: translateY(-1px);
-}`}
-              jsCode={`function refreshMetric(element) {
-    const number = element.querySelector('.info-box-number');
-    const icon = element.querySelector('.info-box-icon i');
-
-    // Add loading state
-    const originalIcon = icon.className;
-    icon.className = 'ri-loader-4-line fa-spin';
-
-    setTimeout(() => {
-        // Simulate data update
-        const randomValue = Math.random();
-        if (number.id === 'ctr-rate') {
-            number.textContent = (randomValue * 5 + 2).toFixed(2) + '%';
-        } else if (number.id === 'page-views') {
-            number.textContent = Math.floor(randomValue * 50 + 100) + '.3K';
-        } else if (number.id === 'avg-session') {
-            const minutes = Math.floor(randomValue * 3 + 3);
-            const seconds = Math.floor(randomValue * 60);
-            number.textContent = minutes + 'm ' + seconds + 's';
-        } else if (number.id === 'bounce-rate') {
-            number.textContent = (randomValue * 20 + 20).toFixed(1) + '%';
-        }
-
-        // Restore original icon
-        icon.className = originalIcon;
-
-        // Add success animation
-        element.style.transform = 'scale(1.02)';
-        setTimeout(() => {
-            element.style.transform = '';
-        }, 200);
-    }, 1000);
-}`}
+              component={interactiveInfoBoxExample}
+              htmlCode={interactiveInfoBoxExample}
+              cssCode={interactiveInfoBoxCSS}
+              jsCode={`<script>${interactiveInfoBoxJS}</script>`}
             />
-          </div>
 
-          <!-- Developer Tips and Best Practices -->
-          <div class="my-3">
-            <h3 id="developer-tips">Developer Tips & Best Practices</h3>
-            <div class="alert alert-info">
-              <h4 class="alert-heading">
-                <i class="ri-lightbulb-line me-2"></i>
-                Pro Tips for Info Box Components
-              </h4>
-              <ul class="mb-0">
-                <li>
-                  <strong>Consistent Iconography:</strong> Use icons from the same icon family (Remix
-                  Icons) to maintain visual consistency across all info boxes
-                </li>
-                <li>
-                  <strong>Color Coding:</strong> Establish a clear color system where each color represents
-                  specific data categories (e.g., blue for user metrics, green for revenue)
-                </li>
-                <li>
-                  <strong>Number Formatting:</strong> Use appropriate number formatting (K for thousands,
-                  M for millions) to improve readability
-                </li>
-                <li>
-                  <strong>Loading States:</strong> Always provide visual feedback during data updates
-                  with loading overlays or animations
-                </li>
-                <li>
-                  <strong>Responsive Design:</strong> Ensure info boxes stack properly on mobile devices
-                  and maintain readability at all screen sizes
-                </li>
-                <li>
-                  <strong>Progress Indicators:</strong> Use progress bars to show completion rates or
-                  target achievement for better context
-                </li>
-              </ul>
-            </div>
-
-            <div class="alert alert-warning">
-              <h4 class="alert-heading">
-                <i class="ri-error-warning-line me-2"></i>
-                Common Pitfalls to Avoid
-              </h4>
-              <ul class="mb-0">
-                <li>
-                  Don't overcrowd info boxes with too much information - keep content focused and
-                  scannable
-                </li>
-                <li>
-                  Avoid using more than 8-10 info boxes on a single dashboard to prevent cognitive
-                  overload
-                </li>
-                <li>
-                  Never use red backgrounds for positive metrics or green for negative ones -
-                  maintain logical color associations
-                </li>
-                <li>Don't forget to handle empty states and error conditions for dynamic data</li>
-                <li>Avoid inconsistent spacing and sizing across info boxes in the same view</li>
-                <li>
-                  Don't use vague labels - be specific about what each metric represents and its
-                  time frame
-                </li>
-              </ul>
-            </div>
-
-            <div class="alert alert-success">
-              <h4 class="alert-heading">
-                <i class="ri-code-s-slash-line me-2"></i>
-                JavaScript Integration Best Practices
-              </h4>
-              <p class="mb-2">Essential features for dynamic info box implementations:</p>
-              <div class="bg-light p-3 rounded">
-                <strong>InfoBox Manager Features:</strong>
-                <ul class="mb-0 mt-2">
-                  <li>Real-time data updates with WebSocket or polling mechanisms</li>
-                  <li>Smooth number transitions and counting animations</li>
-                  <li>Error handling and fallback states for failed data requests</li>
-                  <li>Responsive hover effects and click interactions</li>
-                  <li>Accessibility support with ARIA labels and keyboard navigation</li>
-                  <li>Data caching and efficient update strategies</li>
+            <!-- Developer Tips and Best Practices -->
+            <div class="my-3">
+              <h3 id="developer-tips">Developer Tips & Best Practices</h3>
+              <div class="alert alert-info">
+                <h4 class="alert-heading">
+                  <i class="ri-lightbulb-line me-2"></i>
+                  Pro Tips for Info Box Components
+                </h4>
+                <ul class="mb-0">
+                  <li>
+                    <strong>Consistent Iconography:</strong> Use icons from the same icon family (Remix
+                    Icons) to maintain visual consistency across all info boxes
+                  </li>
+                  <li>
+                    <strong>Color Coding:</strong> Establish a clear color system where each color represents
+                    specific data categories (e.g., blue for user metrics, green for revenue)
+                  </li>
+                  <li>
+                    <strong>Number Formatting:</strong> Use appropriate number formatting (K for thousands,
+                    M for millions) to improve readability
+                  </li>
+                  <li>
+                    <strong>Loading States:</strong> Always provide visual feedback during data updates
+                    with loading overlays or animations
+                  </li>
+                  <li>
+                    <strong>Responsive Design:</strong> Ensure info boxes stack properly on mobile devices
+                    and maintain readability at all screen sizes
+                  </li>
+                  <li>
+                    <strong>Progress Indicators:</strong> Use progress bars to show completion rates
+                    or target achievement for better context
+                  </li>
                 </ul>
               </div>
-            </div>
-          </div>
 
-          <div class="my-3">
-            <h3 class="mb-0" id="accessibility-guidelines">Accessibility Guidelines</h3>
-            <p class="py-2">
-              Ensure info box components are accessible to all users by following these best
-              practices:
-            </p>
-            <ul class="list-unstyled ps-3">
-              <li>
-                <i class="ri-check-line text-success me-2"></i>Use semantic HTML with proper heading
-                structure and ARIA labels
-              </li>
-              <li>
-                <i class="ri-check-line text-success me-2"></i>Provide sufficient color contrast for
-                all text and background combinations
-              </li>
-              <li>
-                <i class="ri-check-line text-success me-2"></i>Include descriptive text for screen
-                readers explaining metric context
-              </li>
-              <li>
-                <i class="ri-check-line text-success me-2"></i>Ensure interactive elements are
-                keyboard navigable with proper focus indicators
-              </li>
-              <li>
-                <i class="ri-check-line text-success me-2"></i>Use ARIA live regions for dynamic
-                content updates
-              </li>
-              <li>
-                <i class="ri-check-line text-success me-2"></i>Provide alternative text descriptions
-                for icon meanings
-              </li>
-              <li>
-                <i class="ri-check-line text-success me-2"></i>Implement proper error messaging and
-                loading state announcements
-              </li>
-            </ul>
+              <div class="alert alert-warning">
+                <h4 class="alert-heading">
+                  <i class="ri-error-warning-line me-2"></i>
+                  Common Pitfalls to Avoid
+                </h4>
+                <ul class="mb-0">
+                  <li>
+                    Don't overcrowd info boxes with too much information - keep content focused and
+                    scannable
+                  </li>
+                  <li>
+                    Avoid using more than 8-10 info boxes on a single dashboard to prevent cognitive
+                    overload
+                  </li>
+                  <li>
+                    Never use red backgrounds for positive metrics or green for negative ones -
+                    maintain logical color associations
+                  </li>
+                  <li>Don't forget to handle empty states and error conditions for dynamic data</li>
+                  <li>Avoid inconsistent spacing and sizing across info boxes in the same view</li>
+                  <li>
+                    Don't use vague labels - be specific about what each metric represents and its
+                    time frame
+                  </li>
+                </ul>
+              </div>
+
+              <div class="alert alert-success">
+                <h4 class="alert-heading">
+                  <i class="ri-code-s-slash-line me-2"></i>
+                  JavaScript Integration Best Practices
+                </h4>
+                <p class="mb-2">Essential features for dynamic info box implementations:</p>
+                <div class="bg-light p-3 rounded">
+                  <strong>InfoBox Manager Features:</strong>
+                  <ul class="mb-0 mt-2">
+                    <li>Real-time data updates with WebSocket or polling mechanisms</li>
+                    <li>Smooth number transitions and counting animations</li>
+                    <li>Error handling and fallback states for failed data requests</li>
+                    <li>Responsive hover effects and click interactions</li>
+                    <li>Accessibility support with ARIA labels and keyboard navigation</li>
+                    <li>Data caching and efficient update strategies</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="my-3">
+              <h3 class="mb-0" id="accessibility-guidelines">Accessibility Guidelines</h3>
+              <p class="py-2">
+                Ensure info box components are accessible to all users by following these best
+                practices:
+              </p>
+              <ul class="list-unstyled ps-3">
+                <li>
+                  <i class="ri-check-line text-success me-2"></i>Use semantic HTML with proper
+                  heading structure and ARIA labels
+                </li>
+                <li>
+                  <i class="ri-check-line text-success me-2"></i>Provide sufficient color contrast
+                  for all text and background combinations
+                </li>
+                <li>
+                  <i class="ri-check-line text-success me-2"></i>Include descriptive text for screen
+                  readers explaining metric context
+                </li>
+                <li>
+                  <i class="ri-check-line text-success me-2"></i>Ensure interactive elements are
+                  keyboard navigable with proper focus indicators
+                </li>
+                <li>
+                  <i class="ri-check-line text-success me-2"></i>Use ARIA live regions for dynamic
+                  content updates
+                </li>
+                <li>
+                  <i class="ri-check-line text-success me-2"></i>Provide alternative text
+                  descriptions for icon meanings
+                </li>
+                <li>
+                  <i class="ri-check-line text-success me-2"></i>Implement proper error messaging
+                  and loading state announcements
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <Toc />
   </div>
-</AdminLayout>
 
-<script>
-  // Interactive info box functionality
-  function refreshMetric(element) {
-    const number = element.querySelector('.info-box-number')
-    const icon = element.querySelector('.info-box-icon i')
+  <script>
+    // Interactive info box functionality
+    function refreshMetric(element) {
+      const number = element.querySelector('.info-box-number')
+      const icon = element.querySelector('.info-box-icon i')
 
-    // Add loading state
-    const originalIcon = icon.className
-    icon.className = 'ri-loader-4-line fa-spin'
+      // Add loading state
+      const originalIcon = icon.className
+      icon.className = 'ri-loader-4-line fa-spin'
 
-    setTimeout(() => {
-      // Simulate data update
-      const randomValue = Math.random()
-      if (number.id === 'ctr-rate') {
-        number.textContent = (randomValue * 5 + 2).toFixed(2) + '%'
-      } else if (number.id === 'page-views') {
-        number.textContent = Math.floor(randomValue * 50 + 100) + '.3K'
-      } else if (number.id === 'avg-session') {
-        const minutes = Math.floor(randomValue * 3 + 3)
-        const seconds = Math.floor(randomValue * 60)
-        number.textContent = minutes + 'm ' + seconds + 's'
-      } else if (number.id === 'bounce-rate') {
-        number.textContent = (randomValue * 20 + 20).toFixed(1) + '%'
-      }
-
-      // Restore original icon
-      icon.className = originalIcon
-
-      // Add success animation
-      element.style.transform = 'scale(1.02)'
       setTimeout(() => {
-        element.style.transform = ''
-      }, 200)
-    }, 1000)
-  }
+        // Simulate data update
+        const randomValue = Math.random()
+        if (number.id === 'ctr-rate') {
+          number.textContent = (randomValue * 5 + 2).toFixed(2) + '%'
+        } else if (number.id === 'page-views') {
+          number.textContent = Math.floor(randomValue * 50 + 100) + '.3K'
+        } else if (number.id === 'avg-session') {
+          const minutes = Math.floor(randomValue * 3 + 3)
+          const seconds = Math.floor(randomValue * 60)
+          number.textContent = minutes + 'm ' + seconds + 's'
+        } else if (number.id === 'bounce-rate') {
+          number.textContent = (randomValue * 20 + 20).toFixed(1) + '%'
+        }
 
-  // Add hover effects for all info boxes
-  document.addEventListener('DOMContentLoaded', function () {
-    const infoBoxes = document.querySelectorAll('.info-box:not(.loading)')
+        // Restore original icon
+        icon.className = originalIcon
 
-    infoBoxes.forEach((box) => {
-      if (!box.classList.contains('interactive-box')) {
-        box.addEventListener('mouseenter', function () {
-          this.style.transform = 'translateY(-2px)'
-          this.style.transition = 'all 0.3s ease'
-          this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)'
-        })
+        // Add success animation
+        element.style.transform = 'scale(1.02)'
+        setTimeout(() => {
+          element.style.transform = ''
+        }, 200)
+      }, 1000)
+    }
 
-        box.addEventListener('mouseleave', function () {
-          this.style.transform = 'translateY(0)'
-          this.style.boxShadow = ''
-        })
-      }
+    // Add hover effects for all info boxes
+    document.addEventListener('DOMContentLoaded', function () {
+      const infoBoxes = document.querySelectorAll('.info-box:not(.loading)')
+
+      infoBoxes.forEach((box) => {
+        if (!box.classList.contains('interactive-box')) {
+          box.addEventListener('mouseenter', function () {
+            this.style.transform = 'translateY(-2px)'
+            this.style.transition = 'all 0.3s ease'
+            this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)'
+          })
+
+          box.addEventListener('mouseleave', function () {
+            this.style.transform = 'translateY(0)'
+            this.style.boxShadow = ''
+          })
+        }
+      })
     })
-  })
-</script>
+  </script>
+</AdminLayout>
