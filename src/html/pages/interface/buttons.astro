@@ -16,111 +16,1097 @@ const pageHeaderConfig = {
 }
 
 // Standard button variants showcasing different contextual styles
-const standardButtonVariants = `<div class="d-flex flex-wrap gap-3">
-  <button type="button" class="btn btn-primary"><i class="ri-check-line me-1"></i>Primary</button>
-  <button type="button" class="btn btn-secondary"><i class="ri-arrow-go-back-line me-1"></i>Secondary</button>
-  <button type="button" class="btn btn-success"><i class="ri-check-double-line me-1"></i>Success</button>
-  <button type="button" class="btn btn-danger"><i class="ri-close-circle-line me-1"></i>Danger</button>
-  <button type="button" class="btn btn-warning"><i class="ri-alert-line me-1"></i>Warning</button>
-  <button type="button" class="btn btn-info"><i class="ri-information-line me-1"></i>Info</button>
-  <button type="button" class="btn btn-light"><i class="ri-sun-line me-1"></i>Light</button>
-  <button type="button" class="btn btn-dark"><i class="ri-moon-line me-1"></i>Dark</button>
+const standardButtonVariants = `<!-- Primary Action Buttons -->
+<div class="mb-4">
+  <h6 class="mb-2">Primary Action Buttons</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-primary">
+      <i class="ri-check-line me-1"></i>Save Changes
+    </button>
+    <button type="button" class="btn btn-primary">
+      <i class="ri-send-plane-line me-1"></i>Submit Form
+    </button>
+    <button type="button" class="btn btn-primary">
+      <i class="ri-login-circle-line me-1"></i>Sign In
+    </button>
+    <button type="button" class="btn btn-primary">
+      <i class="ri-add-circle-line me-1"></i>Create New
+    </button>
+  </div>
+</div>
+
+<!-- Secondary Action Buttons -->
+<div class="mb-4">
+  <h6 class="mb-2">Secondary Action Buttons</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-secondary">
+      <i class="ri-arrow-go-back-line me-1"></i>Go Back
+    </button>
+    <button type="button" class="btn btn-secondary">
+      <i class="ri-close-line me-1"></i>Cancel
+    </button>
+    <button type="button" class="btn btn-secondary">
+      <i class="ri-skip-forward-line me-1"></i>Skip Step
+    </button>
+    <button type="button" class="btn btn-secondary">
+      <i class="ri-draft-line me-1"></i>Save Draft
+    </button>
+  </div>
+</div>
+
+<!-- Success Action Buttons -->
+<div class="mb-4">
+  <h6 class="mb-2">Success & Confirmation Buttons</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-success">
+      <i class="ri-check-double-line me-1"></i>Approve Request
+    </button>
+    <button type="button" class="btn btn-success">
+      <i class="ri-shield-check-line me-1"></i>Verify Account
+    </button>
+    <button type="button" class="btn btn-success">
+      <i class="ri-thumb-up-line me-1"></i>Accept Terms
+    </button>
+    <button type="button" class="btn btn-success">
+      <i class="ri-medal-line me-1"></i>Complete Task
+    </button>
+  </div>
+</div>
+
+<!-- Warning Action Buttons -->
+<div class="mb-4">
+  <h6 class="mb-2">Warning & Caution Buttons</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-warning">
+      <i class="ri-alert-line me-1"></i>Review Required
+    </button>
+    <button type="button" class="btn btn-warning">
+      <i class="ri-error-warning-line me-1"></i>Pending Approval
+    </button>
+    <button type="button" class="btn btn-warning">
+      <i class="ri-time-line me-1"></i>Session Expiring
+    </button>
+    <button type="button" class="btn btn-warning">
+      <i class="ri-notification-4-line me-1"></i>Needs Attention
+    </button>
+  </div>
+</div>
+
+<!-- Danger Action Buttons -->
+<div class="mb-4">
+  <h6 class="mb-2">Danger & Destructive Buttons</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-danger">
+      <i class="ri-delete-bin-2-line me-1"></i>Delete Item
+    </button>
+    <button type="button" class="btn btn-danger">
+      <i class="ri-close-circle-line me-1"></i>Reject Application
+    </button>
+    <button type="button" class="btn btn-danger">
+      <i class="ri-logout-circle-r-line me-1"></i>Sign Out
+    </button>
+    <button type="button" class="btn btn-danger">
+      <i class="ri-forbid-line me-1"></i>Block User
+    </button>
+  </div>
+</div>
+
+<!-- Info Action Buttons -->
+<div class="mb-4">
+  <h6 class="mb-2">Info & Help Buttons</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-info">
+      <i class="ri-information-line me-1"></i>View Details
+    </button>
+    <button type="button" class="btn btn-info">
+      <i class="ri-question-line me-1"></i>Get Help
+    </button>
+    <button type="button" class="btn btn-info">
+      <i class="ri-download-line me-1"></i>Download Report
+    </button>
+    <button type="button" class="btn btn-info">
+      <i class="ri-share-forward-line me-1"></i>Share Content
+    </button>
+  </div>
+</div>
+
+<!-- Light & Dark Theme Buttons -->
+<div>
+  <h6 class="mb-2">Theme Variant Buttons</h6>
+  <div class="d-flex flex-wrap gap-2 align-items-center">
+    <button type="button" class="btn btn-light border">
+      <i class="ri-sun-line me-1"></i>Light Theme
+    </button>
+    <button type="button" class="btn btn-dark">
+      <i class="ri-moon-line me-1"></i>Dark Theme
+    </button>
+    <button type="button" class="btn btn-light border">
+      <i class="ri-contrast-2-line me-1"></i>High Contrast
+    </button>
+    <button type="button" class="btn btn-dark">
+      <i class="ri-palette-line me-1"></i>Auto Theme
+    </button>
+  </div>
 </div>`
 
 // Different HTML elements that can be styled as buttons
-const buttonElementExamples = `<a class="btn btn-primary" href="#" role="button"><i class="ri-link me-1"></i>Link</a>
-<button class="btn btn-primary" type="submit"><i class="ri-send-plane-line me-1"></i>Button</button>
-<input class="btn btn-primary" type="submit" value="Submit">`
+const buttonElementExamples = `<!-- Navigation Links Styled as Buttons -->
+<div class="mb-4">
+  <h6 class="mb-2">Navigation Links (Anchor Elements)</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <a class="btn btn-primary" href="#dashboard" role="button">
+      <i class="ri-dashboard-3-line me-1"></i>Go to Dashboard
+    </a>
+    <a class="btn btn-info" href="#profile" role="button">
+      <i class="ri-user-line me-1"></i>View Profile
+    </a>
+    <a class="btn btn-success" href="/download" role="button" target="_blank">
+      <i class="ri-download-line me-1"></i>Download Report
+    </a>
+    <a class="btn btn-outline-secondary" href="mailto:support@example.com" role="button">
+      <i class="ri-mail-line me-1"></i>Contact Support
+    </a>
+  </div>
+</div>
+
+<!-- Interactive Action Buttons -->
+<div class="mb-4">
+  <h6 class="mb-2">Interactive Action Buttons (Button Elements)</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button class="btn btn-primary" type="button" onclick="showModal()">
+      <i class="ri-add-circle-line me-1"></i>Create New Item
+    </button>
+    <button class="btn btn-warning" type="button" onclick="editItem()">
+      <i class="ri-edit-line me-1"></i>Edit Selected
+    </button>
+    <button class="btn btn-danger" type="button" onclick="deleteItem()">
+      <i class="ri-delete-bin-2-line me-1"></i>Delete Item
+    </button>
+    <button class="btn btn-secondary" type="button" onclick="refreshData()">
+      <i class="ri-refresh-line me-1"></i>Refresh Data
+    </button>
+  </div>
+</div>
+
+<!-- Form Submission Buttons -->
+<div class="mb-4">
+  <h6 class="mb-2">Form Submission Buttons (Input Elements)</h6>
+  <form class="d-flex flex-wrap gap-2" onsubmit="handleSubmit(event)">
+    <input class="btn btn-primary" type="submit" value="💾 Submit Form">
+    <input class="btn btn-success" type="submit" value="✅ Save Changes" formaction="/save">
+    <input class="btn btn-info" type="submit" value="📤 Send Message" formaction="/send">
+    <input class="btn btn-warning" type="submit" value="⚡ Quick Save" formaction="/quick-save">
+  </form>
+</div>
+
+<!-- File Upload Buttons -->
+<div class="mb-4">
+  <h6 class="mb-2">File Upload Actions</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <label class="btn btn-outline-primary" for="file-upload">
+      <i class="ri-upload-cloud-line me-1"></i>Choose Files
+      <input type="file" id="file-upload" class="d-none" multiple>
+    </label>
+    <label class="btn btn-outline-success" for="image-upload">
+      <i class="ri-image-line me-1"></i>Upload Images
+      <input type="file" id="image-upload" class="d-none" accept="image/*" multiple>
+    </label>
+    <label class="btn btn-outline-info" for="document-upload">
+      <i class="ri-file-text-line me-1"></i>Upload Documents
+      <input type="file" id="document-upload" class="d-none" accept=".pdf,.doc,.docx">
+    </label>
+  </div>
+</div>
+
+<!-- External Resource Buttons -->
+<div>
+  <h6 class="mb-2">External Resources & Downloads</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <a class="btn btn-primary" href="https://github.com/example/repo" role="button" target="_blank" rel="noopener">
+      <i class="ri-github-line me-1"></i>View on GitHub
+    </a>
+    <a class="btn btn-info" href="/api/documentation" role="button" target="_blank">
+      <i class="ri-book-open-line me-1"></i>API Documentation
+    </a>
+    <a class="btn btn-success" href="/files/user-guide.pdf" role="button" download>
+      <i class="ri-download-2-line me-1"></i>Download Guide
+    </a>
+    <a class="btn btn-warning" href="tel:+1234567890" role="button">
+      <i class="ri-phone-line me-1"></i>Call Support
+    </a>
+  </div>
+</div>`
 
 // Outline button styles for a more subtle appearance
-const outlineButtonVariants = `<div class="d-flex flex-wrap gap-3">
-  <button type="button" class="btn btn-outline-primary mb-1"><i class="ri-check-line me-1"></i>Primary</button>
-  <button type="button" class="btn btn-outline-secondary mb-1"><i class="ri-arrow-go-back-line me-1"></i>Secondary</button>
-  <button type="button" class="btn btn-outline-success mb-1"><i class="ri-check-double-line me-1"></i>Success</button>
-  <button type="button" class="btn btn-outline-danger mb-1"><i class="ri-close-circle-line me-1"></i>Danger</button>
-  <button type="button" class="btn btn-outline-warning mb-1"><i class="ri-alert-line me-1"></i>Warning</button>
-  <button type="button" class="btn btn-outline-info mb-1"><i class="ri-information-line me-1"></i>Info</button>
+const outlineButtonVariants = `<!-- Secondary Actions with Outline Style -->
+<div class="mb-4">
+  <h6 class="mb-2">Secondary Actions (Subtle Appearance)</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-outline-primary">
+      <i class="ri-edit-line me-1"></i>Edit Profile
+    </button>
+    <button type="button" class="btn btn-outline-secondary">
+      <i class="ri-settings-line me-1"></i>Preferences
+    </button>
+    <button type="button" class="btn btn-outline-success">
+      <i class="ri-share-line me-1"></i>Share Content
+    </button>
+    <button type="button" class="btn btn-outline-info">
+      <i class="ri-information-line me-1"></i>More Info
+    </button>
+  </div>
+</div>
+
+<!-- Filter and Sort Options -->
+<div class="mb-4">
+  <h6 class="mb-2">Filter & Sort Controls</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-outline-primary active">
+      <i class="ri-filter-line me-1"></i>All Items
+    </button>
+    <button type="button" class="btn btn-outline-primary">
+      <i class="ri-star-line me-1"></i>Favorites
+    </button>
+    <button type="button" class="btn btn-outline-primary">
+      <i class="ri-time-line me-1"></i>Recent
+    </button>
+    <button type="button" class="btn btn-outline-primary">
+      <i class="ri-archive-line me-1"></i>Archived
+    </button>
+  </div>
+</div>
+
+<!-- Content Management Actions -->
+<div class="mb-4">
+  <h6 class="mb-2">Content Management (Non-destructive Actions)</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-outline-success">
+      <i class="ri-eye-line me-1"></i>Preview
+    </button>
+    <button type="button" class="btn btn-outline-warning">
+      <i class="ri-draft-line me-1"></i>Save Draft
+    </button>
+    <button type="button" class="btn btn-outline-info">
+      <i class="ri-download-line me-1"></i>Export
+    </button>
+    <button type="button" class="btn btn-outline-secondary">
+      <i class="ri-copy-line me-1"></i>Duplicate
+    </button>
+  </div>
+</div>
+
+<!-- Social and Communication Actions -->
+<div class="mb-4">
+  <h6 class="mb-2">Social & Communication Actions</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-outline-primary">
+      <i class="ri-thumb-up-line me-1"></i>Like <span class="badge bg-primary ms-1">24</span>
+    </button>
+    <button type="button" class="btn btn-outline-secondary">
+      <i class="ri-chat-3-line me-1"></i>Comment <span class="badge bg-secondary ms-1">8</span>
+    </button>
+    <button type="button" class="btn btn-outline-success">
+      <i class="ri-share-forward-line me-1"></i>Share
+    </button>
+    <button type="button" class="btn btn-outline-warning">
+      <i class="ri-bookmark-line me-1"></i>Bookmark
+    </button>
+  </div>
+</div>
+
+<!-- Form Alternative Actions -->
+<div class="mb-4">
+  <h6 class="mb-2">Form Alternative Actions</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-outline-secondary">
+      <i class="ri-arrow-left-line me-1"></i>Back
+    </button>
+    <button type="button" class="btn btn-outline-secondary">
+      <i class="ri-close-line me-1"></i>Cancel
+    </button>
+    <button type="button" class="btn btn-outline-info">
+      <i class="ri-save-line me-1"></i>Save for Later
+    </button>
+    <button type="button" class="btn btn-outline-warning">
+      <i class="ri-refresh-line me-1"></i>Reset Form
+    </button>
+  </div>
+</div>
+
+<!-- Status and State Indicators -->
+<div>
+  <h6 class="mb-2">Status & State Indicators</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-outline-success">
+      <i class="ri-check-line me-1"></i>Published
+    </button>
+    <button type="button" class="btn btn-outline-warning">
+      <i class="ri-time-line me-1"></i>Pending Review
+    </button>
+    <button type="button" class="btn btn-outline-danger">
+      <i class="ri-error-warning-line me-1"></i>Needs Attention
+    </button>
+    <button type="button" class="btn btn-outline-secondary">
+      <i class="ri-draft-line me-1"></i>Draft
+    </button>
+  </div>
 </div>`
 
 // Button size variations from extra small to extra large
-const buttonSizeVariants = `<div class="d-flex flex-wrap justify-content-start align-items-end gap-3">
-    <button type="button" class="btn btn-secondary btn-xs"><i class="ri-layout-grid-line me-1"></i>Extra Small</button>
-    <button type="button" class="btn btn-secondary btn-sm"><i class="ri-layout-grid-line me-1"></i>Small</button>
-    <button type="button" class="btn btn-secondary"><i class="ri-layout-grid-line me-1"></i>Default</button>
-    <button type="button" class="btn btn-secondary btn-lg"><i class="ri-layout-grid-line me-1"></i>Large</button>
-    <button type="button" class="btn btn-secondary btn-xl"><i class="ri-layout-grid-line me-1"></i>Extra Large</button>
+const buttonSizeVariants = `<!-- Toolbar Buttons (Extra Small) -->
+<div class="mb-4">
+  <h6 class="mb-2">Toolbar Actions (Extra Small - btn-xs)</h6>
+  <div class="d-flex flex-wrap gap-2 p-2 bg-light rounded">
+    <button type="button" class="btn btn-primary btn-xs">
+      <i class="ri-save-line me-1"></i>Save
+    </button>
+    <button type="button" class="btn btn-secondary btn-xs">
+      <i class="ri-copy-line me-1"></i>Copy
+    </button>
+    <button type="button" class="btn btn-warning btn-xs">
+      <i class="ri-edit-line me-1"></i>Edit
+    </button>
+    <button type="button" class="btn btn-danger btn-xs">
+      <i class="ri-delete-bin-line me-1"></i>Delete
+    </button>
+    <button type="button" class="btn btn-info btn-xs">
+      <i class="ri-share-line me-1"></i>Share
+    </button>
+  </div>
+</div>
+
+<!-- Compact Interface Actions (Small) -->
+<div class="mb-4">
+  <h6 class="mb-2">Compact Interface (Small - btn-sm)</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-primary btn-sm">
+      <i class="ri-add-line me-1"></i>Add Item
+    </button>
+    <button type="button" class="btn btn-success btn-sm">
+      <i class="ri-check-line me-1"></i>Approve
+    </button>
+    <button type="button" class="btn btn-warning btn-sm">
+      <i class="ri-time-line me-1"></i>Pending
+    </button>
+    <button type="button" class="btn btn-danger btn-sm">
+      <i class="ri-close-line me-1"></i>Reject
+    </button>
+    <button type="button" class="btn btn-outline-secondary btn-sm">
+      <i class="ri-more-line me-1"></i>More
+    </button>
+  </div>
+</div>
+
+<!-- Standard Interface Actions (Default) -->
+<div class="mb-4">
+  <h6 class="mb-2">Standard Interface (Default Size)</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-primary">
+      <i class="ri-send-plane-line me-1"></i>Submit Form
+    </button>
+    <button type="button" class="btn btn-secondary">
+      <i class="ri-arrow-left-line me-1"></i>Go Back
+    </button>
+    <button type="button" class="btn btn-success">
+      <i class="ri-check-double-line me-1"></i>Confirm
+    </button>
+    <button type="button" class="btn btn-outline-primary">
+      <i class="ri-settings-line me-1"></i>Settings
+    </button>
+  </div>
+</div>
+
+<!-- Important Actions (Large) -->
+<div class="mb-4">
+  <h6 class="mb-2">Important Actions (Large - btn-lg)</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-primary btn-lg">
+      <i class="ri-shopping-cart-line me-1"></i>Add to Cart
+    </button>
+    <button type="button" class="btn btn-success btn-lg">
+      <i class="ri-secure-payment-line me-1"></i>Buy Now
+    </button>
+    <button type="button" class="btn btn-warning btn-lg">
+      <i class="ri-heart-line me-1"></i>Save to Wishlist
+    </button>
+  </div>
+</div>
+
+<!-- Hero Section Actions (Extra Large) -->
+<div class="mb-4">
+  <h6 class="mb-2">Hero/CTA Buttons (Extra Large - btn-xl)</h6>
+  <div class="d-flex flex-wrap gap-3">
+    <button type="button" class="btn btn-primary btn-xl">
+      <i class="ri-play-circle-line me-2"></i>Start Free Trial
+    </button>
+    <button type="button" class="btn btn-outline-primary btn-xl">
+      <i class="ri-download-cloud-line me-2"></i>Download Now
+    </button>
+  </div>
+</div>
+
+<!-- Size Comparison -->
+<div>
+  <h6 class="mb-2">Size Comparison (Same Action, Different Sizes)</h6>
+  <div class="d-flex flex-wrap align-items-end gap-3">
+    <button type="button" class="btn btn-primary btn-xs">
+      <i class="ri-star-line me-1"></i>XS
+    </button>
+    <button type="button" class="btn btn-primary btn-sm">
+      <i class="ri-star-line me-1"></i>Small
+    </button>
+    <button type="button" class="btn btn-primary">
+      <i class="ri-star-line me-1"></i>Default
+    </button>
+    <button type="button" class="btn btn-primary btn-lg">
+      <i class="ri-star-line me-1"></i>Large
+    </button>
+    <button type="button" class="btn btn-primary btn-xl">
+      <i class="ri-star-line me-2"></i>Extra Large
+    </button>
+  </div>
 </div>`
 
 // Examples of disabled buttons showing both solid and outline styles
-const disabledButtonExamples = `<div class="d-flex flex-wrap align-items-center gap-3">
-  <button type="button" class="btn btn-primary mb-1" disabled><i class="ri-lock-line me-1"></i>Primary button</button>
-  <button type="button" class="btn btn-outline-primary mb-1" disabled><i class="ri-lock-line me-1"></i>Primary outline</button>
-  <button type="button" class="btn btn-secondary mb-1" disabled><i class="ri-lock-line me-1"></i>Secondary button</button>
-  <button type="button" class="btn btn-outline-secondary mb-1" disabled><i class="ri-lock-line me-1"></i>Secondary outline</button>
+const disabledButtonExamples = `<!-- Form Validation Context -->
+<div class="mb-4">
+  <h6 class="mb-2">Form Validation States</h6>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="mb-3">
+        <label class="form-label">Email Address</label>
+        <input type="email" class="form-control" placeholder="Enter email address">
+      </div>
+      <div class="d-flex gap-2">
+        <button type="button" class="btn btn-primary" disabled>
+          <i class="ri-send-plane-line me-1"></i>Send Invitation
+        </button>
+        <button type="button" class="btn btn-outline-secondary" disabled>
+          <i class="ri-draft-line me-1"></i>Save Draft
+        </button>
+      </div>
+      <small class="text-muted mt-1 d-block">Please enter a valid email address to enable buttons</small>
+    </div>
+  </div>
+</div>
+
+<!-- Processing States -->
+<div class="mb-4">
+  <h6 class="mb-2">Processing & Loading States</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-primary" disabled>
+      <i class="ri-loader-4-line ri-spin me-1"></i>Processing Payment
+    </button>
+    <button type="button" class="btn btn-outline-success" disabled>
+      <i class="ri-loader-2-line ri-spin me-1"></i>Uploading Files
+    </button>
+    <button type="button" class="btn btn-warning" disabled>
+      <i class="ri-loader-5-line ri-spin me-1"></i>Saving Changes
+    </button>
+    <button type="button" class="btn btn-outline-info" disabled>
+      <i class="ri-refresh-line ri-spin me-1"></i>Syncing Data
+    </button>
+  </div>
+</div>
+
+<!-- Permission-Based Disabled States -->
+<div class="mb-4">
+  <h6 class="mb-2">Permission Restricted Actions</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-danger" disabled title="Insufficient permissions">
+      <i class="ri-delete-bin-2-line me-1"></i>Delete Project
+    </button>
+    <button type="button" class="btn btn-outline-warning" disabled title="Admin access required">
+      <i class="ri-settings-3-line me-1"></i>System Settings
+    </button>
+    <button type="button" class="btn btn-success" disabled title="Manager approval needed">
+      <i class="ri-check-double-line me-1"></i>Approve Request
+    </button>
+    <button type="button" class="btn btn-outline-primary" disabled title="Feature not available in free plan">
+      <i class="ri-star-line me-1"></i>Premium Feature
+    </button>
+  </div>
+  <small class="text-muted">Hover over buttons to see permission requirements</small>
+</div>
+
+<!-- Conditional State Examples -->
+<div class="mb-4">
+  <h6 class="mb-2">Conditional Availability</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-primary" disabled>
+      <i class="ri-shopping-cart-line me-1"></i>Add to Cart
+    </button>
+    <span class="text-danger small">Out of Stock</span>
+  </div>
+  <div class="d-flex flex-wrap gap-2 mt-2">
+    <button type="button" class="btn btn-outline-success" disabled>
+      <i class="ri-calendar-event-line me-1"></i>Book Appointment
+    </button>
+    <span class="text-warning small">No available slots</span>
+  </div>
+  <div class="d-flex flex-wrap gap-2 mt-2">
+    <button type="button" class="btn btn-info" disabled>
+      <i class="ri-download-line me-1"></i>Download Report
+    </button>
+    <span class="text-info small">Report generating...</span>
+  </div>
+</div>
+
+<!-- Comparison: Enabled vs Disabled -->
+<div class="mb-4">
+  <h6 class="mb-2">Enabled vs Disabled Comparison</h6>
+  <div class="row">
+    <div class="col-md-6">
+      <h6 class="text-success mb-2">Available Actions</h6>
+      <div class="d-flex flex-wrap gap-2">
+        <button type="button" class="btn btn-primary">
+          <i class="ri-edit-line me-1"></i>Edit Profile
+        </button>
+        <button type="button" class="btn btn-outline-secondary">
+          <i class="ri-download-line me-1"></i>Export Data
+        </button>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h6 class="text-muted mb-2">Unavailable Actions</h6>
+      <div class="d-flex flex-wrap gap-2">
+        <button type="button" class="btn btn-primary" disabled>
+          <i class="ri-lock-line me-1"></i>Change Password
+        </button>
+        <button type="button" class="btn btn-outline-secondary" disabled>
+          <i class="ri-shield-check-line me-1"></i>2FA Settings
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Temporary Disabled States -->
+<div>
+  <h6 class="mb-2">Temporary Restrictions</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-warning" disabled>
+      <i class="ri-time-line me-1"></i>Try Again in 5 minutes
+    </button>
+    <button type="button" class="btn btn-outline-danger" disabled>
+      <i class="ri-error-warning-line me-1"></i>Service Unavailable
+    </button>
+    <button type="button" class="btn btn-info" disabled>
+      <i class="ri-calendar-line me-1"></i>Available from 9 AM
+    </button>
+  </div>
+  <small class="text-muted mt-1 d-block">These actions will become available when conditions are met</small>
 </div>`
 
 // Full-width block buttons with spacing
-const blockButtonExample = `<div class="d-grid gap-2">
-  <button class="btn btn-primary" type="button"><i class="ri-layout-row-line me-1"></i>Block Button</button>
-  <button class="btn btn-secondary" type="button"><i class="ri-layout-row-line me-1"></i>Block Button</button>
+const blockButtonExample = `<!-- Form Action Buttons -->
+<div class="mb-4">
+  <h6 class="mb-2">Form Action Buttons</h6>
+  <div class="d-grid gap-2">
+    <button class="btn btn-primary" type="button">
+      <i class="ri-send-plane-line me-1"></i>Submit Application
+    </button>
+    <button class="btn btn-secondary" type="button">
+      <i class="ri-draft-line me-1"></i>Save as Draft
+    </button>
+    <button class="btn btn-outline-danger" type="button">
+      <i class="ri-close-line me-1"></i>Cancel Application
+    </button>
+  </div>
+</div>
+
+<!-- Account Actions -->
+<div class="mb-4">
+  <h6 class="mb-2">Account Management</h6>
+  <div class="d-grid gap-2">
+    <button class="btn btn-success" type="button">
+      <i class="ri-user-add-line me-1"></i>Create New Account
+    </button>
+    <button class="btn btn-primary" type="button">
+      <i class="ri-login-circle-line me-1"></i>Sign In to Existing Account
+    </button>
+    <button class="btn btn-outline-secondary" type="button">
+      <i class="ri-key-line me-1"></i>Reset Password
+    </button>
+  </div>
+</div>
+
+<!-- Download Actions -->
+<div class="mb-4">
+  <h6 class="mb-2">Download Options</h6>
+  <div class="d-grid gap-2">
+    <button class="btn btn-primary" type="button">
+      <i class="ri-download-line me-1"></i>Download Full Report (PDF)
+    </button>
+    <button class="btn btn-info" type="button">
+      <i class="ri-file-excel-line me-1"></i>Export to Excel (XLSX)
+    </button>
+    <button class="btn btn-success" type="button">
+      <i class="ri-file-text-line me-1"></i>Generate Summary (DOCX)
+    </button>
+  </div>
+</div>
+
+<!-- Social Actions -->
+<div>
+  <h6 class="mb-2">Social Sharing</h6>
+  <div class="d-grid gap-2">
+    <button class="btn btn-primary" type="button">
+      <i class="ri-facebook-circle-line me-1"></i>Share on Facebook
+    </button>
+    <button class="btn btn-info" type="button">
+      <i class="ri-twitter-x-line me-1"></i>Share on Twitter
+    </button>
+    <button class="btn btn-success" type="button">
+      <i class="ri-whatsapp-line me-1"></i>Share on WhatsApp
+    </button>
+    <button class="btn btn-warning" type="button">
+      <i class="ri-mail-line me-1"></i>Share via Email
+    </button>
+  </div>
 </div>`
 
 // Responsive button layout that stacks on mobile
-const responsiveButtonLayout = `<div class="d-grid gap-2 d-md-block">
-  <button class="btn btn-primary" type="button"><i class="ri-smartphone-line me-1"></i>Responsive Button</button>
-  <button class="btn btn-secondary" type="button"><i class="ri-smartphone-line me-1"></i>Responsive Button</button>
+const responsiveButtonLayout = `<!-- Mobile-First Action Bar -->
+<div class="mb-4">
+  <h6 class="mb-2">Mobile-First Action Bar</h6>
+  <div class="d-grid gap-2 d-md-block">
+    <button class="btn btn-primary" type="button">
+      <i class="ri-shopping-cart-line me-1"></i>Add to Cart
+    </button>
+    <button class="btn btn-success ms-md-2" type="button">
+      <i class="ri-secure-payment-line me-1"></i>Buy Now
+    </button>
+    <button class="btn btn-outline-secondary ms-md-2" type="button">
+      <i class="ri-heart-line me-1"></i>Save for Later
+    </button>
+  </div>
+</div>
+
+<!-- Responsive Form Actions -->
+<div class="mb-4">
+  <h6 class="mb-2">Responsive Form Actions</h6>
+  <div class="d-grid gap-2 d-md-flex">
+    <button class="btn btn-outline-secondary" type="button">
+      <i class="ri-arrow-left-line me-1"></i>Previous Step
+    </button>
+    <button class="btn btn-secondary ms-md-auto" type="button">
+      <i class="ri-draft-line me-1"></i>Save Progress
+    </button>
+    <button class="btn btn-primary ms-md-2" type="button">
+      <i class="ri-arrow-right-line me-1"></i>Continue
+    </button>
+  </div>
+</div>
+
+<!-- Content Management Actions -->
+<div class="mb-4">
+  <h6 class="mb-2">Content Management Actions</h6>
+  <div class="d-grid gap-2 d-lg-block">
+    <button class="btn btn-primary" type="button">
+      <i class="ri-file-add-line me-1"></i>New Post
+    </button>
+    <button class="btn btn-info ms-lg-2" type="button">
+      <i class="ri-edit-line me-1"></i>Edit
+    </button>
+    <button class="btn btn-warning ms-lg-2" type="button">
+      <i class="ri-eye-line me-1"></i>Preview
+    </button>
+    <button class="btn btn-success ms-lg-2" type="button">
+      <i class="ri-send-plane-line me-1"></i>Publish
+    </button>
+  </div>
+</div>
+
+<!-- User Profile Actions -->
+<div>
+  <h6 class="mb-2">User Profile Actions</h6>
+  <div class="d-grid gap-2 d-sm-flex">
+    <button class="btn btn-primary" type="button">
+      <i class="ri-user-settings-line me-1"></i>Edit Profile
+    </button>
+    <button class="btn btn-outline-secondary ms-sm-2" type="button">
+      <i class="ri-lock-line me-1"></i>Change Password
+    </button>
+    <button class="btn btn-outline-warning ms-sm-2" type="button">
+      <i class="ri-shield-check-line me-1"></i>Security Settings
+    </button>
+  </div>
 </div>`
 
 // Centered block buttons with specific width
-const centeredBlockButtons = `<div class="d-grid gap-2 col-6 mx-auto">
-  <button class="btn btn-primary" type="button"><i class="ri-align-center me-1"></i>Centered Button</button>
-  <button class="btn btn-secondary" type="button"><i class="ri-align-center me-1"></i>Centered Button</button>
+const centeredBlockButtons = `<!-- Welcome Actions -->
+<div class="mb-4">
+  <h6 class="mb-2 text-center">Welcome to Our Platform</h6>
+  <div class="d-grid gap-2 col-6 mx-auto">
+    <button class="btn btn-primary" type="button">
+      <i class="ri-user-add-line me-1"></i>Create Account
+    </button>
+    <button class="btn btn-outline-primary" type="button">
+      <i class="ri-login-circle-line me-1"></i>Sign In
+    </button>
+    <button class="btn btn-outline-secondary" type="button">
+      <i class="ri-eye-line me-1"></i>Browse as Guest
+    </button>
+  </div>
+</div>
+
+<!-- Quick Actions Panel -->
+<div class="mb-4">
+  <h6 class="mb-2 text-center">Quick Actions</h6>
+  <div class="d-grid gap-2 col-8 mx-auto">
+    <button class="btn btn-success" type="button">
+      <i class="ri-file-add-line me-1"></i>Create New Document
+    </button>
+    <button class="btn btn-info" type="button">
+      <i class="ri-folder-open-line me-1"></i>Open Recent File
+    </button>
+    <button class="btn btn-warning" type="button">
+      <i class="ri-upload-cloud-line me-1"></i>Import Document
+    </button>
+  </div>
+</div>
+
+<!-- Settings Panel -->
+<div class="mb-4">
+  <h6 class="mb-2 text-center">Account Settings</h6>
+  <div class="d-grid gap-2 col-7 mx-auto">
+    <button class="btn btn-primary" type="button">
+      <i class="ri-user-settings-line me-1"></i>Edit Profile
+    </button>
+    <button class="btn btn-outline-warning" type="button">
+      <i class="ri-lock-line me-1"></i>Change Password
+    </button>
+    <button class="btn btn-outline-info" type="button">
+      <i class="ri-notification-line me-1"></i>Notification Settings
+    </button>
+  </div>
+</div>
+
+<!-- Call-to-Action Section -->
+<div>
+  <h6 class="mb-2 text-center">Ready to Get Started?</h6>
+  <div class="d-grid gap-2 col-5 mx-auto">
+    <button class="btn btn-primary btn-lg" type="button">
+      <i class="ri-rocket-line me-1"></i>Start Free Trial
+    </button>
+    <button class="btn btn-outline-secondary" type="button">
+      <i class="ri-question-line me-1"></i>Learn More
+    </button>
+  </div>
 </div>`
 
 // Right-aligned buttons for form actions
-const rightAlignedButtons = `<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-  <button class="btn btn-secondary me-md-2" type="button"><i class="ri-close-line me-1"></i>Cancel</button>
-  <button class="btn btn-primary" type="button"><i class="ri-check-line me-1"></i>Submit</button>
+const rightAlignedButtons = `<!-- Form Submission Actions -->
+<div class="mb-4">
+  <h6 class="mb-2">Form Submission Actions</h6>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-outline-secondary me-md-2" type="button">
+      <i class="ri-close-line me-1"></i>Cancel
+    </button>
+    <button class="btn btn-secondary me-md-2" type="button">
+      <i class="ri-draft-line me-1"></i>Save Draft
+    </button>
+    <button class="btn btn-primary" type="button">
+      <i class="ri-send-plane-line me-1"></i>Submit
+    </button>
+  </div>
+</div>
+
+<!-- Wizard Navigation -->
+<div class="mb-4">
+  <h6 class="mb-2">Multi-Step Wizard Navigation</h6>
+  <div class="d-flex justify-content-between">
+    <button class="btn btn-outline-secondary" type="button">
+      <i class="ri-arrow-left-line me-1"></i>Previous
+    </button>
+    <div class="d-grid gap-2 d-md-flex">
+      <button class="btn btn-outline-info me-md-2" type="button">
+        <i class="ri-save-line me-1"></i>Save Progress
+      </button>
+      <button class="btn btn-primary" type="button">
+        Next <i class="ri-arrow-right-line ms-1"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Footer Actions -->
+<div class="mb-4">
+  <h6 class="mb-2">Modal Dialog Actions</h6>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-outline-secondary me-md-2" type="button">
+      <i class="ri-close-line me-1"></i>Close
+    </button>
+    <button class="btn btn-warning me-md-2" type="button">
+      <i class="ri-refresh-line me-1"></i>Reset
+    </button>
+    <button class="btn btn-success" type="button">
+      <i class="ri-check-line me-1"></i>Apply Changes
+    </button>
+  </div>
+</div>
+
+<!-- Content Management Actions -->
+<div class="mb-4">
+  <h6 class="mb-2">Content Management Panel</h6>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-outline-info me-md-2" type="button">
+      <i class="ri-eye-line me-1"></i>Preview
+    </button>
+    <button class="btn btn-secondary me-md-2" type="button">
+      <i class="ri-draft-line me-1"></i>Save Draft
+    </button>
+    <button class="btn btn-primary" type="button">
+      <i class="ri-send-plane-line me-1"></i>Publish
+    </button>
+  </div>
+</div>
+
+<!-- E-commerce Checkout Actions -->
+<div>
+  <h6 class="mb-2">Checkout Actions</h6>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-outline-secondary me-md-2" type="button">
+      <i class="ri-shopping-cart-line me-1"></i>Continue Shopping
+    </button>
+    <button class="btn btn-warning me-md-2" type="button">
+      <i class="ri-heart-line me-1"></i>Save for Later
+    </button>
+    <button class="btn btn-success" type="button">
+      <i class="ri-secure-payment-line me-1"></i>Proceed to Payment
+    </button>
+  </div>
 </div>`
 
 // Toggle button states with aria attributes
-const toggleButtonExamples = `<p class="d-inline-flex gap-1">
-  <button type="button" class="btn" data-bs-toggle="button">Toggle State</button>
-  <button type="button" class="btn active" data-bs-toggle="button" aria-pressed="true">Active State</button>
-</p>
-<p class="d-inline-flex gap-1">
-  <button type="button" class="btn btn-primary" data-bs-toggle="button">Primary Toggle</button>
-  <button type="button" class="btn btn-primary active" data-bs-toggle="button" aria-pressed="true">Primary Active</button>
-</p>`
+const toggleButtonExamples = `<!-- User Preference Toggles -->
+<div class="mb-4">
+  <h6 class="mb-2">User Preference Controls</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-notification-line me-1"></i>Notifications
+    </button>
+    <button type="button" class="btn btn-outline-success active" data-bs-toggle="button" aria-pressed="true">
+      <i class="ri-shield-check-line me-1"></i>Auto-Save
+    </button>
+    <button type="button" class="btn btn-outline-info" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-moon-line me-1"></i>Dark Mode
+    </button>
+    <button type="button" class="btn btn-outline-warning" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-sound-module-line me-1"></i>Sound Effects
+    </button>
+  </div>
+</div>
 
-// Toggle links with button styling
-const toggleLinkExamples = `<p class="d-inline-flex gap-1">
-  <a href="#" class="btn" role="button" data-bs-toggle="button">Toggle Link</a>
-  <a href="#" class="btn active" role="button" data-bs-toggle="button" aria-pressed="true">Active Link</a>
-</p>
-<p class="d-inline-flex gap-1">
-  <a href="#" class="btn btn-primary" role="button" data-bs-toggle="button">Primary Link</a>
-  <a href="#" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Active Primary</a>
-</p>`
+<!-- Content Visibility Toggles -->
+<div class="mb-4">
+  <h6 class="mb-2">Content Visibility Controls</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-outline-secondary active" data-bs-toggle="button" aria-pressed="true">
+      <i class="ri-eye-line me-1"></i>Show Completed
+    </button>
+    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-star-line me-1"></i>Show Favorites
+    </button>
+    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-archive-line me-1"></i>Show Archived
+    </button>
+    <button type="button" class="btn btn-outline-secondary active" data-bs-toggle="button" aria-pressed="true">
+      <i class="ri-draft-line me-1"></i>Show Drafts
+    </button>
+  </div>
+</div>
 
-// Buttons with leading icons using Remixicon
-const leadingIconButtons = `<div class="d-flex flex-wrap justify-content-start align-items-center gap-3">
-    <button type="button" class="btn btn-primary"><i class="ri-save-line me-1"></i>Save Changes</button>
-    <button type="button" class="btn btn-success"><i class="ri-add-circle-line me-1"></i>Create New</button>
-    <button type="button" class="btn btn-info"><i class="ri-upload-cloud-line me-1"></i>Upload File</button>
-    <button type="button" class="btn btn-warning"><i class="ri-pencil-line me-1"></i>Edit Item</button>
-    <button type="button" class="btn btn-danger"><i class="ri-delete-bin-2-line me-1"></i>Remove Item</button>
-    <button type="button" class="btn btn-secondary"><i class="ri-refresh-line me-1"></i>Refresh Data</button>
+<!-- Feature Toggles -->
+<div class="mb-4">
+  <h6 class="mb-2">Feature Activation Toggles</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-outline-success active" data-bs-toggle="button" aria-pressed="true">
+      <i class="ri-wifi-line me-1"></i>Auto-Sync
+    </button>
+    <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-cloud-line me-1"></i>Cloud Backup
+    </button>
+    <button type="button" class="btn btn-outline-warning active" data-bs-toggle="button" aria-pressed="true">
+      <i class="ri-shield-line me-1"></i>Two-Factor Auth
+    </button>
+    <button type="button" class="btn btn-outline-info" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-mail-line me-1"></i>Email Digest
+    </button>
+  </div>
+</div>
+
+<!-- View Mode Toggles -->
+<div class="mb-4">
+  <h6 class="mb-2">View Mode Selection</h6>
+  <div class="btn-group" role="group" aria-label="View mode selection">
+    <button type="button" class="btn btn-outline-primary active" data-bs-toggle="button" aria-pressed="true">
+      <i class="ri-layout-grid-line me-1"></i>Grid View
+    </button>
+    <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-list-unordered me-1"></i>List View
+    </button>
+    <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-layout-masonry-line me-1"></i>Card View
+    </button>
+  </div>
+</div>
+
+<!-- Status Toggles -->
+<div class="mb-4">
+  <h6 class="mb-2">Status & Availability Toggles</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-outline-success active" data-bs-toggle="button" aria-pressed="true">
+      <i class="ri-user-line me-1"></i>Available
+    </button>
+    <button type="button" class="btn btn-outline-warning" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-time-line me-1"></i>Busy
+    </button>
+    <button type="button" class="btn btn-outline-danger" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-forbid-line me-1"></i>Do Not Disturb
+    </button>
+    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-moon-cloudy-line me-1"></i>Away
+    </button>
+  </div>
+</div>
+
+<!-- Interactive Content Toggles -->
+<div>
+  <h6 class="mb-2">Interactive Content Controls</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-outline-primary" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-heart-line me-1"></i>Like <span class="badge bg-secondary ms-1">42</span>
+    </button>
+    <button type="button" class="btn btn-outline-warning active" data-bs-toggle="button" aria-pressed="true">
+      <i class="ri-bookmark-fill me-1"></i>Bookmarked
+    </button>
+    <button type="button" class="btn btn-outline-info" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-thumb-up-line me-1"></i>Upvote <span class="badge bg-secondary ms-1">128</span>
+    </button>
+    <button type="button" class="btn btn-outline-success" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-star-line me-1"></i>Follow
+    </button>
+  </div>
 </div>`
 
 // Buttons with trailing icons using Remixicon
-const trailingIconButtons = `<div class="d-flex flex-wrap justify-content-start align-items-center gap-3">
-    <button type="button" class="btn btn-primary">Next Step <i class="ri-arrow-right-line ms-1"></i></button>
-    <button type="button" class="btn btn-info">Share Now <i class="ri-share-forward-line ms-1"></i></button>
-    <button type="button" class="btn btn-success">Download <i class="ri-download-cloud-line ms-1"></i></button>
-    <button type="button" class="btn btn-warning">Configure <i class="ri-settings-4-line ms-1"></i></button>
-    <button type="button" class="btn btn-danger">Sign Out <i class="ri-logout-circle-r-line ms-1"></i></button>
-    <button type="button" class="btn btn-secondary">View Details <i class="ri-external-link-line ms-1"></i></button>
+const trailingIconButtons = `<!-- Navigation and Flow Actions -->
+<div class="mb-4">
+  <h6 class="mb-2">Navigation & Flow Actions</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-primary">
+      Continue Setup <i class="ri-arrow-right-line ms-1"></i>
+    </button>
+    <button type="button" class="btn btn-success">
+      Complete Purchase <i class="ri-check-line ms-1"></i>
+    </button>
+    <button type="button" class="btn btn-info">
+      Go to Dashboard <i class="ri-external-link-line ms-1"></i>
+    </button>
+    <button type="button" class="btn btn-secondary">
+      View All Items <i class="ri-arrow-right-s-line ms-1"></i>
+    </button>
+  </div>
+</div>
+
+<!-- Content Sharing Actions -->
+<div class="mb-4">
+  <h6 class="mb-2">Content Sharing & Distribution</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-primary">
+      Share Content <i class="ri-share-forward-line ms-1"></i>
+    </button>
+    <button type="button" class="btn btn-info">
+      Export Report <i class="ri-download-cloud-line ms-1"></i>
+    </button>
+    <button type="button" class="btn btn-success">
+      Send Email <i class="ri-send-plane-line ms-1"></i>
+    </button>
+    <button type="button" class="btn btn-warning">
+      Print Document <i class="ri-printer-line ms-1"></i>
+    </button>
+  </div>
+</div>
+
+<!-- System and Configuration Actions -->
+<div class="mb-4">
+  <h6 class="mb-2">System & Configuration</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-warning">
+      Open Settings <i class="ri-settings-4-line ms-1"></i>
+    </button>
+    <button type="button" class="btn btn-info">
+      Advanced Options <i class="ri-more-line ms-1"></i>
+    </button>
+    <button type="button" class="btn btn-secondary">
+      System Tools <i class="ri-tools-line ms-1"></i>
+    </button>
+    <button type="button" class="btn btn-primary">
+      Launch Application <i class="ri-rocket-line ms-1"></i>
+    </button>
+  </div>
+</div>
+
+<!-- External Links and Resources -->
+<div class="mb-4">
+  <h6 class="mb-2">External Links & Resources</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-outline-primary">
+      View Documentation <i class="ri-external-link-line ms-1"></i>
+    </button>
+    <button type="button" class="btn btn-outline-info">
+      Help Center <i class="ri-question-line ms-1"></i>
+    </button>
+    <button type="button" class="btn btn-outline-success">
+      Community Forum <i class="ri-chat-3-line ms-1"></i>
+    </button>
+    <button type="button" class="btn btn-outline-warning">
+      Contact Support <i class="ri-customer-service-line ms-1"></i>
+    </button>
+  </div>
+</div>
+
+<!-- Account and Security Actions -->
+<div class="mb-4">
+  <h6 class="mb-2">Account & Security</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-danger">
+      Sign Out <i class="ri-logout-circle-r-line ms-1"></i>
+    </button>
+    <button type="button" class="btn btn-warning">
+      Change Password <i class="ri-lock-password-line ms-1"></i>
+    </button>
+    <button type="button" class="btn btn-info">
+      Security Settings <i class="ri-shield-check-line ms-1"></i>
+    </button>
+    <button type="button" class="btn btn-secondary">
+      Privacy Controls <i class="ri-eye-off-line ms-1"></i>
+    </button>
+  </div>
+</div>
+
+<!-- Media and Download Actions -->
+<div>
+  <h6 class="mb-2">Media & Download Actions</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-success">
+      Download File <i class="ri-download-line ms-1"></i>
+    </button>
+    <button type="button" class="btn btn-primary">
+      Play Media <i class="ri-play-circle-line ms-1"></i>
+    </button>
+    <button type="button" class="btn btn-info">
+      View Gallery <i class="ri-gallery-line ms-1"></i>
+    </button>
+    <button type="button" class="btn btn-warning">
+      Upload Media <i class="ri-upload-cloud-line ms-1"></i>
+    </button>
+    <button type="button" class="btn btn-secondary">
+      Manage Files <i class="ri-folder-settings-line ms-1"></i>
+    </button>
+  </div>
 </div>`
 
 // Icon-only buttons for various use cases
@@ -160,19 +1146,792 @@ const iconOnlyButtons = `<div class="d-flex flex-wrap justify-content-start alig
 `
 
 // Loading state buttons with animated icons
-const loadingStateButtons = `<div class="d-flex flex-wrap gap-2">
+const loadingStateButtons = `<!-- Form Processing States -->
+<div class="mb-4">
+  <h6 class="mb-2">Form Processing States</h6>
+  <div class="d-flex flex-wrap gap-2">
     <button class="btn btn-primary" type="button" disabled>
-        <i class="ri-loader-4-line ri-spin me-1"></i>Loading...
+      <i class="ri-loader-4-line ri-spin me-1"></i>Submitting Form...
     </button>
     <button class="btn btn-success" type="button" disabled>
-        <i class="ri-refresh-line ri-spin me-1"></i>Processing
+      <i class="ri-loader-2-line ri-spin me-1"></i>Saving Changes...
     </button>
     <button class="btn btn-info" type="button" disabled>
-        <i class="ri-loader-2-line ri-spin me-1"></i>Saving
+      <i class="ri-refresh-line ri-spin me-1"></i>Validating Data...
+    </button>
+  </div>
+</div>
+
+<!-- File Operations -->
+<div class="mb-4">
+  <h6 class="mb-2">File Operation States</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button class="btn btn-warning" type="button" disabled>
+      <i class="ri-loader-5-line ri-spin me-1"></i>Uploading Files...
+    </button>
+    <button class="btn btn-secondary" type="button" disabled>
+      <i class="ri-loader-3-line ri-spin me-1"></i>Processing Images...
+    </button>
+    <button class="btn btn-info" type="button" disabled>
+      <i class="ri-download-line ri-spin me-1"></i>Generating Report...
+    </button>
+  </div>
+</div>
+
+<!-- Account Operations -->
+<div class="mb-4">
+  <h6 class="mb-2">Account Operation States</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button class="btn btn-primary" type="button" disabled>
+      <i class="ri-user-add-line ri-spin me-1"></i>Creating Account...
+    </button>
+    <button class="btn btn-success" type="button" disabled>
+      <i class="ri-shield-check-line ri-spin me-1"></i>Verifying Email...
     </button>
     <button class="btn btn-warning" type="button" disabled>
-        <i class="ri-loader-5-line ri-spin me-1"></i>Uploading
+      <i class="ri-lock-password-line ri-spin me-1"></i>Updating Password...
     </button>
+  </div>
+</div>
+
+<!-- Payment Processing -->
+<div class="mb-4">
+  <h6 class="mb-2">Payment Processing States</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button class="btn btn-success" type="button" disabled>
+      <i class="ri-secure-payment-line ri-spin me-1"></i>Processing Payment...
+    </button>
+    <button class="btn btn-primary" type="button" disabled>
+      <i class="ri-bank-card-line ri-spin me-1"></i>Authorizing Card...
+    </button>
+    <button class="btn btn-info" type="button" disabled>
+      <i class="ri-receipt-line ri-spin me-1"></i>Generating Receipt...
+    </button>
+  </div>
+</div>
+
+<!-- System Operations -->
+<div class="mb-4">
+  <h6 class="mb-2">System Operation States</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button class="btn btn-secondary" type="button" disabled>
+      <i class="ri-database-2-line ri-spin me-1"></i>Syncing Database...
+    </button>
+    <button class="btn btn-warning" type="button" disabled>
+      <i class="ri-cloud-line ri-spin me-1"></i>Backing Up Data...
+    </button>
+    <button class="btn btn-info" type="button" disabled>
+      <i class="ri-refresh-line ri-spin me-1"></i>Refreshing Cache...
+    </button>
+  </div>
+</div>
+
+<!-- Communication States -->
+<div>
+  <h6 class="mb-2">Communication States</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button class="btn btn-primary" type="button" disabled>
+      <i class="ri-send-plane-line ri-spin me-1"></i>Sending Message...
+    </button>
+    <button class="btn btn-success" type="button" disabled>
+      <i class="ri-mail-send-line ri-spin me-1"></i>Sending Email...
+    </button>
+    <button class="btn btn-info" type="button" disabled>
+      <i class="ri-notification-4-line ri-spin me-1"></i>Sending Notification...
+    </button>
+    <button class="btn btn-warning" type="button" disabled>
+      <i class="ri-phone-line ri-spin me-1"></i>Connecting Call...
+    </button>
+  </div>
+</div>`
+
+// Interactive button examples
+const interactiveButtonExamples = `<!-- Counter Button with State -->
+<div class="mb-4">
+  <h6 class="mb-2">Interactive Counter Button</h6>
+  <div class="d-flex align-items-center gap-3">
+    <button type="button" class="btn btn-outline-primary" onclick="decrementCounter()">
+      <i class="ri-subtract-line"></i>
+    </button>
+    <span class="badge bg-primary fs-5 px-3 py-2" id="counter-display">0</span>
+    <button type="button" class="btn btn-outline-primary" onclick="incrementCounter()">
+      <i class="ri-add-line"></i>
+    </button>
+    <button type="button" class="btn btn-outline-secondary ms-2" onclick="resetCounter()">
+      <i class="ri-refresh-line me-1"></i>Reset
+    </button>
+  </div>
+</div>
+
+<!-- Like Button with Animation -->
+<div class="mb-4">
+  <h6 class="mb-2">Animated Like Button</h6>
+  <div class="d-flex gap-3">
+    <button type="button" class="btn btn-outline-danger" onclick="toggleLike(this)" id="like-btn">
+      <i class="ri-heart-line me-1"></i>Like <span class="badge bg-secondary ms-1">42</span>
+    </button>
+    <button type="button" class="btn btn-outline-warning" onclick="toggleBookmark(this)">
+      <i class="ri-bookmark-line me-1"></i>Bookmark
+    </button>
+    <button type="button" class="btn btn-outline-info" onclick="shareContent(this)">
+      <i class="ri-share-line me-1"></i>Share
+    </button>
+  </div>
+</div>
+
+<!-- Form Submission with Validation -->
+<div class="mb-4">
+  <h6 class="mb-2">Form Submission Button</h6>
+  <div class="row">
+    <div class="col-md-6">
+      <input type="email" class="form-control mb-2" placeholder="Enter your email" id="email-input">
+      <button type="button" class="btn btn-primary" onclick="submitForm(this)">
+        <i class="ri-send-plane-line me-1"></i>Subscribe
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Progress Button -->
+<div>
+  <h6 class="mb-2">Progress Upload Button</h6>
+  <div class="d-flex flex-column gap-2">
+    <button type="button" class="btn btn-success" onclick="simulateUpload(this)" id="upload-btn">
+      <i class="ri-upload-cloud-line me-1"></i>Upload File
+    </button>
+    <div class="progress" style="height: 6px; display: none;" id="upload-progress">
+      <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+    </div>
+    <small class="text-muted" id="upload-status">Ready to upload</small>
+  </div>
+</div>`
+
+// Interactive button JavaScript
+const interactiveButtonJS = `<script>
+let counter = 0;
+let uploadInterval = null;
+
+function incrementCounter() {
+  counter++;
+  document.getElementById('counter-display').textContent = counter;
+}
+
+function decrementCounter() {
+  counter--;
+  document.getElementById('counter-display').textContent = counter;
+}
+
+function resetCounter() {
+  counter = 0;
+  document.getElementById('counter-display').textContent = counter;
+}
+
+function toggleLike(button) {
+  const icon = button.querySelector('i');
+  const badge = button.querySelector('.badge');
+  const isLiked = icon.classList.contains('ri-heart-fill');
+
+  if (isLiked) {
+    icon.className = 'ri-heart-line me-1';
+    button.className = 'btn btn-outline-danger';
+    badge.textContent = parseInt(badge.textContent) - 1;
+  } else {
+    icon.className = 'ri-heart-fill me-1';
+    button.className = 'btn btn-danger';
+    badge.textContent = parseInt(badge.textContent) + 1;
+
+    // Add animation
+    button.style.transform = 'scale(1.1)';
+    setTimeout(() => {
+      button.style.transform = 'scale(1)';
+    }, 150);
+  }
+}
+
+function toggleBookmark(button) {
+  const icon = button.querySelector('i');
+  const isBookmarked = icon.classList.contains('ri-bookmark-fill');
+
+  if (isBookmarked) {
+    icon.className = 'ri-bookmark-line me-1';
+    button.className = 'btn btn-outline-warning';
+  } else {
+    icon.className = 'ri-bookmark-fill me-1';
+    button.className = 'btn btn-warning';
+  }
+}
+
+function shareContent(button) {
+  const originalText = button.innerHTML;
+  button.innerHTML = '<i class="ri-check-line me-1"></i>Shared!';
+  button.className = 'btn btn-success';
+
+  setTimeout(() => {
+    button.innerHTML = originalText;
+    button.className = 'btn btn-outline-info';
+  }, 2000);
+}
+
+function submitForm(button) {
+  const email = document.getElementById('email-input').value;
+  const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+
+  if (!email) {
+    showError(button, 'Email required');
+    return;
+  }
+
+  if (!emailRegex.test(email)) {
+    showError(button, 'Invalid email');
+    return;
+  }
+
+  // Simulate API call
+  button.disabled = true;
+  button.innerHTML = '<i class="ri-loader-4-line ri-spin me-1"></i>Subscribing...';
+
+  setTimeout(() => {
+    button.innerHTML = '<i class="ri-check-line me-1"></i>Subscribed!';
+    button.className = 'btn btn-success';
+
+    setTimeout(() => {
+      button.innerHTML = '<i class="ri-send-plane-line me-1"></i>Subscribe';
+      button.className = 'btn btn-primary';
+      button.disabled = false;
+    }, 2000);
+  }, 1500);
+}
+
+function showError(button, message) {
+  const originalText = button.innerHTML;
+  const originalClass = button.className;
+
+  button.innerHTML = \`<i class="ri-error-warning-line me-1"></i>\${message}\`;
+  button.className = 'btn btn-danger';
+
+  setTimeout(() => {
+    button.innerHTML = originalText;
+    button.className = originalClass;
+  }, 2000);
+}
+
+function simulateUpload(button) {
+  const progress = document.getElementById('upload-progress');
+  const progressBar = progress.querySelector('.progress-bar');
+  const status = document.getElementById('upload-status');
+
+  button.disabled = true;
+  button.innerHTML = '<i class="ri-loader-4-line ri-spin me-1"></i>Uploading...';
+  progress.style.display = 'block';
+
+  let currentProgress = 0;
+  uploadInterval = setInterval(() => {
+    currentProgress += Math.random() * 15;
+
+    if (currentProgress >= 100) {
+      currentProgress = 100;
+      progressBar.style.width = '100%';
+      status.textContent = 'Upload complete!';
+      button.innerHTML = '<i class="ri-check-line me-1"></i>Upload Complete';
+      button.className = 'btn btn-success';
+
+      clearInterval(uploadInterval);
+
+      setTimeout(() => {
+        button.innerHTML = '<i class="ri-upload-cloud-line me-1"></i>Upload File';
+        button.className = 'btn btn-success';
+        button.disabled = false;
+        progress.style.display = 'none';
+        progressBar.style.width = '0%';
+        status.textContent = 'Ready to upload';
+      }, 2000);
+    } else {
+      progressBar.style.width = currentProgress + '%';
+      status.textContent = \`Uploading... \${Math.round(currentProgress)}%\`;
+    }
+  }, 200);
+}
+</script>`
+
+// Specialized button use cases
+const specializedButtonExamples = `<!-- E-commerce Buttons -->
+<div class="mb-4">
+  <h6 class="mb-2">E-commerce Actions</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-success">
+      <i class="ri-shopping-cart-line me-1"></i>Add to Cart
+    </button>
+    <button type="button" class="btn btn-primary">
+      <i class="ri-flashlight-line me-1"></i>Buy Now
+    </button>
+    <button type="button" class="btn btn-outline-secondary">
+      <i class="ri-heart-line me-1"></i>Wishlist
+    </button>
+    <button type="button" class="btn btn-outline-info">
+      <i class="ri-eye-line me-1"></i>Quick View
+    </button>
+    <button type="button" class="btn btn-warning">
+      <i class="ri-price-tag-line me-1"></i>Compare
+    </button>
+  </div>
+</div>
+
+<!-- Content Management Buttons -->
+<div class="mb-4">
+  <h6 class="mb-2">Content Management</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-primary">
+      <i class="ri-article-line me-1"></i>Publish Post
+    </button>
+    <button type="button" class="btn btn-secondary">
+      <i class="ri-draft-line me-1"></i>Save Draft
+    </button>
+    <button type="button" class="btn btn-warning">
+      <i class="ri-edit-line me-1"></i>Edit Content
+    </button>
+    <button type="button" class="btn btn-info">
+      <i class="ri-eye-line me-1"></i>Preview
+    </button>
+    <button type="button" class="btn btn-danger">
+      <i class="ri-delete-bin-2-line me-1"></i>Delete
+    </button>
+  </div>
+</div>
+
+<!-- User Authentication Buttons -->
+<div class="mb-4">
+  <h6 class="mb-2">User Authentication</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-primary">
+      <i class="ri-login-circle-line me-1"></i>Sign In
+    </button>
+    <button type="button" class="btn btn-success">
+      <i class="ri-user-add-line me-1"></i>Create Account
+    </button>
+    <button type="button" class="btn btn-outline-secondary">
+      <i class="ri-google-line me-1"></i>Sign in with Google
+    </button>
+    <button type="button" class="btn btn-outline-primary">
+      <i class="ri-facebook-circle-line me-1"></i>Sign in with Facebook
+    </button>
+    <button type="button" class="btn btn-warning">
+      <i class="ri-key-line me-1"></i>Reset Password
+    </button>
+  </div>
+</div>
+
+<!-- Media Controls -->
+<div class="mb-4">
+  <h6 class="mb-2">Media Player Controls</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-success btn-icon">
+      <i class="ri-play-fill"></i>
+    </button>
+    <button type="button" class="btn btn-warning btn-icon">
+      <i class="ri-pause-fill"></i>
+    </button>
+    <button type="button" class="btn btn-danger btn-icon">
+      <i class="ri-stop-fill"></i>
+    </button>
+    <button type="button" class="btn btn-secondary btn-icon">
+      <i class="ri-skip-back-line"></i>
+    </button>
+    <button type="button" class="btn btn-secondary btn-icon">
+      <i class="ri-skip-forward-line"></i>
+    </button>
+    <button type="button" class="btn btn-info btn-icon">
+      <i class="ri-volume-up-line"></i>
+    </button>
+  </div>
+</div>
+
+<!-- File Management Buttons -->
+<div>
+  <h6 class="mb-2">File Management</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-primary">
+      <i class="ri-upload-cloud-line me-1"></i>Upload Files
+    </button>
+    <button type="button" class="btn btn-success">
+      <i class="ri-folder-add-line me-1"></i>New Folder
+    </button>
+    <button type="button" class="btn btn-info">
+      <i class="ri-download-line me-1"></i>Download
+    </button>
+    <button type="button" class="btn btn-warning">
+      <i class="ri-share-line me-1"></i>Share
+    </button>
+    <button type="button" class="btn btn-danger">
+      <i class="ri-delete-bin-line me-1"></i>Delete
+    </button>
+    <button type="button" class="btn btn-secondary">
+      <i class="ri-archive-line me-1"></i>Archive
+    </button>
+  </div>
+</div>`
+
+// Advanced button patterns
+const advancedButtonExamples = `<!-- Responsive Button Layout -->
+<div class="mb-4">
+  <h6 class="mb-2">Responsive Action Bar</h6>
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 p-3 bg-light rounded">
+    <div class="d-flex gap-2">
+      <button type="button" class="btn btn-primary d-none d-md-inline-block">
+        <i class="ri-save-line me-1"></i>Save Changes
+      </button>
+      <button type="button" class="btn btn-secondary d-none d-md-inline-block">
+        <i class="ri-draft-line me-1"></i>Save Draft
+      </button>
+      <button type="button" class="btn btn-primary d-md-none btn-icon" title="Save">
+        <i class="ri-save-line"></i>
+      </button>
+    </div>
+
+    <div class="dropdown d-md-none">
+      <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+        <i class="ri-more-2-line"></i>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#"><i class="ri-share-line me-2"></i>Share</a></li>
+        <li><a class="dropdown-item" href="#"><i class="ri-printer-line me-2"></i>Print</a></li>
+        <li><a class="dropdown-item" href="#"><i class="ri-download-line me-2"></i>Export</a></li>
+      </ul>
+    </div>
+
+    <div class="d-none d-md-flex gap-2">
+      <button type="button" class="btn btn-outline-secondary">
+        <i class="ri-share-line me-1"></i>Share
+      </button>
+      <button type="button" class="btn btn-outline-secondary">
+        <i class="ri-printer-line me-1"></i>Print
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Button State Management -->
+<div class="mb-4">
+  <h6 class="mb-2">State-Aware Buttons</h6>
+  <div class="d-flex gap-2 flex-wrap">
+    <button type="button" class="btn btn-outline-primary" onclick="toggleState(this, 'edit')" data-state="view">
+      <i class="ri-edit-line me-1"></i>Edit Mode
+    </button>
+    <button type="button" class="btn btn-outline-success" onclick="toggleState(this, 'notifications')" data-state="off">
+      <i class="ri-notification-off-line me-1"></i>Notifications Off
+    </button>
+    <button type="button" class="btn btn-outline-warning" onclick="toggleState(this, 'auto-save')" data-state="manual">
+      <i class="ri-save-line me-1"></i>Manual Save
+    </button>
+  </div>
+</div>
+
+<!-- Confirmation Buttons -->
+<div class="mb-4">
+  <h6 class="mb-2">Confirmation Pattern</h6>
+  <button type="button" class="btn btn-danger" onclick="confirmDelete(this)">
+    <i class="ri-delete-bin-2-line me-1"></i>Delete Item
+  </button>
+  <div id="confirm-delete" class="d-none mt-2">
+    <div class="alert alert-warning d-flex justify-content-between align-items-center">
+      <span>Are you sure you want to delete this item?</span>
+      <div class="d-flex gap-2">
+        <button type="button" class="btn btn-sm btn-danger" onclick="performDelete()">
+          <i class="ri-check-line me-1"></i>Yes, Delete
+        </button>
+        <button type="button" class="btn btn-sm btn-secondary" onclick="cancelDelete()">
+          <i class="ri-close-line me-1"></i>Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Smart Form Buttons -->
+<div>
+  <h6 class="mb-2">Smart Form Actions</h6>
+  <form class="row g-3">
+    <div class="col-md-6">
+      <input type="text" class="form-control" placeholder="First Name" id="firstName" onchange="validateForm()">
+    </div>
+    <div class="col-md-6">
+      <input type="email" class="form-control" placeholder="Email" id="email" onchange="validateForm()">
+    </div>
+    <div class="col-12">
+      <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-outline-secondary">
+          <i class="ri-arrow-left-line me-1"></i>Previous
+        </button>
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-secondary">
+            <i class="ri-draft-line me-1"></i>Save Draft
+          </button>
+          <button type="submit" class="btn btn-primary" id="submit-btn" disabled>
+            <i class="ri-send-plane-line me-1"></i>Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+function toggleState(button, type) {
+  const currentState = button.dataset.state;
+  const icon = button.querySelector('i');
+
+  switch(type) {
+    case 'edit':
+      if (currentState === 'view') {
+        button.dataset.state = 'edit';
+        button.innerHTML = '<i class="ri-eye-line me-1"></i>View Mode';
+        button.className = 'btn btn-primary';
+      } else {
+        button.dataset.state = 'view';
+        button.innerHTML = '<i class="ri-edit-line me-1"></i>Edit Mode';
+        button.className = 'btn btn-outline-primary';
+      }
+      break;
+
+    case 'notifications':
+      if (currentState === 'off') {
+        button.dataset.state = 'on';
+        button.innerHTML = '<i class="ri-notification-line me-1"></i>Notifications On';
+        button.className = 'btn btn-success';
+      } else {
+        button.dataset.state = 'off';
+        button.innerHTML = '<i class="ri-notification-off-line me-1"></i>Notifications Off';
+        button.className = 'btn btn-outline-success';
+      }
+      break;
+
+    case 'auto-save':
+      if (currentState === 'manual') {
+        button.dataset.state = 'auto';
+        button.innerHTML = '<i class="ri-refresh-line me-1"></i>Auto Save';
+        button.className = 'btn btn-warning';
+      } else {
+        button.dataset.state = 'manual';
+        button.innerHTML = '<i class="ri-save-line me-1"></i>Manual Save';
+        button.className = 'btn btn-outline-warning';
+      }
+      break;
+  }
+}
+
+function confirmDelete(button) {
+  document.getElementById('confirm-delete').classList.remove('d-none');
+  button.style.display = 'none';
+}
+
+function performDelete() {
+  alert('Item deleted successfully!');
+  cancelDelete();
+}
+
+function cancelDelete() {
+  document.getElementById('confirm-delete').classList.add('d-none');
+  document.querySelector('[onclick="confirmDelete(this)"]').style.display = 'inline-block';
+}
+
+function validateForm() {
+  const firstName = document.getElementById('firstName').value;
+  const email = document.getElementById('email').value;
+  const submitBtn = document.getElementById('submit-btn');
+
+  const isValid = firstName.trim() && email.trim() && email.includes('@');
+  submitBtn.disabled = !isValid;
+
+  if (isValid) {
+    submitBtn.className = 'btn btn-primary';
+  } else {
+    submitBtn.className = 'btn btn-outline-primary';
+  }
+}
+</script>`
+
+// Toggle links with button styling
+const toggleLinkExamples = `<!-- Navigation Link Toggles -->
+<div class="mb-4">
+  <h6 class="mb-2">Navigation Link Toggles</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <a href="#" class="btn btn-outline-primary" role="button" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-home-line me-1"></i>Dashboard
+    </a>
+    <a href="#" class="btn btn-outline-secondary active" role="button" data-bs-toggle="button" aria-pressed="true">
+      <i class="ri-bar-chart-line me-1"></i>Analytics
+    </a>
+    <a href="#" class="btn btn-outline-info" role="button" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-settings-line me-1"></i>Settings
+    </a>
+    <a href="#" class="btn btn-outline-success" role="button" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-user-line me-1"></i>Profile
+    </a>
+  </div>
+</div>
+
+<!-- Tab-style Link Toggles -->
+<div class="mb-4">
+  <h6 class="mb-2">Tab-style Navigation</h6>
+  <div class="btn-group" role="group" aria-label="Tab navigation">
+    <a href="#" class="btn btn-outline-primary active" role="button" data-bs-toggle="button" aria-pressed="true">
+      <i class="ri-file-list-line me-1"></i>Overview
+    </a>
+    <a href="#" class="btn btn-outline-primary" role="button" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-pie-chart-line me-1"></i>Reports
+    </a>
+    <a href="#" class="btn btn-outline-primary" role="button" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-team-line me-1"></i>Team
+    </a>
+  </div>
+</div>
+
+<!-- External Resource Toggles -->
+<div>
+  <h6 class="mb-2">External Resource Links</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <a href="#" class="btn btn-outline-info" role="button" data-bs-toggle="button" aria-pressed="false" target="_blank">
+      <i class="ri-external-link-line me-1"></i>Documentation
+    </a>
+    <a href="#" class="btn btn-outline-warning active" role="button" data-bs-toggle="button" aria-pressed="true">
+      <i class="ri-customer-service-line me-1"></i>Support
+    </a>
+    <a href="#" class="btn btn-outline-success" role="button" data-bs-toggle="button" aria-pressed="false">
+      <i class="ri-chat-3-line me-1"></i>Community
+    </a>
+  </div>
+</div>`
+
+// Buttons with leading icons using Remixicon
+const leadingIconButtons = `<!-- File and Document Actions -->
+<div class="mb-4">
+  <h6 class="mb-2">File & Document Actions</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-primary">
+      <i class="ri-save-line me-1"></i>Save Document
+    </button>
+    <button type="button" class="btn btn-success">
+      <i class="ri-file-add-line me-1"></i>Create New File
+    </button>
+    <button type="button" class="btn btn-info">
+      <i class="ri-upload-cloud-line me-1"></i>Upload Files
+    </button>
+    <button type="button" class="btn btn-warning">
+      <i class="ri-pencil-line me-1"></i>Edit Content
+    </button>
+    <button type="button" class="btn btn-danger">
+      <i class="ri-delete-bin-2-line me-1"></i>Delete Selected
+    </button>
+  </div>
+</div>
+
+<!-- Communication Actions -->
+<div class="mb-4">
+  <h6 class="mb-2">Communication & Messaging</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-primary">
+      <i class="ri-send-plane-line me-1"></i>Send Message
+    </button>
+    <button type="button" class="btn btn-success">
+      <i class="ri-mail-line me-1"></i>Send Email
+    </button>
+    <button type="button" class="btn btn-info">
+      <i class="ri-notification-line me-1"></i>Send Notification
+    </button>
+    <button type="button" class="btn btn-warning">
+      <i class="ri-phone-line me-1"></i>Start Call
+    </button>
+    <button type="button" class="btn btn-secondary">
+      <i class="ri-chat-3-line me-1"></i>Open Chat
+    </button>
+  </div>
+</div>
+
+<!-- User Management Actions -->
+<div class="mb-4">
+  <h6 class="mb-2">User Management</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-success">
+      <i class="ri-user-add-line me-1"></i>Add User
+    </button>
+    <button type="button" class="btn btn-primary">
+      <i class="ri-user-settings-line me-1"></i>Edit Profile
+    </button>
+    <button type="button" class="btn btn-warning">
+      <i class="ri-lock-line me-1"></i>Change Password
+    </button>
+    <button type="button" class="btn btn-danger">
+      <i class="ri-user-forbid-line me-1"></i>Block User
+    </button>
+    <button type="button" class="btn btn-secondary">
+      <i class="ri-logout-circle-r-line me-1"></i>Sign Out
+    </button>
+  </div>
+</div>
+
+<!-- System Operations -->
+<div class="mb-4">
+  <h6 class="mb-2">System Operations</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-secondary">
+      <i class="ri-refresh-line me-1"></i>Refresh Data
+    </button>
+    <button type="button" class="btn btn-info">
+      <i class="ri-download-line me-1"></i>Export Data
+    </button>
+    <button type="button" class="btn btn-warning">
+      <i class="ri-settings-3-line me-1"></i>Configure
+    </button>
+    <button type="button" class="btn btn-success">
+      <i class="ri-shield-check-line me-1"></i>Verify
+    </button>
+    <button type="button" class="btn btn-primary">
+      <i class="ri-database-line me-1"></i>Backup Data
+    </button>
+  </div>
+</div>
+
+<!-- E-commerce Actions -->
+<div class="mb-4">
+  <h6 class="mb-2">E-commerce Actions</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-success">
+      <i class="ri-shopping-cart-line me-1"></i>Add to Cart
+    </button>
+    <button type="button" class="btn btn-primary">
+      <i class="ri-secure-payment-line me-1"></i>Checkout Now
+    </button>
+    <button type="button" class="btn btn-warning">
+      <i class="ri-heart-line me-1"></i>Add to Wishlist
+    </button>
+    <button type="button" class="btn btn-info">
+      <i class="ri-compare-line me-1"></i>Compare Items
+    </button>
+    <button type="button" class="btn btn-secondary">
+      <i class="ri-coupon-line me-1"></i>Apply Coupon
+    </button>
+  </div>
+</div>
+
+<!-- Media and Content Actions -->
+<div>
+  <h6 class="mb-2">Media & Content</h6>
+  <div class="d-flex flex-wrap gap-2">
+    <button type="button" class="btn btn-success">
+      <i class="ri-play-circle-line me-1"></i>Play Video
+    </button>
+    <button type="button" class="btn btn-primary">
+      <i class="ri-image-add-line me-1"></i>Add Images
+    </button>
+    <button type="button" class="btn btn-info">
+      <i class="ri-music-line me-1"></i>Play Audio
+    </button>
+    <button type="button" class="btn btn-warning">
+      <i class="ri-camera-line me-1"></i>Take Photo
+    </button>
+    <button type="button" class="btn btn-secondary">
+      <i class="ri-video-line me-1"></i>Record Video
+    </button>
+  </div>
 </div>`
 ---
 
@@ -231,7 +1990,7 @@ const loadingStateButtons = `<div class="d-flex flex-wrap gap-2">
 
             <ComponentPreview
               title="Standard Button Variants"
-              height="250px"
+              height="550px"
               component={standardButtonVariants}
               htmlCode={standardButtonVariants}
               cssCode={``}
@@ -253,7 +2012,7 @@ const loadingStateButtons = `<div class="d-flex flex-wrap gap-2">
             <!-- Button Example -->
             <ComponentPreview
               title="Button Size Variations"
-              height="200px"
+              height="550px"
               component={buttonSizeVariants}
               htmlCode={buttonSizeVariants}
               cssCode={``}
@@ -294,7 +2053,7 @@ const loadingStateButtons = `<div class="d-flex flex-wrap gap-2">
             <!-- Button Example -->
             <ComponentPreview
               title="Icon-Only Buttons"
-              height="300px"
+              height="550px"
               component={iconOnlyButtons}
               htmlCode={iconOnlyButtons}
               cssCode={``}
@@ -323,7 +2082,7 @@ const loadingStateButtons = `<div class="d-flex flex-wrap gap-2">
             <!-- Button Example -->
             <ComponentPreview
               title="Button Tags"
-              height="100px"
+              height="550px"
               component={buttonElementExamples}
               htmlCode={buttonElementExamples}
               cssCode={``}
@@ -344,7 +2103,7 @@ const loadingStateButtons = `<div class="d-flex flex-wrap gap-2">
             <!-- Button Example -->
             <ComponentPreview
               title="Button Outline"
-              height="200px"
+              height="550px"
               component={outlineButtonVariants}
               htmlCode={outlineButtonVariants}
               cssCode={``}
@@ -363,7 +2122,7 @@ const loadingStateButtons = `<div class="d-flex flex-wrap gap-2">
             <!-- Button Example -->
             <ComponentPreview
               title="Leading Icon Buttons"
-              height="200px"
+              height="550px"
               component={leadingIconButtons}
               htmlCode={leadingIconButtons}
               cssCode={``}
@@ -382,7 +2141,7 @@ const loadingStateButtons = `<div class="d-flex flex-wrap gap-2">
             <!-- Button Example -->
             <ComponentPreview
               title="Trailing Icon Buttons"
-              height="200px"
+              height="550px"
               component={trailingIconButtons}
               htmlCode={trailingIconButtons}
               cssCode={``}
@@ -402,7 +2161,7 @@ const loadingStateButtons = `<div class="d-flex flex-wrap gap-2">
             <!-- Button Examples -->
             <ComponentPreview
               title="Basic Block Buttons"
-              height="150px"
+              height="550px"
               component={blockButtonExample}
               htmlCode={blockButtonExample}
               cssCode={``}
@@ -414,7 +2173,7 @@ const loadingStateButtons = `<div class="d-flex flex-wrap gap-2">
 
             <ComponentPreview
               title="Responsive Block Buttons"
-              height="150px"
+              height="550px"
               component={responsiveButtonLayout}
               htmlCode={responsiveButtonLayout}
               cssCode={``}
@@ -423,7 +2182,7 @@ const loadingStateButtons = `<div class="d-flex flex-wrap gap-2">
 
             <ComponentPreview
               title="Centered Block Buttons"
-              height="150px"
+              height="550px"
               component={centeredBlockButtons}
               htmlCode={centeredBlockButtons}
               cssCode={``}
@@ -432,7 +2191,7 @@ const loadingStateButtons = `<div class="d-flex flex-wrap gap-2">
 
             <ComponentPreview
               title="Right-Aligned Block Buttons"
-              height="150px"
+              height="550px"
               component={rightAlignedButtons}
               htmlCode={rightAlignedButtons}
               cssCode={``}
@@ -454,7 +2213,7 @@ const loadingStateButtons = `<div class="d-flex flex-wrap gap-2">
             <!-- Button Example -->
             <ComponentPreview
               title="Disabled Buttons"
-              height="250px"
+              height="550px"
               component={disabledButtonExamples}
               htmlCode={disabledButtonExamples}
               cssCode={``}
@@ -474,7 +2233,7 @@ const loadingStateButtons = `<div class="d-flex flex-wrap gap-2">
             <!-- Button Example -->
             <ComponentPreview
               title="Toggle Buttons"
-              height="200px"
+              height="550px"
               component={toggleButtonExamples}
               htmlCode={toggleButtonExamples}
               cssCode={``}
@@ -489,7 +2248,7 @@ const loadingStateButtons = `<div class="d-flex flex-wrap gap-2">
 
             <ComponentPreview
               title="Toggle Links"
-              height="200px"
+              height="550px"
               component={toggleLinkExamples}
               htmlCode={toggleLinkExamples}
               cssCode={``}
@@ -509,12 +2268,321 @@ const loadingStateButtons = `<div class="d-flex flex-wrap gap-2">
 
             <ComponentPreview
               title="Loading State Buttons"
-              height="150px"
+              height="550px"
               component={loadingStateButtons}
               htmlCode={loadingStateButtons}
               cssCode={``}
               jsCode={``}
             />
+          </div>
+
+          <div class="my-3">
+            <h3 class="mb-0" id="interactive-buttons">Interactive Button Examples</h3>
+            <p class="py-2">
+              Dynamic buttons that respond to user interactions with state management, real-time
+              updates, and advanced functionality. These examples demonstrate buttons with
+              JavaScript integration for complex user interfaces and interactive applications.
+            </p>
+
+            <ComponentPreview
+              title="Interactive Button Examples"
+              height="550px"
+              component={interactiveButtonExamples}
+              htmlCode={interactiveButtonExamples}
+              jsCode={interactiveButtonJS}
+              cssCode=""
+            />
+          </div>
+
+          <div class="my-3">
+            <h3 class="mb-0" id="specialized-buttons">Specialized Button Use Cases</h3>
+            <p class="py-2">
+              Industry-specific button implementations for specialized applications like e-commerce,
+              content management, form handling, and user interface patterns. These examples show
+              how buttons can be tailored for specific workflows and professional applications.
+            </p>
+
+            <ComponentPreview
+              title="Specialized Button Use Cases"
+              height="550px"
+              component={specializedButtonExamples}
+              htmlCode={specializedButtonExamples}
+              cssCode=""
+              jsCode=""
+            />
+          </div>
+
+          <div class="my-3">
+            <h3 class="mb-0" id="advanced-button-patterns">Advanced Button Patterns</h3>
+            <p class="py-2">
+              Complex button patterns that combine multiple concepts, including responsive layouts,
+              conditional visibility, state synchronization, and integration with other UI
+              components. These patterns are useful for sophisticated applications with complex user
+              interaction requirements.
+            </p>
+
+            <ComponentPreview
+              title="Advanced Button Patterns"
+              height="550px"
+              component={advancedButtonExamples}
+              htmlCode={advancedButtonExamples}
+              cssCode=""
+              jsCode=""
+            />
+          </div>
+
+          <div class="my-3">
+            <h3 id="developer-tips">Developer Tips & Best Practices</h3>
+            <div class="alert alert-info">
+              <h4 class="alert-heading">
+                <i class="ri-lightbulb-line me-2"></i>
+                Pro Tips for Buttons
+              </h4>
+              <ul class="mb-0">
+                <li>
+                  <strong>Button Hierarchy:</strong> Use primary buttons sparingly - typically one per
+                  page/section for the main action
+                </li>
+                <li>
+                  <strong>Icon Consistency:</strong> Choose either leading or trailing icons consistently
+                  throughout your interface
+                </li>
+                <li>
+                  <strong>Loading States:</strong> Always provide feedback during async operations to
+                  prevent user confusion
+                </li>
+                <li>
+                  <strong>Touch Targets:</strong> Ensure buttons are at least 44px tall for mobile accessibility
+                </li>
+                <li>
+                  <strong>Color Semantics:</strong> Use consistent color meanings - red for destructive,
+                  green for positive actions
+                </li>
+                <li>
+                  <strong>Performance:</strong> Use event delegation for dynamic button collections to
+                  improve memory usage
+                </li>
+              </ul>
+            </div>
+
+            <div class="alert alert-warning">
+              <h4 class="alert-heading">
+                <i class="ri-error-warning-line me-2"></i>
+                Common Pitfalls to Avoid
+              </h4>
+              <ul class="mb-0">
+                <li>
+                  Don't use too many primary buttons - this dilutes their importance and confuses
+                  users
+                </li>
+                <li>
+                  Avoid using disabled buttons without explanation - users need to understand why
+                  actions are unavailable
+                </li>
+                <li>
+                  Don't forget to handle keyboard navigation and focus management for custom button
+                  interactions
+                </li>
+                <li>
+                  Never use buttons for navigation - use anchor tags styled as buttons instead
+                </li>
+                <li>
+                  Don't make buttons too small on touch devices - ensure adequate touch targets
+                </li>
+                <li>Avoid inconsistent button styling within the same interface or workflow</li>
+              </ul>
+            </div>
+
+            <div class="alert alert-success">
+              <h4 class="alert-heading">
+                <i class="ri-code-s-slash-line me-2"></i>
+                JavaScript Integration Example
+              </h4>
+              <p class="mb-2">Here's a comprehensive button manager for dynamic applications:</p>
+              <pre><code>{`class ButtonManager {
+  constructor() {
+    this.buttons = new Map();
+    this.loadingButtons = new Set();
+    this.init();
+  }
+
+  init() {
+    // Handle all button clicks with delegation
+    document.addEventListener('click', this.handleButtonClick.bind(this));
+
+    // Handle keyboard navigation
+    document.addEventListener('keydown', this.handleKeydown.bind(this));
+  }
+
+  // Register button with specific behavior
+  registerButton(selector, config = {}) {
+    const button = document.querySelector(selector);
+    if (!button) return;
+
+    this.buttons.set(selector, {
+      element: button,
+      onClick: config.onClick || null,
+      loadingText: config.loadingText || 'Loading...',
+      loadingIcon: config.loadingIcon || 'ri-loader-4-line ri-spin',
+      originalContent: button.innerHTML,
+      disabled: config.disabled || false
+    });
+
+    return this;
+  }
+
+  // Handle button click events
+  handleButtonClick(event) {
+    const button = event.target.closest('button');
+    if (!button) return;
+
+    const config = this.getButtonConfig(button);
+    if (config && config.onClick) {
+      config.onClick(button, event);
+    }
+  }
+
+  // Set button loading state
+  setLoading(selector, loading = true) {
+    const config = this.buttons.get(selector);
+    if (!config) return;
+
+    const { element, loadingText, loadingIcon, originalContent } = config;
+
+    if (loading) {
+      this.loadingButtons.add(selector);
+      element.disabled = true;
+      element.innerHTML = \`<i class="\${loadingIcon} me-1"></i>\${loadingText}\`;
+    } else {
+      this.loadingButtons.delete(selector);
+      element.disabled = false;
+      element.innerHTML = originalContent;
+    }
+  }
+
+  // Show success feedback
+  showSuccess(selector, message = 'Success!', duration = 2000) {
+    const config = this.buttons.get(selector);
+    if (!config) return;
+
+    const { element, originalContent } = config;
+    const originalClass = element.className;
+
+    element.className = element.className.replace(/btn-\\w+/, 'btn-success');
+    element.innerHTML = \`<i class="ri-check-line me-1"></i>\${message}\`;
+    element.disabled = true;
+
+    setTimeout(() => {
+      element.className = originalClass;
+      element.innerHTML = originalContent;
+      element.disabled = false;
+    }, duration);
+  }
+
+  // Show error feedback
+  showError(selector, message = 'Error occurred', duration = 3000) {
+    const config = this.buttons.get(selector);
+    if (!config) return;
+
+    const { element, originalContent } = config;
+    const originalClass = element.className;
+
+    element.className = element.className.replace(/btn-\\w+/, 'btn-danger');
+    element.innerHTML = \`<i class="ri-error-warning-line me-1"></i>\${message}\`;
+
+    setTimeout(() => {
+      element.className = originalClass;
+      element.innerHTML = originalContent;
+    }, duration);
+  }
+
+  // Enable/disable button
+  setEnabled(selector, enabled = true) {
+    const config = this.buttons.get(selector);
+    if (!config) return;
+
+    config.element.disabled = !enabled;
+    config.disabled = !enabled;
+  }
+
+  // Get button configuration
+  getButtonConfig(element) {
+    for (const [selector, config] of this.buttons) {
+      if (config.element === element) {
+        return config;
+      }
+    }
+    return null;
+  }
+
+  // Handle keyboard navigation
+  handleKeydown(event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      const button = event.target;
+      if (button.matches('button')) {
+        event.preventDefault();
+        button.click();
+      }
+    }
+  }
+
+  // Async button handler with automatic loading state
+  async handleAsync(selector, asyncFunction) {
+    this.setLoading(selector, true);
+
+    try {
+      const result = await asyncFunction();
+      this.showSuccess(selector);
+      return result;
+    } catch (error) {
+      this.showError(selector, 'Action failed');
+      throw error;
+    } finally {
+      this.setLoading(selector, false);
+    }
+  }
+}`}</code></pre>
+            </div>
+          </div>
+
+          <div class="my-3">
+            <h3 class="mb-0" id="accessibility-guidelines">Accessibility Guidelines</h3>
+            <p class="py-2">
+              Ensure button components are accessible to all users by following these best
+              practices:
+            </p>
+            <ul class="list-unstyled ps-3">
+              <li>
+                <i class="ri-check-line text-success me-2"></i>Use semantic <code
+                  >&lt;button&gt;</code
+                > elements for actions and <code>&lt;a&gt;</code> elements for navigation
+              </li>
+              <li>
+                <i class="ri-check-line text-success me-2"></i>Provide descriptive button text that
+                clearly indicates the action
+              </li>
+              <li>
+                <i class="ri-check-line text-success me-2"></i>Include <code>aria-label</code> or <code
+                  >title</code
+                > attributes for icon-only buttons
+              </li>
+              <li>
+                <i class="ri-check-line text-success me-2"></i>Ensure sufficient color contrast
+                (minimum 4.5:1 ratio for normal text, 3:1 for large text)
+              </li>
+              <li>
+                <i class="ri-check-line text-success me-2"></i>Provide visible focus indicators for
+                keyboard navigation
+              </li>
+              <li>
+                <i class="ri-check-line text-success me-2"></i>Use <code>aria-pressed</code> for toggle
+                buttons to indicate state
+              </li>
+              <li>
+                <i class="ri-check-line text-success me-2"></i>Disable buttons appropriately and
+                provide alternative actions when needed
+              </li>
+            </ul>
           </div>
         </div>
       </div>
