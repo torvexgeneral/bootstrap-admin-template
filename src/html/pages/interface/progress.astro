@@ -551,7 +551,8 @@ const accessibilityJS = `function simulateUpload() {
      // Update status for screen readers
      if (progress < 100) {
        statusDiv.textContent = \`Uploading... \${Math.round(progress)}% complete\`;
-       progressContainer.setAttribute('aria-label', \`File upload progress: \${Math.round(progress)} percent complete\`);
+       progressContainer.setAttribute(
+         'aria-label', \`File upload progress: \${Math.round(progress)} percent complete\`);
      } else {
        statusDiv.innerHTML = '<i class="bi bi-check-circle text-success me-1"></i>Upload completed successfully';
        progressContainer.setAttribute('aria-label', 'File upload completed');
@@ -564,36 +565,6 @@ const accessibilityJS = `function simulateUpload() {
 // Legacy examples for backward compatibility
 const basicLabelExample = `<div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
   <div class="progress-bar" style="width: 25%">25%</div>
-</div>`
-
-const overflowLabelExample = `<div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-  <div class="progress-bar overflow-visible text-dark" style="width: 10%">
-    Processing data... (10% complete)
-  </div>
-</div>`
-
-const stackedProgressExample = `<div class="progress-stacked">
-  <div class="progress" role="progressbar" aria-label="Completed tasks" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: 15%">
-    <div class="progress-bar">
-      Done
-    </div>
-  </div>
-  <div class="progress" role="progressbar" aria-label="In progress tasks" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
-    <div class="progress-bar bg-success">
-      In Progress
-    </div>
-  </div>
-  <div class="progress" role="progressbar" aria-label="Pending tasks" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-    <div class="progress-bar bg-info">
-      Pending
-    </div>
-  </div>
-</div>`
-
-const gradientProgressExample = `<div class="progress" role="progressbar" aria-label="Gradient progress example" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-  <div class="progress-bar bg-gradient-primary" style="width: 60%;">
-    60%
-  </div>
 </div>`
 ---
 
@@ -914,11 +885,22 @@ const gradientProgressExample = `<div class="progress" role="progressbar" aria-l
 
 <script>
   // Interactive Progress Bar Functions
-  let progressInterval
+
+  // Extend window interface for TypeScript
+  declare global {
+    interface Window {
+      startProgress: () => void
+      pauseProgress: (event: Event) => void
+      resetProgress: () => void
+      simulateUpload: () => void
+    }
+  }
+
+  let progressInterval: NodeJS.Timeout | null = null
   let currentProgress = 0
   let isPaused = false
 
-  function startProgress() {
+  window.startProgress = function () {
     if (progressInterval) return // Already running
 
     progressInterval = setInterval(() => {
@@ -929,7 +911,7 @@ const gradientProgressExample = `<div class="progress" role="progressbar" aria-l
         updateProgressDisplay(currentProgress)
 
         if (currentProgress >= 100) {
-          clearInterval(progressInterval)
+          clearInterval(progressInterval!)
           progressInterval = null
           const progressTextEl = document.getElementById('progress-text')
           if (progressTextEl) {
@@ -941,7 +923,7 @@ const gradientProgressExample = `<div class="progress" role="progressbar" aria-l
     }, 100)
   }
 
-  function pauseProgress() {
+  window.pauseProgress = function (event: Event) {
     isPaused = !isPaused
     const btn = (event?.target as HTMLElement)?.closest('button')
     const icon = btn?.querySelector('i')
@@ -957,21 +939,23 @@ const gradientProgressExample = `<div class="progress" role="progressbar" aria-l
     }
   }
 
-  function resetProgress() {
-    clearInterval(progressInterval)
+  window.resetProgress = function () {
+    if (progressInterval) {
+      clearInterval(progressInterval)
+    }
     progressInterval = null
     currentProgress = 0
     isPaused = false
     updateProgressDisplay(0)
 
     // Reset button text
-    const pauseBtn = document.querySelector('button[onclick="pauseProgress()"]')
+    const pauseBtn = document.querySelector('button[onclick*="pauseProgress"]')
     if (pauseBtn) {
       pauseBtn.innerHTML = '<i class="bi bi-pause-fill me-1"></i>Pause'
     }
   }
 
-  function updateProgressDisplay(progress) {
+  function updateProgressDisplay(progress: number) {
     const progressBar = document.getElementById('interactive-progress')
     const progressText = document.getElementById('progress-text')
 
@@ -994,7 +978,7 @@ const gradientProgressExample = `<div class="progress" role="progressbar" aria-l
   }
 
   // Accessibility Upload Simulation Function
-  function simulateUpload() {
+  window.simulateUpload = function () {
     let progress = 0
     const progressBar = document.getElementById('live-progress')
     const statusDiv = document.getElementById('upload-status')

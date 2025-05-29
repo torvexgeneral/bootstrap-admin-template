@@ -13,21 +13,19 @@
   }
 }
 
-.form-check{
+.form-check {
   display: flex;
   align-items: center;
   .form-check-label {
     margin-top: 0.25rem;
     margin-left: 0.25rem;
   }
-  .form-check-input{
-    transition: border-color 0.15s ease-in-out, background-color 0.15s ease-in-out;
-
+  .form-check-input {
     &:not(:disabled):hover {
       border-color: var(--bs-gray-500);
     }
 
-    &:focus{
+    &:focus {
       border-color: var(--bs-primary);
       box-shadow: none;
     }

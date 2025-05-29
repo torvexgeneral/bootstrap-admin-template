@@ -1,0 +1,7 @@
+:root,
+[data-bs-theme='light'] {
+  --bs-primary: #ff6c47;
+  --bs-primary-rgb: 255, 108, 71;
+  --bs-secondary: #efb907;
+  --bs-secondary-rgb: 239, 185, 7;
+}

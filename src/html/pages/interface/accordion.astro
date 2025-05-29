@@ -1489,40 +1489,50 @@ const previewConfig = {
 </AdminLayout>
 
 <script>
-  // Interactive Accordion Functions
-  function openAll() {
+  // Interactive Accordion Functions - these are referenced by onclick handlers in the HTML
+
+  // Extend window interface for TypeScript
+  declare global {
+    interface Window {
+      openAll: () => void
+      closeAll: () => void
+      togglePanel: (panelNumber: number) => void
+    }
+  }
+
+  window.openAll = function () {
     const accordionItems = document.querySelectorAll('#interactiveAccordion .accordion-collapse')
     const buttons = document.querySelectorAll('#interactiveAccordion .accordion-button')
 
     accordionItems.forEach((item, index) => {
       if (!item.classList.contains('show')) {
-        const bsCollapse = new (window as any).bootstrap.Collapse(item, { show: true })
+        new (window as any).bootstrap.Collapse(item, { show: true })
         buttons[index].classList.remove('collapsed')
         buttons[index].setAttribute('aria-expanded', 'true')
       }
     })
   }
 
-  function closeAll() {
+  window.closeAll = function () {
     const accordionItems = document.querySelectorAll('#interactiveAccordion .accordion-collapse')
     const buttons = document.querySelectorAll('#interactiveAccordion .accordion-button')
 
     accordionItems.forEach((item, index) => {
       if (item.classList.contains('show')) {
-        const bsCollapse = new (window as any).bootstrap.Collapse(item, { hide: true })
+        new (window as any).bootstrap.Collapse(item, { hide: true })
         buttons[index].classList.add('collapsed')
         buttons[index].setAttribute('aria-expanded', 'false')
       }
     })
   }
 
-  function togglePanel(panelNumber: number) {
+  window.togglePanel = function (panelNumber: number) {
     const targetId = 'interactive' + panelNumber
     const target = document.getElementById(targetId)
     const button = document.querySelector(`[data-bs-target="#${targetId}"]`) as HTMLElement
 
     if (target && button) {
-      const bsCollapse = new (window as any).bootstrap.Collapse(target, { toggle: true })
+      new (window as any).bootstrap.Collapse(target, { toggle: true })
 
       // Update button state
       button.classList.toggle('collapsed')

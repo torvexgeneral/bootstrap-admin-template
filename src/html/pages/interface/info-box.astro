@@ -512,37 +512,39 @@ const interactiveInfoBoxCSS = `.interactive-box {
 }`
 
 const interactiveInfoBoxJS = `function refreshMetric(element) {
-    const number = element.querySelector('.info-box-number');
-    const icon = element.querySelector('.info-box-icon i');
+    const number = element.querySelector('.info-box-number') as HTMLElement
+    const icon = element.querySelector('.info-box-icon i') as HTMLElement
+
+    if (!number || !icon) return
 
     // Add loading state
-    const originalIcon = icon.className;
-    icon.className = 'ri-loader-4-line fa-spin';
+    const originalIcon = icon.className
+    icon.className = 'ri-loader-4-line fa-spin'
 
     setTimeout(() => {
         // Simulate data update
-        const randomValue = Math.random();
+        const randomValue = Math.random()
         if (number.id === 'ctr-rate') {
-            number.textContent = (randomValue * 5 + 2).toFixed(2) + '%';
+            number.textContent = (randomValue * 5 + 2).toFixed(2) + '%'
         } else if (number.id === 'page-views') {
-            number.textContent = Math.floor(randomValue * 50 + 100) + '.3K';
+            number.textContent = Math.floor(randomValue * 50 + 100) + '.3K'
         } else if (number.id === 'avg-session') {
-            const minutes = Math.floor(randomValue * 3 + 3);
-            const seconds = Math.floor(randomValue * 60);
-            number.textContent = minutes + 'm ' + seconds + 's';
+            const minutes = Math.floor(randomValue * 3 + 3)
+            const seconds = Math.floor(randomValue * 60)
+            number.textContent = minutes + 'm ' + seconds + 's'
         } else if (number.id === 'bounce-rate') {
-            number.textContent = (randomValue * 20 + 20).toFixed(1) + '%';
+            number.textContent = (randomValue * 20 + 20).toFixed(1) + '%'
         }
 
         // Restore original icon
-        icon.className = originalIcon;
+        icon.className = originalIcon
 
         // Add success animation
-        element.style.transform = 'scale(1.02)';
+        element.style.transform = 'scale(1.02)'
         setTimeout(() => {
-            element.style.transform = '';
-        }, 200);
-    }, 1000);
+            element.style.transform = ''
+        }, 200)
+    }, 1000)
 }`
 ---
 
@@ -784,9 +786,19 @@ const interactiveInfoBoxJS = `function refreshMetric(element) {
 
   <script>
     // Interactive info box functionality
-    function refreshMetric(element) {
-      const number = element.querySelector('.info-box-number')
-      const icon = element.querySelector('.info-box-icon i')
+
+    // Extend window interface for TypeScript
+    declare global {
+      interface Window {
+        refreshMetric: (element: HTMLElement) => void
+      }
+    }
+
+    window.refreshMetric = function (element: HTMLElement) {
+      const number = element.querySelector('.info-box-number') as HTMLElement
+      const icon = element.querySelector('.info-box-icon i') as HTMLElement
+
+      if (!number || !icon) return
 
       // Add loading state
       const originalIcon = icon.className
