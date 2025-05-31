@@ -142,95 +142,96 @@ const pageScript = `<script>
           <!-- FAQ Section -->
           <div class="faq-section mt-5 pt-4">
             <h4 class="mb-4">Frequently Asked Questions</h4>
-            <div class="accordion" id="faqAccordion">
-              <!-- FAQ Item 1 -->
-              <div class="accordion-item border rounded-3 mb-3">
+            <div
+              class="accordion accordion-flush accordion-icon"
+              id="iconAccordion"
+              role="tablist"
+              aria-multiselectable="true"
+            >
+              <div class="accordion-item border rounded mb-3">
                 <h2 class="accordion-header">
                   <button
-                    class="accordion-button collapsed"
+                    class="accordion-button collapsed rounded shadow-none"
                     type="button"
                     data-bs-toggle="collapse"
-                    data-bs-target="#faq1"
+                    data-bs-target="#icon1"
                     aria-expanded="false"
-                    aria-controls="faq1"
+                    aria-controls="icon1"
                   >
-                    <span class="fw-medium">When will the new platform be available?</span>
+                    <i class="ri-calendar-line me-2"></i>When will the new platform be available?
                   </button>
                 </h2>
-                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                  <div class="accordion-body text-start">
-                    Our new platform is scheduled to launch on <strong>February 28, 2025</strong>.
-                    We're working around the clock to deliver an amazing experience with
-                    cutting-edge features and improved performance.
+                <div id="icon1" class="accordion-collapse collapse" data-bs-parent="#iconAccordion">
+                  <div class="accordion-body">
+                    <strong>We're launching on August 28, 2025!</strong> Our team is working around the
+                    clock to deliver an amazing experience with cutting-edge features, enhanced security,
+                    and improved performance. Mark your calendar and get ready for something extraordinary.
                   </div>
                 </div>
               </div>
-
-              <!-- FAQ Item 2 -->
-              <div class="accordion-item border rounded-3 mb-3">
+              <div class="accordion-item border rounded mb-3">
                 <h2 class="accordion-header">
                   <button
-                    class="accordion-button collapsed"
+                    class="accordion-button collapsed rounded shadow-none"
                     type="button"
                     data-bs-toggle="collapse"
-                    data-bs-target="#faq2"
+                    data-bs-target="#icon2"
                     aria-expanded="false"
-                    aria-controls="faq2"
+                    aria-controls="icon2"
                   >
-                    <span class="fw-medium">What can I expect from the new platform?</span>
+                    <i class="ri-gift-line me-2"></i>What can I expect from the new platform?
                   </button>
                 </h2>
-                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                  <div class="accordion-body text-start">
-                    The new platform will feature a modern interface, enhanced security, improved
-                    performance, and exciting new tools to help you achieve your goals more
-                    efficiently. Stay tuned for more details!
+                <div id="icon2" class="accordion-collapse collapse" data-bs-parent="#iconAccordion">
+                  <div class="accordion-body">
+                    <strong>Get ready for an incredible experience!</strong> The new platform will feature
+                    a modern, intuitive interface, lightning-fast performance, advanced analytics, seamless
+                    integrations, and powerful tools designed to help you achieve your goals more efficiently
+                    than ever before.
                   </div>
                 </div>
               </div>
-
-              <!-- FAQ Item 3 -->
-              <div class="accordion-item border rounded-3 mb-3">
+              <div class="accordion-item border rounded mb-3">
                 <h2 class="accordion-header">
                   <button
-                    class="accordion-button collapsed"
+                    class="accordion-button collapsed rounded shadow-none"
                     type="button"
                     data-bs-toggle="collapse"
-                    data-bs-target="#faq3"
+                    data-bs-target="#icon3"
                     aria-expanded="false"
-                    aria-controls="faq3"
+                    aria-controls="icon3"
                   >
-                    <span class="fw-medium">How will I be notified when it's ready?</span>
+                    <i class="ri-notification-line me-2"></i>How will I be notified when it's ready?
                   </button>
                 </h2>
-                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                  <div class="accordion-body text-start">
-                    Simply enter your email address above and we'll send you a notification as soon
-                    as the platform goes live. You'll also receive exclusive updates and early
-                    access information.
+                <div id="icon3" class="accordion-collapse collapse" data-bs-parent="#iconAccordion">
+                  <div class="accordion-body">
+                    <strong>Stay in the loop!</strong> Simply enter your email address above and we'll
+                    send you a notification as soon as the platform goes live. You'll also receive exclusive
+                    updates, early access information, and special launch offers. No spam, we promise!
                   </div>
                 </div>
               </div>
-
-              <!-- FAQ Item 4 -->
-              <div class="accordion-item border rounded-3">
+              <div class="accordion-item border rounded mb-3">
                 <h2 class="accordion-header">
                   <button
-                    class="accordion-button collapsed"
+                    class="accordion-button collapsed rounded shadow-none"
                     type="button"
                     data-bs-toggle="collapse"
-                    data-bs-target="#faq4"
+                    data-bs-target="#icon4"
                     aria-expanded="false"
-                    aria-controls="faq4"
+                    aria-controls="icon4"
                   >
-                    <span class="fw-medium">Will my current data be migrated?</span>
+                    <i class="ri-shield-check-line me-2"></i>Will my current data be safe and
+                    migrated?
                   </button>
                 </h2>
-                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                  <div class="accordion-body text-start">
-                    Yes! We'll ensure a seamless transition of all your existing data to the new
-                    platform. Our team will handle the migration process, and you'll receive
-                    detailed instructions before the launch.
+                <div id="icon4" class="accordion-collapse collapse" data-bs-parent="#iconAccordion">
+                  <div class="accordion-body">
+                    <strong>Absolutely! Your data security is our top priority.</strong> We'll ensure
+                    a seamless transition of all your existing data to the new platform with bank-level
+                    encryption and zero data loss. Our dedicated migration team will handle everything,
+                    and you'll receive detailed instructions before the launch.
                   </div>
                 </div>
               </div>
