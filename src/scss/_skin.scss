@@ -78,20 +78,20 @@ a:hover {
 .link-primary:focus {
   color: rgb(var(--bs-primary-rgb-darker), var(--bs-link-opacity, 1)) !important;
   text-decoration-color:
- rgb(
-    var(--bs-primary-rgb-darker),
-    var(--bs-link-underline-opacity, 1)
-  ) !important;
+    rgb(
+      var(--bs-primary-rgb-darker),
+      var(--bs-link-underline-opacity, 1)
+    ) !important;
 }
 
 .link-secondary:hover,
 .link-secondary:focus {
   color: rgb(var(--bs-secondary-rgb-darker), var(--bs-link-opacity, 1)) !important;
   text-decoration-color:
- rgb(
-    var(--bs-secondary-rgb-darker),
-    var(--bs-link-underline-opacity, 1)
-  ) !important;
+    rgb(
+      var(--bs-secondary-rgb-darker),
+      var(--bs-link-underline-opacity, 1)
+    ) !important;
 }
 
 /* ========================================

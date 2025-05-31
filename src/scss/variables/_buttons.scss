@@ -71,7 +71,8 @@ $btn-border-radius-sm: var(--#{$prefix}border-radius-sm) !default;
 $btn-border-radius-lg: var(--#{$prefix}border-radius-lg) !default;
 
 // Transitions
-$btn-transition: 
+// stylelint-disable-next-line scss/dollar-variable-colon-space-after
+$btn-transition:
   color 0.15s ease-in-out,
   background-color 0.15s ease-in-out,
   border-color 0.15s ease-in-out,
