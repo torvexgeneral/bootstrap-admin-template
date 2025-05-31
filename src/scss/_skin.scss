@@ -7,23 +7,15 @@
    ======================================== */
 :root,
 [data-bs-theme='light'] {
-  /* PRIMARY COLOR SYSTEM */
-  // --bs-primary: #015676; /* #7533f9 */ /*--bs-primary-rgb: 117, 51, 249;*/
-  // --bs-primary-rgb: 1, 86, 118;
-
   /* Derived primary colors - automatically calculated from --bs-primary */
   --bs-primary-text-emphasis: color-mix(in srgb, var(--bs-primary) 70%, #000);
-  --bs-primary-bg-subtle: color-mix(in srgb, var(--bs-primary) 6%, #fff);
-  --bs-primary-border-subtle: color-mix(in srgb, var(--bs-primary) 27%, #fff);
-
-  /* SECONDARY COLOR SYSTEM */
-  // --bs-secondary: #6c757d; /* Bootstrap default secondary color */
-  // --bs-secondary-rgb: 108, 117, 125;
+  --bs-primary-bg-subtle: color-mix(in srgb, var(--bs-primary) 10%, #fff);
+  --bs-primary-border-subtle: color-mix(in srgb, var(--bs-primary) 30%, #fff);
 
   /* Derived secondary colors - automatically calculated from --bs-secondary */
   --bs-secondary-text-emphasis: color-mix(in srgb, var(--bs-secondary) 70%, #000);
-  --bs-secondary-bg-subtle: color-mix(in srgb, var(--bs-secondary) 6%, #fff);
-  --bs-secondary-border-subtle: color-mix(in srgb, var(--bs-secondary) 27%, #fff);
+  --bs-secondary-bg-subtle: color-mix(in srgb, var(--bs-secondary) 10.2%, #fff);
+  --bs-secondary-border-subtle: color-mix(in srgb, var(--bs-secondary) 30%, #fff);
 
   /* LINK COLORS */
   --bs-link-color: var(--bs-primary);
@@ -33,11 +25,42 @@
 
   /* FOCUS & FORM COLORS */
   --bs-focus-ring-color: color-mix(in srgb, var(--bs-primary) 25%, transparent);
-  --bs-form-focus-border-color: color-mix(in srgb, var(--bs-primary) 50%, #fff);
+  --bs-form-focus-border-color: var(--bs-primary);
 
   /* ACCORDION ICON POINTER VARIABLES */
 
   /* These tell JavaScript which CSS variables to use for accordion icon colors */
+  --skin-accordion-default-icon-color-source: --bs-body-color;
+  --skin-accordion-active-icon-color-source: --bs-primary;
+}
+
+/* ========================================
+   DARK THEME OVERRIDES
+   ======================================== */
+[data-bs-theme='dark'] {
+  /* Derived primary colors for dark theme */
+  --bs-primary-text-emphasis: color-mix(in srgb, var(--bs-primary) 60%, white);
+  --bs-primary-bg-subtle: color-mix(in srgb, var(--bs-primary) 20%, black);
+  --bs-primary-border-subtle: color-mix(in srgb, var(--bs-primary) 60%, black);
+
+  /* Derived secondary colors for dark theme */
+  --bs-secondary-text-emphasis: color-mix(in srgb, var(--bs-secondary) 60%, white);
+  --bs-secondary-bg-subtle: color-mix(in srgb, var(--bs-secondary) 20%, black);
+  --bs-secondary-border-subtle: color-mix(in srgb, var(--bs-secondary) 60%, black);
+
+  /* LINK COLORS */
+  --bs-link-color: color-mix(in srgb, var(--bs-primary) 60%, white);
+  --bs-link-color-rgb: var(--bs-primary-rgb);
+  --bs-link-hover-color: color-mix(in srgb, var(--bs-primary) 48%, white);
+  --bs-link-hover-color-rgb: var(--bs-primary-rgb);
+
+  /* FOCUS & FORM COLORS */
+  --bs-focus-ring-color: color-mix(in srgb, var(--bs-primary) 25%, transparent);
+  --bs-form-focus-border-color: color-mix(in srgb, var(--bs-primary) 60%, white);
+
+  /* ACCORDION ICON POINTER VARIABLES - Dark Theme */
+
+  /* These tell JavaScript which CSS variables to use for accordion icon colors in dark mode */
   --skin-accordion-default-icon-color-source: --bs-body-color;
   --skin-accordion-active-icon-color-source: --bs-primary;
 }
@@ -54,21 +77,19 @@ a:hover {
 .link-primary:hover,
 .link-primary:focus {
   color: rgb(var(--bs-primary-rgb-darker), var(--bs-link-opacity, 1)) !important;
-  text-decoration-color:
-    rgb(
-      var(--bs-primary-rgb-darker),
-      var(--bs-link-underline-opacity, 1)
-    ) !important;
+  text-decoration-color: rgb(
+    var(--bs-primary-rgb-darker),
+    var(--bs-link-underline-opacity, 1)
+  ) !important;
 }
 
 .link-secondary:hover,
 .link-secondary:focus {
   color: rgb(var(--bs-secondary-rgb-darker), var(--bs-link-opacity, 1)) !important;
-  text-decoration-color:
-    rgb(
-      var(--bs-secondary-rgb-darker),
-      var(--bs-link-underline-opacity, 1)
-    ) !important;
+  text-decoration-color: rgb(
+    var(--bs-secondary-rgb-darker),
+    var(--bs-link-underline-opacity, 1)
+  ) !important;
 }
 
 /* ========================================
@@ -283,17 +304,6 @@ a:hover {
 
 .accordion-button::after {
   background-image: var(--skin-accordion-btn-icon);
-}
-
-/* ========================================
-   DARK THEME OVERRIDES
-   ======================================== */
-[data-bs-theme='dark'] {
-  /* ACCORDION ICON POINTER VARIABLES - Dark Theme */
-
-  /* These tell JavaScript which CSS variables to use for accordion icon colors in dark mode */
-  --skin-accordion-default-icon-color-source: --bs-body-color;
-  --skin-accordion-active-icon-color-source: --bs-primary;
 }
 
 .form-switch .form-check-input:focus {
