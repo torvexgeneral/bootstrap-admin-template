@@ -48,8 +48,8 @@
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^0.4.4",
-    "@typescript-eslint/eslint-plugin": "^8.32.0",
-    "@typescript-eslint/parser": "^8.32.0",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
     "astro": "^5.7.12",
     "astro-eslint-parser": "^1.2.2",
     "autoprefixer": "^10.4.21",
@@ -71,7 +71,7 @@
     "express": "^4.18.2",
     "fs-extra": "^11.3.0",
     "glob": "^11.0.2",
-    "lightningcss": "^1.29.3",
+    "lightningcss": "^1.30.0",
     "lockfile-lint": "^4.14.1",
     "open": "^10.1.2",
     "postcss": "^8.5.3",
@@ -80,15 +80,15 @@
     "prettier-plugin-astro": "^0.14.1",
     "rollup": "^4.40.2",
     "rtlcss": "^4.3.0",
-    "sass-embedded": "^1.87.0",
-    "stylelint": "^16.16.0",
+    "sass-embedded": "^1.88.0",
+    "stylelint": "^16.19.1",
     "stylelint-config-recommended": "^16.0.0",
-    "stylelint-config-standard-scss": "^14.0.0",
+    "stylelint-config-standard-scss": "^15.0.0",
     "stylelint-config-twbs-bootstrap": "^16.0.0",
-    "typescript-eslint": "^8.32.0"
+    "typescript-eslint": "^8.32.1"
   },
   "dependencies": {
     "bootstrap": "^5.3.6",
-    "simplebar": "^6.3.0"
+    "simplebar": "^6.3.1"
   }
 }
