@@ -39,24 +39,24 @@
    ======================================== */
 [data-bs-theme='dark'] {
   /* Derived primary colors for dark theme */
-  --bs-primary-text-emphasis: color-mix(in srgb, var(--bs-primary) 60%, white);
-  --bs-primary-bg-subtle: color-mix(in srgb, var(--bs-primary) 20%, black);
-  --bs-primary-border-subtle: color-mix(in srgb, var(--bs-primary) 60%, black);
+  --bs-primary-text-emphasis: color-mix(in srgb, var(--bs-primary) 60%, #fff);
+  --bs-primary-bg-subtle: color-mix(in srgb, var(--bs-primary) 20%, #000);
+  --bs-primary-border-subtle: color-mix(in srgb, var(--bs-primary) 60%, #000);
 
   /* Derived secondary colors for dark theme */
-  --bs-secondary-text-emphasis: color-mix(in srgb, var(--bs-secondary) 60%, white);
-  --bs-secondary-bg-subtle: color-mix(in srgb, var(--bs-secondary) 20%, black);
-  --bs-secondary-border-subtle: color-mix(in srgb, var(--bs-secondary) 60%, black);
+  --bs-secondary-text-emphasis: color-mix(in srgb, var(--bs-secondary) 60%, #fff);
+  --bs-secondary-bg-subtle: color-mix(in srgb, var(--bs-secondary) 20%, #000);
+  --bs-secondary-border-subtle: color-mix(in srgb, var(--bs-secondary) 60%, #000);
 
   /* LINK COLORS */
-  --bs-link-color: color-mix(in srgb, var(--bs-primary) 60%, white);
+  --bs-link-color: color-mix(in srgb, var(--bs-primary) 60%, #fff);
   --bs-link-color-rgb: var(--bs-primary-rgb);
-  --bs-link-hover-color: color-mix(in srgb, var(--bs-primary) 48%, white);
+  --bs-link-hover-color: color-mix(in srgb, var(--bs-primary) 48%, #fff);
   --bs-link-hover-color-rgb: var(--bs-primary-rgb);
 
   /* FOCUS & FORM COLORS */
   --bs-focus-ring-color: color-mix(in srgb, var(--bs-primary) 25%, transparent);
-  --bs-form-focus-border-color: color-mix(in srgb, var(--bs-primary) 60%, white);
+  --bs-form-focus-border-color: color-mix(in srgb, var(--bs-primary) 60%, #fff);
 
   /* ACCORDION ICON POINTER VARIABLES - Dark Theme */
 
@@ -77,7 +77,8 @@ a:hover {
 .link-primary:hover,
 .link-primary:focus {
   color: rgb(var(--bs-primary-rgb-darker), var(--bs-link-opacity, 1)) !important;
-  text-decoration-color: rgb(
+  text-decoration-color:
+ rgb(
     var(--bs-primary-rgb-darker),
     var(--bs-link-underline-opacity, 1)
   ) !important;
@@ -86,7 +87,8 @@ a:hover {
 .link-secondary:hover,
 .link-secondary:focus {
   color: rgb(var(--bs-secondary-rgb-darker), var(--bs-link-opacity, 1)) !important;
-  text-decoration-color: rgb(
+  text-decoration-color:
+ rgb(
     var(--bs-secondary-rgb-darker),
     var(--bs-link-underline-opacity, 1)
   ) !important;

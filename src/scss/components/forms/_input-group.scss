@@ -9,8 +9,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: $input-btn-minheight;
   min-width: $input-btn-minheight;
+  min-height: $input-btn-minheight;
   padding: $input-btn-padding-y;
   line-height: 1.2;
 }
@@ -41,12 +41,12 @@
       // Style the file input button
       &::-webkit-file-upload-button,
       &::file-selector-button {
-        height: calc(#{$height} - 2px);
+        height: #{$height - 2px};
         padding: 0 nth($padding, 2);
-        font-size: $font-size;
-        line-height: 1.2;
         margin: -#{nth($padding, 1)} 0 -#{nth($padding, 1)} -#{nth($padding, 2)};
         margin-right: nth($padding, 2);
+        font-size: $font-size;
+        line-height: 1.2;
       }
     }
 
@@ -54,8 +54,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: $height;
       min-width: $height;
+      height: $height;
       min-height: $height;
       padding: nth($padding, 1);
       font-size: $font-size;

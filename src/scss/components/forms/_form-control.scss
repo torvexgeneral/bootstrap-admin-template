@@ -53,12 +53,12 @@ $form-control-textarea-padding: 0.5rem !default;
 @mixin file-input-button($padding, $font-size, $height, $margin-left: null) {
   &::-webkit-file-upload-button,
   &::file-selector-button {
-    height: calc(#{$height} - 2px); // Account for border
+    height: #{$height - 2px}; // SCSS computation instead of calc() - Account for border
     padding: 0 nth($padding, 2);
-    font-size: $font-size;
-    line-height: 1.2;
     margin: -#{nth($padding, 1)} 0 -#{nth($padding, 1)} -#{nth($padding, 2)};
     margin-right: nth($padding, 2);
+    font-size: $font-size;
+    line-height: 1.2;
     @if $margin-left {
       margin-left: $margin-left;
     }

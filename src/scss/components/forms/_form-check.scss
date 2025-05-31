@@ -11,7 +11,7 @@
 
   .form-check-label {
     font-size: $label-font-size;
-    line-height: calc(#{$container-height} / #{$label-font-size});
+    line-height: #{$container-height / $label-font-size};
   }
 }
 

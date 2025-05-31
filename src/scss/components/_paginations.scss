@@ -51,7 +51,7 @@
       font-size: $input-btn-font-size-xs;
 
       i {
-        font-size: calc(#{$input-btn-font-size-xs} * 0.85);
+        font-size: #{$input-btn-font-size-xs * 0.85};
       }
     }
   }
@@ -65,7 +65,7 @@
       font-size: $input-btn-font-size-sm;
 
       i {
-        font-size: calc(#{$input-btn-font-size-sm} * 0.85);
+        font-size: #{$input-btn-font-size-sm * 0.85};
       }
     }
   }
@@ -79,7 +79,7 @@
       font-size: $input-btn-font-size-lg;
 
       i {
-        font-size: calc(#{$input-btn-font-size-lg} * 0.85);
+        font-size: #{$input-btn-font-size-lg * 0.85};
       }
     }
   }
@@ -93,7 +93,7 @@
       font-size: $input-btn-font-size-xl;
 
       i {
-        font-size: calc(#{$input-btn-font-size-xl} * 0.85);
+        font-size: #{$input-btn-font-size-xl * 0.85};
       }
     }
   }
@@ -118,15 +118,15 @@
     @include border-radius($btn-border-radius);
 
     i {
-      font-size: calc(1rem * 0.85);
+      font-size: #{1rem * 0.85};
     }
 
     /* rtl:options:{"autoRename":false} */
     .previous,
     .next {
       display: block;
-      width: calc(#{$input-btn-minheight} * 0.35);
-      height: calc(#{$input-btn-minheight} * 0.35);
+      width: #{$input-btn-minheight * 0.35};
+      height: #{$input-btn-minheight * 0.35};
 
       /* rtl:raw:transform: rotateZ(-180deg); */
     }
