@@ -12,7 +12,7 @@
   min-height: $input-btn-minheight;
   min-width: $input-btn-minheight;
   padding: $input-btn-padding-y;
-  line-height: 1;
+  line-height: 1.2;
 }
 
 // ==========================================================================
@@ -28,7 +28,7 @@
       height: $height;
       padding: $padding;
       font-size: $font-size;
-      line-height: 1;
+      line-height: 1.2;
     }
 
     // Special handling for file inputs
@@ -36,7 +36,7 @@
       height: $height;
       padding: nth($padding, 1) nth($padding, 2);
       font-size: $font-size;
-      line-height: 1;
+      line-height: 1.2;
 
       // Style the file input button
       &::-webkit-file-upload-button,
@@ -44,7 +44,7 @@
         height: calc(#{$height} - 2px);
         padding: 0 nth($padding, 2);
         font-size: $font-size;
-        line-height: 1;
+        line-height: 1.2;
         margin: -#{nth($padding, 1)} 0 -#{nth($padding, 1)} -#{nth($padding, 2)};
         margin-right: nth($padding, 2);
       }
@@ -59,7 +59,7 @@
       min-height: $height;
       padding: nth($padding, 1);
       font-size: $font-size;
-      line-height: 1;
+      line-height: 1.2;
     }
 
     > .form-select {

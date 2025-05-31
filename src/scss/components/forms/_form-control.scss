@@ -14,7 +14,7 @@ $form-control-textarea-padding: 0.5rem !default;
   box-sizing: border-box;
   height: $input-btn-minheight;
   padding: $form-control-padding;
-  line-height: 1;
+  line-height: 1.2;
   border: 1px solid var(--bs-border-color);
   transition: border-color 0.15s ease-in-out;
 
@@ -38,7 +38,7 @@ $form-control-textarea-padding: 0.5rem !default;
 //   Form Control Size Mixins
 // ==========================================================================
 
-@mixin form-control-size($height, $padding, $font-size, $line-height: 1) {
+@mixin form-control-size($height, $padding, $font-size, $line-height: 1.2) {
   height: $height;
   padding: $padding;
   font-size: $font-size;
@@ -56,7 +56,7 @@ $form-control-textarea-padding: 0.5rem !default;
     height: calc(#{$height} - 2px); // Account for border
     padding: 0 nth($padding, 2);
     font-size: $font-size;
-    line-height: 1;
+    line-height: 1.2;
     margin: -#{nth($padding, 1)} 0 -#{nth($padding, 1)} -#{nth($padding, 2)};
     margin-right: nth($padding, 2);
     @if $margin-left {

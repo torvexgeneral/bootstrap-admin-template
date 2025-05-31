@@ -13,7 +13,7 @@ $form-select-padding: $input-btn-padding-y $input-btn-padding-x !default;
   box-sizing: border-box;
   height: $input-btn-minheight;
   padding: $form-select-padding;
-  line-height: 1;
+  line-height: 1.2;
   border: 1px solid var(--bs-border-color);
   transition: border-color 0.15s ease-in-out;
 
@@ -29,6 +29,12 @@ $form-select-padding: $input-btn-padding-y $input-btn-padding-x !default;
 
   &:focus {
     border-color: var(--bs-primary);
+  }
+
+  &[multiple] {
+    height: auto;
+    min-height: 100px;
+    padding: 0.5rem;
   }
 }
 
