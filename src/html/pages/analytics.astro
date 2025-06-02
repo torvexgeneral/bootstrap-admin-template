@@ -375,14 +375,6 @@ const pageScript = `<!-- Import Chart.js library from CDN -->
   });
 </script>
 `
-
-const pageCss = `
-<style>
- root{
- --bs-primary: #ffdd00;
- }
-</style>
-`
 ---
 
 <AdminLayout
@@ -390,7 +382,6 @@ const pageCss = `
   description="Comprehensive analytics dashboard showing key performance metrics and user engagement trends"
   currentPath="analytics"
   pageScript={pageScript}
-  pageCss={pageCss}
 >
   <PageHeader {...pageHeaderProps} />
   <div class="row">
