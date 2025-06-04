@@ -16,7 +16,6 @@ $content-breakpoint-collapse: 1200px !default;
   flex-direction: column;
   min-width: 0;
   min-height: $min-viewport-height;
-  overflow-y: scroll;
   margin-inline-start: var(--sidebar-width);
   background-color: var(--content-wrapper-bg);
 
