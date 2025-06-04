@@ -36,10 +36,25 @@ jobs:
       - name: Build distribution files
         run: npm run build
 
+      - name: Verify build output
+        run: |
+          echo "📁 Contents of dist directory:"
+          ls -la dist/
+          echo ""
+          echo "🔍 Checking subdirectories:"
+          find dist/ -type f -name "*" | head -20
+          echo ""
+          echo "📊 Total files built:"
+          find dist/ -type f | wc -l
+
       - name: Zip distribution files
-        uses: montudor/action-zip@v1
-        with:
-          args: 'zip -qq astero-admin-${{env.RELEASE_VERSION}}.zip dist'
+        run: |
+          echo "🗜️ Creating zip file..."
+          cd dist
+          zip -r ../astero-admin-${{env.RELEASE_VERSION}}.zip . -x "*.DS_Store" "*/.DS_Store"
+          cd ..
+          echo "✅ Zip file created:"
+          ls -la astero-admin-${{env.RELEASE_VERSION}}.zip
 
       - name: Generate awesome changelog
         id: changelog
